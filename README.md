@@ -1,2 +1,2 @@
-# susper-artwork
-Susper Search Artwork
+# Neurolab Android App
+Repository for Neurolab Android app.
