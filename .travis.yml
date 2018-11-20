@@ -1,0 +1,28 @@
+language: android
+
+sudo: false
+
+jdk: oraclejdk8
+
+android:
+  components:
+    - tools
+    - platform-tools
+    - android-27
+    - build-tools-27.0.3
+   
+before_cache:
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+
+cache:
+  directories:
+  - "${TRAVIS_BUILD_DIR}/gradle/caches/"
+  - "${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/"
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+
+install:
+    - echo yes | ${ANDROID_HOME}/tools/bin/sdkmanager "platforms;android-27"
+
+script:
+  - 'if [ "$TRAVIS_BRANCH" != "apk" ]; then ./gradlew build --stacktrace; fi'
