@@ -26,3 +26,8 @@ install:
 
 script:
   - 'if [ "$TRAVIS_BRANCH" != "apk" ]; then ./gradlew build --stacktrace; fi'
+
+after_success:
+  - bash scripts/prep-key.sh
+  - 'if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then bash scripts/upload-apk.sh; fi'
+
