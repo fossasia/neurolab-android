@@ -1,5 +1,6 @@
 # Neurolab Android App
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/04c9c47bfb934605ab15394dd2f260be)](https://app.codacy.com/app/fossasia/neurolab-android?utm_source=github.com&utm_medium=referral&utm_content=fossasia/neurolab-android&utm_campaign=Badge_Grade_Settings)
 [![Build Status](https://travis-ci.org/fossasia/neurolab-android.svg?branch=master)](https://travis-ci.org/fossasia/neurolab-android)
 [![Gitter](https://badges.gitter.im/fossasia/pslab.svg)](https://gitter.im/fossasia/pslab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Mailing List](https://img.shields.io/badge/Mailing%20List-FOSSASIA-blue.svg)](mailto:pslab-fossasia@googlegroups.com)
