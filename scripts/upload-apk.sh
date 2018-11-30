@@ -9,7 +9,7 @@ git config --global user.email "noreply@travis.com"
 git config --global user.name "Travis CI" 
 
 #clone the repository
-git clone --quiet --branch=apk https://fossasia:$GITHUB_API_KEY@github.com/fossasia/neurolab-android apk > /dev/null
+git clone --quiet --branch=apk https://fossasia:$GITHUB_KEY@github.com/fossasia/neurolab-android apk > /dev/null
 
 cd apk
 
