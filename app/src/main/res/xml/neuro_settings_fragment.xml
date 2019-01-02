@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:defaultValue="3"
+        android:key="@string/samples_pref_key"
+        android:title="@string/samples_pref_label" />
+    <EditTextPreference
+        android:defaultValue="4"
+        android:key="@string/bins_pref_key"
+        android:title="@string/bins_pref_label" />
+    <EditTextPreference
+        android:defaultValue="2"
+        android:key="@string/num_channels_pref_key"
+        android:title="@string/num_channels_pref_label" />
+</PreferenceScreen>

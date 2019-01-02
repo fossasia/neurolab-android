@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BCISettingsActivity"></activity>
+        <activity android:name=".NeuroSettingsActivity"></activity>
     </application>
 
 </manifest>

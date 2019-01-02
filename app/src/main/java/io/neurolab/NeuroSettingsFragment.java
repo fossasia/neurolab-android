@@ -6,11 +6,11 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceScreen;
 
-public class BCISettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener, Preference.OnPreferenceChangeListener {
+public class NeuroSettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener, Preference.OnPreferenceChangeListener {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        addPreferencesFromResource(R.xml.bci_settings_fragment);
-        Preference preference = findPreference("samples");
+        addPreferencesFromResource(R.xml.neuro_settings_fragment);
+        Preference preference = findPreference(getResources().getString(R.string.samples_pref_key));
         preference.setOnPreferenceChangeListener(this);
 
         SharedPreferences sharedPreferences = getPreferenceScreen().getSharedPreferences();
