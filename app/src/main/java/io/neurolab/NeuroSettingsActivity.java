@@ -9,6 +9,6 @@ public class NeuroSettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_neurosettings);
-        setTitle("Neuro Settings");
+        setTitle(getResources().getString(R.string.action_settings));
     }
 }
