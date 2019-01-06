@@ -14,3 +14,5 @@ Our brains communicate through neurotransmitters and their activity emits electr
 Current devices in the medical industry are usually not accessible by doctors due to their high pricing. They are also complicated to use. The idea of the device is to integrate it into a headband and focus on signals that can be obtained through the frontal lobe.
 
 A difference to existing projects like OpenBCI is that it will not be necessary to 3D print large headsets. Instead we are focusing on creating a device that collects as much data as possible through the forehead. To achieve this goal we are using high-grade sensors and flexible electronics.
+
+The Android Application need to support from API level 16. Some parts of the desktop version of the application might not support it, so be sure to use alternatives for the same.
