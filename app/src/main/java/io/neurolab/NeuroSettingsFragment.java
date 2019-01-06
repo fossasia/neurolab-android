@@ -18,9 +18,7 @@ public class NeuroSettingsFragment extends PreferenceFragmentCompat implements S
         int count = preferenceScreen.getPreferenceCount();
 
         for (int i = 0; i < count; i++) {
-
             Preference pref = preferenceScreen.getPreference(i);
-
             String value = sharedPreferences.getString(pref.getKey(), "");
             pref.setSummary(value);
         }
@@ -29,7 +27,6 @@ public class NeuroSettingsFragment extends PreferenceFragmentCompat implements S
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         Preference preference = findPreference(key);
-
         String value = sharedPreferences.getString(preference.getKey(), "");
         preference.setSummary(value);
     }
