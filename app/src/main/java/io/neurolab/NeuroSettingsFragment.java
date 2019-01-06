@@ -17,10 +17,11 @@ public class NeuroSettingsFragment extends PreferenceFragmentCompat implements S
         PreferenceScreen preferenceScreen = getPreferenceScreen();
         int count = preferenceScreen.getPreferenceCount();
 
-        for(int i=0; i<count; i++){
+        for (int i = 0; i < count; i++) {
+
             Preference pref = preferenceScreen.getPreference(i);
 
-            String value = sharedPreferences.getString(pref.getKey(),"");
+            String value = sharedPreferences.getString(pref.getKey(), "");
             pref.setSummary(value);
         }
     }
