@@ -4,6 +4,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
+    <string name="drawer_name">Welcome to Neurolab</string>
 
     <string name="samples_pref_key">samples</string>
     <string name="bins_pref_key">bins</string>
