@@ -19,7 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NeuroSettingsActivity"></activity>
+        <activity android:name=".NeuroSettingsActivity"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>
