@@ -6,4 +6,9 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_feedback_settings"
+        android:orderInCategory="200"
+        android:title="@string/feedback_settings_title"
+        app:showAsAction="never" />
 </menu>

@@ -1,10 +1,14 @@
 package io.neurolab;
 
+
 public class NeuroSettings {
 
+
+    //Default place holder values
     public int samplesPerSecond = 3;
-    public int numChannels = 2;
     public int bins = 4;
+    public int numChannels = 2;
+
 
     public NeuroSettings() {
     }
