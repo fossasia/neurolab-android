@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".NeuroSettingsActivity"
             android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".settings.FeedbackSettings" />
     </application>
 
 </manifest>
