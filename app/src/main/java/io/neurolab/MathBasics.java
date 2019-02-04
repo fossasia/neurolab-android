@@ -14,7 +14,7 @@ public class MathBasics {
             double medianB = values[middle - 1];
             median = (medianA + medianB) / 2d;
         } else {
-            median = values[middle + 1];
+            median = values[middle];
         }
         return median;
     }
