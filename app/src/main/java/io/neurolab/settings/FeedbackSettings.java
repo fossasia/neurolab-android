@@ -1,11 +1,14 @@
 package io.neurolab.settings;
 
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import io.neurolab.R;
 
@@ -27,6 +30,12 @@ public class FeedbackSettings extends FragmentActivity implements SharedPreferen
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_feedback_settings);
+        Toolbar toolbar = findViewById(R.id.feedback_toolbar);
+        FeedbackSettings activity = this;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            activity.setActionBar(toolbar);
+        }
+        activity.getActionBar().setTitle(getResources().getString(R.string.app_name));
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         smpls_per_sec = Integer.parseInt(sharedPreferences.getString(getResources().getString(R.string.samples_pref_key), "4"));
         bins = Integer.parseInt(sharedPreferences.getString(getResources().getString(R.string.bins_pref_key), "3"));
