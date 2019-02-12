@@ -16,4 +16,22 @@
     <string name="num_channels_pref_label">Number Channels</string>
     <string name="about_us">About Us</string>
 
+    <string name="settings">Settings</string>
+    <string name="simulation">simulation</string>
+    <string name="load_from_phone">load resources from phone</string>
+    <string name="audio_feedback">audio feedback</string>
+    <string name="mode_24bit">24 bit</string>
+    <string name="mode_advanced">advanced mode</string>
+
+    <string name="programs">Programs</string>
+    <string name="focus">Focus</string>
+    <string name="relax">Relax</string>
+    <string name="vj">VJ</string>
+    <string name="serial">Serial</string>
+
+    <string name="focus_toast">Focus Program Mode Clicked</string>
+    <string name="relax_toast">Relax Program Mode Clicked</string>
+    <string name="vj_toast">VJ Program Mode Clicked</string>
+    <string name="serial_toast">Serial Program Mode Clicked</string>
+
 </resources>
