@@ -30,6 +30,7 @@
         <TextView
             android:id="@+id/feedback_smpls_label"
             style="@style/TextStyle"
+            android:gravity="center_vertical"
             android:layout_width="@dimen/dimen_for_weight"
             android:layout_height="match_parent"
             android:layout_weight=".8"
@@ -44,6 +45,7 @@
         <TextView
             android:id="@+id/feedback_smpls_value"
             style="@style/TextStyle"
+            android:gravity="center_vertical"
             android:layout_width="@dimen/dimen_for_weight"
             android:layout_height="match_parent"
             android:layout_weight=".3"
@@ -63,6 +65,7 @@
         <TextView
             android:id="@+id/feedback_bins_label"
             style="@style/TextStyle"
+            android:gravity="center_vertical"
             android:layout_width="@dimen/dimen_for_weight"
             android:layout_height="match_parent"
             android:layout_weight=".8"
@@ -77,6 +80,7 @@
         <TextView
             android:id="@+id/feedback_bins_value"
             style="@style/TextStyle"
+            android:gravity="center_vertical"
             android:layout_width="@dimen/dimen_for_weight"
             android:layout_height="match_parent"
             android:layout_weight=".3"
@@ -96,6 +100,7 @@
         <TextView
             android:id="@+id/feedback_numChannels_label"
             style="@style/TextStyle"
+            android:gravity="center_vertical"
             android:layout_width="@dimen/dimen_for_weight"
             android:layout_height="match_parent"
             android:layout_weight=".8"
@@ -110,6 +115,7 @@
         <TextView
             android:id="@+id/feedback_numChannels_value"
             style="@style/TextStyle"
+            android:gravity="center_vertical"
             android:layout_width="@dimen/dimen_for_weight"
             android:layout_height="match_parent"
             android:layout_weight=".3"
