@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+<android.widget.Toolbar
+    android:id="@+id/feedback_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/colorPrimary"
+    android:titleTextColor="@color/color_white_background"/>
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".settings.FeedbackSettings">
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -120,5 +130,5 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/view_width_or_height"
         android:background="@color/color_view_background"/>
-
+</LinearLayout>
 </LinearLayout>
