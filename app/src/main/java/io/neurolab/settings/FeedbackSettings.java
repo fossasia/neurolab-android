@@ -7,23 +7,161 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import java.util.ArrayList;
+import java.util.concurrent.locks.ReentrantLock;
+
 import io.neurolab.R;
+import io.neurolab.model.Config;
+import io.neurolab.model.DefaultFFTData;
+import io.neurolab.output.feedback.Feedback;
 
 public class FeedbackSettings extends FragmentActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private SharedPreferences sharedPreferences;
-    private int smpls_per_sec;
-    private int bins;
-    private int num_channels;
+
+    protected int smpls_per_sec;
+    protected int bins;
+    protected int num_channels;
+
+    public String[] binLabels;
+    protected int[] binRanges;
+    protected int[] binRangesAmount;
+
+    protected double[][] rewardFFTBins = new double[bins][num_channels];
+    protected double[][] lastRewardFFTBins = new double[bins][num_channels];
+
+    protected float currentFeedback;
+    protected float lastFeedback;
+
+    protected boolean[] notBrainwaves = {false, false, false, false};
+    protected boolean baseline = false;
+
+    protected long currentTimestamp = System.currentTimeMillis();
+    protected ReentrantLock lock;
+
+    protected ArrayList<Feedback> feedbacks;
+    protected DefaultFFTData fftData;
+    private ArrayList<Thread> feedbackThreads;
+    private Config config;
+
     private TextView smpls_txt_view;
     private TextView bins_txt_view;
     private TextView numChannels_txt_view;
 
     public FeedbackSettings() {
 
+    }
+
+    public FeedbackSettings(DefaultFFTData fftData, ReentrantLock lock, Config config) {
+        this.config = config;
+        this.currentFeedback = this.lastFeedback = 0;
+        this.feedbackThreads = new ArrayList<>();
+        this.feedbacks = new ArrayList<>();
+        this.fftData = fftData;
+        this.lock = lock;
+    }
+
+    public String getFeedbackSettingsName() {
+        return "generic";
+    }
+
+    public void setFeedbacks(ArrayList<Feedback> feedbacks) {
+        this.feedbacks = feedbacks;
+    }
+
+    public DefaultFFTData getFFTData() {
+        return fftData;
+    }
+
+    private static float sensitivity = 0.5f;
+    protected FrameLayout frame;
+
+    public static float getSensitivity() {
+        return sensitivity;
+    }
+
+    public int getNumChannels() {
+        return num_channels;
+    }
+
+    public void setNumChannels(int numChannels) {
+        this.num_channels = numChannels;
+    }
+
+    public int getBins() {
+        return bins;
+    }
+
+    public void setBins(int bins) {
+        this.bins = bins;
+    }
+
+    public String[] getBinLabels() {
+        return binLabels;
+    }
+
+    public void setBinLabels(String[] binLabels) {
+        this.binLabels = binLabels;
+    }
+
+    public int[] getBinRanges() {
+        return binRanges;
+    }
+
+    public void setBinRanges(int[] binRanges) {
+        this.binRanges = binRanges;
+    }
+
+
+    public double[][] getRewardFFTBins() {
+        return fftData.rewardFFTBins;
+    }
+
+    public void setRewardFFTBins(double[][] rewardFFTBins) {
+        this.rewardFFTBins = rewardFFTBins;
+    }
+
+
+    public float getCurrentFeedback() {
+        return currentFeedback;
+    }
+
+    public void setCurrentFeedback(float currentFeedback) {
+        this.currentFeedback = currentFeedback;
+    }
+
+    public void updateFeedback() {
+        for (Feedback feedback : feedbacks) {
+            feedback.updateCurrentFeedback(Math.sqrt(Math.sqrt(currentFeedback)) * (sensitivity * 2d));
+        }
+    }
+
+    public void addFeedback(Feedback feedback) {
+        if (!this.feedbacks.contains(feedback)) {
+            this.feedbacks.add(feedback);
+            if (!feedback.isRunning()) {
+                Thread thread = new Thread(feedback);
+                thread.run();
+                this.feedbackThreads.add(thread);//TODO
+            }
+
+        }
+
+    }
+
+    public void base() {
+        if ((fftData.baselineFFTValues != null) && (fftData.meanFFTBins != null)) {
+            for (int b = 0; b < fftData.bins; b++)
+                fftData.baselineFFTValues[b] = fftData.meanFFTBins[b].clone();
+        }
+    }
+
+    public ArrayList<Feedback> getFeedbacks() {
+        return feedbacks;
     }
 
     @Override
