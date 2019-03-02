@@ -22,6 +22,11 @@ public class FeedbackSettings extends FragmentActivity implements SharedPreferen
     private TextView bins_txt_view;
     private TextView numChannels_txt_view;
 
+    @Override
+    public boolean onNavigateUp() {
+        onBackPressed();
+        return super.onNavigateUp();
+    }
     public FeedbackSettings() {
 
     }
@@ -36,6 +41,8 @@ public class FeedbackSettings extends FragmentActivity implements SharedPreferen
             activity.setActionBar(toolbar);
         }
         activity.getActionBar().setTitle(getResources().getString(R.string.app_name));
+        activity.getActionBar().setDisplayHomeAsUpEnabled(true);
+        activity.getActionBar().setDisplayShowHomeEnabled(true);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         smpls_per_sec = Integer.parseInt(sharedPreferences.getString(getResources().getString(R.string.samples_pref_key), "4"));
         bins = Integer.parseInt(sharedPreferences.getString(getResources().getString(R.string.bins_pref_key), "3"));
