@@ -58,6 +58,7 @@
             android:layout_width="@dimen/dimen_for_weight"
             android:layout_height="match_parent"
             android:layout_weight=".3"
+            android:gravity="center_vertical"
             android:padding="@dimen/bin_value_text_padding"/>
     </LinearLayout>
 
@@ -91,6 +92,7 @@
             android:layout_width="@dimen/dimen_for_weight"
             android:layout_height="match_parent"
             android:layout_weight=".3"
+            android:gravity="center_vertical"
             android:padding="@dimen/bin_value_text_padding"/>
     </LinearLayout>
 
@@ -124,6 +126,7 @@
             android:layout_width="@dimen/dimen_for_weight"
             android:layout_height="match_parent"
             android:layout_weight=".3"
+            android:gravity="center_vertical"
             android:padding="@dimen/bin_value_text_padding"/>
     </LinearLayout>
 
