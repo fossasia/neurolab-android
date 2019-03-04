@@ -49,6 +49,10 @@ public class NeuroSettingsFragment extends PreferenceFragmentCompat implements S
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+         String stringValue = newValue.toString();
+        if(preference instanceof EditTextPreference){
+            preference.setSummary(stringValue);
+        }
         return true;
     }
 }
