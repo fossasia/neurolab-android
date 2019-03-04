@@ -7,19 +7,22 @@
         android:inputType="numberDecimal"
         android:digits="0123456789"
         android:numeric="integer"
-        android:title="@string/samples_pref_label" />
+        android:title="@string/samples_pref_label" 
+        android:summary="3"/>
     <EditTextPreference
         android:defaultValue="4"
         android:key="@string/bins_pref_key"
         android:inputType="numberDecimal"
         android:digits="0123456789"
         android:numeric="integer"
-        android:title="@string/bins_pref_label" />
+        android:title="@string/bins_pref_label"
+        android:summary="4"/>
     <EditTextPreference
         android:defaultValue="2"
         android:key="@string/num_channels_pref_key"
         android:inputType="numberDecimal"
         android:digits="0123456789"
         android:numeric="integer"
-        android:title="@string/num_channels_pref_label" />
+        android:title="@string/num_channels_pref_label" 
+        android:summary="2"/>
 </PreferenceScreen>
