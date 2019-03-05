@@ -14,5 +14,7 @@
     <string name="samples_pref_label">Samples per second</string>
     <string name="bins_pref_label">Bins</string>
     <string name="num_channels_pref_label">Number Channels</string>
+    <string name="ShareMessage">Hey I Just Downloaded a Wonderful Neurolab Android App.Check it out here</string>
+    <string name="ShareUsing">Share via</string>
 
 </resources>

@@ -132,6 +132,11 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
+            Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, R.string.app_name);
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.ShareMessage));
+            startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.ShareUsing)));
 
         } else if (id == R.id.nav_send) {
 
