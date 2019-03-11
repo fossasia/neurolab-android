@@ -25,4 +25,5 @@
         android:numeric="integer"
         android:title="@string/num_channels_pref_label" 
         android:summary="2"/>
+    
 </PreferenceScreen>
