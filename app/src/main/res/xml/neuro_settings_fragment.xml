@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
     <EditTextPreference
         android:defaultValue="3"
         android:key="@string/samples_pref_key"
@@ -24,6 +23,5 @@
         android:digits="0123456789"
         android:numeric="integer"
         android:title="@string/num_channels_pref_label" 
-        android:summary="2"/>
-    
+        android:summary="2"/>  
 </PreferenceScreen>
