@@ -26,10 +26,17 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private int launcherSleepTime;
-    private ImageView rocketimage;
+
     private int lastPos = 0;
     private int newPos = -300;
     private boolean moving;
+    private ActionBarDrawerToggle toggle;
+
+    // View(s)/ViewGroup(s) references.
+    private ImageView rocketimage;
+    private DrawerLayout drawer;
+    private NavigationView navigationView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +49,13 @@ public class MainActivity extends AppCompatActivity
 
         rocketimage = findViewById(R.id.rocketimage);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        drawer = findViewById(R.id.drawer_layout);
+        toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -149,4 +156,14 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        // Cleaning up the resources/memory.
+        drawer.removeDrawerListener(toggle);
+        navigationView.setNavigationItemSelectedListener(null);
+    }
+
 }
