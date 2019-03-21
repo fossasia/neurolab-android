@@ -32,14 +32,14 @@ public class MathBasics {
 
     public static double updateVariance(double currentVariance, int n, double newValue, double currentMean) {
         double nD = (double) n;
-        if (n > 1) {
+        if(n <= 1)
+            throw new IllegalArgumentException("Number of elements(n) cannot be less than or equal to 1");
+        else{
             double result = (newValue - currentMean) * (newValue - currentMean); // 1/n * xn
-            result = (double) (result / (nD - 1));
-            result += (double) (((nD - 1) / (nD)) * currentVariance); // + (n-1)/n * (n-1)
-
+            result = (result / (nD - 1));
+            result += (((nD - 1) / (nD)) * currentVariance); // + (n-1)/n * (n-1)
             return result;
         }
-        return 0;
     }
 
     public static double getZScore(double value, double mean, double standardDeviation) {
