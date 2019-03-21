@@ -3,13 +3,12 @@ package io.neurolab;
 
 public class NeuroSettings {
 
-
     //Default place holder values
-    public int samplesPerSecond = 3;
-    public int bins = 4;
-    public int numChannels = 2;
+    private int samplesPerSecond = 3;
+    private int bins = 4;
+    private int numChannels = 2;
 
-
+    // Constructors
     public NeuroSettings() {
     }
 
@@ -19,6 +18,7 @@ public class NeuroSettings {
         this.bins = bins;
     }
 
+    // Getters
     public int getSamplesPerSecond() {
         return samplesPerSecond;
     }
@@ -29,6 +29,19 @@ public class NeuroSettings {
 
     public int getNumChannels() {
         return numChannels;
+    }
+
+    // Setters
+    public void setSamplesPerSecond(int samplesPerSecond) {
+        this.samplesPerSecond = samplesPerSecond;
+    }
+
+    public void setBins(int bins) {
+        this.bins = bins;
+    }
+
+    public void setNumChannels(int numChannels) {
+        this.numChannels = numChannels;
     }
 
 }
