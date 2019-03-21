@@ -14,5 +14,6 @@
     <string name="samples_pref_label">Samples per second</string>
     <string name="bins_pref_label">Bins</string>
     <string name="num_channels_pref_label">Number Channels</string>
+    <string name="about_us">About Us</string>
 
 </resources>
