@@ -20,14 +20,10 @@ public class MathBasics {
     }
 
     public static double updateMean(double currentMean, int n, double val) {
+        if(n <= 0)
+            throw new IllegalArgumentException("Number of elements(n) cannot be less than or equal to 0");
         double nD = (double) n;
-        if (n > 1) {
-            double result = (double) ((1 / nD) * val);
-            result += (double) (((nD - 1) / (nD)) * currentMean);
-            return result;
-        }
-
-        return val;
+        return ( (nD - 1) * currentMean + val ) / nD;
     }
 
     public static double updateVariance(double currentVariance, int n, double newValue, double currentMean) {
