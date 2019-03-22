@@ -19,4 +19,5 @@
     <dimen name="rocket_image_height">116dp</dimen>
     <dimen name="rocket_image_margin_start">50dp</dimen>
     <dimen name="rocket_image_margin_end">33dp</dimen>
+    <dimen name="nav_bar_heading_size">18sp</dimen>
 </resources>
