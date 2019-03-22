@@ -4,36 +4,36 @@ import io.neurolab.MathBasics;
 import io.neurolab.NeuroSettings;
 
 public class DefaultFFTData implements FFTData {
-    public boolean peakToPeakCheck = true;
-    public boolean[] notBrainwaves;
-    public int[] packagePenalty;
+    private boolean peakToPeakCheck = true;
+    private boolean[] notBrainwaves;
+    private int[] packagePenalty;
 
-    public double[][] currentFFTs;
-    public double[][] meanFFTs;
-    public double[][] currentFFTPhases;
-    public double[][] windows;
+    private double[][] currentFFTs;
+    private double[][] meanFFTs;
+    private double[][] currentFFTPhases;
+    private double[][] windows;
 
-    public double[][] currentFFTBins;
+    private double[][] currentFFTBins;
 
     // long term
-    public int[][] meanFFTValueCount;
-    public double[][] meanFFTBins;
-    public double[][] varFFTBins;
-    public double[][] relativeFFTBins;
+    private int[][] meanFFTValueCount;
+    private double[][] meanFFTBins;
+    private double[][] varFFTBins;
+    private double[][] relativeFFTBins;
 
     // fixed fft values by operator
-    public double[][] baselineFFTValues;
-    public double[][] shortMeanFFTBins;
-    public double[][] shortVarFFTBins;
-    public double[][] rewardFFTBins;
-    public double[] currentFFTValue;
+    private double[][] baselineFFTValues;
+    private double[][] shortMeanFFTBins;
+    private double[][] shortVarFFTBins;
+    private double[][] rewardFFTBins;
+    private double[] currentFFTValue;
 
-    public int[] binRanges = {4, 7, 8, 10, 11, 13, 17, 30};
-    public int[] binRangesAmount = {4, 3, 3, 14};
+    private int[] binRanges = {4, 7, 8, 10, 11, 13, 17, 30};
+    private int[] binRangesAmount = {4, 3, 3, 14};
 
-    public int numChannels;
-    public int bins;
-    public int windowSize;
+    private int numChannels;
+    private int bins;
+    private int windowSize;
 
     public double maxFFTValue[];
     public double meanFFTValue[];
@@ -41,12 +41,12 @@ public class DefaultFFTData implements FFTData {
 
     public double trainingFactor = .10d;
 
-    public String[] binLabels = {"theta", "lowalpha", "highalpha", "beta"};
-    public int maxSampleCount = 10000;
-    public double peakToPeakLimit = 20d;
+    private String[] binLabels = {"theta", "lowalpha", "highalpha", "beta"};
+    private int maxSampleCount = 10000;
+    private double peakToPeakLimit = 20d;
 
-    public int valueMin = 4;
-    public int valueMax = 34;
+    private int valueMin = 4;
+    private int valueMax = 34;
 
 
     public DefaultFFTData() {
