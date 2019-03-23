@@ -1,4 +1,4 @@
-package org.neurovillage.main;
+package io.neurolab;
 
 import java.util.HashMap;
 
