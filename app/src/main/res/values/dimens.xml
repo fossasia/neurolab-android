@@ -16,7 +16,7 @@
     <dimen name="heading_margin_top">50dp</dimen>
     <dimen name="content_heading_text_size">50sp</dimen>
     <dimen name="bin_image_margin_top">100dp</dimen>
-    <dimen name="rocket_image_height">116dp</dimen>
+    <dimen name="rocket_image_height">80dp</dimen>
     <dimen name="rocket_image_margin_start">50dp</dimen>
     <dimen name="rocket_image_margin_end">33dp</dimen>
     <dimen name="nav_bar_heading_size">18sp</dimen>

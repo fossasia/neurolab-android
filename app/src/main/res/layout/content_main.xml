@@ -27,7 +27,7 @@
             android:layout_marginEnd="@dimen/rocket_image_margin_end"
             android:layout_marginRight="@dimen/rocket_image_margin_end"
             android:onClick="moveRocket"
-            android:src="@drawable/ic_rocket_image" />
+            android:src="@drawable/rocketimage" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
