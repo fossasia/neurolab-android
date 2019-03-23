@@ -18,26 +18,27 @@ public class FocusFeedbackSettings extends FeedbackSettings {
         super(fftData, lock, config);
         this.binLabels = new String[]{"theta", "smr", "high beta"};
         this.fftData.setBinRanges(binRanges);
-        this.fftData.binLabels = this.binLabels;
+        String[] localBinlabels = this.fftData.getBinLabels();
+        localBinlabels = this.binLabels;
         this.bins = 3;
     }
 
     @Override
     public void updateFeedback() {
-        for (int c = 0; c < fftData.numChannels; c++)
-            for (int b = 0; b < fftData.bins; b++)
-                fftData.rewardFFTBins[b][c] = MathBasics.getZScore(fftData.shortMeanFFTBins[b][c], fftData.meanFFTBins[b][c], Math.sqrt(fftData.varFFTBins[b][c]));
+        for (int c = 0; c < fftData.getNumChannels(); c++)
+            for (int b = 0; b < fftData.getBins(); b++)
+                fftData.getRewardFFTBins()[b][c] = MathBasics.getZScore(fftData.getShortMeanFFTBins()[b][c], fftData.getMeanFFTBins()[b][c], Math.sqrt(fftData.getVarFFTBins()[b][c]));
 
         currentFeedback = 0;
-        for (int c = 0; c < fftData.numChannels; c++) {
+        for (int c = 0; c < fftData.getNumChannels(); c++) {
             for (int b = 0; b < binRangesAmount.length; b++) {
-                double rewardBin = fftData.rewardFFTBins[b][c] * -1d;
+                double rewardBin = fftData.getRewardFFTBins()[b][c] * -1d;
                 if (b == 1)
                     rewardBin *= -2d;
                 currentFeedback += rewardBin;
             }
             currentFeedback /= (double) binRangesAmount.length;
-            currentFeedback /= (float) (fftData.numChannels);
+            currentFeedback /= (float) (fftData.getNumChannels());
             lastFeedback = currentFeedback;
         }
         super.updateFeedback();
