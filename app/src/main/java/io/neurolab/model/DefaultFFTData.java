@@ -21,6 +21,126 @@ public class DefaultFFTData implements FFTData {
     private double[][] varFFTBins;
     private double[][] relativeFFTBins;
 
+    public boolean isPeakToPeakCheck() {
+        return peakToPeakCheck;
+    }
+
+    public boolean[] getNotBrainwaves() {
+        return notBrainwaves;
+    }
+
+    public int[] getPackagePenalty() {
+        return packagePenalty;
+    }
+
+    public double[][] getCurrentFFTs() {
+        return currentFFTs;
+    }
+
+    public double[][] getMeanFFTs() {
+        return meanFFTs;
+    }
+
+    public double[][] getCurrentFFTPhases() {
+        return currentFFTPhases;
+    }
+
+    public double[][] getWindows() {
+        return windows;
+    }
+
+    public double[][] getCurrentFFTBins() {
+        return currentFFTBins;
+    }
+
+    public int[][] getMeanFFTValueCount() {
+        return meanFFTValueCount;
+    }
+
+    public double[][] getMeanFFTBins() {
+        return meanFFTBins;
+    }
+
+    public double[][] getVarFFTBins() {
+        return varFFTBins;
+    }
+
+    public double[][] getRelativeFFTBins() {
+        return relativeFFTBins;
+    }
+
+    public double[][] getBaselineFFTValues() {
+        return baselineFFTValues;
+    }
+
+    public double[][] getShortMeanFFTBins() {
+        return shortMeanFFTBins;
+    }
+
+    public double[][] getShortVarFFTBins() {
+        return shortVarFFTBins;
+    }
+
+    public double[][] getRewardFFTBins() {
+        return rewardFFTBins;
+    }
+
+    public double[] getCurrentFFTValue() {
+        return currentFFTValue;
+    }
+
+    public int[] getBinRanges() {
+        return binRanges;
+    }
+
+    public int[] getBinRangesAmount() {
+        return binRangesAmount;
+    }
+
+    public int getNumChannels() {
+        return numChannels;
+    }
+
+    public int getBins() {
+        return bins;
+    }
+
+    public int getWindowSize() {
+        return windowSize;
+    }
+
+    public double[] getMaxFFTValue() {
+        return maxFFTValue;
+    }
+
+    public double[] getMeanFFTValue() {
+        return meanFFTValue;
+    }
+
+    public double[] getVarFFTValue() {
+        return varFFTValue;
+    }
+
+    public String[] getBinLabels() {
+        return binLabels;
+    }
+
+    public int getMaxSampleCount() {
+        return maxSampleCount;
+    }
+
+    public double getPeakToPeakLimit() {
+        return peakToPeakLimit;
+    }
+
+    public int getValueMin() {
+        return valueMin;
+    }
+
+    public int getValueMax() {
+        return valueMax;
+    }
+
     // fixed fft values by operator
     private double[][] baselineFFTValues;
     private double[][] shortMeanFFTBins;

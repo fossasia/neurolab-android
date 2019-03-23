@@ -123,7 +123,7 @@ public class FeedbackSettings extends FragmentActivity implements SharedPreferen
 
 
     public double[][] getRewardFFTBins() {
-        return fftData.rewardFFTBins;
+        return fftData.getRewardFFTBins();
     }
 
     public void setRewardFFTBins(double[][] rewardFFTBins) {
@@ -159,9 +159,9 @@ public class FeedbackSettings extends FragmentActivity implements SharedPreferen
     }
 
     public void base() {
-        if ((fftData.baselineFFTValues != null) && (fftData.meanFFTBins != null)) {
-            for (int b = 0; b < fftData.bins; b++)
-                fftData.baselineFFTValues[b] = fftData.meanFFTBins[b].clone();
+        if ((fftData.getBaselineFFTValues() != null) && (fftData.getMeanFFTBins() != null)) {
+            for (int b = 0; b < fftData.getBins(); b++)
+                fftData.getBaselineFFTValues()[b] = fftData.getMeanFFTBins()[b].clone();
         }
     }
 
