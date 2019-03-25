@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,10 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import io.neurolab.settings.FeedbackSettings;
 
@@ -26,6 +23,12 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private int launcherSleepTime;
+
+    private Button focusButton;
+    private Button relaxButton;
+    private Button vjButton;
+    private Button serialButton;
+
     private ImageView rocketimage;
     private int lastPos = 0;
     private int newPos = -300;
@@ -40,8 +43,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        rocketimage = findViewById(R.id.rocketimage);
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -50,39 +51,49 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        focusButton = findViewById(R.id.btn_focus);
+        relaxButton = findViewById(R.id.btn_relax);
+        vjButton = findViewById(R.id.btn_vj);
+        serialButton = findViewById(R.id.btn_serial);
+
+        // Setting Listeners of the various program buttons
+        focusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startProgramModeActivity(R.string.focus_toast, ProgramModeActivity.FOCUS_PROGRAM_MODE);
+            }
+        });
+
+        relaxButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startProgramModeActivity(R.string.relax_toast, ProgramModeActivity.RELAX_PROGRAM_MODE);
+            }
+        });
+
+        vjButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startProgramModeActivity(R.string.vj_toast, ProgramModeActivity.VJ_PROGRAM_MODE);
+            }
+        });
+
+        serialButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startProgramModeActivity(R.string.serial_toast, ProgramModeActivity.SERIAL_PROGRAM_MODE);
+            }
+        });
     }
 
-    public void moveRocket(View view){
-        if(!moving){
-            float PivotX = rocketimage.getPivotX();
-            float PivotY = rocketimage.getPivotY();
-
-            Animation launch = new TranslateAnimation(0,0, lastPos, newPos);
-            launch.setDuration(1000);
-            launch.setFillAfter(true);
-            launch.setRepeatCount(10);
-            launch.setAnimationListener(new Animation.AnimationListener() {
-                @Override
-                public void onAnimationStart(Animation animation) {
-                    moving = true;
-                }
-
-                @Override
-                public void onAnimationEnd(Animation animation) {
-                    moving = false;
-                }
-
-                @Override
-                public void onAnimationRepeat(Animation animation) {
-
-                }
-            });
-            int c = lastPos;
-            lastPos = newPos;
-            newPos = c;
-
-            rocketimage.startAnimation(launch);
-        }
+    private void startProgramModeActivity(int toastMessageID, int mode){
+        Toast.makeText(MainActivity.this, toastMessageID, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(MainActivity.this, ProgramModeActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt(ProgramModeActivity.INTENT_KEY_PROGRAM_MODE, mode);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     @Override
