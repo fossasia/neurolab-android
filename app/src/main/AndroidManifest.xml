@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/EditTextPrefTheme">
         <activity
-            android:name=".ProgramModeActivity"/>
+            android:name=".ProgramModeActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".About_Us"
             android:label="@string/about_us"
