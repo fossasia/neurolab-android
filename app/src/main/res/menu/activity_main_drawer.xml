@@ -2,25 +2,27 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
+    <item android:title="Program Modes">
+        <menu>
+            <group android:checkableBehavior="single">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
-    </group>
+                <item
+                    android:id="@+id/nav_focus"
+                    android:title="Focus Mode" />
+                <item
+                    android:id="@+id/nav_relax"
+                    android:layout_height="match_parent"
+                    android:title="Relax Mode" />
+                <item
+                    android:id="@+id/nav_vj"
+                    android:title="VJ Mode" />
+                <item
+                    android:id="@+id/nav_serial"
+                    android:title="Serial Mode" />
+
+            </group>
+        </menu>
+    </item>
 
     <item android:title="Communicate">
         <menu>
