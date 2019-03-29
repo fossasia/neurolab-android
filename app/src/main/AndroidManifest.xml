@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/EditTextPrefTheme">
+        <activity android:name=".SplashActivity"></activity>
         <activity
             android:name=".ProgramModeActivity"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".About_Us"
             android:label="@string/about_us"

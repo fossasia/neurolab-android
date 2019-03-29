@@ -7,4 +7,5 @@
     <color name="launcher_btn_txt_clr">#ffffff</color>
     <color name="color_view_background">#dad</color>
     <color name="color_white_background">#fff</color>
+    <color name="white">#FFFFFF</color>
 </resources>

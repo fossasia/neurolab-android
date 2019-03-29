@@ -33,5 +33,6 @@
     <string name="relax_toast">Relax Program Mode Clicked</string>
     <string name="vj_toast">VJ Program Mode Clicked</string>
     <string name="serial_toast">Serial Program Mode Clicked</string>
+    <string name="app_slogan">\"Understand your\nbrain better\"</string>
 
 </resources>
