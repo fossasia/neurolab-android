@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:title="@string/simulation"
+        android:key="@string/simulation" />
+
+    <CheckBoxPreference
+        android:title="@string/load_from_phone"
+        android:key="@string/load_from_phone" />
+
+    <CheckBoxPreference
+        android:title="@string/audio_feedback"
+        android:key="@string/audio_feedback" />
+
+    <CheckBoxPreference
+        android:title="@string/mode_24bit"
+        android:key="@string/mode_24bit" />
+
+    <CheckBoxPreference
+        android:title="@string/mode_advanced"
+        android:key="@string/mode_advanced" />
+</PreferenceScreen>

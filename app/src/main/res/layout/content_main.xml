@@ -24,43 +24,16 @@
             android:text="@string/settings"
             android:textSize="@dimen/launcher_title_text_size"
             android:textStyle="bold" />
-
         <LinearLayout
             android:id="@+id/settings_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/cbs_text_view_title"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:paddingTop="@dimen/content_padding">
 
-            <CheckBox
-                android:id="@+id/cb_simulation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/simulation" />
-
-            <CheckBox
-                android:id="@+id/cb_load_resources_from_phone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/load_from_phone" />
-
-            <CheckBox
-                android:id="@+id/cb_audio_feedback"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/audio_feedback" />
-
-            <CheckBox
-                android:id="@+id/cb_24bit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/mode_24bit" />
-
-            <CheckBox
-                android:id="@+id/cb_advanced_mode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/mode_advanced" />
+            <include layout="@layout/activity_launcher_prefs" />
 
         </LinearLayout>
 
@@ -139,27 +112,4 @@
         </LinearLayout>
 
     </RelativeLayout>
-
-    <!--    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/rocketimage"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/rocket_image_height"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="@dimen/rocket_image_margin_start"
-                android:layout_marginLeft="@dimen/rocket_image_margin_start"
-                android:layout_marginEnd="@dimen/rocket_image_margin_end"
-                android:layout_marginRight="@dimen/rocket_image_margin_end"
-                android:onClick="moveRocket"
-                android:src="@drawable/ic_rocket_image" />
-
-        </RelativeLayout>-->
-
 </android.support.constraint.ConstraintLayout>
