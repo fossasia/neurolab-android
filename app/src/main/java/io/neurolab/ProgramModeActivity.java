@@ -48,7 +48,7 @@ public class ProgramModeActivity extends AppCompatActivity {
         SETTING_24BIT = settings[3];
         SETTING_ADVANCED = settings[4];
 
-        switch (mode){
+        switch (mode) {
             case FOCUS_PROGRAM_MODE:
                 setTitle(R.string.focus);
                 break;
@@ -64,12 +64,12 @@ public class ProgramModeActivity extends AppCompatActivity {
         }
     }
 
-    public void moveRocket(View view){
-        if(!moving){
+    public void moveRocket(View view) {
+        if (!moving) {
             float PivotX = rocketimage.getPivotX();
             float PivotY = rocketimage.getPivotY();
 
-            Animation launch = new TranslateAnimation(0,0, lastPos, newPos);
+            Animation launch = new TranslateAnimation(0, 0, lastPos, newPos);
             launch.setDuration(1000);
             launch.setFillAfter(true);
             launch.setRepeatCount(10);
