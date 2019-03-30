@@ -26,4 +26,9 @@
     <dimen name="child_program_linear_layout_margin">8dp</dimen>
     <dimen name="launcher_btn_height">80dp</dimen>
     <dimen name="launcher_btn_width">0dp</dimen>
+    <dimen name="about_txt_padding">10dp</dimen>
+    <dimen name="about_txt_margin">20dp</dimen>
+    <dimen name="content_padding">15dp</dimen>
+    <dimen name="about_text_size">20sp</dimen>
+    <dimen name="about_txt_elevation">10dp</dimen>
 </resources>
