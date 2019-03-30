@@ -1,12 +1,18 @@
 package io.neurolab.tools;
 
+import android.content.Context;
+import android.util.Log;
+
 import java.io.File;
 import java.net.URL;
 
 public class ResourceManager {
     public static ResourceManager resourceManager;
     private static ClassLoader classLoader;
-    public static boolean loadFromDisk = false;
+    public static boolean loadFromPhone = false;
+    private Context context;
+
+    private static String TAG = ResourceManager.class.getCanonicalName();
 
     public static ResourceManager getInstance() {
         if (resourceManager == null) {
@@ -16,13 +22,14 @@ public class ResourceManager {
         return resourceManager;
     }
 
-    public File getResource(String resourceName) {
-        System.out.println("loading resource '" + resourceName + "'");
+    public File getResource(Context context, String resourceName) {
+        this.context = context;
+        Log.d(TAG, "loading resource '" + resourceName + "'");
         if (resourceName.startsWith("ABSPATH:")) {
-            return new File(resourceName.substring(8));
+            return new File(this.context.getFilesDir(), resourceName.substring(8));
         }
-        if (loadFromDisk)
-            return new File("./resources/" + resourceName);
+        if (loadFromPhone)
+            return new File(this.context.getFilesDir(), "./resources/" + resourceName);
 
         URL resource = classLoader.getResource(resourceName);
         if (resource == null)
