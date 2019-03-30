@@ -33,7 +33,7 @@
     <string name="relax_toast">Relax Program Mode Clicked</string>
     <string name="vj_toast">VJ Program Mode Clicked</string>
     <string name="serial_toast">Serial Program Mode Clicked</string>
-    <string name="app_slogan">\"Understand your\nbrain better\"</string>
-    <string name="splash_screen_title">NeuroLab</string>
+    <string name="device_is_not_connected">Device is not connected</string>
+    <string name="set_up">Set up</string>
 
 </resources>

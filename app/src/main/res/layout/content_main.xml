@@ -1,165 +1,244 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="io.neurolab.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    android:background="@color/home_activity_background"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <RelativeLayout
-        android:id="@+id/parent_relative_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/cbs_text_view_title"
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="@dimen/match_constraint_width"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/home_card_one_margin"
+        android:layout_marginLeft="@dimen/home_card_one_margin"
+        android:layout_marginTop="@dimen/home_card_one_margin_top"
+        android:layout_marginEnd="@dimen/home_card_one_margin"
+        android:layout_marginRight="@dimen/home_card_one_margin"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/home_card_one_corner_radius"
+        app:cardElevation="@dimen/home_card_one_elevation"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="@dimen/cbs_text_view_title_margin"
-            android:layout_marginBottom="@dimen/cbs_text_view_title_margin"
-            android:gravity="center_horizontal"
-            android:text="@string/settings"
-            android:textSize="@dimen/launcher_title_text_size"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:id="@+id/settings_linear_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/cbs_text_view_title"
-            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/deviceStatusIconImageView"
+                android:layout_width="@dimen/device_status_icon_width"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_status_icon"
+                android:layout_marginRight="@dimen/margin_status_icon"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toBottomOf="@+id/deviceStatusTextView"
+                app:layout_constraintEnd_toStartOf="@+id/deviceStatusTextView"
+                app:layout_constraintTop_toTopOf="@+id/deviceStatusTextView"
+                app:srcCompat="@drawable/ic_offline_dot" />
 
-            <CheckBox
-                android:id="@+id/cb_simulation"
+            <TextView
+                android:id="@+id/deviceStatusTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/simulation" />
+                android:layout_marginStart="@dimen/margin_status_icon"
+                android:layout_marginLeft="@dimen/margin_status_icon"
+                android:layout_marginTop="@dimen/margin_status_icon"
+                android:layout_marginEnd="@dimen/margin_right_end_device_status_textview"
+                android:layout_marginRight="@dimen/margin_bottom_device_status_textview"
+                android:layout_marginBottom="@dimen/margin_status_icon"
+                android:gravity="center"
+                android:text="@string/device_is_not_connected"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
 
-            <CheckBox
-                android:id="@+id/cb_load_resources_from_phone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/load_from_phone" />
+    <android.support.v7.widget.CardView
+        android:layout_width="@dimen/match_constraint_width"
+        android:layout_height="@dimen/match_constraint_height"
+        android:layout_marginStart="@dimen/home_set_up_card_bg"
+        android:layout_marginLeft="@dimen/home_set_up_card_bg"
+        android:layout_marginTop="@dimen/home_set_up_card_bg"
+        android:layout_marginEnd="@dimen/home_set_up_card_bg"
+        android:layout_marginRight="@dimen/home_set_up_card_bg"
+        app:cardElevation="@dimen/home_card_two_elevation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
 
-            <CheckBox
-                android:id="@+id/cb_audio_feedback"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/audio_feedback" />
-
-            <CheckBox
-                android:id="@+id/cb_24bit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/mode_24bit" />
-
-            <CheckBox
-                android:id="@+id/cb_advanced_mode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/mode_advanced" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/btns_text_view_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/child_program_linear_layout"
-            android:layout_marginBottom="@dimen/btns_text_view_title_margin"
-            android:gravity="center_horizontal"
-            android:text="@string/programs"
-            android:textSize="@dimen/launcher_title_text_size"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:id="@+id/child_program_linear_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="@dimen/child_program_linear_layout_margin"
-            android:layout_marginRight="@dimen/child_program_linear_layout_margin"
-            android:layout_marginBottom="@dimen/child_program_linear_layout_margin"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btn_focus"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="@dimen/launcher_btn_width"
-                    android:layout_height="@dimen/launcher_btn_height"
-                    android:layout_weight="1"
-                    android:text="@string/focus"
-                    android:textColor="@color/launcher_btn_txt_clr" />
-
-                <Button
-                    android:id="@+id/btn_relax"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="@dimen/launcher_btn_width"
-                    android:layout_height="@dimen/launcher_btn_height"
-                    android:layout_weight="1"
-                    android:text="@string/relax"
-                    android:textColor="@color/launcher_btn_txt_clr" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btn_vj"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="@dimen/launcher_btn_width"
-                    android:layout_height="@dimen/launcher_btn_height"
-                    android:layout_weight="1"
-                    android:text="@string/vj"
-                    android:textColor="@color/launcher_btn_txt_clr" />
-
-                <Button
-                    android:id="@+id/btn_serial"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="@dimen/launcher_btn_width"
-                    android:layout_height="@dimen/launcher_btn_height"
-                    android:layout_weight="1"
-                    android:text="@string/serial"
-                    android:textColor="@color/launcher_btn_txt_clr" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </RelativeLayout>
-
-    <!--    <RelativeLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/rocketimage"
+            <LinearLayout
+                android:id="@+id/settings_linear_layout"
+                android:layout_width="@dimen/match_constraint_width"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_home_checkboxes"
+                android:layout_marginLeft="@dimen/margin_home_checkboxes"
+                android:layout_marginTop="@dimen/margin_top_home_checkboxes"
+                android:layout_marginEnd="@dimen/margin_home_checkboxes"
+                android:layout_marginRight="@dimen/margin_home_checkboxes"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_home_checkboxes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+                <CheckBox
+                    android:id="@+id/cb_simulation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/simulation"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+                <CheckBox
+                    android:id="@+id/cb_load_resources_from_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/checkbox_margin_top"
+                    android:text="@string/load_from_phone"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+                <CheckBox
+                    android:id="@+id/cb_audio_feedback"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/checkbox_margin_top"
+                    android:text="@string/audio_feedback"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+                <CheckBox
+                    android:id="@+id/cb_24bit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/checkbox_margin_top"
+                    android:text="@string/mode_24bit"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+                <CheckBox
+                    android:id="@+id/cb_advanced_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/checkbox_margin_top"
+                    android:text="@string/mode_advanced"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView3"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/rocket_image_height"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="@dimen/rocket_image_margin_start"
-                android:layout_marginLeft="@dimen/rocket_image_margin_start"
-                android:layout_marginEnd="@dimen/rocket_image_margin_end"
-                android:layout_marginRight="@dimen/rocket_image_margin_end"
-                android:onClick="moveRocket"
-                android:src="@drawable/ic_rocket_image" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_set_up_title"
+                android:layout_marginLeft="@dimen/margin_set_up_title"
+                android:layout_marginTop="@dimen/margin_top_set_up_title"
+                android:layout_marginEnd="@dimen/margin_set_up_title"
+                android:layout_marginRight="@dimen/margin_set_up_title"
+                android:text="@string/set_up"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </RelativeLayout>-->
+            <Button
+                android:id="@+id/btn_focus"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/btn_focus_margin_end_right"
+                android:layout_marginRight="@dimen/btn_focus_margin_end_right"
+                android:layout_marginBottom="@dimen/btn_focus_margin_bottom"
+                android:text="@string/focus"
+                android:textColor="@color/launcher_btn_txt_clr"
+                app:layout_constraintBottom_toTopOf="@+id/view2"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2" />
 
+            <Button
+                android:id="@+id/btn_relax"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/btn_relax_margin_start_left"
+                android:layout_marginLeft="@dimen/btn_relax_margin_start_left"
+                android:layout_marginBottom="@dimen/btn_relax_margin_bottom"
+                android:text="@string/relax"
+                android:textColor="@color/launcher_btn_txt_clr"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.7" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+
+            <Button
+                android:id="@+id/btn_vj"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/btn_vj_margin_top"
+                android:layout_marginEnd="@dimen/btn_vj_margin_right_end"
+                android:layout_marginRight="@dimen/btn_vj_margin_right_end"
+                android:text="@string/vj"
+                android:textColor="@color/launcher_btn_txt_clr"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+            <Button
+                android:id="@+id/btn_serial"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/btn_serial_margin_start_left"
+                android:layout_marginLeft="@dimen/btn_serial_margin_start_left"
+                android:layout_marginTop="@dimen/btn_serial_margin_top"
+                android:text="@string/serial"
+                android:textColor="@color/launcher_btn_txt_clr"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="@dimen/width_seperator_vertical"
+                android:layout_height="@dimen/height_seperator_vertical"
+                android:layout_marginTop="@dimen/margin_seperator_vertical"
+                android:layout_marginEnd="@dimen/margin_seperator_vertical"
+                android:layout_marginRight="@dimen/margin_seperator_vertical"
+                android:background="@color/seperator_color"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_serial"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="@+id/btn_relax" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="@dimen/match_constraint_width"
+                android:layout_height="@dimen/height_seperator_horizontal"
+                android:background="@color/seperator_color"
+                app:layout_constraintEnd_toEndOf="@+id/btn_relax"
+                app:layout_constraintStart_toStartOf="@+id/btn_focus"
+                app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
 </android.support.constraint.ConstraintLayout>
