@@ -1,8 +1,8 @@
 package io.neurolab;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
@@ -16,6 +16,13 @@ public class ProgramModeActivity extends AppCompatActivity {
     public static final int SERIAL_PROGRAM_MODE = 4;
 
     public static final String INTENT_KEY_PROGRAM_MODE = "MODE";
+    public static final String INTENT_KEY_SETTINGS = "SETTINGS";
+
+    private boolean SETTING_SIMULATION;
+    private boolean SETTING_LOAD_RESOURCES_FROM_PHN;
+    private boolean SETTING_AUDIO_FEEDBACK;
+    private boolean SETTING_24BIT;
+    private boolean SETTING_ADVANCED;
 
     private ImageView rocketimage;
     private int lastPos = 0;
@@ -33,7 +40,15 @@ public class ProgramModeActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         int mode = bundle.getInt(INTENT_KEY_PROGRAM_MODE);
 
-        switch (mode){
+        boolean[] settings = bundle.getBooleanArray(INTENT_KEY_SETTINGS);
+
+        SETTING_SIMULATION = settings[0];
+        SETTING_LOAD_RESOURCES_FROM_PHN = settings[1];
+        SETTING_AUDIO_FEEDBACK = settings[2];
+        SETTING_24BIT = settings[3];
+        SETTING_ADVANCED = settings[4];
+
+        switch (mode) {
             case FOCUS_PROGRAM_MODE:
                 setTitle(R.string.focus);
                 break;
@@ -49,12 +64,12 @@ public class ProgramModeActivity extends AppCompatActivity {
         }
     }
 
-    public void moveRocket(View view){
-        if(!moving){
+    public void moveRocket(View view) {
+        if (!moving) {
             float PivotX = rocketimage.getPivotX();
             float PivotY = rocketimage.getPivotY();
 
-            Animation launch = new TranslateAnimation(0,0, lastPos, newPos);
+            Animation launch = new TranslateAnimation(0, 0, lastPos, newPos);
             launch.setDuration(1000);
             launch.setFillAfter(true);
             launch.setRepeatCount(10);
