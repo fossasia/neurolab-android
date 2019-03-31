@@ -16,18 +16,22 @@ public class ProgramModeActivity extends AppCompatActivity {
     public static final int SERIAL_PROGRAM_MODE = 4;
 
     public static final String INTENT_KEY_PROGRAM_MODE = "MODE";
-    public static final String INTENT_KEY_SETTINGS = "SETTINGS";
-
-    private boolean SETTING_SIMULATION;
-    private boolean SETTING_LOAD_RESOURCES_FROM_PHN;
-    private boolean SETTING_AUDIO_FEEDBACK;
-    private boolean SETTING_24BIT;
-    private boolean SETTING_ADVANCED;
+    public static final String SETTING_SIMULATION = "SETTING_SIMULATION";
+    public static final String SETTING_LOAD_RESOURCES_FROM_PHN = "SETTING_LOAD_RESOURCES_FROM_PHN";
+    public static final String SETTING_AUDIO_FEEDBACK = "SETTING_AUDIO_FEEDBACK";
+    public static final String SETTING_24BIT = "SETTING_24BIT";
+    public static final String SETTING_ADVANCED = "SETTING_ADVANCED";
 
     private ImageView rocketimage;
     private int lastPos = 0;
     private int newPos = -300;
     private boolean moving;
+
+    boolean setting_simulation;
+    boolean setting_load_resources_from_phn;
+    boolean setting_audio_feedback;
+    boolean setting_24bit;
+    boolean setting_advanced;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +43,11 @@ public class ProgramModeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         int mode = bundle.getInt(INTENT_KEY_PROGRAM_MODE);
-
-        boolean[] settings = bundle.getBooleanArray(INTENT_KEY_SETTINGS);
-
-        SETTING_SIMULATION = settings[0];
-        SETTING_LOAD_RESOURCES_FROM_PHN = settings[1];
-        SETTING_AUDIO_FEEDBACK = settings[2];
-        SETTING_24BIT = settings[3];
-        SETTING_ADVANCED = settings[4];
+        setting_simulation = bundle.getBoolean(SETTING_SIMULATION);
+        setting_load_resources_from_phn = bundle.getBoolean(SETTING_LOAD_RESOURCES_FROM_PHN);
+        setting_audio_feedback = bundle.getBoolean(SETTING_AUDIO_FEEDBACK);
+        setting_24bit = bundle.getBoolean(SETTING_24BIT);
+        setting_advanced = bundle.getBoolean(SETTING_ADVANCED);
 
         switch (mode) {
             case FOCUS_PROGRAM_MODE:
