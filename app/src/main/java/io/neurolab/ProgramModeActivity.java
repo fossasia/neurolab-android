@@ -27,11 +27,11 @@ public class ProgramModeActivity extends AppCompatActivity {
     private int newPos = -300;
     private boolean moving;
 
-    boolean setting_simulation;
-    boolean setting_load_resources_from_phn;
-    boolean setting_audio_feedback;
-    boolean setting_24bit;
-    boolean setting_advanced;
+    private boolean setting_simulation;
+    private boolean setting_load_resources_from_phn;
+    private boolean setting_audio_feedback;
+    private boolean setting_24bit;
+    private boolean setting_advanced;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
