@@ -69,21 +69,21 @@ public class MainActivity extends AppCompatActivity
 
     private void startProgramModeActivity(int toastMessageID, int mode) {
         //Store Settings
-        boolean setting_simulation = ((CheckBox) findViewById(R.id.cb_simulation)).isChecked();
-        boolean setting_load_resources_from_phn = ((CheckBox) findViewById(R.id.cb_load_resources_from_phone)).isChecked();
-        boolean setting_audio_feedback = ((CheckBox) findViewById(R.id.cb_audio_feedback)).isChecked();
-        boolean setting_24bit = ((CheckBox) findViewById(R.id.cb_24bit)).isChecked();
-        boolean setting_advanced = ((CheckBox) findViewById(R.id.cb_advanced_mode)).isChecked();
+        boolean SettingSimulation = ((CheckBox) findViewById(R.id.cb_simulation)).isChecked();
+        boolean SettingLoadResourcesFromPhn = ((CheckBox) findViewById(R.id.cb_load_resources_from_phone)).isChecked();
+        boolean SettingAudioFeedback = ((CheckBox) findViewById(R.id.cb_audio_feedback)).isChecked();
+        boolean Setting24bit = ((CheckBox) findViewById(R.id.cb_24bit)).isChecked();
+        boolean SettingAdvanced = ((CheckBox) findViewById(R.id.cb_advanced_mode)).isChecked();
 
         Toast.makeText(MainActivity.this, toastMessageID, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(MainActivity.this, ProgramModeActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt(ProgramModeActivity.INTENT_KEY_PROGRAM_MODE, mode);
-        bundle.putBoolean(ProgramModeActivity.SETTING_SIMULATION, setting_simulation);
-        bundle.putBoolean(ProgramModeActivity.SETTING_LOAD_RESOURCES_FROM_PHN, setting_load_resources_from_phn);
-        bundle.putBoolean(ProgramModeActivity.SETTING_AUDIO_FEEDBACK, setting_audio_feedback);
-        bundle.putBoolean(ProgramModeActivity.SETTING_24BIT, setting_24bit);
-        bundle.putBoolean(ProgramModeActivity.SETTING_ADVANCED, setting_advanced);
+        bundle.putBoolean(ProgramModeActivity.SETTING_SIMULATION, SettingSimulation);
+        bundle.putBoolean(ProgramModeActivity.SETTING_LOAD_RESOURCES_FROM_PHN, SettingLoadResourcesFromPhn);
+        bundle.putBoolean(ProgramModeActivity.SETTING_AUDIO_FEEDBACK, SettingAudioFeedback);
+        bundle.putBoolean(ProgramModeActivity.SETTING_24BIT, Setting24bit);
+        bundle.putBoolean(ProgramModeActivity.SETTING_ADVANCED, SettingAdvanced);
         intent.putExtras(bundle);
         startActivity(intent);
     }
