@@ -9,12 +9,11 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import io.neurolab.R;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -68,11 +67,23 @@ public class MainActivity extends AppCompatActivity
         serialButton.setOnClickListener(v -> startProgramModeActivity(R.string.serial_toast, ProgramModeActivity.SERIAL_PROGRAM_MODE));
     }
 
-    private void startProgramModeActivity(int toastMessageID, int mode){
+    private void startProgramModeActivity(int toastMessageID, int mode) {
+        //Store Settings
+        boolean settingSimulation = ((CheckBox) findViewById(R.id.cb_simulation)).isChecked();
+        boolean settingLoadResourcesFromPhn = ((CheckBox) findViewById(R.id.cb_load_resources_from_phone)).isChecked();
+        boolean settingAudioFeedback = ((CheckBox) findViewById(R.id.cb_audio_feedback)).isChecked();
+        boolean setting24bit = ((CheckBox) findViewById(R.id.cb_24bit)).isChecked();
+        boolean settingAdvanced = ((CheckBox) findViewById(R.id.cb_advanced_mode)).isChecked();
+
         Toast.makeText(MainActivity.this, toastMessageID, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(MainActivity.this, ProgramModeActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt(ProgramModeActivity.INTENT_KEY_PROGRAM_MODE, mode);
+        bundle.putBoolean(ProgramModeActivity.SETTING_SIMULATION, settingSimulation);
+        bundle.putBoolean(ProgramModeActivity.SETTING_LOAD_RESOURCES_FROM_PHN, settingLoadResourcesFromPhn);
+        bundle.putBoolean(ProgramModeActivity.SETTING_AUDIO_FEEDBACK, settingAudioFeedback);
+        bundle.putBoolean(ProgramModeActivity.SETTING_24BIT, setting24bit);
+        bundle.putBoolean(ProgramModeActivity.SETTING_ADVANCED, settingAdvanced);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -108,9 +119,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.action_feedback_settings) {
             startActivity(new Intent(MainActivity.this, FeedbackSettings.class));
             return true;
-        }
-        else if(id == R.id.action_about_us) {
-            startActivity(new Intent(MainActivity.this,About_Us.class ));
+        } else if (id == R.id.action_about_us) {
+            startActivity(new Intent(MainActivity.this, About_Us.class));
             return true;
         }
 
