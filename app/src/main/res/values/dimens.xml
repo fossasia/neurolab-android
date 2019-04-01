@@ -49,11 +49,4 @@
     <dimen name="margin_seperator_vertical">8dp</dimen>
     <dimen name="btn_vj_margin_top">16dp</dimen>
     <dimen name="btn_vj_margin_right_end">32dp</dimen>
-    <dimen name="btn_serial_margin_start_left">32dp</dimen>
-    <dimen name="btn_serial_margin_top">16dp</dimen>
-    <dimen name="btn_focus_margin_end_right">32dp</dimen>
-    <dimen name="btn_focus_margin_bottom">16dp</dimen>
-    <dimen name="btn_relax_margin_start_left">32dp</dimen>
-    <dimen name="btn_relax_margin_bottom">16dp</dimen>
-    <dimen name="margin_bottom_device_status_textview">8dp</dimen>
 </resources>
