@@ -27,11 +27,11 @@ public class ProgramModeActivity extends AppCompatActivity {
     private int newPos = -300;
     private boolean moving;
 
-    private boolean SettingSimulation;
-    private boolean SettingLoadResourcesFromPhn;
-    private boolean SettingAudioFeedback;
-    private boolean Setting24bit;
-    private boolean SettingAdvanced;
+    private boolean settingSimulation;
+    private boolean settingLoadResourcesFromPhn;
+    private boolean settingAudioFeedback;
+    private boolean setting24bit;
+    private boolean settingAdvanced;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +43,11 @@ public class ProgramModeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         int mode = bundle.getInt(INTENT_KEY_PROGRAM_MODE);
-        SettingSimulation = bundle.getBoolean(SETTING_SIMULATION);
-        SettingLoadResourcesFromPhn = bundle.getBoolean(SETTING_LOAD_RESOURCES_FROM_PHN);
-        SettingAudioFeedback = bundle.getBoolean(SETTING_AUDIO_FEEDBACK);
-        Setting24bit = bundle.getBoolean(SETTING_24BIT);
-        SettingAdvanced = bundle.getBoolean(SETTING_ADVANCED);
+        settingSimulation = bundle.getBoolean(SETTING_SIMULATION);
+        settingLoadResourcesFromPhn = bundle.getBoolean(SETTING_LOAD_RESOURCES_FROM_PHN);
+        settingAudioFeedback = bundle.getBoolean(SETTING_AUDIO_FEEDBACK);
+        setting24bit = bundle.getBoolean(SETTING_24BIT);
+        settingAdvanced = bundle.getBoolean(SETTING_ADVANCED);
 
         switch (mode) {
             case FOCUS_PROGRAM_MODE:
