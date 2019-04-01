@@ -134,13 +134,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_focus) {
-            // Handle the focus program mode
+            startProgramModeActivity(R.string.focus_toast, ProgramModeActivity.FOCUS_PROGRAM_MODE);
         } else if (id == R.id.nav_relax) {
-
+            startProgramModeActivity(R.string.relax_toast, ProgramModeActivity.RELAX_PROGRAM_MODE);
         } else if (id == R.id.nav_vj) {
-
+            startProgramModeActivity(R.string.vj_toast, ProgramModeActivity.VJ_PROGRAM_MODE);
         } else if (id == R.id.nav_serial) {
-
+            startProgramModeActivity(R.string.serial_toast, ProgramModeActivity.SERIAL_PROGRAM_MODE);
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
