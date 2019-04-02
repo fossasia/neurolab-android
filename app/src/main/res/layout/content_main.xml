@@ -16,7 +16,7 @@
         android:layout_marginTop="@dimen/home_card_one_margin_top"
         android:layout_marginEnd="@dimen/home_card_one_margin"
         android:layout_marginRight="@dimen/home_card_one_margin"
-        app:cardBackgroundColor="@color/white"
+        app:cardBackgroundColor="@android:color/white"
         app:cardCornerRadius="@dimen/home_card_one_corner_radius"
         app:cardElevation="@dimen/home_card_one_elevation"
         app:cardUseCompatPadding="true"
