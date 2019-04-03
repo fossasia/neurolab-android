@@ -25,15 +25,8 @@
     <dimen name="btns_text_view_title_margin">4dp</dimen>
     <dimen name="launcher_btn_height">80dp</dimen>
     <dimen name="launcher_btn_width">0dp</dimen>
-    <dimen name="checkbox_margin_top">8dp</dimen>
-    <dimen name="device_status_icon_width">10dp</dimen>
-    <dimen name="match_constraint_width">0dp</dimen>
-    <dimen name="home_card_one_corner_radius">4dp</dimen>
     <dimen name="home_card_one_elevation">3dp</dimen>
     <dimen name="home_card_one_margin">32dp</dimen>
-    <dimen name="home_card_one_margin_top">8dp</dimen>
-    <dimen name="padding_home_checkboxes">20dp</dimen>
-    <dimen name="home_card_two_elevation">4dp</dimen>
     <dimen name="margin_top_set_up_title">24dp</dimen>
     <dimen name="height_seperator_vertical">150dp</dimen>
 </resources>

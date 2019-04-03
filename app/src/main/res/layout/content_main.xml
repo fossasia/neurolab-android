@@ -9,15 +9,15 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="@dimen/match_constraint_width"
+        android:layout_width="@dimen/launcher_btn_width"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/home_card_one_margin"
         android:layout_marginLeft="@dimen/home_card_one_margin"
-        android:layout_marginTop="@dimen/home_card_one_margin_top"
+        android:layout_marginTop="@dimen/nav_header_vertical_spacing"
         android:layout_marginEnd="@dimen/home_card_one_margin"
         android:layout_marginRight="@dimen/home_card_one_margin"
         app:cardBackgroundColor="@android:color/white"
-        app:cardCornerRadius="@dimen/home_card_one_corner_radius"
+        app:cardCornerRadius="@dimen/btns_text_view_title_margin"
         app:cardElevation="@dimen/home_card_one_elevation"
         app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +30,7 @@
 
             <ImageView
                 android:id="@+id/deviceStatusIconImageView"
-                android:layout_width="@dimen/device_status_icon_width"
+                android:layout_width="@dimen/bin_value_text_padding"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/fab_margin"
                 android:layout_marginRight="@dimen/fab_margin"
@@ -47,8 +47,8 @@
                 android:layout_marginStart="@dimen/fab_margin"
                 android:layout_marginLeft="@dimen/fab_margin"
                 android:layout_marginTop="@dimen/fab_margin"
-                android:layout_marginEnd="@dimen/home_card_one_margin_top"
-                android:layout_marginRight="@dimen/home_card_one_margin_top"
+                android:layout_marginEnd="@dimen/nav_header_vertical_spacing"
+                android:layout_marginRight="@dimen/nav_header_vertical_spacing"
                 android:layout_marginBottom="@dimen/fab_margin"
                 android:gravity="center"
                 android:text="@string/device_is_not_connected"
@@ -61,14 +61,14 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
-        android:layout_width="@dimen/match_constraint_width"
-        android:layout_height="@dimen/match_constraint_width"
+        android:layout_width="@dimen/launcher_btn_width"
+        android:layout_height="@dimen/launcher_btn_width"
         android:layout_marginStart="@dimen/fab_margin"
         android:layout_marginLeft="@dimen/fab_margin"
         android:layout_marginTop="@dimen/fab_margin"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginRight="@dimen/fab_margin"
-        app:cardElevation="@dimen/home_card_two_elevation"
+        app:cardElevation="@dimen/btns_text_view_title_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,15 +80,15 @@
 
             <LinearLayout
                 android:id="@+id/settings_linear_layout"
-                android:layout_width="@dimen/match_constraint_width"
+                android:layout_width="@dimen/launcher_btn_width"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/fab_margin"
                 android:layout_marginLeft="@dimen/fab_margin"
-                android:layout_marginTop="@dimen/home_card_one_margin_top"
+                android:layout_marginTop="@dimen/nav_header_vertical_spacing"
                 android:layout_marginEnd="@dimen/fab_margin"
                 android:layout_marginRight="@dimen/fab_margin"
                 android:orientation="vertical"
-                android:padding="@dimen/padding_home_checkboxes"
+                android:padding="@dimen/bin_value_text_padding_large"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3">
@@ -104,7 +104,7 @@
                     android:id="@+id/cb_load_resources_from_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/checkbox_margin_top"
+                    android:layout_marginTop="@dimen/nav_header_vertical_spacing"
                     android:text="@string/load_from_phone"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
@@ -112,7 +112,7 @@
                     android:id="@+id/cb_audio_feedback"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/checkbox_margin_top"
+                    android:layout_marginTop="@dimen/nav_header_vertical_spacing"
                     android:text="@string/audio_feedback"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
@@ -120,7 +120,7 @@
                     android:id="@+id/cb_24bit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/checkbox_margin_top"
+                    android:layout_marginTop="@dimen/nav_header_vertical_spacing"
                     android:text="@string/mode_24bit"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
@@ -128,7 +128,7 @@
                     android:id="@+id/cb_advanced_mode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/checkbox_margin_top"
+                    android:layout_marginTop="@dimen/nav_header_vertical_spacing"
                     android:text="@string/mode_advanced"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
@@ -138,11 +138,11 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/home_card_one_margin_top"
-                android:layout_marginLeft="@dimen/home_card_one_margin_top"
+                android:layout_marginStart="@dimen/nav_header_vertical_spacing"
+                android:layout_marginLeft="@dimen/nav_header_vertical_spacing"
                 android:layout_marginTop="@dimen/margin_top_set_up_title"
-                android:layout_marginEnd="@dimen/home_card_one_margin_top"
-                android:layout_marginRight="@dimen/home_card_one_margin_top"
+                android:layout_marginEnd="@dimen/nav_header_vertical_spacing"
+                android:layout_marginRight="@dimen/nav_header_vertical_spacing"
                 android:text="@string/set_up"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -220,9 +220,9 @@
                 android:id="@+id/view"
                 android:layout_width="@dimen/view_width_or_height"
                 android:layout_height="@dimen/height_seperator_vertical"
-                android:layout_marginTop="@dimen/home_card_one_margin_top"
-                android:layout_marginEnd="@dimen/home_card_one_margin_top"
-                android:layout_marginRight="@dimen/home_card_one_margin_top"
+                android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+                android:layout_marginEnd="@dimen/nav_header_vertical_spacing"
+                android:layout_marginRight="@dimen/nav_header_vertical_spacing"
                 android:background="@color/seperator_color"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_serial"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
@@ -231,7 +231,7 @@
 
             <View
                 android:id="@+id/view2"
-                android:layout_width="@dimen/match_constraint_width"
+                android:layout_width="@dimen/launcher_btn_width"
                 android:layout_height="@dimen/view_width_or_height"
                 android:background="@color/seperator_color"
                 app:layout_constraintEnd_toEndOf="@+id/btn_relax"
