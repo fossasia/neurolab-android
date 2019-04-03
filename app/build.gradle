@@ -23,6 +23,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    lintOptions{
+        disable 'InvalidPackage'
+    }
 }
 
 dependencies {
@@ -40,4 +43,5 @@ dependencies {
     testImplementation "junit:junit:$rootProject.junitVersion"
     androidTestImplementation "com.android.support.test:runner:$rootProject.testRunnerRulesVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
+    implementation 'com.github.iamareebjamal:jsyn:16.8.0a'
 }
