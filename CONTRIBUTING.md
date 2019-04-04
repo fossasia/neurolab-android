@@ -1,6 +1,6 @@
 ## How to Contribute
 
-### Raising an issue:
+### Raising an issue
  This is an Open Source project and we would be happy to see contributors who report bugs and file feature requests submitting pull requests as well.
  This project adheres to the Contributor Covenant code of conduct.
  By participating, you are expected to uphold this code style.
@@ -8,9 +8,9 @@
 
 ### Branch Policy
 
-#### Sending pull requests:
+#### Sending pull requests
 
-Go to the repository on github at https://github.com/fossasia/neurolab-android.
+Go to the repository on github at <https://github.com/fossasia/neurolab-android>.
 
 Click the “Fork” button at the top right.
 
@@ -26,19 +26,19 @@ where 'username' is your username.
 
 You’ll now have a local copy of your version of the original FOSSASIA repository.
 
-#### Change into that project directory (neurolab-android):
+#### Change into that project directory (neurolab-android)
 
 `$ cd neurolab-android`
 
-#### Add a connection to the original owner’s repository.
+#### Add a connection to the original owner’s repository
 
 `$ git remote add upstream https://github.com/fossasia/neurolab-android`
 
-#### To check this remote add set up:
+#### To check this remote add set up
 
 `$ git remote -v`
 
-#### Make changes to files.
+#### Make changes to files
 
 `git add` and `git commit` those changes
 
