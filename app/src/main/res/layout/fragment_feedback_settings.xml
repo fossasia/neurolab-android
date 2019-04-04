@@ -43,7 +43,7 @@
             <TextView
                 android:id="@+id/feedback_smpls_label"
                 style="@style/TextStyle"
-                android:layout_width="@dimen/dimen_for_weight"
+                android:layout_width="@dimen/spacing_none"
                 android:layout_height="match_parent"
                 android:layout_weight=".8"
                 android:gravity="center_vertical"
@@ -58,7 +58,7 @@
             <TextView
                 android:id="@+id/feedback_smpls_value"
                 style="@style/TextStyle"
-                android:layout_width="@dimen/dimen_for_weight"
+                android:layout_width="@dimen/spacing_none"
                 android:layout_height="match_parent"
                 android:layout_weight=".3"
                 android:gravity="center_vertical"
@@ -78,7 +78,7 @@
             <TextView
                 android:id="@+id/feedback_bins_label"
                 style="@style/TextStyle"
-                android:layout_width="@dimen/dimen_for_weight"
+                android:layout_width="@dimen/spacing_none"
                 android:layout_height="match_parent"
                 android:layout_weight=".8"
                 android:gravity="center_vertical"
@@ -93,7 +93,7 @@
             <TextView
                 android:id="@+id/feedback_bins_value"
                 style="@style/TextStyle"
-                android:layout_width="@dimen/dimen_for_weight"
+                android:layout_width="@dimen/spacing_none"
                 android:layout_height="match_parent"
                 android:layout_weight=".3"
                 android:gravity="center_vertical"
@@ -113,7 +113,7 @@
             <TextView
                 android:id="@+id/feedback_numChannels_label"
                 style="@style/TextStyle"
-                android:layout_width="@dimen/dimen_for_weight"
+                android:layout_width="@dimen/spacing_none"
                 android:layout_height="match_parent"
                 android:layout_weight=".8"
                 android:gravity="center_vertical"
@@ -128,7 +128,7 @@
             <TextView
                 android:id="@+id/feedback_numChannels_value"
                 style="@style/TextStyle"
-                android:layout_width="@dimen/dimen_for_weight"
+                android:layout_width="@dimen/spacing_none"
                 android:layout_height="match_parent"
                 android:layout_weight=".3"
                 android:gravity="center_vertical"

@@ -33,6 +33,7 @@ dependencies {
     implementation "com.android.support:design:$rootProject.supportLibraryVersion"
     implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
     implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutVersion"
+    implementation "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
     // Test
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation "junit:junit:$rootProject.junitVersion"
