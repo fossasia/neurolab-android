@@ -32,10 +32,10 @@ First time contributors can read [CONTRIBUTING.md](/CONTRIBUTING.md) file for he
 ### Branch Policy
 
 We have the following branches
- * **development** All development goes on in this branch. If you're making a contribution, you are supposed to make a pull request to _development_. PRs to development branch must pass a build check and a unit-test check on Circle CI.
- * **master** This contains shipped code. After significant features/bugfixes are accumulated on development, we make a version update and make a release.
- * **apk** This branch contains two apk's, that are automatically generated on the merged pull request a) debug apk and b) release apk.
- * Please download and test the app that is using the code from the development and master branches [here](https://github.com/fossasia/neurolab-android/tree/apk).
+*  **development** All development goes on in this branch. If you're making a contribution, you are supposed to make a pull request to _development_. PRs to development branch must pass a build check and a unit-test check on Circle CI.
+*  **master** This contains shipped code. After significant features/bugfixes are accumulated on development, we make a version update and make a release.
+*  **apk** This branch contains two apk's, that are automatically generated on the merged pull request a) debug apk and b) release apk.
+*  Please download and test the app that is using the code from the development and master branches [here](https://github.com/fossasia/neurolab-android/tree/apk).
  
 ### Code practices
 
@@ -48,9 +48,9 @@ Please help us follow the best practices to make it easy for the reviewer as wel
 
 ### Join the development
 
- * Before you join development, please set up the project on your local machine, run it and go through the application completely. Press on any button you can find and see where it leads to. Explore. (Don't worry ... Nothing will happen to the app or to you due to the exploring :wink: Only thing that will happen is, you'll be more familiar with what is where     and might even get some cool ideas on how to improve various aspects of the app.)
- * Also please set up the [neurolab-desktop](https://github.com/fossasia/neurolab-desktop) project to your local machine in IntelliJ and explore it, as we are developing this android application based on the desktop-application.
- * If you would like to work on an issue, drop in a comment at the issue. If it is already assigned to someone, but there is no sign of any work being done, please free to drop in a comment so that the issue can be assigned to you if the previous assignee has dropped it entirely.
+*  Before you join development, please set up the project on your local machine, run it and go through the application completely. Press on any button you can find and see where it leads to. Explore. (Don't worry ... Nothing will happen to the app or to you due to the exploring :wink: Only thing that will happen is, you'll be more familiar with what is where     and might even get some cool ideas on how to improve various aspects of the app.)
+*  Also please set up the [neurolab-desktop](https://github.com/fossasia/neurolab-desktop) project to your local machine in IntelliJ and explore it, as we are developing this android application based on the desktop-application.
+*  If you would like to work on an issue, drop in a comment at the issue. If it is already assigned to someone, but there is no sign of any work being done, please free to drop in a comment so that the issue can be assigned to you if the previous assignee has dropped it entirely.
 
 ## For Testers: Testing the App
 If you are a tester and want to test the app, you have two ways to do that:
