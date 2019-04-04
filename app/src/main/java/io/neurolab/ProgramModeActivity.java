@@ -4,9 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
+
+import io.neurolab.tools.Animations;
 
 public class ProgramModeActivity extends AppCompatActivity {
 
@@ -33,9 +37,14 @@ public class ProgramModeActivity extends AppCompatActivity {
     private boolean setting24bit;
     private boolean settingAdvanced;
 
+    private View layoutMainScreen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_program_mode);
 
         rocketimage = findViewById(R.id.rocketimage);
@@ -52,9 +61,11 @@ public class ProgramModeActivity extends AppCompatActivity {
         switch (mode) {
             case FOCUS_PROGRAM_MODE:
                 setTitle(R.string.focus);
+                setupFocusScreen();
                 break;
             case RELAX_PROGRAM_MODE:
                 setTitle(R.string.relax);
+                setupRelaxScreen();
                 break;
             case VJ_PROGRAM_MODE:
                 setTitle(R.string.vj);
@@ -63,6 +74,19 @@ public class ProgramModeActivity extends AppCompatActivity {
                 setTitle(R.string.serial);
                 break;
         }
+    }
+
+    private void setupFocusScreen() {
+        layoutMainScreen = findViewById(R.id.layoutFocusScreen);
+        layoutMainScreen.setVisibility(View.VISIBLE);
+    }
+
+    private void setupRelaxScreen() {
+        layoutMainScreen = findViewById(R.id.layoutRelaxScreen);
+        layoutMainScreen.setVisibility(View.VISIBLE);
+
+        Animations.rotateView(findViewById(R.id.yantraOneImageView), 360f, 0);
+        Animations.rotateView(findViewById(R.id.yantraTwoImageView), 0, 360f);
     }
 
     public void moveRocket(View view) {
