@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#4c5b66</color>
+    <color name="colorPrimaryDark">#23323c</color>
     <color name="colorAccent">#009688</color>
     <color name="colorControlHighlight">#ffffff</color>
     <color name="launcher_btn_txt_clr">#ffffff</color>
     <color name="color_view_background">#dad</color>
     <color name="color_white_background">#fff</color>
+    <color name="home_activity_background">#F2F2F2</color>
+    <color name="seperator_color">#707070</color>
 </resources>

@@ -1,8 +1,35 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <!-- margin specifics -->
+    <dimen name="layout_margin_extra_small">2dp</dimen>
+    <dimen name="layout_margin_small">6dp</dimen>
+    <dimen name="layout_margin_medium">8dp</dimen>
+    <dimen name="layout_margin_moderate">10dp</dimen>
+    <dimen name="layout_margin_large">16dp</dimen>
+    <dimen name="layout_margin_extra_large">32dp</dimen>
+    <dimen name="layout_margin_extreme_large">56dp</dimen>
+
+    <!-- padding specifics -->
+    <dimen name="padding_extra_small">2dp</dimen>
+    <dimen name="padding_small">6dp</dimen>
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="padding_extra_large">32dp</dimen>
+
+    <!-- card details -->
+    <dimen name="card_elevation">3dp</dimen>
+    <dimen name="card_corner_radius">3dp</dimen>
+
+    <!--text size-->
+    <dimen name="text_size_extra_large">32sp</dimen>
+    <dimen name="text_size_large">16sp</dimen>
+    <dimen name="text_size_larger">18sp</dimen>
+    <dimen name="text_size_medium">14sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_very_large">42sp</dimen>
+
+    <!--view specifies-->
+    <dimen name="spacing_none">0dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="heading_text_size">26sp</dimen>
@@ -11,7 +38,6 @@
     <dimen name="view_height">65dp</dimen>
     <dimen name="bin_value_text_padding_large">20dp</dimen>
     <dimen name="bin_value_text_padding">10dp</dimen>
-    <dimen name="dimen_for_weight">0dp</dimen>
     <dimen name="heading_margin_left">80dp</dimen>
     <dimen name="heading_margin_top">50dp</dimen>
     <dimen name="content_heading_text_size">50sp</dimen>
@@ -31,4 +57,6 @@
     <dimen name="content_padding">15dp</dimen>
     <dimen name="about_text_size">20sp</dimen>
     <dimen name="about_txt_elevation">10dp</dimen>
+    <dimen name="set_up_title_margin_top">24dp</dimen>
+    <dimen name="vertical_seperator_height">150dp</dimen>
 </resources>
