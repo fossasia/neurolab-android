@@ -8,6 +8,8 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 
+import io.neurolab.visuals.SpaceAnimationVisuals;
+
 public class ProgramModeActivity extends AppCompatActivity {
 
     public static final int FOCUS_PROGRAM_MODE = 1;
@@ -25,7 +27,7 @@ public class ProgramModeActivity extends AppCompatActivity {
     private ImageView rocketimage;
     private int lastPos = 0;
     private int newPos = -300;
-    private boolean moving;
+    private boolean moving = false;
 
     private boolean settingSimulation;
     private boolean settingLoadResourcesFromPhn;
@@ -63,39 +65,6 @@ public class ProgramModeActivity extends AppCompatActivity {
                 setTitle(R.string.serial);
                 break;
         }
+        SpaceAnimationVisuals.moveRocket(rocketimage, lastPos, newPos, moving);
     }
-
-    public void moveRocket(View view) {
-        if (!moving) {
-            float PivotX = rocketimage.getPivotX();
-            float PivotY = rocketimage.getPivotY();
-
-            Animation launch = new TranslateAnimation(0, 0, lastPos, newPos);
-            launch.setDuration(1000);
-            launch.setFillAfter(true);
-            launch.setRepeatCount(10);
-            launch.setAnimationListener(new Animation.AnimationListener() {
-                @Override
-                public void onAnimationStart(Animation animation) {
-                    moving = true;
-                }
-
-                @Override
-                public void onAnimationEnd(Animation animation) {
-                    moving = false;
-                }
-
-                @Override
-                public void onAnimationRepeat(Animation animation) {
-
-                }
-            });
-            int c = lastPos;
-            lastPos = newPos;
-            newPos = c;
-
-            rocketimage.startAnimation(launch);
-        }
-    }
-
 }
