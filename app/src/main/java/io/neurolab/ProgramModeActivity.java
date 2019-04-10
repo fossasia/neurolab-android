@@ -41,7 +41,6 @@ public class ProgramModeActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        assert bundle != null;
         int mode = bundle.getInt(INTENT_KEY_PROGRAM_MODE);
         settingSimulation = bundle.getBoolean(SETTING_SIMULATION);
         settingLoadResourcesFromPhn = bundle.getBoolean(SETTING_LOAD_RESOURCES_FROM_PHN);
