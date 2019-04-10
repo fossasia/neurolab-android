@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutRelaxScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/relaxScreenBackgroundImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/universe_bg" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.3                                                                                                            "
+        android:background="#283593" />
+
+    <ImageView
+        android:id="@+id/yantraOneImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/layout_margin_extra_large"
+        android:layout_marginLeft="@dimen/layout_margin_extra_large"
+        android:layout_marginEnd="@dimen/layout_margin_extra_large"
+        android:layout_marginRight="@dimen/layout_margin_extra_large"
+        android:adjustViewBounds="true"
+        android:src="@drawable/yantra"
+        android:tint="@color/yantra_one_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/yantraTwoImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/layout_margin_extra_large"
+        android:layout_marginLeft="@dimen/layout_margin_extra_large"
+        android:layout_marginEnd="@dimen/layout_margin_extra_large"
+        android:layout_marginRight="@dimen/layout_margin_extra_large"
+        android:adjustViewBounds="true"
+        android:src="@drawable/yantra"
+        android:tint="@color/yantra_two_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
