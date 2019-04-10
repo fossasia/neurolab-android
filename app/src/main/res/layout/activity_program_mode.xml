@@ -3,11 +3,5 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/hill_background"
-    tools:context=".ProgramModeActivity">
-
-    <include layout="@layout/layout_focus_screen" />
-
-    <include layout="@layout/layout_relax_screen" />
-
-</FrameLayout>
+    android:id="@+id/fragment_container"
+    tools:context=".ProgramModeActivity"/>

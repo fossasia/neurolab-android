@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/hill_background"
-    android:visibility="gone"
-    tools:context=".ProgramModeActivity"
-    tools:visibility="visible">
+    tools:context=".ProgramModeActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,7 +24,6 @@
             android:layout_marginLeft="@dimen/rocket_image_margin_start"
             android:layout_marginEnd="@dimen/rocket_image_margin_end"
             android:layout_marginRight="@dimen/rocket_image_margin_end"
-            android:onClick="moveRocket"
             android:src="@drawable/ic_rocket_image" />
 
     </RelativeLayout>
