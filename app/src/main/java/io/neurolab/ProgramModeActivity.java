@@ -2,13 +2,13 @@ package io.neurolab;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
+import android.view.Window;
+import android.view.WindowManager;
 
-import io.neurolab.visuals.SpaceAnimationVisuals;
+import io.neurolab.fragments.FocusVisualFragment;
+import io.neurolab.fragments.RelaxVisualFragment;
 
 public class ProgramModeActivity extends AppCompatActivity {
 
@@ -24,11 +24,6 @@ public class ProgramModeActivity extends AppCompatActivity {
     public static final String SETTING_24BIT = "SETTING_24BIT";
     public static final String SETTING_ADVANCED = "SETTING_ADVANCED";
 
-    private ImageView rocketimage;
-    private int lastPos = 0;
-    private int newPos = -300;
-    private boolean moving = false;
-
     private boolean settingSimulation;
     private boolean settingLoadResourcesFromPhn;
     private boolean settingAudioFeedback;
@@ -38,9 +33,11 @@ public class ProgramModeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_program_mode);
 
-        rocketimage = findViewById(R.id.rocketimage);
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -51,12 +48,18 @@ public class ProgramModeActivity extends AppCompatActivity {
         setting24bit = bundle.getBoolean(SETTING_24BIT);
         settingAdvanced = bundle.getBoolean(SETTING_ADVANCED);
 
+        Fragment fragment;
+
         switch (mode) {
             case FOCUS_PROGRAM_MODE:
                 setTitle(R.string.focus);
+                fragment = new FocusVisualFragment();
+                moveToFragment(fragment);
                 break;
             case RELAX_PROGRAM_MODE:
                 setTitle(R.string.relax);
+                fragment = new RelaxVisualFragment();
+                moveToFragment(fragment);
                 break;
             case VJ_PROGRAM_MODE:
                 setTitle(R.string.vj);
@@ -65,6 +68,11 @@ public class ProgramModeActivity extends AppCompatActivity {
                 setTitle(R.string.serial);
                 break;
         }
-        SpaceAnimationVisuals.moveRocket(rocketimage, lastPos, newPos, moving);
     }
+
+    private void moveToFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, fragment, fragment.getClass().getSimpleName()).commit();
+    }
+
 }

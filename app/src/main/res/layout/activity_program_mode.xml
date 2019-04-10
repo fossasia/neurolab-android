@@ -1,31 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/hill_background"
-    tools:context=".ProgramModeActivity">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/rocketimage"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/rocket_image_height"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="@dimen/rocket_image_margin_start"
-            android:layout_marginLeft="@dimen/rocket_image_margin_start"
-            android:layout_marginEnd="@dimen/rocket_image_margin_end"
-            android:layout_marginRight="@dimen/rocket_image_margin_end"
-            android:src="@drawable/ic_rocket_image" />
-
-    </RelativeLayout>
-
-</android.support.constraint.ConstraintLayout>
+    android:id="@+id/fragment_container"
+    tools:context=".ProgramModeActivity"/>
