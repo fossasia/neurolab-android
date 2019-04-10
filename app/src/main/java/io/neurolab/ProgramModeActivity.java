@@ -30,8 +30,6 @@ public class ProgramModeActivity extends AppCompatActivity {
     private boolean setting24bit;
     private boolean settingAdvanced;
 
-    private Fragment fragment;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +48,8 @@ public class ProgramModeActivity extends AppCompatActivity {
         settingAudioFeedback = bundle.getBoolean(SETTING_AUDIO_FEEDBACK);
         setting24bit = bundle.getBoolean(SETTING_24BIT);
         settingAdvanced = bundle.getBoolean(SETTING_ADVANCED);
+
+        Fragment fragment;
 
         switch (mode) {
             case FOCUS_PROGRAM_MODE:

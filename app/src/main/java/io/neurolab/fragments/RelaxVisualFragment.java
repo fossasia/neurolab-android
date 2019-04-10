@@ -16,18 +16,11 @@ import io.neurolab.tools.Animations;
  */
 public class RelaxVisualFragment extends android.support.v4.app.Fragment {
 
-    private View mView;
-
-    public RelaxVisualFragment() {
-        // Required empty public constructor
-    }
-
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mView = inflater.inflate(R.layout.fragment_relax_visual, container, false);
+        View mView = inflater.inflate(R.layout.fragment_relax_visual, container, false);
 
         Animations.rotateView(mView.findViewById(R.id.yantraOneImageView), 360f, 0);
         Animations.rotateView(mView.findViewById(R.id.yantraTwoImageView), 0, 360f);
