@@ -34,7 +34,7 @@ public class SpaceAnimationVisuals {
 
                 @Override
                 public void onAnimationRepeat(Animation animation) {
-                    // required to repeat the Animation if user wants to see again
+                   // required to repeat the Animation if user wants to see again
                 }
             });
             int c = lastPos;
