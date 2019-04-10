@@ -24,7 +24,6 @@ public class ProgramModeActivity extends AppCompatActivity {
     public static final String SETTING_24BIT = "SETTING_24BIT";
     public static final String SETTING_ADVANCED = "SETTING_ADVANCED";
 
-
     private boolean settingSimulation;
     private boolean settingLoadResourcesFromPhn;
     private boolean settingAudioFeedback;
@@ -70,8 +69,6 @@ public class ProgramModeActivity extends AppCompatActivity {
                 setTitle(R.string.serial);
                 break;
         }
-
-
     }
 
     private void moveToFragment(Fragment fragment) {
