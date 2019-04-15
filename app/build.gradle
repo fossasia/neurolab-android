@@ -27,6 +27,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.google.code.gson:gson:2.8.5'
     implementation "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     implementation "com.takisoft.fix:preference-v7:$rootProject.prefFixLibraryVersion"
