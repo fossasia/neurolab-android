@@ -24,6 +24,12 @@ public class MainActivity extends AppCompatActivity
 
     private int launcherSleepTime;
 
+    private CheckBox simulationCb;
+    private CheckBox loadResourcesFromPhoneCb;
+    private CheckBox audioFeedbackCb;
+    private CheckBox bit24Cb;
+    private CheckBox advancedModeCb;
+
     private Button focusButton;
     private Button relaxButton;
     private Button vjButton;
@@ -52,6 +58,12 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        simulationCb = findViewById(R.id.cb_simulation);
+        loadResourcesFromPhoneCb = findViewById(R.id.cb_load_resources_from_phone);
+        audioFeedbackCb = findViewById(R.id.cb_audio_feedback);
+        bit24Cb = findViewById(R.id.cb_24bit);
+        advancedModeCb = findViewById(R.id.cb_advanced_mode);
+
         focusButton = findViewById(R.id.btn_focus);
         relaxButton = findViewById(R.id.btn_relax);
         vjButton = findViewById(R.id.btn_vj);
@@ -65,6 +77,14 @@ public class MainActivity extends AppCompatActivity
         vjButton.setOnClickListener(v -> startProgramModeActivity(R.string.vj_toast, ProgramModeActivity.VJ_PROGRAM_MODE));
 
         serialButton.setOnClickListener(v -> startProgramModeActivity(R.string.serial_toast, ProgramModeActivity.SERIAL_PROGRAM_MODE));
+
+        ConfigurationSettings configurationSettings = ConfigUtils.loadSettingsConfig(this);
+
+        simulationCb.setChecked(configurationSettings.getServerSettings().isSimulation());
+        loadResourcesFromPhoneCb.setChecked(configurationSettings.getServerSettings().isLoadFromPhone());
+        audioFeedbackCb.setChecked(configurationSettings.getServerSettings().isAudioFeedback());
+        bit24Cb.setChecked(configurationSettings.getServerSettings().isBit24());
+        advancedModeCb.setChecked(configurationSettings.getServerSettings().isAdvancedMode());
     }
 
     private void startProgramModeActivity(int toastMessageID, int mode) {
