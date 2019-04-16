@@ -22,7 +22,7 @@ public class ResourceManager {
         return resourceManager;
     }
 
-    public File getResource(String resourceName) {
+    public File getResource(Context context, String resourceName) {
         this.context = context;
         Log.d(TAG, "loading resource '" + resourceName + "'");
         if (resourceName.startsWith("ABSPATH:")) {
