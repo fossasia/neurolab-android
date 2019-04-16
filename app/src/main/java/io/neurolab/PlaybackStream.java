@@ -1,5 +1,7 @@
 package io.neurolab;
 
+import android.content.Context;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -20,7 +22,10 @@ public class PlaybackStream implements InputInterface {
     static Random random = new Random();
     static ArrayList<ArrayList<double[]>> data;
 
-    public PlaybackStream(DataReceiver receiver, int numberOfChannels, String playbackFile, boolean loop) {
+    private Context context;
+
+    public PlaybackStream(Context context, DataReceiver receiver, int numberOfChannels, String playbackFile, boolean loop) {
+        this.context = context;
         this.receiver = receiver;
         this.numberOfChannels = numberOfChannels;
         this.setPlaybackFile(playbackFile, loop);
@@ -32,12 +37,12 @@ public class PlaybackStream implements InputInterface {
         return true;
     }
 
-    private void setPlaybackFile(String file, boolean loop) {
+    public void setPlaybackFile(String file, boolean loop) {
         System.out.println("file:" + file);
-        File playbackFile = ResourceManager.getInstance().getResource(file);
+        File playbackFile = ResourceManager.getInstance().getResource(context, file);
 
         this.loopPlayback = loop;
-        data = new ArrayList<>();
+        this.data = new ArrayList<>();
 
         if (!playbackFile.exists()) {
             for (int i = 0; i < 256; i++) {
@@ -45,20 +50,18 @@ public class PlaybackStream implements InputInterface {
                 ArrayList<double[]> currentSamples = new ArrayList<>();
                 double[] currentSample = new double[4];
                 for (int c = 0; c < this.numberOfChannels; c++) {
-
                     currentSample[c] = 12.5d * Math.sin(((double) (i + c * 16) / 128d) * Math.PI * 6d);
                     currentSample[c] += 12.5d * Math.sin(((double) (i + c * 16) / 128d) * Math.PI * 25d);
-
                 }
                 currentSamples.add(currentSample.clone());
-                data.add(currentSamples);
+                this.data.add(currentSamples);
             }
         } else {
             try {
                 BufferedReader br = new BufferedReader(new FileReader(playbackFile.toString()));
                 String line;
                 while ((line = br.readLine()) != null) {
-                    ArrayList<double[]> currentSamples = new ArrayList<>();
+                    ArrayList<double[]> currentSamples = new ArrayList<double[]>();
                     double[] currentSample = new double[4];
                     String[] values = line.split(",");
                     if (values.length < 3)
@@ -68,7 +71,7 @@ public class PlaybackStream implements InputInterface {
                         currentSample[c] = Double.valueOf(values[c + 1]);
 
                     currentSamples.add(currentSample.clone());
-                    data.add(currentSamples);
+                    this.data.add(currentSamples);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -97,7 +100,7 @@ public class PlaybackStream implements InputInterface {
         }
 
         public void run() {
-            receiver.appendData(data.get(currentIndex));
+            this.playbackStream.receiver.appendData(data.get(currentIndex));
             currentIndex++;
             if (currentIndex > data.size() - 1)
                 currentIndex = 0;
