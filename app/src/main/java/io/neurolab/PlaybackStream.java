@@ -57,8 +57,7 @@ public class PlaybackStream implements InputInterface {
                 this.data.add(currentSamples);
             }
         } else {
-            try {
-                BufferedReader br = new BufferedReader(new FileReader(playbackFile.toString()));
+            try (BufferedReader br = new BufferedReader(new FileReader(playbackFile.toString()))) {
                 String line;
                 while ((line = br.readLine()) != null) {
                     ArrayList<double[]> currentSamples = new ArrayList<double[]>();
