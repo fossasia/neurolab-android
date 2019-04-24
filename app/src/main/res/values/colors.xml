@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#4c5b66</color>
-    <color name="colorPrimaryDark">#23323c</color>
+    <color name="colorPrimaryDark">#1A242E</color>
+    <color name="colorCardViewDay">#FFFFFF</color>
+    <color name="colorCardViewNight">#23323c</color>
+    <color name="colorValuesDay">#000000</color>
+    <color name="colorValuesNight">#516371</color>
     <color name="colorAccent">#009688</color>
     <color name="colorControlHighlight">#ffffff</color>
     <color name="launcher_btn_txt_clr">#ffffff</color>

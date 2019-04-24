@@ -1,20 +1,27 @@
 package io.neurolab;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import io.neurolab.settings.FeedbackSettings;
@@ -24,11 +31,17 @@ public class MainActivity extends AppCompatActivity
 
     private int launcherSleepTime;
 
+    private ConstraintLayout mainBackground;
+    private CardView statusCardBackground;
+    private CardView setupCardBackground;
+
     private CheckBox simulationCb;
     private CheckBox loadResourcesFromPhoneCb;
     private CheckBox audioFeedbackCb;
     private CheckBox bit24Cb;
     private CheckBox advancedModeCb;
+
+    private TextView setupTextView;
 
     private Button focusButton;
     private Button relaxButton;
@@ -64,10 +77,16 @@ public class MainActivity extends AppCompatActivity
         bit24Cb = findViewById(R.id.cb_24bit);
         advancedModeCb = findViewById(R.id.cb_advanced_mode);
 
+        setupTextView = findViewById(R.id.tv_setup);
+
         focusButton = findViewById(R.id.btn_focus);
         relaxButton = findViewById(R.id.btn_relax);
         vjButton = findViewById(R.id.btn_vj);
         serialButton = findViewById(R.id.btn_serial);
+
+        mainBackground = findViewById(R.id.background);
+        statusCardBackground = findViewById(R.id.cardView);
+        setupCardBackground = findViewById(R.id.setupCardView);
 
         // Setting Listeners of the various program buttons
         focusButton.setOnClickListener(v -> startProgramModeActivity(R.string.focus_toast, ProgramModeActivity.FOCUS_PROGRAM_MODE));
@@ -133,7 +152,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if(id == R.id.action_change_theme) {
+            changeTheme();
+            return true;
+        }
+        else if (id == R.id.action_settings) {
             startActivity(new Intent(MainActivity.this, NeuroSettingsActivity.class));
             return true;
         } else if (id == R.id.action_feedback_settings) {
@@ -170,5 +193,86 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void changeTheme() {
+        int colorToBackground, colorFromBackground, colorFromStatusCardView, colorToStatusCardView, colorFromValues, colorToValues;
+
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            colorFromBackground = ContextCompat.getColor(this, R.color.colorPrimaryDark);
+            colorToBackground = ContextCompat.getColor(this, R.color.color_white_background);
+            colorFromStatusCardView = ContextCompat.getColor(this,R.color.colorCardViewNight);
+            colorToStatusCardView = ContextCompat.getColor(this,R.color.colorCardViewDay);
+            colorFromValues = ContextCompat.getColor(this,R.color.colorValuesNight);
+            colorToValues = ContextCompat.getColor(this,R.color.colorValuesDay);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            colorFromBackground = ContextCompat.getColor(this, R.color.color_white_background);
+            colorToBackground = ContextCompat.getColor(this, R.color.colorPrimaryDark);
+            colorFromStatusCardView = ContextCompat.getColor(this, R.color.colorCardViewDay);
+            colorToStatusCardView = ContextCompat.getColor(this, R.color.colorCardViewNight);
+            colorFromValues = ContextCompat.getColor(this,R.color.colorValuesDay);
+            colorToValues = ContextCompat.getColor(this,R.color.colorValuesNight);
+        }
+
+        changeBackgroundColor(colorFromBackground,colorToBackground);
+        changeStatusCardViewColor(colorFromStatusCardView,colorToStatusCardView);
+        changeSetupCardViewColor(colorFromStatusCardView,colorToStatusCardView);
+        changeTextColor(colorFromValues,colorToValues);
+
+    }
+
+    private void changeBackgroundColor(int colorFrom, int colorTo) {
+        final ValueAnimator backgroundAnimator = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
+        backgroundAnimator.setDuration(200);
+        backgroundAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                mainBackground.setBackgroundColor((Integer) animation.getAnimatedValue());
+            }
+        });
+        backgroundAnimator.start();
+    }
+
+    private void changeStatusCardViewColor(int colorFrom, int colorTo) {
+        final ValueAnimator backgroundAnimator = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
+        backgroundAnimator.setDuration(200);
+        backgroundAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                statusCardBackground.setBackgroundColor((Integer) animation.getAnimatedValue());
+            }
+        });
+        backgroundAnimator.start();
+    }
+
+    private void changeSetupCardViewColor(int colorFrom, int colorTo) {
+        final ValueAnimator backgroundAnimator = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
+        backgroundAnimator.setDuration(200);
+        backgroundAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                setupCardBackground.setBackgroundColor((Integer) animation.getAnimatedValue());
+            }
+        });
+        backgroundAnimator.start();
+    }
+
+    private void changeTextColor(int colorFrom, int colorTo) {
+        final ValueAnimator backgroundAnimator = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
+        backgroundAnimator.setDuration(200);
+        backgroundAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                simulationCb.setTextColor((Integer) animation.getAnimatedValue());
+                loadResourcesFromPhoneCb.setTextColor((Integer) animation.getAnimatedValue());
+                audioFeedbackCb.setTextColor((Integer) animation.getAnimatedValue());
+                bit24Cb.setTextColor((Integer) animation.getAnimatedValue());
+                advancedModeCb.setTextColor((Integer) animation.getAnimatedValue());
+                setupTextView.setTextColor((Integer) animation.getAnimatedValue());
+            }
+        });
+        backgroundAnimator.start();
     }
 }

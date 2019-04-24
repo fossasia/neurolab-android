@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -61,6 +62,7 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
+        android:id="@+id/setupCardView"
         android:layout_width="@dimen/spacing_none"
         android:layout_height="@dimen/spacing_none"
         android:layout_marginStart="@dimen/layout_margin_large"
@@ -91,7 +93,7 @@
                 android:padding="@dimen/bin_value_text_padding_large"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3">
+                app:layout_constraintTop_toBottomOf="@+id/tv_setup">
 
                 <CheckBox
                     android:id="@+id/cb_simulation"
@@ -135,7 +137,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/tv_setup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/layout_margin_medium"
