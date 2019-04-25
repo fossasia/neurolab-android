@@ -196,7 +196,12 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void changeTheme() {
-        int colorToBackground, colorFromBackground, colorFromStatusCardView, colorToStatusCardView, colorFromValues, colorToValues;
+        int colorToBackground;
+        int colorFromBackground;
+        int colorFromStatusCardView;
+        int colorToStatusCardView;
+        int colorFromValues;
+        int colorToValues;
 
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
