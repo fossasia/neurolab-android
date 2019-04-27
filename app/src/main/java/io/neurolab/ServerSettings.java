@@ -61,6 +61,50 @@ public class ServerSettings {
         return tf;
     }
 
+    public void setLoadFromPhone(boolean loadFromPhone) {
+        this.loadFromPhone = loadFromPhone;
+    }
+
+    public void setAdvancedMode(boolean advancedMode) {
+        this.advancedMode = advancedMode;
+    }
+
+    public void setBit24(boolean bit24) {
+        this.bit24 = bit24;
+    }
+
+    public void setSimulation(boolean simulation) {
+        this.simulation = simulation;
+    }
+
+    public void setAudioFeedback(boolean audioFeedback) {
+        this.audioFeedback = audioFeedback;
+    }
+
+    public void setSerialAddress(String serialAddress) {
+        this.serialAddress = serialAddress;
+    }
+
+    public void setP2p(double p2p) {
+        this.p2p = p2p;
+    }
+
+    public void setPp(int pp) {
+        this.pp = pp;
+    }
+
+    public void setFir(int fir) {
+        this.fir = fir;
+    }
+
+    public void setAvg(int avg) {
+        this.avg = avg;
+    }
+
+    public void setTf(int tf) {
+        this.tf = tf;
+    }
+
     // Converts to the string representation and can be used for debugging purposes.
     @Override
     public String toString() {
