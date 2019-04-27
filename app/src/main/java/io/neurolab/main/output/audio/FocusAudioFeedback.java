@@ -18,7 +18,7 @@ import io.neurolab.settings.FeedbackSettings;
 import io.neurolab.tools.ResourceManager;
 
 public class FocusAudioFeedback extends Feedback {
-
+    
     private Context context;
     private Synthesizer synth;
     private JSynThread jsynThread;
@@ -37,7 +37,6 @@ public class FocusAudioFeedback extends Feedback {
     @Override
     public void run() {
         this.synth = JSyn.createSynthesizer(AudioDeviceFactory.createAudioDeviceManager(true));
-        this.synth = jsynThread.getSynth();
 
         this.synth.add(lineOut = new LineOut());
         try {
@@ -80,6 +79,7 @@ public class FocusAudioFeedback extends Feedback {
         command.setCrossFadeIn(crossFadeSize);
 
         System.out.println("Queue: " + loopStartFrame + ", #" + loopSize + ", X=" + crossFadeSize);
+
         synth.queueCommand(command);
 
         running = true;
@@ -90,7 +90,6 @@ public class FocusAudioFeedback extends Feedback {
     public void updateCurrentFeedback(double currentFeedback) {
         super.updateCurrentFeedback(currentFeedback);
         samplePlayer.amplitude.set(Math.max(currentFeedback, 0));
-        samplePlayer.amplitude.set(Math.max(Math.min(1d, currentFeedback), 0d));
     }
 
 }
