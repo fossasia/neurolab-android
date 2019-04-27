@@ -44,4 +44,5 @@ dependencies {
     androidTestImplementation "com.android.support.test:runner:$rootProject.testRunnerRulesVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
     implementation 'com.github.iamareebjamal:jsyn:16.8.0a'
+    implementation 'com.illposed.osc:javaosc-core:0.3'
 }
