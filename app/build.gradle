@@ -46,4 +46,5 @@ dependencies {
     implementation 'com.github.iamareebjamal:jsyn:16.8.0a'
     implementation 'com.illposed.osc:javaosc-core:0.3'
     implementation 'org.scream3r:jssc:2.8.0'
+    implementation 'net.sourceforge.jtransforms:jtransforms:2.4.0', {exclude group: 'junit'}
 }
