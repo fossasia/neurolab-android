@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(MainActivity.this, FeedbackSettings.class));
             return true;
         } else if (id == R.id.action_about_us) {
-            startActivity(new Intent(MainActivity.this, About_Us.class));
+            startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
             return true;
         }
 
