@@ -13,7 +13,7 @@
             android:name=".ProgramModeActivity"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".About_Us"
+            android:name=".AboutUsActivity"
             android:label="@string/about_us"
             android:parentActivityName=".MainActivity" />
         <activity
