@@ -1,5 +1,10 @@
 package io.neurolab.model;
 
+import android.content.Context;
+
+import org.ini4j.Ini;
+import org.ini4j.IniPreferences;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.prefs.BackingStoreException;
@@ -24,9 +29,12 @@ public class Config {
 
     private File iniFile;
     public Preferences prefs;
+    private Ini ini;
+    private Context context;
 
-    public Config(String filename) {
+    public Config(String filename, Context context) {
         iniFile = new File(filename);
+        this.context = context;
         System.out.println("opening config from " + filename);
         try {
             loadConfig(iniFile);
@@ -39,6 +47,13 @@ public class Config {
 
     public boolean loadConfig(File iniFile) throws BackingStoreException, IOException {
         System.out.println(iniFile);
+        if (!iniFile.exists()) {
+            ini = new Ini(ResourceManager.getInstance().getResource(context, iniFile.getName()));
+            ini.store(iniFile);
+
+        }
+        ini = new Ini(iniFile);
+        prefs = new IniPreferences(ini);
 
         System.out.println("loaded config");
         return true;
@@ -46,6 +61,7 @@ public class Config {
 
     public boolean setPref(String section, String key, String value) {
         try {
+            ini.put(section, key, value);
             prefs.sync();
             return true;
         } catch (Exception e) {
@@ -66,6 +82,7 @@ public class Config {
 
     public boolean store() {
         try {
+            ini.store();
             System.out.println("stored config");
             return true;
         } catch (Exception e) {
