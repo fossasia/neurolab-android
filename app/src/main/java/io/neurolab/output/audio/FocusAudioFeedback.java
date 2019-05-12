@@ -1,5 +1,7 @@
 package io.neurolab.output.audio;
 
+import android.content.Context;
+
 import com.jsyn.JSyn;
 import com.jsyn.Synthesizer;
 import com.jsyn.data.FloatSample;
@@ -9,11 +11,15 @@ import com.jsyn.unitgen.LineOut;
 import com.jsyn.unitgen.VariableRateDataReader;
 import com.jsyn.unitgen.VariableRateMonoReader;
 import com.jsyn.unitgen.VariableRateStereoReader;
+import com.jsyn.util.SampleLoader;
 
 import io.neurolab.output.feedback.Feedback;
 import io.neurolab.settings.FeedbackSettings;
+import io.neurolab.tools.ResourceManager;
 
 public class FocusAudioFeedback extends Feedback {
+
+    private Context context;
     private Synthesizer synth;
     private JSynThread jsynThread;
     private LineOut lineOut;
@@ -21,8 +27,9 @@ public class FocusAudioFeedback extends Feedback {
     private VariableRateDataReader samplePlayer;
     private double rateX;
 
-    public FocusAudioFeedback(FeedbackSettings feedbackSettings) {
+    public FocusAudioFeedback(FeedbackSettings feedbackSettings, Context context) {
         super(feedbackSettings);
+        this.context = context;
         JSynThread jsynThread = new JSynThread();
         jsynThread.run();
     }
@@ -34,8 +41,7 @@ public class FocusAudioFeedback extends Feedback {
 
         this.synth.add(lineOut = new LineOut());
         try {
-            // Add sample file here and initialize to this.sample
-
+            this.sample = SampleLoader.loadFloatSample(ResourceManager.getInstance().getResource(context,"audio/pad_.wav"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -86,6 +92,5 @@ public class FocusAudioFeedback extends Feedback {
         samplePlayer.amplitude.set(Math.max(currentFeedback, 0));
         samplePlayer.amplitude.set(Math.max(Math.min(1d, currentFeedback), 0d));
     }
-
 
 }
