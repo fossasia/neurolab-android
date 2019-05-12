@@ -44,4 +44,11 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="set_up">Set up</string>
     <string name="connect_with_us">Connect With Us</string>
 
+    <string name="statusLabel">Status Label</string>
+    <string name="ipField">IP Field</string>
+    <string name="portField">Port Field</string>
+    <string name="forward">Forward</string>
+
+    <string name="filename_key">filename</string>
+
 </resources>
