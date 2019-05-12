@@ -24,20 +24,31 @@ public class ConfigUtils {
         return configurationSettings;
     }
 
-    private static ConfigurationSettings createConfigFile(File configFile){
+    public static void saveSettingsConfig(Context context, ConfigurationSettings configurationSettings){
+        File configFile = new File(context.getFilesDir(), CONFIG_FILE_NAME);
+
+        if(!configFile.isFile()){
+           createConfigFile(configFile);
+        }
+
         Gson gson = new Gson();
-        ConfigurationSettings configurationSettings = new ConfigurationSettings();
         String json = gson.toJson(configurationSettings);
 
-        try(FileOutputStream fos = new FileOutputStream(configFile)){
-            configFile.createNewFile();
+        try(FileOutputStream fos = new FileOutputStream(configFile, false)){
             byte[] b = json.getBytes();
             fos.write(b);
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
 
-        return configurationSettings;
+    private static void createConfigFile(File configFile){
+        try{
+            configFile.createNewFile();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     private static String readConfigFile(File configFile){

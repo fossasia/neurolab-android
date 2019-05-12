@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -64,6 +65,18 @@ public class MainActivity extends AppCompatActivity
         bit24Cb = findViewById(R.id.cb_24bit);
         advancedModeCb = findViewById(R.id.cb_advanced_mode);
 
+        // Setting Listeners of the settings checkboxes
+        simulationCb.setOnCheckedChangeListener((v, isChecked) ->
+                ConfigUtils.saveSettingsConfig(this, modifyConfigurationSettings(v, isChecked)));
+        loadResourcesFromPhoneCb.setOnCheckedChangeListener((v, isChecked) ->
+                ConfigUtils.saveSettingsConfig(this, modifyConfigurationSettings(v, isChecked)));
+        audioFeedbackCb.setOnCheckedChangeListener((v, isChecked) ->
+                ConfigUtils.saveSettingsConfig(this, modifyConfigurationSettings(v, isChecked)));
+        bit24Cb.setOnCheckedChangeListener((v, isChecked) ->
+                ConfigUtils.saveSettingsConfig(this, modifyConfigurationSettings(v, isChecked)));
+        advancedModeCb.setOnCheckedChangeListener((v, isChecked) ->
+                ConfigUtils.saveSettingsConfig(this, modifyConfigurationSettings(v, isChecked)));
+
         focusButton = findViewById(R.id.btn_focus);
         relaxButton = findViewById(R.id.btn_relax);
         vjButton = findViewById(R.id.btn_vj);
@@ -71,11 +84,8 @@ public class MainActivity extends AppCompatActivity
 
         // Setting Listeners of the various program buttons
         focusButton.setOnClickListener(v -> startProgramModeActivity(R.string.focus_toast, ProgramModeActivity.FOCUS_PROGRAM_MODE));
-
         relaxButton.setOnClickListener(v -> startProgramModeActivity(R.string.relax_toast, ProgramModeActivity.RELAX_PROGRAM_MODE));
-
         vjButton.setOnClickListener(v -> startProgramModeActivity(R.string.vj_toast, ProgramModeActivity.VJ_PROGRAM_MODE));
-
         serialButton.setOnClickListener(v -> startProgramModeActivity(R.string.serial_toast, ProgramModeActivity.SERIAL_PROGRAM_MODE));
 
         ConfigurationSettings configurationSettings = ConfigUtils.loadSettingsConfig(this);
@@ -85,6 +95,29 @@ public class MainActivity extends AppCompatActivity
         audioFeedbackCb.setChecked(configurationSettings.getServerSettings().isAudioFeedback());
         bit24Cb.setChecked(configurationSettings.getServerSettings().isBit24());
         advancedModeCb.setChecked(configurationSettings.getServerSettings().isAdvancedMode());
+    }
+
+    private ConfigurationSettings modifyConfigurationSettings(View v, boolean isChecked){
+        ConfigurationSettings configurationSettings = ConfigUtils.loadSettingsConfig(this);
+        switch (v.getId()){
+            case R.id.cb_simulation:
+                configurationSettings.getServerSettings().setSimulation(isChecked);
+                break;
+            case R.id.cb_load_resources_from_phone:
+                configurationSettings.getServerSettings().setLoadFromPhone(isChecked);
+                break;
+            case R.id.cb_audio_feedback:
+                configurationSettings.getServerSettings().setAudioFeedback(isChecked);
+                break;
+            case R.id.cb_24bit:
+                configurationSettings.getServerSettings().setBit24(isChecked);
+                 break;
+            case R.id.cb_advanced_mode:
+                configurationSettings.getServerSettings().setAdvancedMode(isChecked);
+                break;
+            default:
+        }
+        return configurationSettings;
     }
 
     private void startProgramModeActivity(int toastMessageID, int mode) {
