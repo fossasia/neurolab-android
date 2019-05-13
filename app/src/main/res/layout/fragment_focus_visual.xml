@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/hill_background"
-    tools:context=".ProgramModeActivity">
+    tools:context=".main.ProgramModeActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

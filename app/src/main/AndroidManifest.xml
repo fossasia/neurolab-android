@@ -10,14 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/EditTextPrefTheme">
         <activity
-            android:name=".ProgramModeActivity"
-            android:parentActivityName=".MainActivity"/>
+            android:name=".main.ProgramModeActivity"
+            android:parentActivityName="main.MainActivity"/>
         <activity
-            android:name=".AboutUsActivity"
+            android:name=".main.AboutUsActivity"
             android:label="@string/about_us"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".main.MainActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".main.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.Launcher">
             <intent-filter>
@@ -26,9 +26,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".NeuroSettingsActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name=".main.NeuroSettingsActivity"
+            android:parentActivityName=".main.MainActivity" />
         <activity android:name=".settings.FeedbackSettings" />
     </application>
 

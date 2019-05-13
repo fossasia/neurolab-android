@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
-import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
@@ -15,9 +14,9 @@ import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
 import io.neurolab.R;
+import io.neurolab.main.output.feedback.Feedback;
 import io.neurolab.model.Config;
 import io.neurolab.model.DefaultFFTData;
-import io.neurolab.output.feedback.Feedback;
 
 public class FeedbackSettings extends FragmentActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 

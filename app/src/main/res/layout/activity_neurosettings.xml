@@ -2,9 +2,9 @@
 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:name="io.neurolab.NeuroSettingsFragment"
+    android:name="io.neurolab.main.NeuroSettingsFragment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".NeuroSettingsActivity">
+    tools:context=".main.NeuroSettingsActivity">
 
 </fragment>
