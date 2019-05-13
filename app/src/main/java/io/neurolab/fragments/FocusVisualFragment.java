@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import io.neurolab.R;
-import io.neurolab.visuals.SpaceAnimationVisuals;
+import io.neurolab.main.output.visual.SpaceAnimationVisuals;
 
 public class FocusVisualFragment extends android.support.v4.app.Fragment {
 

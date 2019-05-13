@@ -1,7 +1,5 @@
 package io.neurolab.model;
 
-import io.neurolab.MathBasics;
-
 public interface FFTData {
     public void updateFFTData(double[][] fftData);
 

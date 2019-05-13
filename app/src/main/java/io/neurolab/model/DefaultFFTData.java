@@ -1,7 +1,7 @@
 package io.neurolab.model;
 
-import io.neurolab.MathBasics;
-import io.neurolab.NeuroSettings;
+import io.neurolab.main.MathBasics;
+import io.neurolab.settings.NeuroSettings;
 
 public class DefaultFFTData implements FFTData {
     private boolean peakToPeakCheck = true;
