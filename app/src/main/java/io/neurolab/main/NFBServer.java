@@ -1,4 +1,4 @@
-package io.neurolab;
+package io.neurolab.main;
 
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -9,6 +9,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.locks.ReentrantLock;
 
 import io.neurolab.model.Task;
+import io.neurolab.settings.NeuroSettings;
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class NFBServer extends NeuroSettings implements DataReceiver {
