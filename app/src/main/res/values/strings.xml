@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Neuro Lab</string>
+    <string name="welcome_app_name">Welcome to NeuroLab</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -42,5 +43,13 @@ Current devices in the medical industry are usually not accessible by doctors du
 A difference to existing projects like OpenBCI is that it will not be necessary to 3D print large headsets. Instead we are focusing on creating a device that collects as much data as possible through the forehead. To achieve this goal we are using high-grade sensors and flexible electronics.</string>
     <string name="device_is_not_connected">Device is not connected</string>
     <string name="set_up">Set up</string>
+    <string name="connect_with_us">Connect With Us</string>
+
+    <string name="statusLabel">Status Label</string>
+    <string name="ipField">IP Field</string>
+    <string name="portField">Port Field</string>
+    <string name="forward">Forward</string>
+
+    <string name="filename_key">filename</string>
 
 </resources>

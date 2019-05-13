@@ -19,6 +19,9 @@
                 <item
                     android:id="@+id/nav_serial"
                     android:title="Serial Mode" />
+                <item
+                    android:id="@+id/nav_connect"
+                    android:title="Connect Device" />
 
             </group>
         </menu>
