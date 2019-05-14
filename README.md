@@ -60,4 +60,5 @@ If you are a tester and want to test the app, you have two ways to do that:
 1. **Installing APK on your device:** You can get debug APK as well as Release APK in apk branch of the repository. After each PR merge, both the APKs are automatically updated. So, just download the APK you want and install it on your device. The APKs will always be the latest one.
   
 ## External Depenedencies
-_preference fix library_ : com.takisoft.fix:preference-v7:$rootProject.prefFixLibraryVersion"
+* *[Preference Fix Library](https://github.com/Gericop/Android-Support-Preference-V7-Fix)*  
+* *[JSyn Library](http://www.softsynth.com/jsyn/beta/jsyn_on_android.php)*
