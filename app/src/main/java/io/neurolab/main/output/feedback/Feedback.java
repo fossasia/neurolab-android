@@ -8,6 +8,9 @@ public abstract class Feedback implements Runnable {
     protected double currentFeedback;
     protected boolean running;
 
+    protected Feedback() {
+    }
+
     public void updateCurrentMultivariateFeedback(double[][][] currentMultivariateFeedback) {
         this.currentMultivariateFeedback = currentMultivariateFeedback;
     }
