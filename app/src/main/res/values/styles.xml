@@ -27,7 +27,9 @@
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="Theme.AppCompat.Light">
+        <item name="android:textColorSecondary">@color/color_white_background</item>
     </style>
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="TextStyle">
