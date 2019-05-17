@@ -46,7 +46,7 @@ dependencies {
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
     implementation 'com.github.medyo:android-about-page:1.2.5'
     implementation 'com.github.iamareebjamal:jsyn:16.8.0a'
-    implementation 'com.illposed.osc:javaosc-core:0.3'
+    implementation 'com.illposed.osc:javaosc-core:0.6'
     implementation 'org.scream3r:jssc:2.8.0'
     implementation 'net.sourceforge.jtransforms:jtransforms:2.4.0', {exclude group: 'junit'}
     implementation 'org.jogamp.jogl:jogl-all:2.3.2'
