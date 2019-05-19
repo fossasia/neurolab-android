@@ -8,7 +8,12 @@ import java.util.List;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.locks.ReentrantLock;
 
+import io.neurolab.model.Config;
+import io.neurolab.model.DefaultFFTData;
+import io.neurolab.model.FFTPreprocessor;
+import io.neurolab.model.FileOutputTask;
 import io.neurolab.model.Task;
+import io.neurolab.settings.FeedbackSettings;
 import io.neurolab.settings.NeuroSettings;
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -17,6 +22,7 @@ public class NFBServer extends NeuroSettings implements DataReceiver {
     private long currentTimestamp;
     public static int samplesPerSecond = 256;
     public static int numChannels = 2;
+    public static int bins = 0;
 
     private List<double[]> inputData;
     protected ConcurrentLinkedDeque<double[]> currentData = new ConcurrentLinkedDeque<double[]>();
@@ -26,11 +32,21 @@ public class NFBServer extends NeuroSettings implements DataReceiver {
     private LinkedList<Task> tasks;
     private long lastTimestamp;
 
+    private Config config;
+    private DefaultFFTData fftData;
+    private FileOutputTask fileOutputTask;
+    private FeedbackSettings currentFeedbackSettings;
+
     protected int currentSamples = 0;
     protected int newSamples = 0;
 
     public NFBServer() {
         tasks = new LinkedList<>();
+        currentFeedbackSettings = new FeedbackSettings();
+    }
+
+    public NFBServer(Config config) {
+        this.config = config;
     }
 
     public long getCurrentTimestamp() {
@@ -44,6 +60,37 @@ public class NFBServer extends NeuroSettings implements DataReceiver {
 
     public List<double[]> getInputData() {
         return inputData;
+    }
+
+    public void setTasks(LinkedList<Task> tasks) {
+        this.tasks = tasks;
+
+        for (Task task : tasks) {
+            if (task instanceof FFTPreprocessor)
+                this.fftData = ((FFTPreprocessor) task).getFFTData();
+            if (task instanceof FileOutputTask)
+                this.fileOutputTask = (FileOutputTask) task;
+        }
+    }
+
+    public ConcurrentLinkedDeque<double[]> getCurrentData() {
+        return currentData;
+    }
+
+    public FeedbackSettings getCurrentFeedbackSettings() {
+        return currentFeedbackSettings;
+    }
+
+    public void setCurrentFeedbackSettings(FeedbackSettings currentFeedbackSettings) {
+        this.currentFeedbackSettings = currentFeedbackSettings;
+    }
+
+    public Config getConfig() {
+        return config;
+    }
+
+    public DefaultFFTData getFftData() {
+        return fftData;
     }
 
     @Override
@@ -70,11 +117,18 @@ public class NFBServer extends NeuroSettings implements DataReceiver {
                 task.run();
 
             lastTimestamp = currentTimestamp;
-
         } catch (Exception e) {
             e.printStackTrace();
             lock.unlock();
         }
         lock.unlock();
+    }
+
+    public static ReentrantLock getLock() {
+        return lock;
+    }
+
+    public LinkedList<Task> getTasks() {
+        return tasks;
     }
 }
