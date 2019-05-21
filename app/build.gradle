@@ -50,4 +50,5 @@ dependencies {
     implementation 'org.scream3r:jssc:2.8.0'
     implementation 'net.sourceforge.jtransforms:jtransforms:2.4.0', {exclude group: 'junit'}
     implementation 'org.jogamp.jogl:jogl-all:2.3.2'
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
 }
