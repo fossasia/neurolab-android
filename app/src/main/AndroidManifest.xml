@@ -11,7 +11,7 @@
         android:theme="@style/EditTextPrefTheme">
         <activity
             android:name=".main.ProgramModeActivity"
-            android:parentActivityName="main.MainActivity"/>
+            android:parentActivityName=".main.MainActivity"/>
         <activity
             android:name=".main.AboutUsActivity"
             android:label="@string/about_us"
