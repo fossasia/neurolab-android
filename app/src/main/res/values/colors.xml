@@ -11,4 +11,5 @@
     <color name="seperator_color">#707070</color>
     <color name="yantra_one_color">#FFF852</color>
     <color name="yantra_two_color">#6DFBFB</color>
+    <color name="divider_color">#E0E0E0</color>
 </resources>

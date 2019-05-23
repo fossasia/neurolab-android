@@ -59,4 +59,10 @@
     <dimen name="about_txt_elevation">10dp</dimen>
     <dimen name="set_up_title_margin_top">24dp</dimen>
     <dimen name="vertical_seperator_height">150dp</dimen>
+    <dimen name="constraint_margin_top">8dp</dimen>
+    <dimen name="last_session_margin_start">8dp</dimen>
+    <dimen name="last_session_margin_left">8dp</dimen>
+    <dimen name="last_session_margin_top">36dp</dimen>
+    <dimen name="last_session_margin_end">8dp</dimen>
+    <dimen name="view_divider_height">1dp</dimen>
 </resources>

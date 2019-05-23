@@ -10,8 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/EditTextPrefTheme">
         <activity
+            android:name=".settings.ConfigsActivity"
+            android:label="@string/configs"
+            android:theme="@style/EditTextPrefTheme.NoActionBar"></activity>
+        <activity
             android:name=".main.ProgramModeActivity"
-            android:parentActivityName=".main.MainActivity"/>
+            android:parentActivityName=".main.MainActivity" />
         <activity
             android:name=".main.AboutUsActivity"
             android:label="@string/about_us"
@@ -26,7 +30,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".main.NeuroSettingsActivity"
             android:parentActivityName=".main.MainActivity" />

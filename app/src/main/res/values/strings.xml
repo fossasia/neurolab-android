@@ -7,6 +7,8 @@
     <string name="action_settings">Settings</string>
     <string name="drawer_name">Welcome to Neurolab</string>
     <string name="feedback_settings_title">Feedback Settings</string>
+    <string name="new_session">New Session</string>
+    <string name="configs">Configurations</string>
 
     <string name="samples_pref_key">samples</string>
     <string name="bins_pref_key">bins</string>
@@ -16,13 +18,18 @@
     <string name="bins_pref_label">Bins</string>
     <string name="num_channels_pref_label">Number Channels</string>
     <string name="about_us">About Us</string>
+    <string name="last_session_head">Last Sessions</string>
 
     <string name="settings">Settings</string>
-    <string name="simulation">simulation</string>
-    <string name="load_from_phone">load resources from phone</string>
-    <string name="audio_feedback">audio feedback</string>
-    <string name="mode_24bit">24 bit</string>
-    <string name="mode_advanced">advanced mode</string>
+    <string name="simulation">Simulation</string>
+    <string name="load_from_phone">Load resources from phone</string>
+    <string name="audio_feedback">Audio Feedback</string>
+    <string name="mode_24bit">24 Bit</string>
+    <string name="mode_advanced">Advanced Mode</string>
+
+    <string name="audio_feedback_summary">Check to know your brains with results in Audio format</string>
+    <string name="mode_24_bit_summary">Check if your device is a 24 bit one</string>
+    <string name="mode_advanced_summary">Check to show your brain-graphs in a pro mode</string>
 
     <string name="programs">Programs</string>
     <string name="focus">Focus</string>
@@ -51,5 +58,6 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="forward">Forward</string>
 
     <string name="filename_key">filename</string>
+    <string name="title_activity_configs">ConfigsActivity</string>
 
 </resources>

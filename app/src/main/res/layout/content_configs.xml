@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/layout_margin_large"
+        android:layout_marginLeft="@dimen/layout_margin_large"
+        android:layout_marginEnd="@dimen/layout_margin_large"
+        android:layout_marginRight="@dimen/layout_margin_large"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <CheckBox
+            android:id="@+id/cb_audio_feedback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_margin_medium"
+            android:text="@string/audio_feedback"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/audio_feedback_summary" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_divider_height"
+            android:background="@color/divider_color" />
+
+        <CheckBox
+            android:id="@+id/cb_24bit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_margin_medium"
+            android:text="@string/mode_24bit"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mode_24_bit_summary" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_divider_height"
+            android:background="@color/divider_color" />
+
+        <CheckBox
+            android:id="@+id/cb_advanced_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_margin_medium"
+            android:text="@string/mode_advanced"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mode_advanced_summary" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_divider_height"
+            android:background="@color/divider_color" />
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
