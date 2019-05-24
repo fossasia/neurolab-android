@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/home_activity_background"
@@ -76,62 +77,9 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:id="@+id/settings_linear_layout"
-                android:layout_width="@dimen/spacing_none"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/layout_margin_large"
-                android:layout_marginLeft="@dimen/layout_margin_large"
-                android:layout_marginEnd="@dimen/layout_margin_large"
-                android:layout_marginRight="@dimen/layout_margin_large"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3">
-
-                <CheckBox
-                    android:id="@+id/cb_simulation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/simulation"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
-
-                <CheckBox
-                    android:id="@+id/cb_load_resources_from_phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/layout_margin_medium"
-                    android:text="@string/load_from_phone"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
-
-                <CheckBox
-                    android:id="@+id/cb_audio_feedback"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/layout_margin_medium"
-                    android:text="@string/audio_feedback"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
-
-                <CheckBox
-                    android:id="@+id/cb_24bit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/layout_margin_medium"
-                    android:text="@string/mode_24bit"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
-
-                <CheckBox
-                    android:id="@+id/cb_advanced_mode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/layout_margin_medium"
-                    android:text="@string/mode_advanced"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
-
-            </LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/constraint_margin_top"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/textView3"
@@ -142,7 +90,7 @@
                 android:layout_marginTop="@dimen/set_up_title_margin_top"
                 android:layout_marginEnd="@dimen/layout_margin_medium"
                 android:layout_marginRight="@dimen/layout_margin_medium"
-                android:text="@string/set_up"
+                android:text="@string/new_session"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -157,6 +105,7 @@
                 android:layout_marginRight="@dimen/layout_margin_large"
                 android:layout_marginBottom="@dimen/layout_margin_large"
                 android:text="@string/focus"
+                android:textAllCaps="false"
                 android:textColor="@color/launcher_btn_txt_clr"
                 app:layout_constraintBottom_toTopOf="@+id/view2"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2" />
@@ -169,6 +118,7 @@
                 android:layout_marginLeft="@dimen/layout_margin_large"
                 android:layout_marginBottom="@dimen/layout_margin_large"
                 android:text="@string/relax"
+                android:textAllCaps="false"
                 android:textColor="@color/launcher_btn_txt_clr"
                 app:layout_constraintBottom_toTopOf="@+id/guideline"
                 app:layout_constraintStart_toStartOf="@+id/guideline2" />
@@ -178,7 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.79" />
+                app:layout_constraintGuide_percent="0.3" />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline2"
@@ -197,6 +147,7 @@
                 android:layout_marginEnd="@dimen/layout_margin_large"
                 android:layout_marginRight="@dimen/layout_margin_large"
                 android:text="@string/vj"
+                android:textAllCaps="false"
                 android:textColor="@color/launcher_btn_txt_clr"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintTop_toTopOf="@+id/guideline" />
@@ -209,6 +160,7 @@
                 android:layout_marginLeft="@dimen/layout_margin_large"
                 android:layout_marginTop="@dimen/layout_margin_large"
                 android:text="@string/serial"
+                android:textAllCaps="false"
                 android:textColor="@color/launcher_btn_txt_clr"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
                 app:layout_constraintTop_toTopOf="@+id/guideline" />
@@ -235,6 +187,20 @@
                 app:layout_constraintStart_toStartOf="@+id/btn_focus"
                 app:layout_constraintTop_toTopOf="@+id/guideline" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/last_session_margin_start"
+                android:layout_marginLeft="@dimen/last_session_margin_left"
+                android:layout_marginTop="@dimen/last_session_margin_top"
+                android:layout_marginEnd="@dimen/last_session_margin_end"
+                android:layout_marginRight="@dimen/last_session_margin_left"
+                android:text="@string/last_session_head"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view" />
 
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>

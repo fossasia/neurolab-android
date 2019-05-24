@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import io.neurolab.R;
 import io.neurolab.model.ConfigUtils;
+import io.neurolab.settings.ConfigsActivity;
 import io.neurolab.settings.FeedbackSettings;
 import io.neurolab.settings.ConfigurationSettings;
 
@@ -61,24 +62,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        simulationCb = findViewById(R.id.cb_simulation);
-        loadResourcesFromPhoneCb = findViewById(R.id.cb_load_resources_from_phone);
         audioFeedbackCb = findViewById(R.id.cb_audio_feedback);
         bit24Cb = findViewById(R.id.cb_24bit);
         advancedModeCb = findViewById(R.id.cb_advanced_mode);
 
         // Setting Listeners of the settings checkboxes
-        simulationCb.setOnCheckedChangeListener((v, isChecked) ->
-                ConfigUtils.saveSettingsConfig(this, modifyConfigurationSettings(v, isChecked)));
-        loadResourcesFromPhoneCb.setOnCheckedChangeListener((v, isChecked) ->
-                ConfigUtils.saveSettingsConfig(this, modifyConfigurationSettings(v, isChecked)));
-        audioFeedbackCb.setOnCheckedChangeListener((v, isChecked) ->
-                ConfigUtils.saveSettingsConfig(this, modifyConfigurationSettings(v, isChecked)));
-        bit24Cb.setOnCheckedChangeListener((v, isChecked) ->
-                ConfigUtils.saveSettingsConfig(this, modifyConfigurationSettings(v, isChecked)));
-        advancedModeCb.setOnCheckedChangeListener((v, isChecked) ->
-                ConfigUtils.saveSettingsConfig(this, modifyConfigurationSettings(v, isChecked)));
 
         focusButton = findViewById(R.id.btn_focus);
         relaxButton = findViewById(R.id.btn_relax);
@@ -90,43 +78,10 @@ public class MainActivity extends AppCompatActivity
         relaxButton.setOnClickListener(v -> startProgramModeActivity(R.string.relax_toast, ProgramModeActivity.RELAX_PROGRAM_MODE));
         vjButton.setOnClickListener(v -> startProgramModeActivity(R.string.vj_toast, ProgramModeActivity.VJ_PROGRAM_MODE));
         serialButton.setOnClickListener(v -> startProgramModeActivity(R.string.serial_toast, ProgramModeActivity.SERIAL_PROGRAM_MODE));
-
-        ConfigurationSettings configurationSettings = ConfigUtils.loadSettingsConfig(this);
-
-        simulationCb.setChecked(configurationSettings.getServerSettings().isSimulation());
-        loadResourcesFromPhoneCb.setChecked(configurationSettings.getServerSettings().isLoadFromPhone());
-        audioFeedbackCb.setChecked(configurationSettings.getServerSettings().isAudioFeedback());
-        bit24Cb.setChecked(configurationSettings.getServerSettings().isBit24());
-        advancedModeCb.setChecked(configurationSettings.getServerSettings().isAdvancedMode());
-    }
-
-    private ConfigurationSettings modifyConfigurationSettings(View v, boolean isChecked){
-        ConfigurationSettings configurationSettings = ConfigUtils.loadSettingsConfig(this);
-        switch (v.getId()){
-            case R.id.cb_simulation:
-                configurationSettings.getServerSettings().setSimulation(isChecked);
-                break;
-            case R.id.cb_load_resources_from_phone:
-                configurationSettings.getServerSettings().setLoadFromPhone(isChecked);
-                break;
-            case R.id.cb_audio_feedback:
-                configurationSettings.getServerSettings().setAudioFeedback(isChecked);
-                break;
-            case R.id.cb_24bit:
-                configurationSettings.getServerSettings().setBit24(isChecked);
-                 break;
-            case R.id.cb_advanced_mode:
-                configurationSettings.getServerSettings().setAdvancedMode(isChecked);
-                break;
-            default:
-        }
-        return configurationSettings;
     }
 
     private void startProgramModeActivity(int toastMessageID, int mode) {
         //Store Settings
-        boolean settingSimulation = ((CheckBox) findViewById(R.id.cb_simulation)).isChecked();
-        boolean settingLoadResourcesFromPhn = ((CheckBox) findViewById(R.id.cb_load_resources_from_phone)).isChecked();
         boolean settingAudioFeedback = ((CheckBox) findViewById(R.id.cb_audio_feedback)).isChecked();
         boolean setting24bit = ((CheckBox) findViewById(R.id.cb_24bit)).isChecked();
         boolean settingAdvanced = ((CheckBox) findViewById(R.id.cb_advanced_mode)).isChecked();
@@ -135,8 +90,6 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(MainActivity.this, ProgramModeActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt(ProgramModeActivity.INTENT_KEY_PROGRAM_MODE, mode);
-        bundle.putBoolean(ProgramModeActivity.SETTING_SIMULATION, settingSimulation);
-        bundle.putBoolean(ProgramModeActivity.SETTING_LOAD_RESOURCES_FROM_PHN, settingLoadResourcesFromPhn);
         bundle.putBoolean(ProgramModeActivity.SETTING_AUDIO_FEEDBACK, settingAudioFeedback);
         bundle.putBoolean(ProgramModeActivity.SETTING_24BIT, setting24bit);
         bundle.putBoolean(ProgramModeActivity.SETTING_ADVANCED, settingAdvanced);
@@ -177,6 +130,9 @@ public class MainActivity extends AppCompatActivity
             return true;
         } else if (id == R.id.action_about_us) {
             startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
+            return true;
+        } else if (id == R.id.config_settings) {
+            startActivity(new Intent(MainActivity.this, ConfigsActivity.class));
             return true;
         }
 
