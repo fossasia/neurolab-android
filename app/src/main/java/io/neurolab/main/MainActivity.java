@@ -82,17 +82,10 @@ public class MainActivity extends AppCompatActivity
 
     private void startProgramModeActivity(int toastMessageID, int mode) {
         //Store Settings
-        boolean settingAudioFeedback = ((CheckBox) findViewById(R.id.cb_audio_feedback)).isChecked();
-        boolean setting24bit = ((CheckBox) findViewById(R.id.cb_24bit)).isChecked();
-        boolean settingAdvanced = ((CheckBox) findViewById(R.id.cb_advanced_mode)).isChecked();
-
         Toast.makeText(MainActivity.this, toastMessageID, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(MainActivity.this, ProgramModeActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt(ProgramModeActivity.INTENT_KEY_PROGRAM_MODE, mode);
-        bundle.putBoolean(ProgramModeActivity.SETTING_AUDIO_FEEDBACK, settingAudioFeedback);
-        bundle.putBoolean(ProgramModeActivity.SETTING_24BIT, setting24bit);
-        bundle.putBoolean(ProgramModeActivity.SETTING_ADVANCED, settingAdvanced);
         intent.putExtras(bundle);
         startActivity(intent);
     }
