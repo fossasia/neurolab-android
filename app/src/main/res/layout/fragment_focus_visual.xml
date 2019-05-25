@@ -1,31 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layoutFocusScreen"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/hill_background"
-    tools:context=".main.ProgramModeActivity">
+    android:fitsSystemWindows="false">
 
-    <RelativeLayout
+    <FrameLayout
+        android:id="@+id/animated_view_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/focus_screen_bg">
+
+        <View
+            android:id="@+id/background_one"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_focus_background" />
+
+        <View
+            android:id="@+id/background_two"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_focus_background" />
+
+        <io.neurolab.gui.CustomSpaceView
+            android:id="@+id/animated_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top|center_horizontal"
+            android:rotation="180" />
 
         <ImageView
-            android:id="@+id/rocketimage"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/rocket_image_height"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="@dimen/rocket_image_margin_start"
-            android:layout_marginLeft="@dimen/rocket_image_margin_start"
-            android:layout_marginEnd="@dimen/rocket_image_margin_end"
-            android:layout_marginRight="@dimen/rocket_image_margin_end"
-            android:src="@drawable/ic_rocket_image" />
+            android:layout_width="@dimen/heading_margin_left"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="@dimen/bin_value_text_padding_large"
+            android:adjustViewBounds="true"
+            android:rotation="-45"
+            android:src="@drawable/ic_startup" />
 
-    </RelativeLayout>
+        <ImageView
+            android:id="@+id/indicator"
+            android:layout_width="@dimen/heading_margin_left"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="@dimen/bin_value_text_padding_large"
+            android:adjustViewBounds="true"
+            android:rotation="-45"
+            android:src="@drawable/ic_indicator" />
 
-</android.support.constraint.ConstraintLayout>
+    </FrameLayout>
+
+</RelativeLayout>

@@ -1,47 +1,48 @@
 package io.neurolab.main.output.visual;
 
+import android.animation.ValueAnimator;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+
+import io.neurolab.R;
 
 public class SpaceAnimationVisuals {
 
-    private static boolean receivedMovement;
-    private static int receivedLastPos;
-    private static int receivedNewPos;
+    private static final long DURATION = 10000L;
 
-    public static void moveRocket(View view, int lastPos, int newPos, boolean moving) {
-        receivedMovement = moving;
-        receivedLastPos = lastPos;
-        receivedNewPos = newPos;
+    public static void spaceAnim(View view) {
 
-        if (!receivedMovement) {
+        final View backgroundOne = view.findViewById(R.id.background_one);
+        final View backgroundTwo = view.findViewById(R.id.background_two);
 
-            Animation launch = new TranslateAnimation(0, 0, receivedLastPos, receivedNewPos);
-            launch.setDuration(1000);
-            launch.setFillAfter(true);
-            launch.setRepeatCount(10);
-            launch.setAnimationListener(new Animation.AnimationListener() {
-                @Override
-                public void onAnimationStart(Animation animation) {
-                    receivedMovement = true;
-                }
+        final ValueAnimator animator = ValueAnimator.ofFloat(0.0f, 1.0f);
+        animator.setRepeatCount(ValueAnimator.INFINITE);
+        animator.setInterpolator(new LinearInterpolator());
+        animator.setDuration(DURATION);
+        animator.addUpdateListener(animation -> {
+            final float progress = (float) animation.getAnimatedValue();
+            final float height = backgroundOne.getHeight();
+            final float translationY = height * progress;
+            backgroundOne.setTranslationY(translationY);
+            backgroundTwo.setTranslationY(translationY - height);
+        });
+        animator.start();
 
-                @Override
-                public void onAnimationEnd(Animation animation) {
-                    receivedMovement = false;
-                }
-
-                @Override
-                public void onAnimationRepeat(Animation animation) {
-                   // required to repeat the Animation if user wants to see again
-                }
-            });
-            int c = lastPos;
-            receivedLastPos = newPos;
-            receivedNewPos = c;
-
-            view.startAnimation(launch);
-        }
+        handleIndicator(view);
     }
+
+    private static void handleIndicator(View view) {
+        final ImageView v = view.findViewById(R.id.indicator);
+        Animation animation = new AlphaAnimation(1, 0); //to change visibility from visible to invisible
+        animation.setDuration(300); //1 second duration for each animation cycle
+        animation.setInterpolator(new LinearInterpolator());
+        animation.setRepeatCount(Animation.INFINITE); //repeating indefinitely
+        animation.setRepeatMode(Animation.REVERSE); //animation will start from end point once ended.
+        v.startAnimation(animation);
+    }
+
 }
