@@ -15,14 +15,6 @@ import io.neurolab.R;
 
 public class CustomSpaceView extends View {
 
-    private static class Star {
-        private float x;
-        private float y;
-        private float scale;
-        private float alpha;
-        private float speed;
-    }
-
     private static final int BASE_SPEED_DP_PER_S = 200;
     private static final int COUNT = 132;
     private static final int SEED = 1337;
@@ -42,6 +34,14 @@ public class CustomSpaceView extends View {
 
     private float baseSpeed;
     private float baseSize, baseSizeTwo, baseSizeThree;
+
+    private static class Star {
+        private float x;
+        private float y;
+        private float scale;
+        private float alpha;
+        private float speed;
+    }
 
     /** @see View#View(Context) */
     public CustomSpaceView(Context context) {
