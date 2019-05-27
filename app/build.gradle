@@ -24,7 +24,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    lintOptions{
+    lintOptions {
         disable 'InvalidPackage'
     }
 }
@@ -48,8 +48,9 @@ dependencies {
     implementation 'com.github.iamareebjamal:jsyn:16.8.0a'
     implementation 'com.illposed.osc:javaosc-core:0.3'
     implementation 'org.scream3r:jssc:2.8.0'
-    implementation 'net.sourceforge.jtransforms:jtransforms:2.4.0', {exclude group: 'junit'}
+    implementation 'net.sourceforge.jtransforms:jtransforms:2.4.0', { exclude group: 'junit' }
     implementation 'org.jogamp.jogl:jogl-all:2.3.2'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'com.github.felHR85:UsbSerial:6.0.6'
 }
