@@ -1,40 +1,56 @@
 package io.neurolab.fragments;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import com.takisoft.fix.support.v7.preference.PreferenceFragmentCompat;
 import android.support.annotation.Nullable;
 import android.support.v7.preference.EditTextPreference;
-import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceScreen;
-import android.widget.EditText;
+
+import com.takisoft.fix.support.v7.preference.PreferenceFragmentCompat;
 
 import io.neurolab.R;
 
-public class NeuroSettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener, Preference.OnPreferenceChangeListener {
-    Context context = getContext();
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+public class NeuroSettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
 
-    public NeuroSettingsFragment() {
+    public static final String KEY_SAMPLES = "samples";
+    public static final String KEY_BINS = "bins";
+    public static final String KEY_CHANNELS = "numChannels";
 
-    }
+    private EditTextPreference samplesPref;
+    private EditTextPreference binsPref;
+    private EditTextPreference channelsPref;
+
+    private SharedPreferences sharedPreferences;
 
     @Override
     public void onCreatePreferencesFix(@Nullable Bundle savedInstanceState, String rootKey) {
-        addPreferencesFromResource(R.xml.neuro_settings_fragment);
-        Preference preference = findPreference(getResources().getString(R.string.samples_pref_key));
-        preference.setOnPreferenceChangeListener(this);
+        setPreferencesFromResource(R.xml.neuro_settings_fragment, rootKey);
+        // Assign preferences to use in this class
+        samplesPref = (EditTextPreference) getPreferenceScreen().findPreference(KEY_SAMPLES);
+        binsPref = (EditTextPreference) getPreferenceScreen().findPreference(KEY_BINS);
+        channelsPref = (EditTextPreference) getPreferenceScreen().findPreference(KEY_CHANNELS);
+        // Fetch related shared preferences
         sharedPreferences = getPreferenceScreen().getSharedPreferences();
-
-        PreferenceScreen preferenceScreen = getPreferenceScreen();
-        int count = preferenceScreen.getPreferenceCount();
     }
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-
+        switch (key) {
+            // TODO: Set limits to following preferences
+            case KEY_SAMPLES:
+                samplesPref.setSummary(samplesPref.getText() + " sample" +
+                        pluralize(Integer.valueOf(samplesPref.getText())));
+                break;
+            case KEY_BINS:
+                binsPref.setSummary(binsPref.getText() + " bin" +
+                        pluralize(Integer.valueOf(binsPref.getText())));
+                break;
+            case KEY_CHANNELS:
+                channelsPref.setSummary(channelsPref.getText() + " channel" +
+                        pluralize(Integer.valueOf(channelsPref.getText())));
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
@@ -50,7 +66,17 @@ public class NeuroSettingsFragment extends PreferenceFragmentCompat implements S
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        return true;
+    public void onResume() {
+        super.onResume();
+        samplesPref.setSummary(samplesPref.getText() + " sample" +
+                pluralize(Integer.valueOf(samplesPref.getText())));
+        binsPref.setSummary(binsPref.getText() + " bin" +
+                pluralize(Integer.valueOf(binsPref.getText())));
+        channelsPref.setSummary(channelsPref.getText() + " channel" +
+                pluralize(Integer.valueOf(channelsPref.getText())));
+    }
+
+    private String pluralize(int count) {
+        return count > 1 ? "s" : "";
     }
 }
