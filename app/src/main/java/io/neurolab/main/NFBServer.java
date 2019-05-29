@@ -3,12 +3,14 @@ package io.neurolab.main;
 import android.annotation.TargetApi;
 import android.os.Build;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.locks.ReentrantLock;
 
 import io.neurolab.model.Config;
+import io.neurolab.model.FFTData;
 import io.neurolab.model.DefaultFFTData;
 import io.neurolab.model.FFTPreprocessor;
 import io.neurolab.model.FileOutputTask;
@@ -31,11 +33,11 @@ public class NFBServer extends NeuroSettings implements DataReceiver {
     public int minimumNewSamples = 16;
     private LinkedList<Task> tasks;
     private long lastTimestamp;
-
     private Config config;
     private DefaultFFTData fftData;
     private FileOutputTask fileOutputTask;
     private FeedbackSettings currentFeedbackSettings;
+    private ArrayList<FeedbackSettings> feedbackSettings;
 
     protected int currentSamples = 0;
     protected int newSamples = 0;
@@ -43,6 +45,7 @@ public class NFBServer extends NeuroSettings implements DataReceiver {
     public NFBServer() {
         tasks = new LinkedList<>();
         currentFeedbackSettings = new FeedbackSettings();
+        feedbackSettings = new ArrayList<>();
     }
 
     public NFBServer(Config config) {
@@ -130,5 +133,17 @@ public class NFBServer extends NeuroSettings implements DataReceiver {
 
     public LinkedList<Task> getTasks() {
         return tasks;
+    }
+
+    public ArrayList<FeedbackSettings> getAllSettings() {
+        return feedbackSettings;
+    }
+
+    public ArrayList<FeedbackSettings> getFeedbackSettings() {
+        return feedbackSettings;
+    }
+
+    public void setFeedbackSettings(ArrayList<FeedbackSettings> feedbackSettings) {
+        this.feedbackSettings = feedbackSettings;
     }
 }
