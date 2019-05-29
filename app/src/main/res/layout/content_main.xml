@@ -69,6 +69,7 @@
         android:layout_marginTop="@dimen/layout_margin_large"
         android:layout_marginEnd="@dimen/layout_margin_large"
         android:layout_marginRight="@dimen/layout_margin_large"
+        android:layout_marginBottom="@dimen/layout_margin_large"
         app:cardElevation="@dimen/card_elevation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
