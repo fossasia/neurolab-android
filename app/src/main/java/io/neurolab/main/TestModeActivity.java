@@ -101,9 +101,6 @@ public class TestModeActivity extends AppCompatActivity implements AdapterView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_mode);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle(getResources().getString(R.string.title_activity_test_mode));
         // setting up the UsbManager instance with the desired USB service.
         usbManager = (UsbManager) getSystemService(this.USB_SERVICE);
         // initializing the DeviceConnector instance for checking and connecting to the device.

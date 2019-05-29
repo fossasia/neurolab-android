@@ -20,9 +20,6 @@ public class ConfigsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configs);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle(getResources().getString(R.string.configs));
 
         audioFeedbackCb = findViewById(R.id.cb_audio_feedback);
         bit24Cb = findViewById(R.id.cb_24bit);
