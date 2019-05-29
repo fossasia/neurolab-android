@@ -73,4 +73,8 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="sans_bold" translatable="false">fonts/circular_std_black.otf</string>
     <string name="sans_bold_medium" translatable="false">fonts/circular_std_medium.otf</string>
     <string name="mem_graph_desc">Take a look at the activity of your awesome brain in a graphical representation</string>
+    <string name="audio_feedback_pref_key">audioFeedback</string>
+    <string name="bit24_pref_key">bit24</string>
+    <string name="advanced_mode_pref_key">advancedMode</string>
+
 </resources>

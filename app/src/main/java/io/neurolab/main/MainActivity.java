@@ -18,8 +18,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import io.neurolab.R;
-import io.neurolab.settings.ConfigsActivity;
-import io.neurolab.settings.FeedbackSettings;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -101,16 +99,10 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            startActivity(new Intent(MainActivity.this, NeuroSettingsActivity.class));
-            return true;
-        } else if (id == R.id.action_feedback_settings) {
-            startActivity(new Intent(MainActivity.this, FeedbackSettings.class));
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
             return true;
         } else if (id == R.id.action_about_us) {
             startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
-            return true;
-        } else if (id == R.id.config_settings) {
-            startActivity(new Intent(MainActivity.this, ConfigsActivity.class));
             return true;
         }
 

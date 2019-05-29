@@ -47,4 +47,5 @@
     <style name="EditTextPrefTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="EditTextPrefTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>
