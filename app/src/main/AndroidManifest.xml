@@ -9,11 +9,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/EditTextPrefTheme">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".main.TestModeActivity"
             android:label="@string/title_activity_test_mode"
-            android:theme="@style/EditTextPrefTheme.NoActionBar">
+            android:parentActivityName=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
             </intent-filter>
@@ -24,7 +24,7 @@
         <activity
             android:name=".settings.ConfigsActivity"
             android:label="@string/configs"
-            android:theme="@style/EditTextPrefTheme.NoActionBar" />
+            android:parentActivityName=".main.MainActivity"/>
         <activity
             android:name=".main.ProgramModeActivity"
             android:parentActivityName=".main.MainActivity" />
