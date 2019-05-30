@@ -11,9 +11,20 @@
         android:supportsRtl="true"
         android:theme="@style/EditTextPrefTheme">
         <activity
+            android:name=".main.TestModeActivity"
+            android:label="@string/title_activity_test_mode"
+            android:theme="@style/EditTextPrefTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
+        </activity>
+        <activity
             android:name=".settings.ConfigsActivity"
             android:label="@string/configs"
-            android:theme="@style/EditTextPrefTheme.NoActionBar"></activity>
+            android:theme="@style/EditTextPrefTheme.NoActionBar" />
         <activity
             android:name=".main.ProgramModeActivity"
             android:parentActivityName=".main.MainActivity" />
