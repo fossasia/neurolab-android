@@ -1,13 +1,13 @@
 ---
-name: Chore
+name: General issues
 about: Issues related to docs, workflow, dependency and others
-title: 
-labels: 
-assignees: 
+title: ''
+labels: ''
+assignees: ''
 
 ---
 
-**Describe the chore**
+**Describe the issue**
 
 <!--Please state here what you want to do.-->
 
