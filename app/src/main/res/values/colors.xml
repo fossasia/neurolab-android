@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#4c5b66</color>
-    <color name="colorPrimaryDark">#23323c</color>
-    <color name="colorAccent">#009688</color>
+    <color name="colorPrimary">#424242</color>
+    <color name="colorPrimaryDark">#212121</color>
+    <color name="colorAccent">#26a69a</color>
     <color name="colorControlHighlight">#ffffff</color>
     <color name="launcher_btn_txt_clr">#ffffff</color>
     <color name="color_view_background">#dad</color>
