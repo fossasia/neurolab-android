@@ -7,6 +7,10 @@
             <group android:checkableBehavior="single">
 
                 <item
+                    android:id="@+id/nav_test"
+                    android:title="Test Mode" />
+
+                <item
                     android:id="@+id/nav_focus"
                     android:title="Focus Mode" />
                 <item

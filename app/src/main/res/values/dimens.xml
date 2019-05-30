@@ -65,4 +65,6 @@
     <dimen name="last_session_margin_top">36dp</dimen>
     <dimen name="last_session_margin_end">8dp</dimen>
     <dimen name="view_divider_height">1dp</dimen>
+    <dimen name="baud_rate_padding">5dp</dimen>
+    <dimen name="baud_rate_spinner_padding">10dp</dimen>
 </resources>
