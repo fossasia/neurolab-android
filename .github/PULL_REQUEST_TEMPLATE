@@ -2,7 +2,7 @@ Fixes #[Add issue number here. Note: This will automatically closes the issue. I
 
 **Changes**: [Add here what changes were made in this issue and if possible provide links.]
 
-**Screenshot/s for the changes**: [Add screenshot/s of the layout where you made changes or a `*.gif` containing a demonstration]
+**Screenshot/s for the changes**: [Add screenshot/s of the layout where you made changes or a `*.gif` containing a demonstration. Use `<img src="paste-url-here" width=200/>` to add images]
 
 **Checklist**: [Please tick following check boxes with `[x]` if the respective task is completed]
 - [ ] I have used resources from `strings.xml`, `dimens.xml` and `colors.xml` without hard-coding them
