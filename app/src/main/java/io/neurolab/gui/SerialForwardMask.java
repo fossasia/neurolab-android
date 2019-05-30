@@ -13,10 +13,11 @@ import io.neurolab.model.Config;
 import io.neurolab.model.DefaultFFTData;
 
 public class SerialForwardMask {
+
     private static final long serialVersionUID = 1L;
-    public static int serialWidth = 580;
-    public static int serialHeight = 700;
-    DecimalFormat df = new DecimalFormat("#.##");
+    private static int serialWidth = 580;
+    private static int serialHeight = 700;
+    private DecimalFormat df = new DecimalFormat("#.##");
     private ThresholdRenderer[] thresholdRenderers;
     private SerialForwarder serialForwarder;
     private DefaultFFTData fftData;
@@ -38,8 +39,6 @@ public class SerialForwardMask {
 
         this.fftData = fftData;
         serialForwarder = new SerialForwarder();
-
-
     }
 
     public boolean connect() {
@@ -65,7 +64,6 @@ public class SerialForwardMask {
             }
         }
         boolean connectionSuccessful = connect();
-
 
         for (int b = 0; b < fftData.getBins() + 1; b++) {
             int bi = b;
@@ -120,4 +118,5 @@ public class SerialForwardMask {
     public String getLabel() {
         return label;
     }
+
 }

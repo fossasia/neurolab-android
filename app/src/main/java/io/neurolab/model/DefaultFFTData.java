@@ -141,6 +141,10 @@ public class DefaultFFTData implements FFTData {
         return valueMax;
     }
 
+    public void setPeakToPeakLimit(double peakToPeakLimit) {
+        this.peakToPeakLimit = peakToPeakLimit;
+    }
+
     // fixed fft values by operator
     private double[][] baselineFFTValues;
     private double[][] shortMeanFFTBins;
