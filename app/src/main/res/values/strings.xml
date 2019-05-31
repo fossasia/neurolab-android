@@ -56,8 +56,10 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="ipField">IP Field</string>
     <string name="portField">Port Field</string>
     <string name="forward">Forward</string>
+    <string name="begin">Begin</string>
     <string name="read">Read</string>
     <string name="write">Write</string>
+    <string name="stop">Stop</string>
     <string name="baud_rate">Baud Rate:</string>
     <string name="connection_opened">Serial Connection Opened!</string>
     <string name="data_sent">Data Sent : </string>
