@@ -67,4 +67,13 @@
     <dimen name="view_divider_height">1dp</dimen>
     <dimen name="baud_rate_padding">5dp</dimen>
     <dimen name="baud_rate_spinner_padding">10dp</dimen>
+    <dimen name="land_margin_top">16dp</dimen>
+    <dimen name="land_button_margin">8dp</dimen>
+    <dimen name="land_button_bottom_margin">2dp</dimen>
+    <dimen name="land_button_margin_top">4dp</dimen>
+    <item name="last_session_horizontal_bias" type="dimen" format="float">0.739</item>
+    <item name="zero_vertical_bias" type="dimen" format="float">0.0</item>
+    <item name="guideline_constraint_one" type="dimen" format="float">0.21</item>
+    <item name="guideline_constraint_two" type="dimen" format="float">0.66</item>
+    <item name="new_session_constraint_bias" type="dimen" format="float">0.113</item>
 </resources>
