@@ -13,4 +13,6 @@
     <color name="yantra_two_color">#6DFBFB</color>
     <color name="divider_color">#E0E0E0</color>
     <color name="focus_screen_bg">#0a0a0a</color>
+    <color name="side_nav_start_color">#6c60a9</color>
+    <color name="side_nav_end_color">#7367ee</color>
 </resources>
