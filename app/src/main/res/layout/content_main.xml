@@ -1,208 +1,309 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/home_activity_background"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    android:layout_height="match_parent">
 
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="@dimen/spacing_none"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/layout_margin_extra_large"
-        android:layout_marginLeft="@dimen/layout_margin_extra_large"
-        android:layout_marginTop="@dimen/layout_margin_medium"
-        android:layout_marginEnd="@dimen/layout_margin_extra_large"
-        android:layout_marginRight="@dimen/layout_margin_extra_large"
-        app:cardBackgroundColor="@android:color/white"
-        app:cardCornerRadius="@dimen/card_corner_radius"
-        app:cardElevation="@dimen/card_elevation"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:background="@color/home_activity_background"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <android.support.constraint.ConstraintLayout
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="@dimen/connection_card_layout_width"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/layout_margin_extra_large"
+            android:layout_marginLeft="@dimen/layout_margin_extra_large"
+            android:layout_marginTop="@dimen/connection_card_margin_top"
+            android:layout_marginEnd="@dimen/layout_margin_extra_large"
+            android:layout_marginRight="@dimen/layout_margin_extra_large"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="@dimen/card_elevation"
+            app:cardUseCompatPadding="true">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/deviceStatusIconImageView"
+                    android:layout_width="@dimen/bin_value_text_padding"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/layout_margin_large"
+                    android:layout_marginRight="@dimen/layout_margin_large"
+                    android:adjustViewBounds="true"
+                    app:layout_constraintBottom_toBottomOf="@+id/deviceStatusTextView"
+                    app:layout_constraintEnd_toStartOf="@+id/deviceStatusTextView"
+                    app:layout_constraintTop_toTopOf="@+id/deviceStatusTextView"
+                    app:srcCompat="@drawable/ic_offline_dot" />
+
+                <TextView
+                    android:id="@+id/deviceStatusTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/layout_margin_large"
+                    android:layout_marginLeft="@dimen/layout_margin_large"
+                    android:layout_marginTop="@dimen/layout_margin_large"
+                    android:layout_marginEnd="@dimen/layout_margin_medium"
+                    android:layout_marginRight="@dimen/layout_margin_medium"
+                    android:layout_marginBottom="@dimen/layout_margin_large"
+                    android:gravity="center"
+                    android:text="@string/device_is_not_connected"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.CardView>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/deviceStatusIconImageView"
-                android:layout_width="@dimen/bin_value_text_padding"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/layout_margin_large"
-                android:layout_marginRight="@dimen/layout_margin_large"
-                android:adjustViewBounds="true"
-                app:layout_constraintBottom_toBottomOf="@+id/deviceStatusTextView"
-                app:layout_constraintEnd_toStartOf="@+id/deviceStatusTextView"
-                app:layout_constraintTop_toTopOf="@+id/deviceStatusTextView"
-                app:srcCompat="@drawable/ic_offline_dot" />
-
-            <TextView
-                android:id="@+id/deviceStatusTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/layout_margin_large"
-                android:layout_marginLeft="@dimen/layout_margin_large"
-                android:layout_marginTop="@dimen/layout_margin_large"
-                android:layout_marginEnd="@dimen/layout_margin_medium"
-                android:layout_marginRight="@dimen/layout_margin_medium"
-                android:layout_marginBottom="@dimen/layout_margin_large"
-                android:gravity="center"
-                android:text="@string/device_is_not_connected"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </android.support.constraint.ConstraintLayout>
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:layout_width="@dimen/spacing_none"
-        android:layout_height="@dimen/spacing_none"
-        android:layout_marginStart="@dimen/layout_margin_large"
-        android:layout_marginLeft="@dimen/layout_margin_large"
-        android:layout_marginTop="@dimen/layout_margin_large"
-        android:layout_marginEnd="@dimen/layout_margin_large"
-        android:layout_marginRight="@dimen/layout_margin_large"
-        android:layout_marginBottom="@dimen/layout_margin_large"
-        app:cardElevation="@dimen/card_elevation"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/constraint_margin_top"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/layout_margin_medium"
-                android:layout_marginLeft="@dimen/layout_margin_medium"
-                android:layout_marginTop="@dimen/set_up_title_margin_top"
-                android:layout_marginEnd="@dimen/layout_margin_medium"
-                android:layout_marginRight="@dimen/layout_margin_medium"
-                android:text="@string/new_session"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
+            <android.support.v7.widget.CardView
                 android:id="@+id/btn_focus"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/layout_margin_large"
-                android:layout_marginRight="@dimen/layout_margin_large"
-                android:layout_marginBottom="@dimen/layout_margin_large"
-                android:text="@string/focus"
-                android:textAllCaps="false"
-                android:textColor="@color/launcher_btn_txt_clr"
-                app:layout_constraintBottom_toTopOf="@+id/view2"
-                app:layout_constraintEnd_toStartOf="@+id/guideline2" />
+                app:cardCornerRadius="@dimen/card_corner_rad_program"
+                app:cardElevation="@dimen/card_elevation_program"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true">
 
-            <Button
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/focus_gradient">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:alpha="0.3"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bg_card_focus"
+                        android:tint="@android:color/white" />
+
+                    <LinearLayout
+                        android:id="@+id/focusLayoutLinear"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/linear_layout_padding">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/padding_medium"
+                            android:layout_marginEnd="@dimen/padding_medium"
+                            android:layout_weight="1.9"
+                            android:src="@drawable/ic_card_focus"
+                            android:tint="@android:color/white" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/focusTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@string/sans_bold"
+                                android:paddingStart="@dimen/content_padding_program_one"
+                                android:paddingTop="@dimen/content_padding_program_one"
+                                android:paddingEnd="@dimen/content_padding_program_one"
+                                android:paddingBottom="@dimen/spacing_none"
+                                android:text="@string/focus"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                                android:textColor="@android:color/white" />
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/focusDesc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/content_padding_program_one"
+                                android:text="@string/focus_desc"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                android:textColor="@android:color/white" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
                 android:id="@+id/btn_relax"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/layout_margin_large"
-                android:layout_marginBottom="@dimen/layout_margin_large"
-                android:text="@string/relax"
-                android:textAllCaps="false"
-                android:textColor="@color/launcher_btn_txt_clr"
-                app:layout_constraintBottom_toTopOf="@+id/guideline"
-                app:layout_constraintStart_toStartOf="@+id/guideline2" />
+                app:cardCornerRadius="@dimen/card_corner_rad_program"
+                app:cardElevation="@dimen/card_elevation_program"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true">
 
-            <android.support.constraint.Guideline
-                android:id="@+id/guideline"
-                android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/gradient_relax">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:alpha="0.3"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bg_card_relax"
+                        android:tint="@android:color/white" />
+
+                    <LinearLayout
+                        android:id="@+id/relaxLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/linear_layout_padding">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/padding_medium"
+                            android:layout_marginEnd="@dimen/padding_medium"
+                            android:layout_weight="1.9"
+                            android:src="@drawable/ic_card_relax"
+                            android:tint="@android:color/white" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/relaxTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@string/sans_bold"
+                                android:paddingStart="@dimen/content_padding_program_one"
+                                android:paddingTop="@dimen/content_padding_program_one"
+                                android:paddingEnd="@dimen/content_padding_program_one"
+                                android:paddingBottom="@dimen/spacing_none"
+                                android:text="@string/relax"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                                android:textColor="@android:color/white" />
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/relaxDesc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/content_padding_program_one"
+                                android:text="@string/relax_desc"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                android:textColor="@android:color/white" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.85"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/btn_mem_graph"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.3" />
+                app:cardCornerRadius="@dimen/card_corner_rad_program"
+                app:cardElevation="@dimen/card_elevation_program"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true">
 
-            <android.support.constraint.Guideline
-                android:id="@+id/guideline2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/gradient_mem_graph">
 
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:alpha="0.3"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bg_card_mem_graph"
+                        android:tint="@android:color/white" />
 
-            <Button
-                android:id="@+id/btn_vj"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/layout_margin_large"
-                android:layout_marginEnd="@dimen/layout_margin_large"
-                android:layout_marginRight="@dimen/layout_margin_large"
-                android:text="@string/vj"
-                android:textAllCaps="false"
-                android:textColor="@color/launcher_btn_txt_clr"
-                app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toTopOf="@+id/guideline" />
+                    <LinearLayout
+                        android:id="@+id/memGraphLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/linear_layout_padding">
 
-            <Button
-                android:id="@+id/btn_serial"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/layout_margin_large"
-                android:layout_marginTop="@dimen/layout_margin_large"
-                android:text="@string/serial"
-                android:textAllCaps="false"
-                android:textColor="@color/launcher_btn_txt_clr"
-                app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toTopOf="@+id/guideline" />
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/padding_medium"
+                            android:layout_marginEnd="@dimen/padding_medium"
+                            android:layout_weight="1.9"
+                            android:src="@drawable/ic_card_mem_graph"
+                            android:tint="@android:color/white" />
 
-            <View
-                android:id="@+id/view"
-                android:layout_width="@dimen/view_width_or_height"
-                android:layout_height="@dimen/vertical_seperator_height"
-                android:layout_marginTop="@dimen/layout_margin_medium"
-                android:layout_marginEnd="@dimen/layout_margin_medium"
-                android:layout_marginRight="@dimen/layout_margin_medium"
-                android:background="@color/seperator_color"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_serial"
-                app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toTopOf="@+id/btn_relax" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-            <View
-                android:id="@+id/view2"
-                android:layout_width="@dimen/spacing_none"
-                android:layout_height="@dimen/view_width_or_height"
-                android:background="@color/seperator_color"
-                app:layout_constraintEnd_toEndOf="@+id/btn_relax"
-                app:layout_constraintStart_toStartOf="@+id/btn_focus"
-                app:layout_constraintTop_toTopOf="@+id/guideline" />
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/memGraphTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@string/sans_bold"
+                                android:paddingStart="@dimen/content_padding_program_one"
+                                android:paddingTop="@dimen/content_padding_program_one"
+                                android:paddingEnd="@dimen/content_padding_program_one"
+                                android:paddingBottom="@dimen/spacing_none"
+                                android:text="@string/mem_graph"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                                android:textColor="@android:color/white" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/last_session_margin_start"
-                android:layout_marginLeft="@dimen/last_session_margin_left"
-                android:layout_marginTop="@dimen/last_session_margin_top"
-                android:layout_marginEnd="@dimen/last_session_margin_end"
-                android:layout_marginRight="@dimen/last_session_margin_left"
-                android:text="@string/last_session_head"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view" />
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/memGraphDesc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingRight="@dimen/content_padding_program_one"
+                                android:paddingLeft="@dimen/content_padding_program_one"
+                                android:text="@string/mem_graph_desc"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                android:textColor="@android:color/white" />
 
-        </android.support.constraint.ConstraintLayout>
-    </android.support.v7.widget.CardView>
-</android.support.constraint.ConstraintLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

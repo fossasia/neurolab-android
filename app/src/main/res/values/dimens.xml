@@ -76,4 +76,10 @@
     <item name="guideline_constraint_one" type="dimen" format="float">0.21</item>
     <item name="guideline_constraint_two" type="dimen" format="float">0.66</item>
     <item name="new_session_constraint_bias" type="dimen" format="float">0.113</item>
+    <dimen name="card_corner_rad_program">12.0dip</dimen>
+    <dimen name="card_elevation_program">8.0dip</dimen>
+    <dimen name="linear_layout_padding">16.0dip</dimen>
+    <dimen name="content_padding_program_one">12.0dip</dimen>
+    <dimen name="connection_card_margin_top">64dp</dimen>
+    <dimen name="connection_card_layout_width">300dp</dimen>
 </resources>
