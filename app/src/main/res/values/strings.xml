@@ -34,12 +34,14 @@
     <string name="programs">Programs</string>
     <string name="focus">Focus</string>
     <string name="relax">Relax</string>
-    <string name="vj">VJ</string>
+    <string name="mem_graph">Memory Graph</string>
     <string name="serial">Serial</string>
+    <string name="focus_desc">Test the focus strength of your brain. Improve your score with more new sessions.</string>
+    <string name="relax_desc">Relax yourself. Regular sessions can help level up your concentration.</string>
 
     <string name="focus_toast">Focus Program Mode Clicked</string>
     <string name="relax_toast">Relax Program Mode Clicked</string>
-    <string name="vj_toast">VJ Program Mode Clicked</string>
+    <string name="mem_graph_toast">Memory Graph Mode Clicked</string>
     <string name="serial_toast">Serial Program Mode Clicked</string>
     <string name="about_us_content">The goal of the Neurolab project is to create an easy to use open hardware measurement headset device for brain waves that can be plugged into an Android smartphone and a software application and enables us to understand our brains better.
 
@@ -66,4 +68,7 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="title_activity_configs">ConfigsActivity</string>
     <string name="title_activity_test_mode">Test Mode</string>
 
+    <string name="sans_bold" translatable="false">fonts/circular_std_black.otf</string>
+    <string name="sans_bold_medium" translatable="false">fonts/circular_std_medium.otf</string>
+    <string name="mem_graph_desc">Take a look at the activity of your awesome brain in a graphical representation</string>
 </resources>

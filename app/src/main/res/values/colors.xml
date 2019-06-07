@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#424242</color>
-    <color name="colorPrimaryDark">#212121</color>
+    <color name="colorPrimary">#7367ee</color>
+    <color name="colorPrimaryDark">#6c60a9</color>
     <color name="colorAccent">#26a69a</color>
     <color name="colorControlHighlight">#ffffff</color>
     <color name="launcher_btn_txt_clr">#ffffff</color>

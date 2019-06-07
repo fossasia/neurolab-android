@@ -15,7 +15,7 @@ public class ProgramModeActivity extends AppCompatActivity {
 
     public static final int FOCUS_PROGRAM_MODE = 1;
     public static final int RELAX_PROGRAM_MODE = 2;
-    public static final int VJ_PROGRAM_MODE = 3;
+    public static final int MEMORY_GRAPH_MODE = 3;
     public static final int SERIAL_PROGRAM_MODE = 4;
 
     public static final String INTENT_KEY_PROGRAM_MODE = "MODE";
@@ -62,8 +62,8 @@ public class ProgramModeActivity extends AppCompatActivity {
                 fragment = new RelaxVisualFragment();
                 moveToFragment(fragment);
                 break;
-            case VJ_PROGRAM_MODE:
-                setTitle(R.string.vj);
+            case MEMORY_GRAPH_MODE:
+                setTitle(R.string.mem_graph);
                 break;
             case SERIAL_PROGRAM_MODE:
                 setTitle(R.string.serial);
