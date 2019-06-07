@@ -9,36 +9,26 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import io.neurolab.R;
-import io.neurolab.model.ConfigUtils;
 import io.neurolab.settings.ConfigsActivity;
 import io.neurolab.settings.FeedbackSettings;
-import io.neurolab.settings.ConfigurationSettings;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private int launcherSleepTime;
 
-    private CheckBox simulationCb;
-    private CheckBox loadResourcesFromPhoneCb;
-    private CheckBox audioFeedbackCb;
-    private CheckBox bit24Cb;
-    private CheckBox advancedModeCb;
-
-    private Button focusButton;
-    private Button relaxButton;
-    private Button vjButton;
-    private Button serialButton;
+    private CardView focusButton;
+    private CardView relaxButton;
+    private CardView memGraphButton;
 
     private ImageView rocketimage;
     private int lastPos = 0;
@@ -62,27 +52,22 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        audioFeedbackCb = findViewById(R.id.cb_audio_feedback);
-        bit24Cb = findViewById(R.id.cb_24bit);
-        advancedModeCb = findViewById(R.id.cb_advanced_mode);
 
         // Setting Listeners of the settings checkboxes
 
         focusButton = findViewById(R.id.btn_focus);
         relaxButton = findViewById(R.id.btn_relax);
-        vjButton = findViewById(R.id.btn_vj);
-        serialButton = findViewById(R.id.btn_serial);
+        memGraphButton = findViewById(R.id.btn_mem_graph);
 
-        // Setting Listeners of the various program buttons
-        focusButton.setOnClickListener(v -> startProgramModeActivity(R.string.focus_toast, ProgramModeActivity.FOCUS_PROGRAM_MODE));
-        relaxButton.setOnClickListener(v -> startProgramModeActivity(R.string.relax_toast, ProgramModeActivity.RELAX_PROGRAM_MODE));
-        vjButton.setOnClickListener(v -> startProgramModeActivity(R.string.vj_toast, ProgramModeActivity.VJ_PROGRAM_MODE));
-        serialButton.setOnClickListener(v -> startProgramModeActivity(R.string.serial_toast, ProgramModeActivity.SERIAL_PROGRAM_MODE));
+        focusButton.setOnClickListener(this);
+        relaxButton.setOnClickListener(this);
+        memGraphButton.setOnClickListener(this);
     }
 
     private void startProgramModeActivity(int toastMessageID, int mode) {
         //Store Settings
-        Toast.makeText(MainActivity.this, toastMessageID, Toast.LENGTH_SHORT).show();
+        if (mode == ProgramModeActivity.MEMORY_GRAPH_MODE)
+            Toast.makeText(MainActivity.this, toastMessageID, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(MainActivity.this, ProgramModeActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt(ProgramModeActivity.INTENT_KEY_PROGRAM_MODE, mode);
@@ -143,19 +128,33 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_relax) {
             startProgramModeActivity(R.string.relax_toast, ProgramModeActivity.RELAX_PROGRAM_MODE);
         } else if (id == R.id.nav_vj) {
-            startProgramModeActivity(R.string.vj_toast, ProgramModeActivity.VJ_PROGRAM_MODE);
-        } else if (id == R.id.nav_serial) {
-            startProgramModeActivity(R.string.serial_toast, ProgramModeActivity.SERIAL_PROGRAM_MODE);
+            startProgramModeActivity(R.string.mem_graph_toast, ProgramModeActivity.MEMORY_GRAPH_MODE);
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
 
-        } else if(id == R.id.nav_test) {
+        } else if (id == R.id.nav_test) {
             startActivity(new Intent(this, TestModeActivity.class));
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.btn_focus:
+                startProgramModeActivity(R.string.focus_toast, ProgramModeActivity.FOCUS_PROGRAM_MODE);
+                break;
+            case R.id.btn_relax:
+                startProgramModeActivity(R.string.relax_toast, ProgramModeActivity.RELAX_PROGRAM_MODE);
+                break;
+            case R.id.btn_mem_graph:
+                startProgramModeActivity(R.string.mem_graph_toast, ProgramModeActivity.MEMORY_GRAPH_MODE);
+                break;
+        }
     }
 }
