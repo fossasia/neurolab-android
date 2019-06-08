@@ -27,29 +27,6 @@ public class DeviceConnector {
         this.usbManager = usbManager;
     }
 
-    public void checkConnection(Context context) {
-        this.context = context;
-        HashMap<String, UsbDevice> usbDevices = usbManager.getDeviceList();
-        if (!usbDevices.isEmpty()) {
-            boolean keep = true;
-            for (Map.Entry<String, UsbDevice> entry : usbDevices.entrySet()) {
-                device = entry.getValue();
-                int deviceVID = device.getVendorId();
-                if (deviceVID == arduinoVid) { //Arduino Vendor ID
-                    PendingIntent pi = PendingIntent.getBroadcast(context, 0,
-                            new Intent(ACTION_USB_PERMISSION), 0);
-                    usbManager.requestPermission(device, pi);
-                    keep = false;
-                } else {
-                    connection = null;
-                    device = null;
-                }
-                if (!keep)
-                    break;
-            }
-        }
-    }
-
     public UsbDevice getDevice() {
         return device;
     }
