@@ -6,11 +6,11 @@ int chipSelect = 4;  // chip select pin for the MicroSD Card Adapter
 String fileName = "k24bit.csv";
 
 /*
- * try initializing the sd card; returns true if successful else returns false.
- */
-bool initializeSDCard(){
+   try initializing the sd card; returns true if successful else returns false.
+*/
+bool initializeSDCard() {
   Serial.print("Initializing SD card...");
-  if(!SD.begin(chipSelect)){    // Try initializing the SD card
+  if (!SD.begin(chipSelect)) {  // Try initializing the SD card
     Serial.println("Initialization Failed");   // if return value is false, something went wrong
     return false;
   }
@@ -18,12 +18,12 @@ bool initializeSDCard(){
   return true;
 }
 
- /*
- * try opening the file with the name passed in as the argument from the sd card. Returns the file object in a true or false context accordingly.
- */
-File openTheFileFromSDCard(String fileName){
+/*
+  try opening the file with the name passed in as the argument from the sd card. Returns the file object in a true or false context accordingly.
+*/
+File openTheFileFromSDCard(String fileName) {
   File file = SD.open(fileName);   // Grabing the file reference object
-  if(!file){                      // If the file doesn't exist this would return false
+  if (!file) {                    // If the file doesn't exist this would return false
     Serial.println("error opening: " + fileName);
     return file;
   }
@@ -32,17 +32,17 @@ File openTheFileFromSDCard(String fileName){
   return file;
 }
 
- /*
- * Reads the file passed in as an argument from the SD card and transmit it over the serial output channel line by line with '\n' as the line delimitter. Skips null lines.
- */
-void readFromSDCardToSerialOutputLineByLine(File file){    // TODO: delay value can be passed in as an argument
+/*
+  Reads the file passed in as an argument from the SD card and transmit it over the serial output channel line by line with '\n' as the line delimitter. Skips null lines.
+*/
+void readFromSDCardToSerialOutputLineByLine(File file) {   // TODO: delay value can be passed in as an argument
   // read from the file until there's nothing else in it
   String line;
   // we could use something here like line.reserve(numberOfBytes) to avoid heap memory fragmentation
-  while(file.available()){
+  while (file.available()) {
     line = file.readStringUntil('\n');
     line.trim();
-    if(line != ""){
+    if (line != "") {
       Serial.println(line);
       // TODO: Delay can be added here to transmit data over the serial channel for a specified constant rate.
     }  // Skip blank null lines.
@@ -57,22 +57,22 @@ void setup() {
 
   pinMode(chipSelect, OUTPUT);  // chip select pin must be set to OUTPUT mode
 
-  if(initializeSDCard()){     // If the sd card is initialized successfully
+  if (initializeSDCard()) {   // If the sd card is initialized successfully
     File file = openTheFileFromSDCard(fileName);     // If null object is returned then either the file doesn't exist
-    if(file){
+    if (file) {
       readFromSDCardToSerialOutputLineByLine(file);
     }
-  }    
+  }
 }
 
 // the loop routine runs over and over again forever:
 void loop() {
   /*
-  char incomingByte;
-   // If there is a data stored in the serial receive buffer, read it and print it to the serial port as human-readable ASCII text.
-  if(Serial.available()){  
+    char incomingByte;
+    // If there is a data stored in the serial receive buffer, read it and print it to the serial port as human-readable ASCII text.
+    if(Serial.available()){
     incomingByte = Serial.read();
-    Serial.print(incomingByte);  
-  }
+    Serial.print(incomingByte);
+    }
   */
 }
