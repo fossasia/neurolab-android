@@ -23,7 +23,7 @@ public class NeuroSettingsFragment extends PreferenceFragmentCompat implements S
 
     @Override
     public void onCreatePreferencesFix(@Nullable Bundle savedInstanceState, String rootKey) {
-        setPreferencesFromResource(R.xml.neuro_settings_fragment, rootKey);
+        setPreferencesFromResource(R.xml.fragment_neuro_settings, rootKey);
         // Assign preferences to use in this class
         samplesPref = (EditTextPreference) getPreferenceScreen().findPreference(KEY_SAMPLES);
         binsPref = (EditTextPreference) getPreferenceScreen().findPreference(KEY_BINS);
@@ -79,4 +79,5 @@ public class NeuroSettingsFragment extends PreferenceFragmentCompat implements S
     private String pluralize(int count) {
         return count > 1 ? "s" : "";
     }
+
 }
