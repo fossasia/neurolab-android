@@ -1,15 +1,21 @@
 package io.neurolab.fragments;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.preference.EditTextPreference;
+import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
+
+import com.takisoft.fix.support.v7.preference.EditTextPreference;
 
 import com.takisoft.fix.support.v7.preference.PreferenceFragmentCompat;
 
 import io.neurolab.R;
 
-public class NeuroSettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
+public class NeuroSettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener, TextView.OnEditorActionListener {
 
     public static final String KEY_SAMPLES = "samples";
     public static final String KEY_BINS = "bins";
@@ -56,6 +62,9 @@ public class NeuroSettingsFragment extends PreferenceFragmentCompat implements S
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        samplesPref.getEditText().setOnEditorActionListener(this);
+        binsPref.getEditText().setOnEditorActionListener(this);
+        channelsPref.getEditText().setOnEditorActionListener(this);
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 
@@ -78,6 +87,16 @@ public class NeuroSettingsFragment extends PreferenceFragmentCompat implements S
 
     private String pluralize(int count) {
         return count > 1 ? "s" : "";
+    }
+
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        if(actionId == EditorInfo.IME_ACTION_DONE){
+            InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            return true;
+        }
+        return false;
     }
 
 }
