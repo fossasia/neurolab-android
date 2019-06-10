@@ -10,6 +10,7 @@
         android:numeric="integer"
         android:title="@string/samples_pref_label"
         app:iconSpaceReserved="false" />
+
     <EditTextPreference
         android:defaultValue="4"
         android:digits="0123456789"
@@ -18,6 +19,7 @@
         android:numeric="integer"
         android:title="@string/bins_pref_label"
         app:iconSpaceReserved="false" />
+
     <EditTextPreference
         android:defaultValue="2"
         android:digits="0123456789"
@@ -26,4 +28,5 @@
         android:numeric="integer"
         android:title="@string/num_channels_pref_label"
         app:iconSpaceReserved="false" />
+
 </PreferenceScreen>

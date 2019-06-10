@@ -22,10 +22,6 @@
                 android:resource="@xml/device_filter" />
         </activity>
         <activity
-            android:name=".settings.ConfigsActivity"
-            android:label="@string/configs"
-            android:parentActivityName=".main.MainActivity"/>
-        <activity
             android:name=".main.ProgramModeActivity"
             android:parentActivityName=".main.MainActivity" />
         <activity
@@ -43,9 +39,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".main.NeuroSettingsActivity"
+            android:name=".main.SettingsActivity"
             android:parentActivityName=".main.MainActivity" />
-        <activity android:name=".settings.FeedbackSettings" />
     </application>
 
 </manifest>

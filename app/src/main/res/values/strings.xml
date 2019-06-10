@@ -70,4 +70,8 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="title_activity_configs">ConfigsActivity</string>
     <string name="title_activity_test_mode">Test Mode</string>
     <string name="mem_graph_desc">Take a look at the activity of your awesome brain in a graphical representation</string>
+    <string name="audio_feedback_pref_key">audioFeedback</string>
+    <string name="bit24_pref_key">bit24</string>
+    <string name="advanced_mode_pref_key">advancedMode</string>
+
 </resources>

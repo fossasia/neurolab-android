@@ -82,4 +82,7 @@
     <dimen name="content_padding_program_one">12.0dip</dimen>
     <dimen name="connection_card_margin_top">64dp</dimen>
     <dimen name="connection_card_layout_width">300dp</dimen>
+    <dimen name="config_cb_description_margin_left">8dp</dimen>
+    <dimen name="config_cb_heading_text_size">15sp</dimen>
+
 </resources>
