@@ -9,6 +9,7 @@
         android:key="@string/samples_pref_key"
         android:numeric="integer"
         android:title="@string/samples_pref_label"
+        android:imeOptions="actionDone"
         app:iconSpaceReserved="false" />
 
     <EditTextPreference
@@ -18,6 +19,7 @@
         android:key="@string/bins_pref_key"
         android:numeric="integer"
         android:title="@string/bins_pref_label"
+        android:imeOptions="actionDone"
         app:iconSpaceReserved="false" />
 
     <EditTextPreference
@@ -27,6 +29,7 @@
         android:key="@string/num_channels_pref_key"
         android:numeric="integer"
         android:title="@string/num_channels_pref_label"
+        android:imeOptions="actionDone"
         app:iconSpaceReserved="false" />
 
 </PreferenceScreen>
