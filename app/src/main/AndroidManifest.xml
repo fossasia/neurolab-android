@@ -41,6 +41,9 @@
         <activity
             android:name=".main.SettingsActivity"
             android:parentActivityName=".main.MainActivity" />
+        <activity
+            android:name=".program_modes.MemoryGraphActivity"
+            android:label="@string/mem_graph" />
     </application>
 
 </manifest>

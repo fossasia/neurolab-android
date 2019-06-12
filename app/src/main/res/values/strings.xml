@@ -35,14 +35,12 @@
     <string name="focus">Focus</string>
     <string name="relax">Relax</string>
     <string name="mem_graph">Memory Graph</string>
-    <string name="serial">Serial</string>
     <string name="focus_desc">Test the focus strength of your brain. Improve your score with more new sessions.</string>
     <string name="relax_desc">Relax yourself. Regular sessions can help level up your concentration.</string>
 
     <string name="focus_toast">Focus Program Mode Clicked</string>
     <string name="relax_toast">Relax Program Mode Clicked</string>
     <string name="mem_graph_toast">Memory Graph Mode Clicked</string>
-    <string name="serial_toast">Serial Program Mode Clicked</string>
     <string name="about_us_content">The goal of the Neurolab project is to create an easy to use open hardware measurement headset device for brain waves that can be plugged into an Android smartphone and a software application and enables us to understand our brains better.
 
 Our brains communicate through neurotransmitters and their activity emits electricity. The neuroheadset measures that electricity on the skin of the forehead and the software processes the signal so that it can translated into a visual or auditory representation. The data that can be collected can be analysed to identify mental health, stress, relaxation and even diseases like Alzheimer.
@@ -73,5 +71,5 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="audio_feedback_pref_key">audioFeedback</string>
     <string name="bit24_pref_key">bit24</string>
     <string name="advanced_mode_pref_key">advancedMode</string>
-
+    <string name="axis_desc_time">Time</string>
 </resources>

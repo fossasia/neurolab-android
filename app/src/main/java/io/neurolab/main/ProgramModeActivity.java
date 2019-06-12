@@ -9,6 +9,7 @@ import android.view.WindowManager;
 
 import io.neurolab.R;
 import io.neurolab.fragments.FocusVisualFragment;
+import io.neurolab.program_modes.MemoryGraphActivity;
 import io.neurolab.fragments.RelaxVisualFragment;
 
 public class ProgramModeActivity extends AppCompatActivity {
@@ -16,7 +17,6 @@ public class ProgramModeActivity extends AppCompatActivity {
     public static final int FOCUS_PROGRAM_MODE = 1;
     public static final int RELAX_PROGRAM_MODE = 2;
     public static final int MEMORY_GRAPH_MODE = 3;
-    public static final int SERIAL_PROGRAM_MODE = 4;
 
     public static final String INTENT_KEY_PROGRAM_MODE = "MODE";
     public static final String SETTING_SIMULATION = "SETTING_SIMULATION";
@@ -64,9 +64,8 @@ public class ProgramModeActivity extends AppCompatActivity {
                 break;
             case MEMORY_GRAPH_MODE:
                 setTitle(R.string.mem_graph);
-                break;
-            case SERIAL_PROGRAM_MODE:
-                setTitle(R.string.serial);
+                startActivity(new Intent(this, MemoryGraphActivity.class));
+                finish();
                 break;
         }
     }

@@ -15,7 +15,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import io.neurolab.R;
 
@@ -64,8 +63,6 @@ public class MainActivity extends AppCompatActivity
 
     private void startProgramModeActivity(int toastMessageID, int mode) {
         //Store Settings
-        if (mode == ProgramModeActivity.MEMORY_GRAPH_MODE)
-            Toast.makeText(MainActivity.this, toastMessageID, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(MainActivity.this, ProgramModeActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt(ProgramModeActivity.INTENT_KEY_PROGRAM_MODE, mode);
@@ -105,7 +102,6 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
