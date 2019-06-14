@@ -63,6 +63,9 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="baud_rate">Baud Rate:</string>
     <string name="connection_opened">Serial Connection Opened!</string>
     <string name="data_sent">Data Sent : </string>
+    <string name="other_head_nav_drawer">Other</string>
+    <string name="share_nav_drawer">Share</string>
+    <string name="send_nav_drawer">Send</string>
 
     <string name="filename_key">filename</string>
     <string name="title_activity_configs">ConfigsActivity</string>
