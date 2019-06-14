@@ -31,16 +31,20 @@
         </menu>
     </item>
 
-    <item android:title="Communicate">
+    <item android:title="@string/other_head_nav_drawer">
         <menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="@string/share_nav_drawer" />
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="@string/send_nav_drawer" />
+            <item
+                android:id="@+id/nav_version"
+                android:icon="@drawable/ic_update"
+                android:title="@string/version" />
         </menu>
     </item>
 
