@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity
     private CardView focusButton;
     private CardView relaxButton;
     private CardView memGraphButton;
+    private Menu menu;
 
     private ImageView rocketimage;
     private int lastPos = 0;
@@ -84,6 +85,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        this.menu = menu;
         return true;
     }
 

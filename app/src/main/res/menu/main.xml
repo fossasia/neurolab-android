@@ -3,14 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_about_us"
+        android:id="@+id/device_icon"
+        android:icon="@drawable/ic_disconnected"
         android:orderInCategory="100"
+        android:title="@string/device_is_not_connected"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_about_us"
+        android:orderInCategory="200"
         android:title="@string/about_us"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_settings"
-        android:orderInCategory="100"
+        android:orderInCategory="200"
         android:title="@string/action_settings"
         app:showAsAction="never" />
 
