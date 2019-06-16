@@ -1,39 +1,87 @@
 package io.neurolab.main;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.hardware.usb.UsbManager;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.felhr.usbserial.UsbSerialDevice;
+import com.felhr.usbserial.UsbSerialInterface;
+
+import java.io.UnsupportedEncodingException;
 
 import io.neurolab.R;
+import io.neurolab.communication.CommunicationHandler;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private int launcherSleepTime;
+    private final String ACTION_USB_PERMISSION = "io.neurolab.USB_PERMISSION";
 
     private CardView focusButton;
     private CardView relaxButton;
     private CardView memGraphButton;
     private Menu menu;
 
-    private ImageView rocketimage;
-    private int lastPos = 0;
-    private int newPos = -300;
-    private boolean moving;
+    private UsbManager usbManager;
+    private UsbSerialDevice serialPort;
+    private CommunicationHandler communicationHandler;
+    private String deviceData;
+
+    public UsbSerialInterface.UsbReadCallback readCallback = new UsbSerialInterface.UsbReadCallback() { //Defining a Callback which triggers whenever data is read.
+        @Override
+        public void onReceivedData(byte[] arg0) {
+            try {
+                deviceData = new String(arg0, "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        }
+    };
+    public final BroadcastReceiver broadcastReceiver = new BroadcastReceiver() { //Broadcast Receiver to automatically start and stop the Serial connection.
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            switch (intent.getAction()) {
+                case ACTION_USB_PERMISSION:
+                    boolean granted =
+                            intent.getExtras().getBoolean(UsbManager.EXTRA_PERMISSION_GRANTED);
+                    if (granted) {
+                        if(communicationHandler.initializeSerialConnection()){
+                            serialPort = communicationHandler.getSerialPort();
+                            Toast.makeText(context, getResources().getString(R.string.connection_opened), Toast.LENGTH_SHORT).show();
+                            menu.getItem(0).setIcon(ContextCompat.getDrawable(context, R.drawable.ic_device_connected));
+                            menu.getItem(0).setTitle(getResources().getString(R.string.device_connected));
+                            serialPort.read(readCallback);
+                        }
+                    } else {
+                        Log.d("SERIAL", "PERM NOT GRANTED");
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +101,12 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        usbManager = (UsbManager) getSystemService(this.USB_SERVICE);
+        IntentFilter intentFilter = new IntentFilter();
+        // adding the possible USB intent actions.
+        intentFilter.addAction(ACTION_USB_PERMISSION);
+        registerReceiver(broadcastReceiver, intentFilter);
+        communicationHandler = new CommunicationHandler(this, usbManager);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -158,5 +212,9 @@ public class MainActivity extends AppCompatActivity
                 startProgramModeActivity(R.string.mem_graph_toast, ProgramModeActivity.MEMORY_GRAPH_MODE);
                 break;
         }
+    }
+
+    public String getDeviceData() {
+        return deviceData;
     }
 }
