@@ -8,24 +8,21 @@
 
                 <item
                     android:id="@+id/nav_test"
-                    android:title="Test Mode" />
+                    android:title="@string/title_activity_test_mode" />
 
                 <item
                     android:id="@+id/nav_focus"
-                    android:title="Focus Mode" />
+                    android:title="@string/focus" />
                 <item
                     android:id="@+id/nav_relax"
                     android:layout_height="match_parent"
-                    android:title="Relax Mode" />
+                    android:title="@string/relax" />
                 <item
-                    android:id="@+id/nav_vj"
-                    android:title="VJ Mode" />
-                <item
-                    android:id="@+id/nav_serial"
-                    android:title="Serial Mode" />
+                    android:id="@+id/nav_memory_graph"
+                    android:title="@string/mem_graph" />
                 <item
                     android:id="@+id/nav_connect"
-                    android:title="Connect Device" />
+                    android:title="@string/connect_device" />
 
             </group>
         </menu>

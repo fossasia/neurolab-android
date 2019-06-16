@@ -31,6 +31,13 @@
     <string name="mode_24_bit_summary">Check if your device is a 24 bit one</string>
     <string name="mode_advanced_summary">Check to show your brain-graphs in a pro mode</string>
 
+    <string name="on_boarding_frag1_title">Connect</string>
+    <string name="on_boarding_frag1_subtitle">Plug in the brain headset device into your Android Smartphone.</string>
+    <string name="on_boarding_frag2_title">Click</string>
+    <string name="on_boarding_frag2_subtitle">Just a click to process the brain signals.</string>
+    <string name="on_boarding_frag3_title">Analyze</string>
+    <string name="on_boarding_frag3_subtitle">Analyze and improve your mental health and mood.</string>
+
     <string name="programs">Programs</string>
     <string name="focus">Focus</string>
     <string name="relax">Relax</string>
@@ -67,6 +74,7 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="share_nav_drawer">Share</string>
     <string name="send_nav_drawer">Send</string>
     <string name="device_connected">Device is Connected</string>
+    <string name="connect_device">Connect Device</string>
 
     <string name="filename_key">filename</string>
     <string name="title_activity_configs">ConfigsActivity</string>

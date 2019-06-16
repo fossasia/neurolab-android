@@ -5,8 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.hardware.usb.UsbManager;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
@@ -86,6 +88,16 @@ public class MainActivity extends AppCompatActivity
         SystemClock.sleep(launcherSleepTime);
         setTheme(R.style.AppTheme_NoActionBar);
         super.onCreate(savedInstanceState);
+
+        SharedPreferences sharedPreferences =
+                PreferenceManager.getDefaultSharedPreferences(this);
+        // Check if we need to display our OnBoardingActivity
+        if (!sharedPreferences.getBoolean(
+                OnBoardingActivity.getOnBoardingPrefKey(), false)) {
+            // The user hasn't seen the OnBoardingActivity yet, so show it
+            startActivity(new Intent(this, OnBoardingActivity.class));
+        }
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -171,7 +183,7 @@ public class MainActivity extends AppCompatActivity
             startProgramModeActivity(R.string.focus_toast, ProgramModeActivity.FOCUS_PROGRAM_MODE);
         } else if (id == R.id.nav_relax) {
             startProgramModeActivity(R.string.relax_toast, ProgramModeActivity.RELAX_PROGRAM_MODE);
-        } else if (id == R.id.nav_vj) {
+        } else if (id == R.id.nav_memory_graph) {
             startProgramModeActivity(R.string.mem_graph_toast, ProgramModeActivity.MEMORY_GRAPH_MODE);
         } else if (id == R.id.nav_share) {
 
