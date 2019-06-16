@@ -18,6 +18,8 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
+import java.util.ArrayList;
+
 import io.neurolab.R;
 import io.neurolab.main.MainActivity;
 
@@ -25,6 +27,20 @@ public class MemoryGraphActivity extends AppCompatActivity implements OnChartVal
 
     private LineChart memGraph;
     private Thread thread;
+    private String rawData;
+    private ArrayList eegDataValues;
+
+    private ArrayList parseDataForGraph(String data) {
+        ArrayList eegValues = new ArrayList();
+        int currDataStart = 0;
+        for (int i = 0; i <= data.length(); i++) {
+            if (data.charAt(i) == ',') {
+                eegValues.add(data.substring(currDataStart, i));
+                currDataStart = i + 1;
+            }
+        }
+        return eegValues;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,6 +49,12 @@ public class MemoryGraphActivity extends AppCompatActivity implements OnChartVal
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setTitle(R.string.mem_graph);
+
+        MainActivity mainActivity = new MainActivity();
+        rawData = mainActivity.getDeviceData();
+        if(rawData != null)
+        parseDataForGraph(rawData);
+
         memGraph = findViewById(R.id.mem_graph);
 
         memGraph.setOnChartValueSelectedListener(this);
@@ -114,7 +136,6 @@ public class MemoryGraphActivity extends AppCompatActivity implements OnChartVal
 
             // move to the latest entry
             memGraph.moveViewToX(data.getEntryCount());
-
         }
     }
 
@@ -183,5 +204,9 @@ public class MemoryGraphActivity extends AppCompatActivity implements OnChartVal
         super.onBackPressed();
         startActivity(new Intent(this, MainActivity.class));
         thread.interrupt();
+    }
+
+    public ArrayList getEegDataValues() {
+        return eegDataValues;
     }
 }
