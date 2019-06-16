@@ -67,6 +67,7 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="share_nav_drawer">Share</string>
     <string name="send_nav_drawer">Send</string>
     <string name="device_connected">Device is Connected</string>
+    <string name="connect_device">Connect Device</string>
 
     <string name="filename_key">filename</string>
     <string name="title_activity_configs">ConfigsActivity</string>

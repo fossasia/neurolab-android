@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity
             startProgramModeActivity(R.string.focus_toast, ProgramModeActivity.FOCUS_PROGRAM_MODE);
         } else if (id == R.id.nav_relax) {
             startProgramModeActivity(R.string.relax_toast, ProgramModeActivity.RELAX_PROGRAM_MODE);
-        } else if (id == R.id.nav_vj) {
+        } else if (id == R.id.nav_memory_graph) {
             startProgramModeActivity(R.string.mem_graph_toast, ProgramModeActivity.MEMORY_GRAPH_MODE);
         } else if (id == R.id.nav_share) {
 
