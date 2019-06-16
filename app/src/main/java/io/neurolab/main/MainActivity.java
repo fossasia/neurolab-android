@@ -1,8 +1,10 @@
 package io.neurolab.main;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -38,6 +40,16 @@ public class MainActivity extends AppCompatActivity
         SystemClock.sleep(launcherSleepTime);
         setTheme(R.style.AppTheme_NoActionBar);
         super.onCreate(savedInstanceState);
+
+        SharedPreferences sharedPreferences =
+                PreferenceManager.getDefaultSharedPreferences(this);
+        // Check if we need to display our OnBoardingActivity
+        if (!sharedPreferences.getBoolean(
+                OnBoardingActivity.getOnBoardingPrefKey(), false)) {
+            // The user hasn't seen the OnBoardingActivity yet, so show it
+            startActivity(new Intent(this, OnBoardingActivity.class));
+        }
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

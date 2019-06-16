@@ -43,7 +43,10 @@
             android:parentActivityName=".main.MainActivity" />
         <activity
             android:name=".program_modes.MemoryGraphActivity"
+            android:parentActivityName=".main.MainActivity"
             android:label="@string/mem_graph" />
+        <activity android:name=".main.OnBoardingActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
