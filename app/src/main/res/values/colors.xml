@@ -8,6 +8,9 @@
     <color name="color_view_background">#dad</color>
     <color name="color_white_background">#fff</color>
     <color name="home_activity_background">#F2F2F2</color>
+    <color name="on_boarding_activity_indicator_on">#616161</color>
+    <color name="on_boarding_activity_indicator_off">#bdbdbd</color>
+    <color name="on_boarding_activity_bg_color">#ffffff</color>
     <color name="seperator_color">#707070</color>
     <color name="yantra_one_color">#FFF852</color>
     <color name="yantra_two_color">#6DFBFB</color>
