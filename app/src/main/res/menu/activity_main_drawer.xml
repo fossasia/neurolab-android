@@ -21,6 +21,9 @@
                     android:id="@+id/nav_memory_graph"
                     android:title="@string/mem_graph" />
                 <item
+                    android:id="@+id/nav_meditation"
+                    android:title="Meditation" />
+                <item
                     android:id="@+id/nav_connect"
                     android:title="@string/connect_device" />
 
