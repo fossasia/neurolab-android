@@ -32,24 +32,24 @@ import java.io.UnsupportedEncodingException;
 import io.neurolab.R;
 import io.neurolab.communication.USBCommunicationHandler;
 import io.neurolab.program_modes.MeditationActivity;
+import io.neurolab.communication.bluetooth.BluetoothTestActivity;
 
 public class NeuroLab extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
-    private static UsbManager usbManager;
+    private static final String ACTION_USB_PERMISSION = "io.neurolab.USB_PERMISSION";
     public static UsbSerialDevice serialPort;
     public static IntentFilter intentFilter;
+    private static UsbManager usbManager;
+    private static int baudRate = 9600;
+    private static boolean deviceConnected;
+    private static String deviceData;
     private Menu menu;
     private int launcherSleepTime;
     private USBCommunicationHandler usbCommunicationHandler;
     private CardView focusButton;
     private CardView relaxButton;
     private CardView memGraphButton;
-    private static int baudRate = 9600;
-    private static boolean deviceConnected;
-
-    private static String deviceData;
-    private static final String ACTION_USB_PERMISSION = "io.neurolab.USB_PERMISSION";
     private UsbSerialInterface.UsbReadCallback readCallback = new UsbSerialInterface.UsbReadCallback() { //Defining a Callback which triggers whenever data is read.
         @Override
         public void onReceivedData(byte[] arg0) {
@@ -84,6 +84,18 @@ public class NeuroLab extends AppCompatActivity
             }
         }
     };
+
+    public static UsbManager getUsbManager() {
+        return usbManager;
+    }
+
+    public static String getDeviceData() {
+        return deviceData;
+    }
+
+    public static UsbSerialDevice getSerialPort() {
+        return serialPort;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -205,6 +217,8 @@ public class NeuroLab extends AppCompatActivity
 
         } else if (id == R.id.nav_test) {
             startActivity(new Intent(this, TestModeActivity.class));
+        } else if (id == R.id.bluetooth_test) {
+            startActivity(new Intent(this, BluetoothTestActivity.class));
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -226,18 +240,6 @@ public class NeuroLab extends AppCompatActivity
                 startProgramModeActivity(R.string.mem_graph_toast, ProgramModeActivity.MEMORY_GRAPH_MODE);
                 break;
         }
-    }
-
-    public static UsbManager getUsbManager() {
-        return usbManager;
-    }
-
-    public static String getDeviceData() {
-        return deviceData;
-    }
-
-    public static UsbSerialDevice getSerialPort() {
-        return serialPort;
     }
 
 }
