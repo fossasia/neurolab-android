@@ -89,7 +89,7 @@
                         android:adjustViewBounds="true"
                         android:alpha="0.3"
                         android:scaleType="fitXY"
-                        android:src="@drawable/bg_card_focus"
+                        app:srcCompat="@drawable/bg_card_focus"
                         android:tint="@android:color/white" />
 
                     <LinearLayout
@@ -106,7 +106,7 @@
                             android:layout_marginStart="@dimen/padding_medium"
                             android:layout_marginEnd="@dimen/padding_medium"
                             android:layout_weight="1.9"
-                            android:src="@drawable/ic_card_focus"
+                            app:srcCompat="@drawable/ic_card_focus"
                             android:tint="@android:color/white" />
 
                         <LinearLayout
@@ -169,7 +169,7 @@
                         android:adjustViewBounds="true"
                         android:alpha="0.3"
                         android:scaleType="fitXY"
-                        android:src="@drawable/bg_card_relax"
+                        app:srcCompat="@drawable/bg_card_relax"
                         android:tint="@android:color/white" />
 
                     <LinearLayout
@@ -186,7 +186,7 @@
                             android:layout_marginStart="@dimen/padding_medium"
                             android:layout_marginEnd="@dimen/padding_medium"
                             android:layout_weight="1.9"
-                            android:src="@drawable/ic_card_relax"
+                            app:srcCompat="@drawable/ic_card_relax"
                             android:tint="@android:color/white" />
 
                         <LinearLayout
@@ -249,7 +249,7 @@
                         android:adjustViewBounds="true"
                         android:alpha="0.3"
                         android:scaleType="fitXY"
-                        android:src="@drawable/bg_card_mem_graph"
+                        app:srcCompat="@drawable/bg_card_mem_graph"
                         android:tint="@android:color/white" />
 
                     <LinearLayout
@@ -266,7 +266,7 @@
                             android:layout_marginStart="@dimen/padding_medium"
                             android:layout_marginEnd="@dimen/padding_medium"
                             android:layout_weight="1.9"
-                            android:src="@drawable/ic_card_mem_graph"
+                            app:srcCompat="@drawable/ic_card_mem_graph"
                             android:tint="@android:color/white" />
 
                         <LinearLayout
