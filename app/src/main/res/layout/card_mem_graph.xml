@@ -20,7 +20,7 @@
             android:adjustViewBounds="true"
             android:alpha="0.3"
             android:scaleType="fitCenter"
-            android:src="@drawable/bg_card_mem_graph"
+            app:srcCompat="@drawable/bg_card_mem_graph"
             android:tint="#fff" />
 
         <LinearLayout
@@ -36,7 +36,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1.9"
-                android:src="@drawable/ic_card_mem_graph"
+                app:srcCompat="@drawable/ic_card_mem_graph"
                 android:tint="#fff" />
 
             <LinearLayout
