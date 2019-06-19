@@ -62,6 +62,6 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.0.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation 'com.github.felHR85:UsbSerial:6.0.6'
-    implementation 'com.github.AppIntro:AppIntro:4.2.3'
+    implementation 'com.github.AppIntro:AppIntro:v5.1.0'
     implementation 'org.jfree:jfreechart:1.0.14'
 }
