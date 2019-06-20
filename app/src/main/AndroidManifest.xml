@@ -47,6 +47,10 @@
             android:label="@string/mem_graph" />
         <activity android:name=".main.OnBoardingActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".program_modes.MeditationActivity"
+            android:parentActivityName=".main.MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/meditation_activity_label" />
     </application>
 
 </manifest>

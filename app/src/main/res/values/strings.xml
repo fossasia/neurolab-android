@@ -38,6 +38,11 @@
     <string name="on_boarding_frag3_title">Analyze</string>
     <string name="on_boarding_frag3_subtitle">Analyze and improve your mental health and mood.</string>
 
+    <string name="meditation_activity_label">Meditation</string>
+    <string name="meditation_activity_pause_btn_txt">Pause</string>
+    <string name="meditation_activity_play_btn_txt">Play</string>
+    <string name="meditation_activity_reset_btn_txt">Reset</string>
+
     <string name="programs">Programs</string>
     <string name="focus">Focus</string>
     <string name="relax">Relax</string>
