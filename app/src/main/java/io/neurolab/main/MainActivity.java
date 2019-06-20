@@ -31,6 +31,7 @@ import java.io.UnsupportedEncodingException;
 
 import io.neurolab.R;
 import io.neurolab.communication.CommunicationHandler;
+import io.neurolab.program_modes.MeditationActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -185,6 +186,8 @@ public class MainActivity extends AppCompatActivity
             startProgramModeActivity(R.string.relax_toast, ProgramModeActivity.RELAX_PROGRAM_MODE);
         } else if (id == R.id.nav_memory_graph) {
             startProgramModeActivity(R.string.mem_graph_toast, ProgramModeActivity.MEMORY_GRAPH_MODE);
+        } else if(id == R.id.nav_meditation){
+            startActivity(new Intent(this, MeditationActivity.class));
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
