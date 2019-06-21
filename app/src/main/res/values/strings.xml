@@ -74,6 +74,10 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="share_nav_drawer">Share</string>
     <string name="send_nav_drawer">Send</string>
     <string name="device_connected">Device is Connected</string>
+    <string name="import_dataset">Import Dataset</string>
+    <string name="perm_not_granted">Permission not granted</string>
+    <string name="import_message">Importing Data...</string>
+    <string name="import_csv">Import CSV File</string>
     <string name="connect_device">Connect Device</string>
 
     <string name="filename_key">filename</string>

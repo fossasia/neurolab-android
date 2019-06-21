@@ -15,7 +15,6 @@
                     android:title="@string/focus" />
                 <item
                     android:id="@+id/nav_relax"
-                    android:layout_height="match_parent"
                     android:title="@string/relax" />
                 <item
                     android:id="@+id/nav_memory_graph"
