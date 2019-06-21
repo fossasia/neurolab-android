@@ -35,6 +35,7 @@ android {
     }
     lintOptions {
         disable 'InvalidPackage'
+        abortOnError false
     }
 }
 
@@ -64,4 +65,5 @@ dependencies {
     implementation 'com.github.felHR85:UsbSerial:6.0.6'
     implementation 'com.github.AppIntro:AppIntro:4.2.3'
     implementation 'org.jfree:jfreechart:1.0.14'
+    implementation 'com.opencsv:opencsv:4.6'
 }
