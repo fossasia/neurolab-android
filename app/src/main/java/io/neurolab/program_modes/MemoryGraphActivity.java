@@ -34,7 +34,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import io.neurolab.R;
-import io.neurolab.main.MainActivity;
+import io.neurolab.main.NeuroLab;
 import io.neurolab.utilities.FilePathUtil;
 import io.neurolab.utilities.PermissionUtils;
 
@@ -120,7 +120,6 @@ public class MemoryGraphActivity extends AppCompatActivity implements OnChartVal
         xl.setEnabled(true);
 
         YAxis leftAxis = memGraph.getAxisLeft();
-        leftAxis.setTextColor(Color.WHITE);
         leftAxis.setDrawGridLines(true);
         leftAxis.setGridColor(Color.WHITE);
 
@@ -304,7 +303,7 @@ public class MemoryGraphActivity extends AppCompatActivity implements OnChartVal
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, NeuroLab.class));
         if (thread != null)
             thread.interrupt();
     }

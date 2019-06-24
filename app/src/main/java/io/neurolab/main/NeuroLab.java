@@ -4,8 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.hardware.usb.UsbManager;
 import android.content.SharedPreferences;
+import android.hardware.usb.UsbManager;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
@@ -30,26 +30,27 @@ import com.felhr.usbserial.UsbSerialInterface;
 import java.io.UnsupportedEncodingException;
 
 import io.neurolab.R;
-import io.neurolab.communication.CommunicationHandler;
+import io.neurolab.communication.USBCommunicationHandler;
 import io.neurolab.program_modes.MeditationActivity;
 
-public class MainActivity extends AppCompatActivity
+public class NeuroLab extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
+    private static UsbManager usbManager;
+    public static UsbSerialDevice serialPort;
+    public static IntentFilter intentFilter;
+    private Menu menu;
     private int launcherSleepTime;
-    private final String ACTION_USB_PERMISSION = "io.neurolab.USB_PERMISSION";
-
+    private USBCommunicationHandler usbCommunicationHandler;
     private CardView focusButton;
     private CardView relaxButton;
     private CardView memGraphButton;
-    private Menu menu;
+    private static int baudRate = 9600;
+    private static boolean deviceConnected;
 
-    private UsbManager usbManager;
-    private UsbSerialDevice serialPort;
-    private CommunicationHandler communicationHandler;
-    private String deviceData;
-
-    public UsbSerialInterface.UsbReadCallback readCallback = new UsbSerialInterface.UsbReadCallback() { //Defining a Callback which triggers whenever data is read.
+    private static String deviceData;
+    private static final String ACTION_USB_PERMISSION = "io.neurolab.USB_PERMISSION";
+    private UsbSerialInterface.UsbReadCallback readCallback = new UsbSerialInterface.UsbReadCallback() { //Defining a Callback which triggers whenever data is read.
         @Override
         public void onReceivedData(byte[] arg0) {
             try {
@@ -59,7 +60,8 @@ public class MainActivity extends AppCompatActivity
             }
         }
     };
-    public final BroadcastReceiver broadcastReceiver = new BroadcastReceiver() { //Broadcast Receiver to automatically start and stop the Serial connection.
+
+    private final BroadcastReceiver broadcastReceiver = new BroadcastReceiver() { //Broadcast Receiver to automatically start and stop the Serial connection.
         @Override
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
@@ -67,11 +69,10 @@ public class MainActivity extends AppCompatActivity
                     boolean granted =
                             intent.getExtras().getBoolean(UsbManager.EXTRA_PERMISSION_GRANTED);
                     if (granted) {
-                        if(communicationHandler.initializeSerialConnection()){
-                            serialPort = communicationHandler.getSerialPort();
+                        if (usbCommunicationHandler.initializeSerialConnection(baudRate)) {
+                            serialPort = usbCommunicationHandler.getSerialPort();
                             Toast.makeText(context, getResources().getString(R.string.connection_opened), Toast.LENGTH_SHORT).show();
-                            menu.getItem(0).setIcon(ContextCompat.getDrawable(context, R.drawable.ic_device_connected));
-                            menu.getItem(0).setTitle(getResources().getString(R.string.device_connected));
+                            deviceConnected = true;
                             serialPort.read(readCallback);
                         }
                     } else {
@@ -103,11 +104,11 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         usbManager = (UsbManager) getSystemService(this.USB_SERVICE);
-        IntentFilter intentFilter = new IntentFilter();
+        usbCommunicationHandler = USBCommunicationHandler.getInstance(this, usbManager);
+        intentFilter = new IntentFilter();
         // adding the possible USB intent actions.
         intentFilter.addAction(ACTION_USB_PERMISSION);
         registerReceiver(broadcastReceiver, intentFilter);
-        communicationHandler = new CommunicationHandler(this, usbManager);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -131,7 +132,7 @@ public class MainActivity extends AppCompatActivity
 
     private void startProgramModeActivity(int toastMessageID, int mode) {
         //Store Settings
-        Intent intent = new Intent(MainActivity.this, ProgramModeActivity.class);
+        Intent intent = new Intent(NeuroLab.this, ProgramModeActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt(ProgramModeActivity.INTENT_KEY_PROGRAM_MODE, mode);
         intent.putExtras(bundle);
@@ -153,6 +154,7 @@ public class MainActivity extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         this.menu = menu;
+        changeDeviceIcon();
         return true;
     }
 
@@ -165,13 +167,22 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+            startActivity(new Intent(NeuroLab.this, SettingsActivity.class));
             return true;
         } else if (id == R.id.action_about_us) {
-            startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
+            startActivity(new Intent(NeuroLab.this, AboutUsActivity.class));
             return true;
+        } else if (id == R.id.device_icon) {
+            changeDeviceIcon();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void changeDeviceIcon() {
+        if (deviceConnected) {
+            menu.getItem(0).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_device_connected));
+            menu.getItem(0).setTitle(getResources().getString(R.string.device_connected));
+        }
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -186,7 +197,7 @@ public class MainActivity extends AppCompatActivity
             startProgramModeActivity(R.string.relax_toast, ProgramModeActivity.RELAX_PROGRAM_MODE);
         } else if (id == R.id.nav_memory_graph) {
             startProgramModeActivity(R.string.mem_graph_toast, ProgramModeActivity.MEMORY_GRAPH_MODE);
-        } else if(id == R.id.nav_meditation){
+        } else if (id == R.id.nav_meditation) {
             startActivity(new Intent(this, MeditationActivity.class));
         } else if (id == R.id.nav_share) {
 
@@ -217,7 +228,16 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public String getDeviceData() {
+    public static UsbManager getUsbManager() {
+        return usbManager;
+    }
+
+    public static String getDeviceData() {
         return deviceData;
     }
+
+    public static UsbSerialDevice getSerialPort() {
+        return serialPort;
+    }
+
 }
