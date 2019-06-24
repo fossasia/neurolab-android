@@ -5,10 +5,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import io.neurolab.R;
+import io.neurolab.fragments.NeuroSettingsFragment;
 
 public class TestModeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -47,6 +51,10 @@ public class TestModeActivity extends AppCompatActivity implements AdapterView.O
     private UsbDeviceConnection connection;
     private int baudRate = 9600;
     private static final int ARDUINO_DEVICE_ID = 0x2341;
+
+    private static final int NUM_CHANNELS_DEFAULT = 2;
+    private static final int BIN_NUMBER_DEFAULT = 4;
+    private static final int SAMPLES_PER_SECOND_DEFAULT = 1007;
 
     private final String ACTION_USB_PERMISSION = "io.neurolab.USB_PERMISSION";
 
@@ -74,14 +82,15 @@ public class TestModeActivity extends AppCompatActivity implements AdapterView.O
                         connection = usbManager.openDevice(device);
                         serialPort = UsbSerialDevice.createUsbSerialDevice(device, connection);
                         if (serialPort != null) {
-                            if (serialPort.open()) { //Set Serial Connection Parameters.
-                                setUiEnabled(true); //Enable Buttons in UI
+                            if (serialPort.open()) { // Set Serial Connection Parameters.
+                                setUiEnabled(true); // Enable Buttons in UI
                                 serialPort.setBaudRate(baudRate);
                                 serialPort.setDataBits(UsbSerialInterface.DATA_BITS_8);
                                 serialPort.setStopBits(UsbSerialInterface.STOP_BITS_1);
                                 serialPort.setParity(UsbSerialInterface.PARITY_NONE);
                                 serialPort.setFlowControl(UsbSerialInterface.FLOW_CONTROL_OFF);
-                                serialPort.read(readCallback); //
+                                serialPort.read(readCallback);
+                                feedConfigSetToArduino(); // Once the connection is all set up and socket connected
                                 updateView(displayView, "Serial Connection Opened!\n");
 
                             } else {
@@ -99,6 +108,30 @@ public class TestModeActivity extends AppCompatActivity implements AdapterView.O
             }
         };
     };
+
+    private void feedConfigSetToArduino(){
+        // Grabbing the application shared preference and the values. Have added the default values for the edge case when user
+        // lets say starts up the application for the first time and directly goes to the Test Mode Activity. Shared preferences would
+        // not be initialized in that case.
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        String channels = sharedPreferences.getString(NeuroSettingsFragment.KEY_CHANNELS, Integer.toString(NUM_CHANNELS_DEFAULT));
+        String samplesPerSecond = sharedPreferences.getString(NeuroSettingsFragment.KEY_SAMPLES, Integer.toString(SAMPLES_PER_SECOND_DEFAULT));
+        String bins = sharedPreferences.getString(NeuroSettingsFragment.KEY_BINS, Integer.toString(BIN_NUMBER_DEFAULT));
+
+        // Adding space as a delimeter for arduino to parse them individually.
+        String configString = channels + " " + samplesPerSecond + " " + bins;
+
+        // Writing the config string to arduino
+        serialPort.write(configString.getBytes());
+
+        // Snackbar for validation
+        Snackbar snackbar = Snackbar.make(findViewById(R.id.parent_layout_coordinator_test_mode),
+                "Feeding configuration to Arduino: " +
+                        "Channels = " + channels + ", " + "Samples Per Second = " + samplesPerSecond +
+                        ", " + "Bin Number = " + bins, Snackbar.LENGTH_LONG);
+        snackbar.show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

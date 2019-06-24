@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <EditTextPreference
-        android:defaultValue="3"
+        android:defaultValue="1007"
         android:digits="0123456789"
         android:inputType="numberDecimal"
         android:key="@string/samples_pref_key"

@@ -4,7 +4,7 @@ public class SerialSettings {
 
     private String address = "/dev/ttyACM0";
 
-    private double baudrate = 230400;
+    private double baudrate = 9600;
 
     private double message0Min = -0.11;
     private double message1Min = -0.88;
