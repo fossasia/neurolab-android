@@ -2,59 +2,59 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.neurolab">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <uses-feature android:name="android.hardware.usb.host" />
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:hardwareAccelerated="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".main.TestModeActivity"
             android:label="@string/title_activity_test_mode"
-            android:parentActivityName=".main.MainActivity">
+            android:parentActivityName=".main.NeuroLab"></activity>
+        <activity
+            android:name=".main.ProgramModeActivity"
+            android:parentActivityName=".main.NeuroLab" />
+        <activity
+            android:name=".main.AboutUsActivity"
+            android:label="@string/about_us"
+            android:parentActivityName=".main.NeuroLab" />
+        <activity
+            android:name=".main.NeuroLab"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.Launcher">
             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <meta-data
                 android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
                 android:resource="@xml/device_filter" />
         </activity>
         <activity
-            android:name=".main.ProgramModeActivity"
-            android:parentActivityName=".main.MainActivity" />
-        <activity
-            android:name=".main.AboutUsActivity"
-            android:label="@string/about_us"
-            android:parentActivityName=".main.MainActivity" />
-        <activity
-            android:name=".main.MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.Launcher">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".main.SettingsActivity"
-            android:parentActivityName=".main.MainActivity" />
+            android:parentActivityName=".main.NeuroLab" />
         <activity
             android:name=".program_modes.MemoryGraphActivity"
-            android:parentActivityName=".main.MainActivity"
-            android:label="@string/mem_graph" />
-        <activity android:name=".main.OnBoardingActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".program_modes.MeditationActivity"
-            android:parentActivityName=".main.MainActivity"
+            android:label="@string/mem_graph"
+            android:parentActivityName=".main.NeuroLab" />
+        <activity
+            android:name=".main.OnBoardingActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".program_modes.MeditationActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/meditation_activity_label" />
+            android:label="@string/meditation_activity_label"
+            android:parentActivityName=".main.NeuroLab" />
     </application>
 
 </manifest>
