@@ -14,22 +14,34 @@ import com.felhr.usbserial.UsbSerialInterface;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CommunicationHandler {
+public class USBCommunicationHandler {
 
     private UsbManager usbManager;
     private UsbDevice device;
     private UsbSerialDevice serialPort;
     private UsbDeviceConnection connection;
-    private int baudRate = 9600;
+    private static USBCommunicationHandler usbCommunicationHandler = null;
 
     private static final int ARDUINO_DEVICE_ID = 0x2341;
     private final String ACTION_USB_PERMISSION = "io.neurolab.USB_PERMISSION";
 
-    public CommunicationHandler(Context context, UsbManager usbManager) {
+    public static USBCommunicationHandler getInstance(Context context, UsbManager usbManager) {
+        if (usbCommunicationHandler == null)
+            usbCommunicationHandler = new USBCommunicationHandler(context, usbManager);
+
+        return usbCommunicationHandler;
+    }
+
+    private USBCommunicationHandler(Context context, UsbManager usbManager) {
         this.usbManager = usbManager;
         searchForArduinoDevice(context);
     }
 
+    /*
+        Searches for all connected devices and then check if the vendor ID of the Arduino
+        matches that of a connected device.
+        If found, permission must be requested from the user.
+     */
     private void searchForArduinoDevice(Context context) {
         HashMap usbDevices = usbManager.getDeviceList();
 
@@ -55,7 +67,7 @@ public class CommunicationHandler {
         }
     }
 
-    public boolean initializeSerialConnection() {
+    public boolean initializeSerialConnection(int baudRate) {
         connection = usbManager.openDevice(device);
         serialPort = UsbSerialDevice.createUsbSerialDevice(device, connection);
         if (serialPort != null) {
@@ -73,10 +85,19 @@ public class CommunicationHandler {
             Log.d("SERIAL", "PORT IS NULL");
             return false;
         }
+        setSerialPort(serialPort);
         return true;
+    }
+
+    public void setSerialPort(UsbSerialDevice serialPort) {
+        this.serialPort = serialPort;
     }
 
     public UsbSerialDevice getSerialPort() {
         return serialPort;
+    }
+
+    public static int getArduinoDeviceId() {
+        return ARDUINO_DEVICE_ID;
     }
 }
