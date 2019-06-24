@@ -240,7 +240,6 @@ public class DefaultFFTData implements FFTData {
         return this.trainingFactor;
     }
 
-    @Override
     public void updateFFTData(double[][] fftData) {
         for (int c = 0; c < numChannels; c++) {
             if ((peakToPeakCheck) && (packagePenalty[c] > 0)) {
@@ -254,17 +253,21 @@ public class DefaultFFTData implements FFTData {
             for (int b = 0; b < bins; b++) {
 
                 currentFFTBins[b][c] = 0d;
-                for (int i = binRanges[(b * 2)]; i <= binRanges[(b * 2) + 1]; i++)
-                    currentFFTBins[b][c] += currentFFTs[c][i];
+                for (int i = binRanges[(b * 2)]; i <= binRanges[(b * 2) + 1]; i++) {
+                    if (i < currentFFTs.length)
+                        currentFFTBins[b][c] += currentFFTs[c][i];
+                }
+
 
                 currentFFTBins[b][c] /= binRangesAmount[b];
 
-                //
                 if (meanFFTValueCount[b][c] < maxSampleCount)
                     meanFFTValueCount[b][c] += 1;
                 else
                     meanFFTValueCount[b][c] = maxSampleCount;
-//				System.out.println("max sample count:" + maxSampleCount);
+
+                if (meanFFTValueCount[b][c] <= 1)
+                    meanFFTValueCount[b][c] = 2; //min default
 
                 //long-term mean
                 meanFFTBins[b][c] = (meanFFTBins[b][c] * trainingFactor) + MathBasics.updateMean(meanFFTBins[b][c], meanFFTValueCount[b][c], currentFFTBins[b][c]) * (1d - trainingFactor);
@@ -296,9 +299,14 @@ public class DefaultFFTData implements FFTData {
         System.out.println("setting " + this.bins + " bins ; bin ranges: " + binRanges.length);
 
         for (int i = 0; i < this.binRangesAmount.length; i++)
-            this.binRangesAmount[i] = binRanges[i * 2 + 1] - binRanges[i * 2] + 1;
+            this.binRangesAmount[i] = (binRanges[i * 2 + 1] - binRanges[i * 2] + 1) * maxSampleCount + (int) peakToPeakLimit;
 
         init(this.windowSize, this.bins, this.numChannels);
+    }
+
+    public int[] getBinRangeValues() {
+        setBinRanges(binRanges);
+        return binRangesAmount;
     }
 
     public void reset() {
@@ -309,6 +317,4 @@ public class DefaultFFTData implements FFTData {
 //				meanFFTValueCount[b][c] = 1;
 //		}
     }
-
-
 }

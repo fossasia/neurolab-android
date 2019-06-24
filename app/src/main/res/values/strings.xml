@@ -84,6 +84,21 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="import_message">Importing Data...</string>
     <string name="import_csv">Import CSV File</string>
     <string name="connect_device">Connect Device</string>
+    <string name="calmness_label">Calmness Score:</string>
+    <string name="anger_label">Anger score:</string>
+    <string name="concentration_label">Concentration score:</string>
+    <string name="program_info_label">Program Info</string>
+    <string name="program_info">Memory Graph is the program mode where you can import your datasets and analyze the data in the form of real time graphs, statistics or score and spectral density graphs. </string>
+    <string name="sleep_label">Sleep score:</string>
+    <string name="delta">Delta:</string>
+    <string name="theta">Theta:</string>
+    <string name="low_alpha">Low Alpha:</string>
+    <string name="high_alpha">High Alpha:</string>
+    <string name="low_beta">Low Beta:</string>
+    <string name="high_beta">High Beta:</string>
+    <string name="statistics">Statistics</string>
+    <string name="spectrum">Spectrum</string>
+    <string name="eeg_data_label">EEG data(in mV)</string>
 
     <string name="filename_key">filename</string>
     <string name="title_activity_configs">ConfigsActivity</string>
@@ -92,5 +107,5 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="audio_feedback_pref_key">audioFeedback</string>
     <string name="bit24_pref_key">bit24</string>
     <string name="advanced_mode_pref_key">advancedMode</string>
-    <string name="axis_desc_time">Time</string>
+    <string name="axis_desc_time">Time(in MilliSeconds)</string>
 </resources>

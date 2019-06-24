@@ -18,5 +18,6 @@
     <color name="focus_screen_bg">#0a0a0a</color>
     <color name="side_nav_start_color">#6c60a9</color>
     <color name="side_nav_end_color">#7367ee</color>
+    <color name="white_trans">#99FFFFFF</color>
     <color name="memory_graph_background">#673AB7</color>
 </resources>

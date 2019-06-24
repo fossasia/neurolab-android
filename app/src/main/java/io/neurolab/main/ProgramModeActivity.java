@@ -9,8 +9,8 @@ import android.view.WindowManager;
 
 import io.neurolab.R;
 import io.neurolab.fragments.FocusVisualFragment;
-import io.neurolab.program_modes.MemoryGraphActivity;
 import io.neurolab.fragments.RelaxVisualFragment;
+import io.neurolab.program_modes.MemoryGraphParent;
 
 public class ProgramModeActivity extends AppCompatActivity {
 
@@ -64,7 +64,7 @@ public class ProgramModeActivity extends AppCompatActivity {
                 break;
             case MEMORY_GRAPH_MODE:
                 setTitle(R.string.mem_graph);
-                startActivity(new Intent(this, MemoryGraphActivity.class));
+                startActivity(new Intent(this, MemoryGraphParent.class));
                 finish();
                 break;
         }

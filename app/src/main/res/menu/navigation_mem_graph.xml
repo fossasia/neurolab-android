@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_nav_graph"
+        android:title="@string/mem_graph"
+        android:icon="@drawable/ic_graph" />
+
+    <item
+        android:id="@+id/bottom_nav_stats"
+        android:title="@string/statistics"
+        android:icon="@drawable/ic_stats" />
+
+    <item
+        android:id="@+id/bottom_nav_spectrum"
+        android:title="@string/spectrum"
+        android:icon="@drawable/ic_spectrum" />
+
+</menu>

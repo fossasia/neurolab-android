@@ -16,10 +16,17 @@
     <dimen name="padding_large">16dp</dimen>
     <dimen name="padding_extra_large">32dp</dimen>
     <dimen name="padding_extra_larger">64dp</dimen>
+    <dimen name="padding_mem_graph">54dp</dimen>
+    <dimen name="margin_large">60dp</dimen>
+    <dimen name="margin_extra_large">248dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
 
     <!-- card details -->
     <dimen name="card_elevation">3dp</dimen>
     <dimen name="card_corner_radius">3dp</dimen>
+    <dimen name="card_radius_none">0dp</dimen>
+    <dimen name="card_margin_large">30dp</dimen>
+    <dimen name="card_elevation_medium">10dp</dimen>
 
     <!--text size-->
     <dimen name="text_size_extra_large">32sp</dimen>
