@@ -9,4 +9,11 @@
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_import" />
 
+    <item
+        android:id="@+id/info_program"
+        android:title="@string/program_info_label"
+        android:orderInCategory="200"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_info" />
+
 </menu>

@@ -9,6 +9,7 @@ public class GenericFeedbackSettings extends FeedbackSettings {
     protected int[] binRanges = {4, 7, 8, 11, 12, 17, 18, 35};
     protected int[] binRangesAmount = {4, 4, 6, 18};
     private String[] binlabels;
+    private double[] feedbackValues;
 
     @Override
     public String getFeedbackSettingsName() {
@@ -24,8 +25,27 @@ public class GenericFeedbackSettings extends FeedbackSettings {
         binlabels = this.binLabels;
     }
 
-    @Override
+    public GenericFeedbackSettings(DefaultFFTData fftData) {
+        super(fftData, null, null);
+
+        this.binLabels = new String[]{"theta", "lowalpha", "highalpha", "beta"};
+        this.fftData.setBinRanges(binRanges);
+        binlabels = this.fftData.getBinLabels();
+        binlabels = this.binLabels;
+
+        updateFeedback();
+    }
+
+    public double[] getFeedbackValues() {
+        return feedbackValues;
+    }
+
+    public void setFeedbackValues(double[] feedbackValues) {
+        this.feedbackValues = feedbackValues;
+    }
+
     public void updateFeedback() {
+        feedbackValues = new double[fftData.getNumChannels()];
 
         for (int c = 0; c < fftData.getNumChannels(); c++)
             for (int b = 0; b < fftData.getBins(); b++)
@@ -40,10 +60,12 @@ public class GenericFeedbackSettings extends FeedbackSettings {
                     rewardBin *= -2d;
                 currentFeedback += rewardBin;
             }
+            feedbackValues[c] = currentFeedback;
             currentFeedback /= (double) binRangesAmount.length;
             currentFeedback /= (float) (fftData.getNumChannels());
             lastFeedback = currentFeedback;
         }
+        setFeedbackValues(feedbackValues);
         super.updateFeedback();
     }
 
