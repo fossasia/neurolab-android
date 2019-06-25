@@ -7,6 +7,9 @@
 
     <uses-feature android:name="android.hardware.usb.host" />
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
@@ -53,6 +56,9 @@
             android:label="@string/meditation_activity_label"
             android:parentActivityName=".main.NeuroLab" />
         <activity android:name=".program_modes.MemoryGraphParent"></activity>
+        <activity
+            android:name=".communication.bluetooth.BluetoothTestActivity"
+            android:parentActivityName=".main.NeuroLab" />
     </application>
 
 </manifest>

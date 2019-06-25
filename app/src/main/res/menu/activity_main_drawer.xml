@@ -9,7 +9,9 @@
                 <item
                     android:id="@+id/nav_test"
                     android:title="@string/title_activity_test_mode" />
-
+                <item
+                    android:id="@+id/bluetooth_test"
+                    android:title="Bluetooth Test" />
                 <item
                     android:id="@+id/nav_focus"
                     android:title="@string/focus" />
