@@ -121,9 +121,9 @@ public class NeuroLab extends AppCompatActivity
 
         // Setting Listeners of the settings checkboxes
 
-        focusButton = findViewById(R.id.btn_focus);
-        relaxButton = findViewById(R.id.btn_relax);
-        memGraphButton = findViewById(R.id.btn_mem_graph);
+        focusButton = findViewById(R.id.focus_card);
+        relaxButton = findViewById(R.id.relax_card);
+        memGraphButton = findViewById(R.id.mem_graph_card);
 
         focusButton.setOnClickListener(this);
         relaxButton.setOnClickListener(this);
@@ -216,13 +216,13 @@ public class NeuroLab extends AppCompatActivity
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
-            case R.id.btn_focus:
+            case R.id.focus_card:
                 startProgramModeActivity(R.string.focus_toast, ProgramModeActivity.FOCUS_PROGRAM_MODE);
                 break;
-            case R.id.btn_relax:
+            case R.id.relax_card:
                 startProgramModeActivity(R.string.relax_toast, ProgramModeActivity.RELAX_PROGRAM_MODE);
                 break;
-            case R.id.btn_mem_graph:
+            case R.id.mem_graph_card:
                 startProgramModeActivity(R.string.mem_graph_toast, ProgramModeActivity.MEMORY_GRAPH_MODE);
                 break;
         }

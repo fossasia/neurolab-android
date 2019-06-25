@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/relax_card"
+    android:id="@+id/meditation_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/card_main_margin_lr"
-    android:layout_marginLeft="@dimen/card_main_margin_lr"
     android:layout_marginTop="@dimen/card_main_margin_tb"
     android:layout_marginEnd="@dimen/card_main_margin_lr"
-    android:layout_marginRight="@dimen/card_main_margin_lr"
     android:layout_marginBottom="@dimen/card_main_margin_tb"
     app:cardCornerRadius="@dimen/card_main_corner"
     app:cardElevation="@dimen/card_main_elevation"
@@ -17,7 +15,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/gradient_relax">
+        android:background="@drawable/gradient_meditation">
 
         <ImageView
             android:layout_width="match_parent"
@@ -26,7 +24,7 @@
             android:alpha="0.3"
             android:scaleType="fitCenter"
             android:tint="#fff"
-            app:srcCompat="@drawable/bg_card_relax" />
+            app:srcCompat="@drawable/bg_card_meditation" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,7 +40,7 @@
                 android:layout_marginEnd="@dimen/image_main_layout_margin"
                 android:layout_weight="1.9"
                 android:tint="#fff"
-                app:srcCompat="@drawable/ic_card_relax" />
+                app:srcCompat="@drawable/ic_card_meditation" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -51,23 +49,23 @@
                 android:orientation="vertical">
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/relax_title"
+                    android:id="@+id/meditation_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingStart="@dimen/main_content_padding_textview"
                     android:paddingTop="@dimen/main_content_padding_textview"
                     android:paddingEnd="@dimen/main_content_padding_textview"
                     android:paddingBottom="0dip"
-                    android:text="@string/relax"
+                    android:text="@string/meditation"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                     android:textColor="#fff" />
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/relax_subtitle"
+                    android:id="@+id/meditation_subtitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/main_content_padding_textview"
-                    android:text="@string/relax_desc"
+                    android:text="@string/meditation_desc"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="#fff" />
 

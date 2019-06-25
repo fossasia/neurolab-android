@@ -4,10 +4,13 @@
     android:id="@+id/focus_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="12.0dip"
-    app:cardElevation="8.0dip"
-    app:cardPreventCornerOverlap="false"
-    app:cardUseCompatPadding="true">
+    android:layout_marginStart="@dimen/card_main_margin_lr"
+    android:layout_marginTop="@dimen/card_main_margin_tb"
+    android:layout_marginEnd="@dimen/card_main_margin_lr"
+    android:layout_marginBottom="@dimen/card_main_margin_tb"
+    app:cardCornerRadius="@dimen/card_main_corner"
+    app:cardElevation="@dimen/card_main_elevation"
+    app:cardPreventCornerOverlap="false">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,24 +23,24 @@
             android:adjustViewBounds="true"
             android:alpha="0.3"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/bg_card_focus"
-            android:tint="#fff" />
+            android:tint="#fff"
+            app:srcCompat="@drawable/bg_card_focus" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:orientation="horizontal"
-            android:padding="16.0dip">
+            android:padding="@dimen/card_main_layout_padding">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginStart="@dimen/image_main_layout_margin"
+                android:layout_marginEnd="@dimen/image_main_layout_margin"
                 android:layout_weight="1.9"
-                app:srcCompat="@drawable/ic_card_focus"
-                android:tint="#fff" />
+                android:tint="#fff"
+                app:srcCompat="@drawable/ic_card_focus" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -49,11 +52,11 @@
                     android:id="@+id/focus_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="12.0dip"
-                    android:paddingTop="12.0dip"
-                    android:paddingEnd="12.0dip"
+                    android:paddingStart="@dimen/main_content_padding_textview"
+                    android:paddingTop="@dimen/main_content_padding_textview"
+                    android:paddingEnd="@dimen/main_content_padding_textview"
                     android:paddingBottom="0dip"
-                    android:text="Focus"
+                    android:text="@string/focus"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                     android:textColor="#fff" />
 
@@ -61,8 +64,8 @@
                     android:id="@+id/focus_subtitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="12.0dip"
-                    android:text="one of the fixed points that with the corresponding directrix defines a conic section"
+                    android:padding="@dimen/main_content_padding_textview"
+                    android:text="@string/focus_desc"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="#fff" />
 
