@@ -88,7 +88,7 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
 
         permission = PermissionUtils.checkRuntimePermissions(this, READ_WRITE_PERMISSIONS);
         initializeMemGraph(memGraph);
-        if(StatisticsFragment.parsedData != null){
+        if (StatisticsFragment.parsedData != null) {
             parsedData = StatisticsFragment.parsedData;
             plotGraph();
         }
@@ -144,6 +144,7 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         xl.setEnabled(true);
 
         YAxis leftAxis = memGraph.getAxisLeft();
+        leftAxis.setTextColor(Color.WHITE);
         leftAxis.setDrawGridLines(true);
         leftAxis.setDrawTopYLabelEntry(true);
         leftAxis.setGridColor(Color.WHITE);
@@ -153,7 +154,6 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
     }
 
     private void addEntry(int i) {
-
         LineData data = memGraph.getData();
         Float currPlotValue;
 
@@ -199,9 +199,8 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         LineDataSet set = new LineDataSet(null, getResources().getString(R.string.eeg_data_label));
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
         set.setColor(Color.GREEN);
-        set.setCircleColor(Color.WHITE);
+        set.setDrawCircles(false);
         set.setLineWidth(2f);
-        set.setCircleRadius(4f);
         set.setFillAlpha(65);
         set.setFillColor(Color.GREEN);
         set.setHighLightColor(Color.rgb(244, 117, 117));
@@ -219,14 +218,17 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
             thread.interrupt();
 
         thread = new Thread(() -> {
-            for (int i = 0; i < parsedData.length / 4; i++) {
-                int dataIndex = i;
-                addEntry(dataIndex);
-
-                try {
-                    Thread.sleep(25);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+            int i = 0;
+            while (parsedData != null) {
+                if (i < parsedData.length / 4) {
+                    int dataIndex = i;
+                    addEntry(dataIndex);
+                    i++;
+                    try {
+                        Thread.sleep(25);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
@@ -292,7 +294,7 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
 
     private void importData(String path) {
         if (permission) {
-            if(StatisticsFragment.parsedData == null) {
+            if (StatisticsFragment.parsedData == null || parsedData == null) {
                 progressDialog.show();
                 ParseDataAsync parseDataAsync = new ParseDataAsync(path);
                 parseDataAsync.execute();
@@ -315,7 +317,7 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         if (id == R.id.import_data) {
             getRuntimePermissions();
             selectCSVFile();
-        } else if(id == R.id.info_program) {
+        } else if (id == R.id.info_program) {
             AlertDialog.Builder progress = new AlertDialog.Builder(getContext());
             progress.setCancelable(true);
             progress.setTitle(R.string.program_info_label);
@@ -323,6 +325,9 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
             AlertDialog infoDialog = progress.create();
             infoDialog.show();
 
+        } else if (id == R.id.stop_data) {
+            parsedData = null;
+            Toast.makeText(getContext(), "Stopped", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
     }

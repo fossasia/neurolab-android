@@ -98,7 +98,8 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="high_beta">High Beta:</string>
     <string name="statistics">Statistics</string>
     <string name="spectrum">Spectrum</string>
-    <string name="eeg_data_label">EEG data(in mV)</string>
+    <string name="eeg_data_label">EEG data (mV)</string>
+    <string name="stop_graph">Stop Memory Graph</string>
 
     <string name="filename_key">filename</string>
     <string name="title_activity_configs">ConfigsActivity</string>
@@ -107,7 +108,7 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="audio_feedback_pref_key">audioFeedback</string>
     <string name="bit24_pref_key">bit24</string>
     <string name="advanced_mode_pref_key">advancedMode</string>
-    <string name="axis_desc_time">Time(in MilliSeconds)</string>
+    <string name="axis_desc_time">Time (MilliSeconds)</string>
     <string name="meditation">Meditation</string>
     <string name="meditation_desc">to (cause someone to) become less active and more calm and happy</string>
 </resources>
