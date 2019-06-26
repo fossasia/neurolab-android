@@ -154,6 +154,7 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
     }
 
     private void addEntry(int i) {
+
         LineData data = memGraph.getData();
         Float currPlotValue;
 
