@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_medium"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/card_margin_large"
+            android:layout_height="@dimen/card_margin_large"
+            android:src="@android:color/holo_red_dark"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_small"
+            android:textColor="@android:color/black"
+            android:text="@string/anger_range"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_medium"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/card_margin_large"
+            android:layout_height="@dimen/card_margin_large"
+            android:src="@color/calm_green"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_small"
+            android:textColor="@android:color/black"
+            android:text="@string/calm_range"/>
+
+    </LinearLayout>
+
+</LinearLayout>
