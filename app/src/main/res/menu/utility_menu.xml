@@ -10,9 +10,16 @@
         android:icon="@drawable/ic_import" />
 
     <item
+        android:id="@+id/stop_data"
+        android:title="@string/stop_graph"
+        android:orderInCategory="200"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_stop" />
+
+    <item
         android:id="@+id/info_program"
         android:title="@string/program_info_label"
-        android:orderInCategory="200"
+        android:orderInCategory="300"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_info" />
 
