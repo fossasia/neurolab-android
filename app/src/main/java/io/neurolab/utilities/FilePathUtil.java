@@ -6,10 +6,37 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 
+import java.io.File;
+
 public class FilePathUtil {
+
+    public static final String CSV_DIRECTORY = "NeuroLab";
 
     public static String getRealPath(Context context, Uri fileUri) {
         return getRealPathFromURI(context, fileUri);
+    }
+
+    public static void setupPath() {
+        File csvDirectory = new File(
+                Environment.getExternalStorageDirectory().getAbsolutePath() +
+                        File.separator + CSV_DIRECTORY);
+        if (!csvDirectory.exists()) {
+            try {
+                csvDirectory.mkdir();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        File categoryDirectory = new File(
+                Environment.getExternalStorageDirectory().getAbsolutePath() +
+                        File.separator + CSV_DIRECTORY);
+        if (!categoryDirectory.exists()) {
+            try {
+                categoryDirectory.mkdir();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private static String getRealPathFromURI(final Context context, final Uri uri) {
