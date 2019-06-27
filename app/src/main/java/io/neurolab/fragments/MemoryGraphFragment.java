@@ -51,6 +51,8 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
     private AlertDialog progressDialog;
     private TextView eegLabelView;
     private String[] parsedData;
+    private boolean isPlaying = false;
+    private Menu menu;
     private ArrayList<String[]> rawData;
     private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT = 1;
     private float maxEEGValue = 9000f;
@@ -294,15 +296,35 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
     }
 
     private void importData(String path) {
-        if (permission) {
-            if (StatisticsFragment.parsedData == null || parsedData == null) {
-                progressDialog.show();
-                ParseDataAsync parseDataAsync = new ParseDataAsync(path);
-                parseDataAsync.execute();
-            }
+        if (permission && (StatisticsFragment.parsedData == null || parsedData == null)) {
+            isPlaying = true;
+            toggleMenuItem(menu, isPlaying);
+            progressDialog.show();
+            ParseDataAsync parseDataAsync = new ParseDataAsync(path);
+            parseDataAsync.execute();
         } else {
             getRuntimePermissions();
         }
+    }
+
+    /**
+     * Toggle menu items.
+     *
+     * @param menu
+     * @param isPlaying
+     */
+    private void toggleMenuItem(Menu menu, boolean isPlaying) {
+        MenuItem play = menu.findItem(R.id.play_graph);
+        play.setVisible(!isPlaying);
+        MenuItem stop = menu.findItem(R.id.stop_data);
+        stop.setVisible(isPlaying);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        this.menu = menu;
+        toggleMenuItem(menu, !isPlaying);
     }
 
     @Override
@@ -329,6 +351,11 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         } else if (id == R.id.stop_data) {
             parsedData = null;
             Toast.makeText(getContext(), "Stopped", Toast.LENGTH_SHORT).show();
+            toggleMenuItem(menu, !isPlaying);
+        } else if (id == R.id.play_graph && (parsedData == null && StatisticsFragment.parsedData != null)) {
+            parsedData = StatisticsFragment.parsedData;
+            plotGraph();
+            toggleMenuItem(menu, isPlaying);
         }
         return super.onOptionsItemSelected(item);
     }
