@@ -99,6 +99,7 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="statistics">Statistics</string>
     <string name="spectrum">Spectrum</string>
     <string name="eeg_data_label">EEG data (mV)</string>
+    <string name="play_graph">Play Graph</string>
     <string name="stop_graph">Stop Memory Graph</string>
 
     <string name="filename_key">filename</string>
