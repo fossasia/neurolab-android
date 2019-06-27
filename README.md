@@ -18,9 +18,26 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
 
 ## Screenshots
 <table>
-        <tr>
-<td><img src = "https://user-images.githubusercontent.com/20669217/55556050-432cb580-5704-11e9-85dd-d223c16d7a38.png" height = "500" width="250"></td>
+        
+  <tr>
+  <td><img src = "/docs/images/start_screen_1.png" height = "500" width="250"></td>
+
+  <td><img src = "/docs/images/start_screen_2.png" height = "500" width="250"></td>  
+
+  <td><img src = "/docs/images/start_screen_3.png" height = "500" width="250"></td>
   </tr>
+
+  <tr>
+  <td><img src = "/docs/images/Demo.gif" height = "500" width="250"></td>
+  <td><img src = "/docs/images/home_screen.png" height = "500" width="250"></td>
+  <td><img src = "/docs/images/nav_menu.png" height = "500" width="250"></td>
+  </tr>
+
+  <tr>
+  <td><img src = "/docs/images/about_screen.png" height = "500" width="250"></td>
+  <td><img src = "/docs/images/settings_screen.png" height = "500" width="250"></td>
+  </tr>
+
   </table>
   
 ## Contributions Best Practices
@@ -60,5 +77,17 @@ If you are a tester and want to test the app, you have two ways to do that:
 1. **Installing APK on your device:** You can get debug APK as well as Release APK in apk branch of the repository. After each PR merge, both the APKs are automatically updated. So, just download the APK you want and install it on your device. The APKs will always be the latest one.
   
 ## External Depenedencies
-* *[Preference Fix Library](https://github.com/Gericop/Android-Support-Preference-V7-Fix)*  
-* *[JSyn Library](http://www.softsynth.com/jsyn/beta/jsyn_on_android.php)*
+*   [Preference Fix Library](https://github.com/Gericop/Android-Support-Preference-V7-Fix)
+*   [JSyn Library](http://www.softsynth.com/jsyn/beta/jsyn_on_android.php)
+*   [Android About Page](https://github.com/medyo/android-about-page)
+*   [Open Sound Control library](https://github.com/medyo/android-about-page)
+*   [Java Simple Serial Connector](https://mvnrepository.com/artifact/org.scream3r/jssc/2.8.0)
+*   [JTransforms](https://mvnrepository.com/artifact/net.sourceforge.jtransforms/jtransforms/2.4.0)
+*   [Java Open GL](https://mvnrepository.com/artifact/org.jogamp.jogl/jogl-all-main/2.3.2)
+*   [Circle ImageView](https://github.com/hdodenhof/CircleImageView)
+*   [MP Android Chart - Chart Library](https://github.com/PhilJay/MPAndroidChart)
+*   [USB Serial Controller](https://github.com/felHR85/UsbSerial)
+*   [App Intro](https://github.com/AppIntro/AppIntro)
+*   [JFreeChart](https://mvnrepository.com/artifact/org.jfree/jfreechart/1.0.14)
+*   [OpenCSV](https://mvnrepository.com/artifact/com.opencsv/opencsv/4.6)
+*   [Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson/2.8.5)
