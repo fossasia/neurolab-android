@@ -11,6 +11,7 @@ import java.io.File;
 public class FilePathUtil {
 
     public static final String CSV_DIRECTORY = "NeuroLab";
+    public static final String LOG_FILE_KEY = "LOGFILE";
 
     public static String getRealPath(Context context, Uri fileUri) {
         return getRealPathFromURI(context, fileUri);

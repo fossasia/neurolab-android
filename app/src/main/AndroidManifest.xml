@@ -22,7 +22,7 @@
         <activity
             android:name=".main.TestModeActivity"
             android:label="@string/title_activity_test_mode"
-            android:parentActivityName=".main.NeuroLab"></activity>
+            android:parentActivityName=".main.NeuroLab" />
         <activity
             android:name=".main.ProgramModeActivity"
             android:parentActivityName=".main.NeuroLab" />
@@ -40,6 +40,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
                 android:resource="@xml/device_filter" />
@@ -55,10 +56,11 @@
             android:configChanges="orientation|screenSize"
             android:label="@string/meditation_activity_label"
             android:parentActivityName=".main.NeuroLab" />
-        <activity android:name=".program_modes.MemoryGraphParent"></activity>
+        <activity android:name=".program_modes.MemoryGraphParent" />
         <activity
             android:name=".communication.bluetooth.BluetoothTestActivity"
             android:parentActivityName=".main.NeuroLab" />
+        <activity android:name=".activities.DataLoggerActivity"></activity>
     </application>
 
 </manifest>

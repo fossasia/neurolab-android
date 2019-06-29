@@ -41,7 +41,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation "com.google.code.gson:gson:$rootProject.gsonLibraryVersion"
     implementation "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     implementation "com.takisoft.fix:preference-v7:$rootProject.prefFixLibraryVersion"
@@ -49,21 +49,23 @@ dependencies {
     implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
     implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutVersion"
     implementation "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    implementation "com.github.medyo:android-about-page:$rootProject.aboutPageLibraryVersion"
+    implementation "com.github.iamareebjamal:jsyn:$rootProject.jsynLibraryVersion"
+    implementation "com.illposed.osc:javaosc-core:$rootProject.javaOscLibraryVersion"
+    implementation "org.scream3r:jssc:$rootProject.jsscLibraryVersion"
+    implementation "net.sourceforge.jtransforms:jtransforms:$rootProject.jtransformsLibraryVersion", { exclude group: 'junit' }
+    implementation "org.jogamp.jogl:jogl-all:$rootProject.joglLibraryVersion"
+    implementation "de.hdodenhof:circleimageview:$rootProject.circleImageViewLibraryVersion"
+    implementation "com.github.PhilJay:MPAndroidChart:v$rootProject.mpandroidchartLibraryVersion"
+    implementation "com.github.felHR85:UsbSerial:$rootProject.usbSerialLibraryVersion"
+    implementation "com.github.AppIntro:AppIntro:$rootProject.appIntroLibraryVersion"
+    implementation "org.jfree:jfreechart:$rootProject.jfreechartLibraryVersion"
+    implementation "com.opencsv:opencsv:$rootProject.opencsvLibraryVersion", {
+        exclude group: "commons-logging", module: "commons-logging"
+    }
     // Test
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation "junit:junit:$rootProject.junitVersion"
     androidTestImplementation "com.android.support.test:runner:$rootProject.testRunnerRulesVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
-    implementation 'com.github.medyo:android-about-page:1.2.5'
-    implementation 'com.github.iamareebjamal:jsyn:16.8.0a'
-    implementation 'com.illposed.osc:javaosc-core:0.3'
-    implementation 'org.scream3r:jssc:2.8.0'
-    implementation 'net.sourceforge.jtransforms:jtransforms:2.4.0', { exclude group: 'junit' }
-    implementation 'org.jogamp.jogl:jogl-all:2.3.2'
-    implementation 'de.hdodenhof:circleimageview:3.0.0'
-    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
-    implementation 'com.github.felHR85:UsbSerial:6.0.6'
-    implementation 'com.github.AppIntro:AppIntro:4.2.3'
-    implementation 'org.jfree:jfreechart:1.0.14'
-    implementation 'com.opencsv:opencsv:4.6', { exclude group: "commons-logging", module: "commons-logging" }
 }

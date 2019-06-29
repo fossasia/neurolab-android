@@ -14,6 +14,7 @@
     <dimen name="padding_small">6dp</dimen>
     <dimen name="padding_medium">8dp</dimen>
     <dimen name="padding_large">16dp</dimen>
+    <dimen name="padding_intermediate">24dp</dimen>
     <dimen name="padding_extra_large">32dp</dimen>
     <dimen name="padding_extra_larger">64dp</dimen>
     <dimen name="padding_mem_graph">54dp</dimen>
@@ -32,8 +33,8 @@
     <dimen name="text_size_extra_large">32sp</dimen>
     <dimen name="text_size_large">16sp</dimen>
     <dimen name="text_size_larger">18sp</dimen>
-    <dimen name="text_size_medium">12sp</dimen>
-    <dimen name="text_size_small">10sp</dimen>
+    <dimen name="text_size_medium">14sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
     <dimen name="text_size_very_large">42sp</dimen>
 
     <!--view specifies-->
