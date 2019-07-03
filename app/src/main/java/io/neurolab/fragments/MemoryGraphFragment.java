@@ -46,12 +46,14 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import io.neurolab.R;
+import io.neurolab.activities.DataLoggerActivity;
 import io.neurolab.program_modes.MemoryGraphParent;
 import io.neurolab.utilities.FilePathUtil;
 import io.neurolab.utilities.PermissionUtils;
 
 import static android.app.Activity.RESULT_OK;
 import static io.neurolab.utilities.FilePathUtil.CSV_DIRECTORY;
+import static io.neurolab.utilities.FilePathUtil.LOG_FILE_KEY;
 
 public class MemoryGraphFragment extends Fragment implements OnChartValueSelectedListener {
 
@@ -63,7 +65,8 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
     private String[] parsedData;
     private String importedFilePath;
     private boolean isPlaying = false;
-    private Menu menu;
+    private static Menu menu;
+    private String filePath;
     private ArrayList<String[]> rawData;
     private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT = 1;
     private float maxEEGValue = 9000f;
@@ -104,6 +107,10 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         if (StatisticsFragment.parsedData != null) {
             parsedData = StatisticsFragment.parsedData;
             plotGraph();
+        }
+        if (getArguments().getString(LOG_FILE_KEY) != null && StatisticsFragment.parsedData == null) {
+            filePath = getArguments().getString(LOG_FILE_KEY);
+            importLoggedData(filePath);
         }
         return rootView;
     }
@@ -167,7 +174,6 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
     }
 
     private void addEntry(int i) {
-
         LineData data = memGraph.getData();
         Float currPlotValue;
 
@@ -306,6 +312,14 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    private void importLoggedData(String path) {
+        if (!permission)
+            getRuntimePermissions();
+        toggleMenuItem(menu, isPlaying);
+        progressDialog.show();
+        new ParseDataAsync(path).execute();
+    }
+
     private void importData(String path) {
         importedFilePath = path;
         if (permission && (StatisticsFragment.parsedData == null || parsedData == null)) {
@@ -363,11 +377,14 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         } else if (id == R.id.stop_data) {
             parsedData = null;
             Toast.makeText(getContext(), "Stopped", Toast.LENGTH_SHORT).show();
+            isPlaying = true;
             toggleMenuItem(menu, !isPlaying);
         } else if (id == R.id.play_graph && (parsedData == null && StatisticsFragment.parsedData != null)) {
             parsedData = StatisticsFragment.parsedData;
             plotGraph();
             toggleMenuItem(menu, isPlaying);
+        } else if (id == R.id.data_logger_menu) {
+            startActivity(new Intent(getContext(), DataLoggerActivity.class));
         } else if (id == R.id.save_graph_data) {
             saveData();
         }

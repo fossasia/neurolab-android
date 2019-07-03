@@ -45,4 +45,19 @@ ext {
     testRunnerRulesVersion = '1.0.2'
     junitVersion = '4.12'
     espressoVersion = '3.0.2'
+
+    // External Libraries
+    gsonLibraryVersion = '2.8.5'
+    aboutPageLibraryVersion = '1.2.5'
+    jsynLibraryVersion = '16.8.0a'
+    javaOscLibraryVersion = '0.3'
+    jsscLibraryVersion = '2.8.0'
+    jtransformsLibraryVersion = '2.4.0'
+    joglLibraryVersion = '2.3.2'
+    circleImageViewLibraryVersion = '3.0.0'
+    mpandroidchartLibraryVersion = '3.1.0'
+    usbSerialLibraryVersion = '6.0.6'
+    appIntroLibraryVersion = '4.2.3'
+    jfreechartLibraryVersion = '1.0.14'
+    opencsvLibraryVersion = '4.6'
 }

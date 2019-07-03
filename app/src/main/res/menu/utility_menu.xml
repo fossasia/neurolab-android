@@ -36,4 +36,10 @@
         app:showAsAction="never"
         android:icon="@drawable/ic_info" />
 
+    <item
+        android:id="@+id/data_logger_menu"
+        android:title="@string/logged_data"
+        android:orderInCategory="500"
+        app:showAsAction="never" />
+
 </menu>

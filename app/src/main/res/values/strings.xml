@@ -96,12 +96,14 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="high_alpha">High Alpha:</string>
     <string name="low_beta">Low Beta:</string>
     <string name="high_beta">High Beta:</string>
+    <string name="no_logs">No Logged Data</string>
     <string name="statistics">Statistics</string>
     <string name="anger_range">Anger Zone - Brain in Active/beta state range</string>
     <string name="calm_range">Calm Zone - Brain in Relaxed/alpha state range</string>
     <string name="sleep_range">Sleep Range - data in the delta state range</string>
     <string name="pallete">Spectrum Color Palette</string>
     <string name="spectrum">Spectrum</string>
+    <string name="logged_data">Logged Data</string>
     <string name="freq_label">Frequency (Hertz)</string>
     <string name="eeg_data_label">EEG data (mV)</string>
     <string name="play_graph">Play Graph</string>
