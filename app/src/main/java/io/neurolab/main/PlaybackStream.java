@@ -10,6 +10,8 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import io.neurolab.interfaces.DataReceiver;
+import io.neurolab.interfaces.InputInterface;
 import io.neurolab.tools.ResourceManager;
 
 public class PlaybackStream implements InputInterface {
@@ -26,7 +28,7 @@ public class PlaybackStream implements InputInterface {
 
     public PlaybackStream(Context context, DataReceiver receiver, int numberOfChannels, String playbackFile, boolean loop) {
         this.context = context;
-        this.receiver = receiver;
+        PlaybackStream.receiver = receiver;
         this.numberOfChannels = numberOfChannels;
         this.setPlaybackFile(playbackFile, loop);
 
@@ -42,7 +44,7 @@ public class PlaybackStream implements InputInterface {
         File playbackFile = ResourceManager.getInstance().getResource(context, file);
 
         this.loopPlayback = loop;
-        this.data = new ArrayList<>();
+        data = new ArrayList<>();
 
         if (!playbackFile.exists()) {
             for (int i = 0; i < 256; i++) {
@@ -54,7 +56,7 @@ public class PlaybackStream implements InputInterface {
                     currentSample[c] += 12.5d * Math.sin(((double) (i + c * 16) / 128d) * Math.PI * 25d);
                 }
                 currentSamples.add(currentSample.clone());
-                this.data.add(currentSamples);
+                data.add(currentSamples);
             }
         } else {
             try (BufferedReader br = new BufferedReader(new FileReader(playbackFile.toString()))) {
@@ -70,7 +72,7 @@ public class PlaybackStream implements InputInterface {
                         currentSample[c] = Double.valueOf(values[c + 1]);
 
                     currentSamples.add(currentSample.clone());
-                    this.data.add(currentSamples);
+                    data.add(currentSamples);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -99,7 +101,7 @@ public class PlaybackStream implements InputInterface {
         }
 
         public void run() {
-            this.playbackStream.receiver.appendData(data.get(currentIndex));
+            receiver.appendData(data.get(currentIndex));
             currentIndex++;
             if (currentIndex > data.size() - 1)
                 currentIndex = 0;

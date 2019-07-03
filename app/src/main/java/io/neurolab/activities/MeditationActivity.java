@@ -1,4 +1,4 @@
-package io.neurolab.program_modes;
+package io.neurolab.activities;
 
 import android.annotation.TargetApi;
 import android.os.Bundle;
@@ -61,12 +61,12 @@ public final class MeditationActivity extends AppCompatActivity {
 
     // UI initialization part is taken care by this method
     private void grabNecessaryReferencesAndSetListeners() {
-        textDebug = (TextView) findViewById(R.id.text_debug);
-        Button playButton = (Button) findViewById(R.id.button_play);
-        Button pauseButton = (Button) findViewById(R.id.button_pause);
-        Button resetButton = (Button) findViewById(R.id.button_reset);
-        seekbarAudio = (SeekBar) findViewById(R.id.seekbar_audio);
-        scrollContainer = (ScrollView) findViewById(R.id.scroll_container);
+        textDebug = findViewById(R.id.text_debug);
+        Button playButton = findViewById(R.id.button_play);
+        Button pauseButton = findViewById(R.id.button_pause);
+        Button resetButton = findViewById(R.id.button_reset);
+        seekbarAudio = findViewById(R.id.seekbar_audio);
+        scrollContainer = findViewById(R.id.scroll_container);
 
         pauseButton.setOnClickListener(
                 new View.OnClickListener() {

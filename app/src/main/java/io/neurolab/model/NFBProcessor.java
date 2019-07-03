@@ -1,5 +1,6 @@
 package io.neurolab.model;
 
+import io.neurolab.interfaces.Task;
 import io.neurolab.settings.FeedbackSettings;
 
 public class NFBProcessor implements Task {

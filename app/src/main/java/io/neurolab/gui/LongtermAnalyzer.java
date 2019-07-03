@@ -1,5 +1,7 @@
 package io.neurolab.gui;
 
+import org.jfree.data.category.DefaultCategoryDataset;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -8,17 +10,16 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.locks.ReentrantLock;
-import org.jfree.data.category.DefaultCategoryDataset;
 
-import io.neurolab.settings.NeuroSettings;
-import io.neurolab.main.MathBasics;
-import io.neurolab.main.NeuroUtils;
 import io.neurolab.model.Config;
 import io.neurolab.model.DefaultFFTData;
 import io.neurolab.model.FFTPreprocessor;
+import io.neurolab.settings.NeuroSettings;
 import io.neurolab.settings.RelaxFeedbackSettings;
 import io.neurolab.tools.ColorMap;
 import io.neurolab.tools.Utils;
+import io.neurolab.utilities.MathBasics;
+import io.neurolab.utilities.NeuroUtils;
 
 public class LongtermAnalyzer {
 
@@ -44,10 +45,9 @@ public class LongtermAnalyzer {
     private int selectionIn = -1;
     private int selectionOut = -1;
     private double zoomLevel = 1d;
-    private double freqs[][][];
-    private double samples[][];
-    private int penalties[][];
-    private long timestamps[];
+    private double[][][] freqs;
+    private int[][] penalties;
+    private long[] timestamps;
     private int rewardCount = 0;
     private int maxPenalty = Integer.MIN_VALUE;
 
@@ -69,7 +69,7 @@ public class LongtermAnalyzer {
 
     private double totalPowerMax = Double.MIN_VALUE;
     private double totalPowerMin = Double.MAX_VALUE;
-    private double totalPower[][];
+    private double[][] totalPower;
     private double totalPowerDiff = 0d;
     private double[][] fftValues;
     private double[] fftValuesMax;
@@ -106,6 +106,7 @@ public class LongtermAnalyzer {
                 e.printStackTrace();
             }
 
+            double[][] samples;
             if (numberOfLines > 0) {
                 samples = new double[numberOfLines][numChannels];
                 timestamps = new long[numberOfLines];
@@ -264,7 +265,7 @@ public class LongtermAnalyzer {
         else
             dataset.clear();
         if ((selection) && (selectionIn > 0) && (Math.abs(selectionIn - selectionOut) > 0)) {
-            double meanFreqs[][] = new double[numChannels][maxDisplayFreq];
+            double[][] meanFreqs = new double[numChannels][maxDisplayFreq];
             int i = Math.max(0, (Math.min(selectionIn, selectionOut) + displaySampleOffset) * stepX);
             int o = Math.min((Math.max(selectionIn, selectionOut) + displaySampleOffset) * stepX, numberOfLines);
             int n = o - i;
@@ -328,8 +329,8 @@ public class LongtermAnalyzer {
     }
 
     public void updateFFTMinMax(double min, double max) {
-        minFFT = (double) min / 1000d;
-        maxFFT = (double) max;
+        minFFT = min / 1000d;
+        maxFFT = max;
         range = Math.max(minFFT, maxFFT) - Math.min(minFFT, maxFFT);
     }
 

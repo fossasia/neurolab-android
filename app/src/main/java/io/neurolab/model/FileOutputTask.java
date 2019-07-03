@@ -3,6 +3,7 @@ package io.neurolab.model;
 import java.io.PrintWriter;
 import java.nio.ByteBuffer;
 
+import io.neurolab.interfaces.Task;
 import io.neurolab.main.NFBServer;
 
 public class FileOutputTask implements Task {

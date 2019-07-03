@@ -20,14 +20,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".main.TestModeActivity"
+            android:name=".activities.TestModeActivity"
             android:label="@string/title_activity_test_mode"
             android:parentActivityName=".main.NeuroLab" />
         <activity
             android:name=".main.ProgramModeActivity"
             android:parentActivityName=".main.NeuroLab" />
         <activity
-            android:name=".main.AboutUsActivity"
+            android:name=".activities.AboutUsActivity"
             android:label="@string/about_us"
             android:parentActivityName=".main.NeuroLab" />
         <activity
@@ -46,17 +46,17 @@
                 android:resource="@xml/device_filter" />
         </activity>
         <activity
-            android:name=".main.SettingsActivity"
+            android:name=".activities.SettingsActivity"
             android:parentActivityName=".main.NeuroLab" />
         <activity
-            android:name=".main.OnBoardingActivity"
+            android:name=".activities.OnBoardingActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".program_modes.MeditationActivity"
+            android:name=".activities.MeditationActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/meditation_activity_label"
             android:parentActivityName=".main.NeuroLab" />
-        <activity android:name=".program_modes.MemoryGraphParent" />
+        <activity android:name=".activities.MemoryGraphParent" />
         <activity
             android:name=".communication.bluetooth.BluetoothTestActivity"
             android:parentActivityName=".main.NeuroLab" />

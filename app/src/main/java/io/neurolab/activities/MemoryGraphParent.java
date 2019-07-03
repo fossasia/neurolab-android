@@ -1,4 +1,4 @@
-package io.neurolab.program_modes;
+package io.neurolab.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -23,7 +23,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import java.util.ArrayList;
 
 import io.neurolab.R;
-import io.neurolab.program_modes.MemoryGraphParent;
+import io.neurolab.activities.MemoryGraphParent;
 
 public class SpectrumFragment extends Fragment {
 

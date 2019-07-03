@@ -23,7 +23,7 @@ import com.jsyn.util.SampleLoader;
 public class AudioFeedback extends Feedback {
 
     public float masterVolume = .95f;
-    double oldFeedbacks[];
+    double[] oldFeedbacks;
     private Context context;
     private boolean multiModelFeedback = false;
     private Synthesizer synth;
@@ -34,7 +34,7 @@ public class AudioFeedback extends Feedback {
     private float[] volume = {.5f, .5f, .5f, .5f, .7f};
     private float[] defaultVolume = {.5f, .5f, .5f, .5f, .7f};
     private String[] soundMixSamples = {"audio/pad_.wav", "audio/pad1.wav", "audio/lownoise.wav", "audio/pad2.wav", "audio/forest.wav"};
-    private double rates[];
+    private double[] rates;
     private Config config;
     private double oldValue = 0d;
 
@@ -126,7 +126,7 @@ public class AudioFeedback extends Feedback {
             samplePlayer[i].amplitude.set(volume[i] * masterVolume);
             volume[i] = defaultVolume[i];
 
-            int crossFadeSize = (int) (2000);
+            int crossFadeSize = (2000);
 
             // For complex queuing operations, create a command and then customize it.
             QueueDataCommand command = samplePlayer[i].dataQueue.createQueueDataCommand(sample[i], loopStartFrame, loopSize);

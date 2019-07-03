@@ -1,7 +1,8 @@
 package io.neurolab.model;
 
-import io.neurolab.main.MathBasics;
+import io.neurolab.interfaces.FFTData;
 import io.neurolab.settings.NeuroSettings;
+import io.neurolab.utilities.MathBasics;
 
 public class DefaultFFTData implements FFTData {
     private boolean peakToPeakCheck = true;
@@ -20,6 +21,34 @@ public class DefaultFFTData implements FFTData {
     private double[][] meanFFTBins;
     private double[][] varFFTBins;
     private double[][] relativeFFTBins;
+
+    // fixed fft values by operator
+    private double[][] baselineFFTValues;
+    private double[][] shortMeanFFTBins;
+    private double[][] shortVarFFTBins;
+    private double[][] rewardFFTBins;
+    private double[] currentFFTValue;
+
+    private int[] binRanges = {4, 7, 8, 10, 11, 13, 17, 30};
+    private int[] binRangesAmount = {4, 3, 3, 14};
+
+    private int numChannels;
+    private int bins;
+    private int windowSize;
+
+    public double[] maxFFTValue;
+    public double[] meanFFTValue;
+    public double[] varFFTValue;
+
+    public double trainingFactor = .10d;
+
+    private String[] binLabels = {"theta", "lowalpha", "highalpha", "beta"};
+    private int maxSampleCount = 10000;
+    private double peakToPeakLimit = 20d;
+
+    private int valueMin = 4;
+    private int valueMax = 34;
+
 
     public boolean isPeakToPeakCheck() {
         return peakToPeakCheck;
@@ -144,34 +173,6 @@ public class DefaultFFTData implements FFTData {
     public void setPeakToPeakLimit(double peakToPeakLimit) {
         this.peakToPeakLimit = peakToPeakLimit;
     }
-
-    // fixed fft values by operator
-    private double[][] baselineFFTValues;
-    private double[][] shortMeanFFTBins;
-    private double[][] shortVarFFTBins;
-    private double[][] rewardFFTBins;
-    private double[] currentFFTValue;
-
-    private int[] binRanges = {4, 7, 8, 10, 11, 13, 17, 30};
-    private int[] binRangesAmount = {4, 3, 3, 14};
-
-    private int numChannels;
-    private int bins;
-    private int windowSize;
-
-    public double maxFFTValue[];
-    public double meanFFTValue[];
-    public double varFFTValue[];
-
-    public double trainingFactor = .10d;
-
-    private String[] binLabels = {"theta", "lowalpha", "highalpha", "beta"};
-    private int maxSampleCount = 10000;
-    private double peakToPeakLimit = 20d;
-
-    private int valueMin = 4;
-    private int valueMax = 34;
-
 
     public DefaultFFTData() {
     }

@@ -9,9 +9,8 @@ import io.neurolab.main.NFBServer;
 import io.neurolab.main.network.OSCForwarder;
 import io.neurolab.model.Config;
 import io.neurolab.model.DefaultFFTData;
-import io.neurolab.model.FFTData;
 import io.neurolab.model.OSCForwardMask;
-import io.neurolab.model.Task;
+import io.neurolab.interfaces.Task;
 
 public class OscForwardTask implements Task {
 
@@ -25,9 +24,9 @@ public class OscForwardTask implements Task {
     private NFBServer nfbServer;
     private String[] outputs;
 
-    private float minValues[];
-    private float maxValues[];
-    private float rangeValues[];
+    private float[] minValues;
+    private float[] maxValues;
+    private float[] rangeValues;
 
     private DefaultFFTData fftData;
 

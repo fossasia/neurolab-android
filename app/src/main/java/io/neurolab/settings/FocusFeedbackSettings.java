@@ -2,7 +2,7 @@ package io.neurolab.settings;
 
 import java.util.concurrent.locks.ReentrantLock;
 
-import io.neurolab.main.MathBasics;
+import io.neurolab.utilities.MathBasics;
 import io.neurolab.model.Config;
 import io.neurolab.model.DefaultFFTData;
 

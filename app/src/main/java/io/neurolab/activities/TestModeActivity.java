@@ -1,4 +1,4 @@
-package io.neurolab.main;
+package io.neurolab.activities;
 
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -31,6 +31,7 @@ import java.util.Map;
 
 import io.neurolab.R;
 import io.neurolab.fragments.NeuroSettingsFragment;
+import io.neurolab.main.DeviceConnector;
 
 public class TestModeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -106,7 +107,7 @@ public class TestModeActivity extends AppCompatActivity implements AdapterView.O
                 default:
                     break;
             }
-        };
+        }
     };
 
     private void feedConfigSetToArduino(){
@@ -161,7 +162,7 @@ public class TestModeActivity extends AppCompatActivity implements AdapterView.O
         baudRateSpinner.setOnItemSelectedListener(this);
 
         // setting up the UsbManager instance with the desired USB service.
-        usbManager = (UsbManager) getSystemService(this.USB_SERVICE);
+        usbManager = (UsbManager) getSystemService(USB_SERVICE);
         // initializing the DeviceConnector instance for checking and connecting to the device.
         deviceConnector = new DeviceConnector(usbManager);
 
@@ -251,3 +252,4 @@ public class TestModeActivity extends AppCompatActivity implements AdapterView.O
         deviceConnector.setBaudRate(baudRate);
     }
 }
+

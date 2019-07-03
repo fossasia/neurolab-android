@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.locks.ReentrantLock;
 
+import io.neurolab.interfaces.DataReceiver;
 import io.neurolab.model.Config;
-import io.neurolab.model.FFTData;
 import io.neurolab.model.DefaultFFTData;
 import io.neurolab.model.FFTPreprocessor;
 import io.neurolab.model.FileOutputTask;
-import io.neurolab.model.Task;
+import io.neurolab.interfaces.Task;
 import io.neurolab.settings.FeedbackSettings;
 import io.neurolab.settings.NeuroSettings;
 

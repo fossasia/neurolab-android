@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".main.TestModeActivity"
+    tools:context=".activities.TestModeActivity"
     android:orientation="vertical"
     tools:showIn="@layout/activity_test_mode">
 

@@ -1,16 +1,11 @@
 package io.neurolab.main.output.visual;
 
-import android.graphics.Color;
-
-import com.jogamp.graph.font.Font;
 import com.jogamp.newt.event.MouseEvent;
-import com.jogamp.newt.event.MouseListener;
 
 import io.neurolab.main.NFBServer;
 import io.neurolab.model.DefaultFFTData;
-import io.neurolab.model.Task;
+import io.neurolab.interfaces.Task;
 import io.neurolab.settings.FeedbackSettings;
-import io.neurolab.tools.ColorMap;
 
 public class LongtermFFTVisualizer implements Task {
 

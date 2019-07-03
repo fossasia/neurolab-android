@@ -1,4 +1,4 @@
-package io.neurolab.main;
+package io.neurolab.activities;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import com.github.paolorotolo.appintro.AppIntro2;
 
 import io.neurolab.R;
+import io.neurolab.main.SampleSlide;
 
 public class OnBoardingActivity extends AppIntro2 {
 
