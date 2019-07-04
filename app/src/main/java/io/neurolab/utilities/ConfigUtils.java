@@ -1,7 +1,9 @@
-package io.neurolab.model;
+package io.neurolab.utilities;
 
 import android.content.Context;
+
 import com.google.gson.Gson;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

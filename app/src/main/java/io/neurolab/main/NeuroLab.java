@@ -30,8 +30,12 @@ import com.felhr.usbserial.UsbSerialInterface;
 import java.io.UnsupportedEncodingException;
 
 import io.neurolab.R;
+import io.neurolab.activities.AboutUsActivity;
+import io.neurolab.activities.MeditationActivity;
+import io.neurolab.activities.OnBoardingActivity;
+import io.neurolab.activities.SettingsActivity;
+import io.neurolab.activities.TestModeActivity;
 import io.neurolab.communication.USBCommunicationHandler;
-import io.neurolab.program_modes.MeditationActivity;
 import io.neurolab.communication.bluetooth.BluetoothTestActivity;
 
 public class NeuroLab extends AppCompatActivity
@@ -115,7 +119,7 @@ public class NeuroLab extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        usbManager = (UsbManager) getSystemService(this.USB_SERVICE);
+        usbManager = (UsbManager) getSystemService(USB_SERVICE);
         usbCommunicationHandler = USBCommunicationHandler.getInstance(this, usbManager);
         intentFilter = new IntentFilter();
         // adding the possible USB intent actions.

@@ -2,7 +2,7 @@ package io.neurolab.model;
 
 import java.util.concurrent.locks.ReentrantLock;
 
-import io.neurolab.main.MathBasics;
+import io.neurolab.utilities.MathBasics;
 import io.neurolab.settings.FeedbackSettings;
 
 public class GenericFeedbackSettings extends FeedbackSettings {

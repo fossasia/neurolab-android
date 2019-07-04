@@ -10,7 +10,7 @@ import android.view.WindowManager;
 import io.neurolab.R;
 import io.neurolab.fragments.FocusVisualFragment;
 import io.neurolab.fragments.RelaxVisualFragment;
-import io.neurolab.program_modes.MemoryGraphParent;
+import io.neurolab.activities.MemoryGraphParent;
 
 public class ProgramModeActivity extends AppCompatActivity {
 

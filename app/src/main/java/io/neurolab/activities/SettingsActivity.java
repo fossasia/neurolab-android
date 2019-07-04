@@ -1,4 +1,4 @@
-package io.neurolab.main;
+package io.neurolab.activities;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;

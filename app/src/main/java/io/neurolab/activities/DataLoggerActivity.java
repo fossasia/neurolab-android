@@ -15,7 +15,6 @@ import java.util.List;
 
 import io.neurolab.R;
 import io.neurolab.adapters.DataLoggerListAdapter;
-import io.neurolab.program_modes.MemoryGraphParent;
 
 import static io.neurolab.utilities.FilePathUtil.CSV_DIRECTORY;
 
@@ -61,7 +60,6 @@ public class DataLoggerActivity extends AppCompatActivity {
             noLoggedView.setVisibility(View.VISIBLE);
         }
     }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();

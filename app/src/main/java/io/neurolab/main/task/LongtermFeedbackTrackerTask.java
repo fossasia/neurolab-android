@@ -3,7 +3,7 @@ package io.neurolab.main.task;
 import io.neurolab.main.LongtermGraph;
 import io.neurolab.model.DefaultFFTData;
 import io.neurolab.settings.FeedbackSettings;
-import io.neurolab.model.Task;
+import io.neurolab.interfaces.Task;
 
 public class LongtermFeedbackTrackerTask implements Task{
 

@@ -4,7 +4,7 @@ import android.annotation.TargetApi;
 
 import java.util.function.Function;
 
-import io.neurolab.main.MathBasics;
+import io.neurolab.utilities.MathBasics;
 
 @TargetApi(24)
 public class BaselineCorrectionFunction implements Function<Double, Double> {

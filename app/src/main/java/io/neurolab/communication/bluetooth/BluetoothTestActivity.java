@@ -71,12 +71,12 @@ public class BluetoothTestActivity extends AppCompatActivity {
 
         bluetoothConnectionManager = BluetoothConnectionManager.getInstance();
 
-        bluetoothAdapterStateTextView = (TextView) findViewById(R.id.tv_bluetooth_adapter_state_viewer);
-        enableBluetoothBtn = (Button) findViewById(R.id.enable_bluetooth_btn);
-        isPairedWithTheHeadsetStatusTextView = (TextView) findViewById(R.id.tv_is_paired_with_headset_status);
-        receivedDataDisplayTextView = (TextView) findViewById(R.id.received_data_display_tv);
-        sendBtn = (Button) findViewById(R.id.send_btn);
-        editText = (EditText) findViewById(R.id.edit_text);
+        bluetoothAdapterStateTextView = findViewById(R.id.tv_bluetooth_adapter_state_viewer);
+        enableBluetoothBtn = findViewById(R.id.enable_bluetooth_btn);
+        isPairedWithTheHeadsetStatusTextView = findViewById(R.id.tv_is_paired_with_headset_status);
+        receivedDataDisplayTextView = findViewById(R.id.received_data_display_tv);
+        sendBtn = findViewById(R.id.send_btn);
+        editText = findViewById(R.id.edit_text);
 
         enableBluetoothBtn.setOnClickListener(new View.OnClickListener() {
             @Override

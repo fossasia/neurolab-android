@@ -8,7 +8,7 @@ import io.neurolab.main.NFBServer;
 import io.neurolab.main.network.SerialForwarder;
 import io.neurolab.model.Config;
 import io.neurolab.model.DefaultFFTData;
-import io.neurolab.model.Task;
+import io.neurolab.interfaces.Task;
 
 public class SerialForwardTask implements Task {
 
@@ -21,9 +21,9 @@ public class SerialForwardTask implements Task {
     private String address;
     private String baudRate;
     private NFBServer nfbServer;
-    private float minValues[];
-    private float maxValues[];
-    private float rangeValues[];
+    private float[] minValues;
+    private float[] maxValues;
+    private float[] rangeValues;
     private DefaultFFTData fftData;
     private int mode = 0;     // 0 = per channel per bin, 1 = per channel per bin
     private int forwardMode = 0;

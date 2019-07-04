@@ -1,4 +1,4 @@
-package io.neurolab.main;
+package io.neurolab.gui;
 
 import android.content.Context;
 import android.widget.Scroller;

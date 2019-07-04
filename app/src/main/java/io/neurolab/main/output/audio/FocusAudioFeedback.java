@@ -71,7 +71,7 @@ public class FocusAudioFeedback extends Feedback {
         if ((loopStartFrame + loopSize) > sample.getNumFrames()) {
             loopSize = sample.getNumFrames() - loopStartFrame;
         }
-        int crossFadeSize = (int) (2000);
+        int crossFadeSize = (2000);
 
         QueueDataCommand command = samplePlayer.dataQueue.createQueueDataCommand(sample, loopStartFrame, loopSize);
         command.setNumLoops(-1);

@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import io.neurolab.R;
 import io.neurolab.model.DefaultFFTData;
-import io.neurolab.program_modes.MemoryGraphParent;
+import io.neurolab.activities.MemoryGraphParent;
 
 public class StatisticsFragment extends Fragment {
 

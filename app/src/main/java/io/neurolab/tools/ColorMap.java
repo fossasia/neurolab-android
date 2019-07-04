@@ -19,10 +19,10 @@ import android.graphics.Color;
 
 public class ColorMap {
     public static int size;
-    public static byte r[];
-    public static byte g[];
-    public static byte b[];
-    public static Color table[];
+    public static byte[] r;
+    public static byte[] g;
+    public static byte[] b;
+    public static Color[] table;
 
     /**
      * Create a color map witn n entries that looks like Matlab's jet color map

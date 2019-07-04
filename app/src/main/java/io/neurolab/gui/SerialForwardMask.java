@@ -53,7 +53,7 @@ public class SerialForwardMask {
     public void init(DefaultFFTData fftData) {
         this.fftData = fftData;
         thresholdRenderers = new ThresholdRenderer[fftData.getBins() + 1];
-        currentValLabels[fftData.getBins() + 1] = new String();
+        currentValLabels[fftData.getBins() + 1] = "";
 
         if (serialForwarder.isConnected()) {
             serialForwarder.disconnect();

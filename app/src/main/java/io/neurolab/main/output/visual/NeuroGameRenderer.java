@@ -144,9 +144,9 @@ public class NeuroGameRenderer {
 
         gl2.glPushMatrix();
         gl2.glRotatef(180f, 0, 0, -1);
-        gl2.glTranslatef((float) (-width / 1f), (float) (-height / 2f), -650f);
+        gl2.glTranslatef((-width / 1f), (-height / 2f), -650f);
         gl2.glRotatef(55f - correctedFeedback * 10f, 1, 0, 0);
-        gl2.glTranslatef(0, (float) (0.001f + angle / 360f) * quadWidth, 0);
+        gl2.glTranslatef(0, (0.001f + angle / 360f) * quadWidth, 0);
         gl2.glTranslatef(0.0f, 0.0f, -260.0f * correctedFeedback); // translate into the screen.
 
         float FOG_DISTANCE = 800;
@@ -168,8 +168,8 @@ public class NeuroGameRenderer {
             float ia = i + (0.001f + angle / 360f);
             int pc = (i + pointer) % numDepthQuads;
             int pn = (i + pointer + 1) % numDepthQuads;
-            float z = (float) ia / (float) numDepthQuads;
-            float zn = (float) (ia + 1) / (float) numDepthQuads;
+            float z = ia / (float) numDepthQuads;
+            float zn = (ia + 1) / (float) numDepthQuads;
             float sc = width - (z * hw) * 2;
             float sn = width - (zn * hw) * 2;
 

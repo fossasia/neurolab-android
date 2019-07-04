@@ -47,7 +47,7 @@ import java.util.Locale;
 
 import io.neurolab.R;
 import io.neurolab.activities.DataLoggerActivity;
-import io.neurolab.program_modes.MemoryGraphParent;
+import io.neurolab.activities.MemoryGraphParent;
 import io.neurolab.utilities.FilePathUtil;
 import io.neurolab.utilities.PermissionUtils;
 
@@ -425,7 +425,6 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         }
     }
 
-
     @Override
     public void onValueSelected(Entry e, Highlight h) {
         // When particular value on the graph is selected.
@@ -480,3 +479,4 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         }
     }
 }
+

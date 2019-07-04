@@ -15,7 +15,7 @@ import java.io.File;
 import java.util.List;
 
 import io.neurolab.R;
-import io.neurolab.program_modes.MemoryGraphParent;
+import io.neurolab.activities.MemoryGraphParent;
 
 import static io.neurolab.utilities.FilePathUtil.LOG_FILE_KEY;
 

@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 
 import io.neurolab.main.NFBServer;
-import io.neurolab.model.Task;
+import io.neurolab.interfaces.Task;
 
 public class BinaryFileOutputTask implements Task {
 

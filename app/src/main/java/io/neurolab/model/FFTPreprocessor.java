@@ -3,6 +3,7 @@ package io.neurolab.model;
 import java.util.Iterator;
 
 import edu.emory.mathcs.jtransforms.fft.DoubleFFT_1D;
+import io.neurolab.interfaces.Task;
 import io.neurolab.settings.NeuroSettings;
 import io.neurolab.tools.WindowFunction;
 
@@ -54,7 +55,7 @@ public class FFTPreprocessor implements Task {
         int fftDataLocal = fftData.getNumChannels();
         fftDataLocal = bciSettings.getNumChannels();
 
-        boolean notBrainWaves[];
+        boolean[] notBrainWaves;
         notBrainWaves = new boolean[bciSettings.getNumChannels()];
         currentDataIterator = bciSettings.getCurrentData().iterator();
         while (currentDataIterator.hasNext()) {

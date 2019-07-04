@@ -3,7 +3,7 @@ package io.neurolab.main;
 import android.content.Context;
 
 import io.neurolab.settings.FeedbackSettings;
-import io.neurolab.model.Task;
+import io.neurolab.interfaces.Task;
 
 public class NFBGraph implements Task {
 

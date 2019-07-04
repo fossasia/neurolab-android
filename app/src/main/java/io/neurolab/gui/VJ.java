@@ -1,4 +1,4 @@
-package io.neurolab.program_modes;
+package io.neurolab.gui;
 
 
 import android.content.Context;
@@ -14,7 +14,7 @@ import io.neurolab.model.DefaultFFTData;
 import io.neurolab.model.FFTPreprocessor;
 import io.neurolab.model.GenericFeedbackSettings;
 import io.neurolab.model.NFBProcessor;
-import io.neurolab.model.Task;
+import io.neurolab.interfaces.Task;
 import io.neurolab.settings.FeedbackSettings;
 
 public class VJ {
@@ -35,7 +35,7 @@ public class VJ {
             FFTPreprocessor fftPreprocessor = new FFTPreprocessor(fftData, rn);
 
             // feedback settings and processor task
-            FeedbackSettings currentFeedbackSettings = new GenericFeedbackSettings(fftData, rn.getLock(), config);
+            FeedbackSettings currentFeedbackSettings = new GenericFeedbackSettings(fftData, NFBServer.getLock(), config);
             NFBProcessor nfbProcessor = new NFBProcessor(currentFeedbackSettings);
 
             OscForwardTask oscForwardTask = new OscForwardTask(rn);

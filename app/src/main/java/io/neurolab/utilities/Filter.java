@@ -1,4 +1,4 @@
-package io.neurolab.main;
+package io.neurolab.utilities;
 
 public class Filter {
 
