@@ -29,6 +29,8 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
 
     private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT = 1;
     private boolean permission = false;
+    private boolean isPlaying = false;
+    private static Menu menu;
     private static final int ACTIVITY_CHOOSE_FILE1 = 1;
     private static final String[] READ_WRITE_PERMISSIONS = {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -58,6 +60,12 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     }
 
     @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        this.menu = menu;
+        toggleMenuItem(menu, !isPlaying);
+    }
+
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.focus_utility_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
@@ -70,6 +78,12 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
             if (!permission)
                 getRuntimePermissions();
             selectCSVFile();
+        } else if (id == R.id.play_focus_anim) {
+            SpaceAnimationVisuals.playAnim();
+            toggleMenuItem(menu, !isPlaying);
+        } else if (id == R.id.stop_focus_anim) {
+            SpaceAnimationVisuals.stopAnim();
+            toggleMenuItem(menu, isPlaying);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -116,6 +130,19 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         PermissionUtils.requestRuntimePermissions(this,
                 READ_WRITE_PERMISSIONS,
                 PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT);
+    }
+
+    /**
+     * Toggle menu items.
+     *
+     * @param menu
+     * @param isPlaying
+     */
+    private void toggleMenuItem(Menu menu, boolean isPlaying) {
+        MenuItem play = menu.findItem(R.id.play_focus_anim);
+        play.setVisible(!isPlaying);
+        MenuItem stop = menu.findItem(R.id.stop_focus_anim);
+        stop.setVisible(isPlaying);
     }
 
     private void selectCSVFile() {

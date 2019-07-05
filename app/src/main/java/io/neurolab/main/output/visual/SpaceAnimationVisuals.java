@@ -1,11 +1,12 @@
 package io.neurolab.main.output.visual;
 
 import android.animation.ValueAnimator;
+import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 
 import io.neurolab.R;
@@ -13,13 +14,19 @@ import io.neurolab.R;
 public class SpaceAnimationVisuals {
 
     private static final long DURATION = 10000L;
+    private static ValueAnimator animator;
+    private static Animation animation;
+    private static View parentSpaceView;
+    private static ImageView travellingRocket;
 
     public static void spaceAnim(View view) {
+
+        parentSpaceView = view;
 
         final View backgroundOne = view.findViewById(R.id.background_one);
         final View backgroundTwo = view.findViewById(R.id.background_two);
 
-        final ValueAnimator animator = ValueAnimator.ofFloat(0.0f, 1.0f);
+        animator = ValueAnimator.ofFloat(0.0f, 1.0f);
         animator.setRepeatCount(ValueAnimator.INFINITE);
         animator.setInterpolator(new LinearInterpolator());
         animator.setDuration(DURATION);
@@ -35,14 +42,46 @@ public class SpaceAnimationVisuals {
         handleIndicator(view);
     }
 
+    public static void stopAnim() {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                Log.d("Error try", "" + animator.toString());
+                animator.pause();
+            } else {
+                animator.end();
+            }
+            travellingRocket.clearAnimation();
+            parentSpaceView.findViewById(R.id.animated_view).setVisibility(View.INVISIBLE);
+        } catch (Exception e) {
+            Log.d("Error message", "" + e);
+            e.printStackTrace(); // animator not initialized
+        }
+    }
+
+    public static void playAnim() {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                Log.d("Error try", "" + animator.toString());
+                animator.resume();
+            } else {
+                animator.start();
+            }
+            travellingRocket.startAnimation(animation);
+            parentSpaceView.findViewById(R.id.animated_view).setVisibility(View.VISIBLE);
+        } catch (Exception e) {
+            Log.d("Error message", "" + e);
+            e.printStackTrace(); // animator not initialized
+        }
+    }
+
     private static void handleIndicator(View view) {
-        final ImageView v = view.findViewById(R.id.indicator);
-        Animation animation = new AlphaAnimation(1, 0); //to change visibility from visible to invisible
+        travellingRocket = view.findViewById(R.id.indicator);
+        animation = new AlphaAnimation(1, 0); //to change visibility from visible to invisible
         animation.setDuration(300); //1 second duration for each animation cycle
         animation.setInterpolator(new LinearInterpolator());
         animation.setRepeatCount(Animation.INFINITE); //repeating indefinitely
         animation.setRepeatMode(Animation.REVERSE); //animation will start from end point once ended.
-        v.startAnimation(animation);
+        travellingRocket.startAnimation(animation);
     }
 
 }

@@ -3,8 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/play_focus_anim"
+        android:icon="@drawable/ic_play"
+        android:orderInCategory="100"
+        android:title="@string/play_focus_anim"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/stop_focus_anim"
+        android:icon="@drawable/ic_stop"
+        android:orderInCategory="100"
+        android:title="@string/stop"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/import_data_focus"
         android:icon="@drawable/ic_import"
+        android:orderInCategory="200"
         android:title="@string/import_dataset"
         app:showAsAction="always" />
 
