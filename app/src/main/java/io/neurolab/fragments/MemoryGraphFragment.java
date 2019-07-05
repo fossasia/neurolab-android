@@ -7,8 +7,6 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -34,16 +32,9 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.opencsv.CSVReader;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Locale;
 
 import io.neurolab.R;
 import io.neurolab.activities.DataLoggerActivity;
@@ -52,7 +43,6 @@ import io.neurolab.utilities.FilePathUtil;
 import io.neurolab.utilities.PermissionUtils;
 
 import static android.app.Activity.RESULT_OK;
-import static io.neurolab.utilities.FilePathUtil.CSV_DIRECTORY;
 import static io.neurolab.utilities.FilePathUtil.LOG_FILE_KEY;
 
 public class MemoryGraphFragment extends Fragment implements OnChartValueSelectedListener {
@@ -64,7 +54,7 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
     private TextView eegLabelView;
     private String[] parsedData;
     private String importedFilePath;
-    private boolean isPlaying = false;
+    private boolean isPlaying;
     private static Menu menu;
     private String filePath;
     private ArrayList<String[]> rawData;
@@ -386,43 +376,9 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         } else if (id == R.id.data_logger_menu) {
             startActivity(new Intent(getContext(), DataLoggerActivity.class));
         } else if (id == R.id.save_graph_data) {
-            saveData();
+            FilePathUtil.saveData(importedFilePath);
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void saveData() {
-        File importedFile = new File(importedFilePath);
-        FilePathUtil.setupPath();
-        String fileName = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.getDefault()).format(SystemClock.currentThreadTimeMillis());
-        File dst = new File(Environment.getExternalStorageDirectory().getAbsolutePath() +
-                File.separator + CSV_DIRECTORY + File.separator + fileName + ".csv");
-        if (!dst.exists()) {
-            try {
-                transfer(importedFile, dst);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static void transfer(File src, File dst) throws IOException {
-        InputStream in = new FileInputStream(src);
-        try {
-            OutputStream out = new FileOutputStream(dst);
-            try {
-                // Transfer bytes from in to out
-                byte[] buf = new byte[1024];
-                int len;
-                while ((len = in.read(buf)) > 0) {
-                    out.write(buf, 0, len);
-                }
-            } finally {
-                out.close();
-            }
-        } finally {
-            in.close();
-        }
     }
 
     @Override

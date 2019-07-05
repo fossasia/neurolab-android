@@ -12,6 +12,8 @@ import io.neurolab.tools.Animations;
 
 public class RelaxVisualFragment extends android.support.v4.app.Fragment {
 
+    public static final String RELAX_PROGRAM_FLAG = "Relax";
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

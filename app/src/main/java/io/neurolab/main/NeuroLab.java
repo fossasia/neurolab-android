@@ -32,11 +32,14 @@ import java.io.UnsupportedEncodingException;
 import io.neurolab.R;
 import io.neurolab.activities.AboutUsActivity;
 import io.neurolab.activities.MeditationActivity;
+import io.neurolab.activities.MemoryGraphParent;
 import io.neurolab.activities.OnBoardingActivity;
 import io.neurolab.activities.SettingsActivity;
 import io.neurolab.activities.TestModeActivity;
 import io.neurolab.communication.USBCommunicationHandler;
 import io.neurolab.communication.bluetooth.BluetoothTestActivity;
+import io.neurolab.fragments.FocusVisualFragment;
+import io.neurolab.fragments.RelaxVisualFragment;
 
 public class NeuroLab extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -50,7 +53,7 @@ public class NeuroLab extends AppCompatActivity
     private static String deviceData;
     private Menu menu;
     private int launcherSleepTime;
-    private USBCommunicationHandler usbCommunicationHandler;
+    public static USBCommunicationHandler usbCommunicationHandler;
     private CardView focusButton;
     private CardView relaxButton;
     private CardView memGraphButton;
@@ -146,11 +149,11 @@ public class NeuroLab extends AppCompatActivity
         memGraphButton.setOnClickListener(this);
     }
 
-    private void startProgramModeActivity(int toastMessageID, int mode) {
+    private void startProgramModeActivity(String mode) {
         //Store Settings
         Intent intent = new Intent(NeuroLab.this, ProgramModeActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt(ProgramModeActivity.INTENT_KEY_PROGRAM_MODE, mode);
+        bundle.putString(ProgramModeActivity.INTENT_KEY_PROGRAM_MODE, mode);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -208,11 +211,11 @@ public class NeuroLab extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_focus) {
-            startProgramModeActivity(R.string.focus_toast, ProgramModeActivity.FOCUS_PROGRAM_MODE);
+            startProgramModeActivity(FocusVisualFragment.FOCUS_FLAG);
         } else if (id == R.id.nav_relax) {
-            startProgramModeActivity(R.string.relax_toast, ProgramModeActivity.RELAX_PROGRAM_MODE);
+            startProgramModeActivity(RelaxVisualFragment.RELAX_PROGRAM_FLAG);
         } else if (id == R.id.nav_memory_graph) {
-            startProgramModeActivity(R.string.mem_graph_toast, ProgramModeActivity.MEMORY_GRAPH_MODE);
+            startProgramModeActivity(MemoryGraphParent.MEMORY_GRAPH_FLAG);
         } else if (id == R.id.nav_meditation) {
             startActivity(new Intent(this, MeditationActivity.class));
         } else if (id == R.id.nav_share) {
@@ -235,13 +238,13 @@ public class NeuroLab extends AppCompatActivity
         int id = v.getId();
         switch (id) {
             case R.id.focus_card:
-                startProgramModeActivity(R.string.focus_toast, ProgramModeActivity.FOCUS_PROGRAM_MODE);
+                startProgramModeActivity(FocusVisualFragment.FOCUS_FLAG);
                 break;
             case R.id.relax_card:
-                startProgramModeActivity(R.string.relax_toast, ProgramModeActivity.RELAX_PROGRAM_MODE);
+                startProgramModeActivity(RelaxVisualFragment.RELAX_PROGRAM_FLAG);
                 break;
             case R.id.mem_graph_card:
-                startProgramModeActivity(R.string.mem_graph_toast, ProgramModeActivity.MEMORY_GRAPH_MODE);
+                startProgramModeActivity(MemoryGraphParent.MEMORY_GRAPH_FLAG);
                 break;
         }
     }
