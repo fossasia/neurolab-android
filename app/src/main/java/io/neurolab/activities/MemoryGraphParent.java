@@ -18,6 +18,7 @@ import static io.neurolab.utilities.FilePathUtil.LOG_FILE_KEY;
 public class MemoryGraphParent extends AppCompatActivity {
 
     private String filePath;
+    public static final String MEMORY_GRAPH_FLAG = "Memory";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

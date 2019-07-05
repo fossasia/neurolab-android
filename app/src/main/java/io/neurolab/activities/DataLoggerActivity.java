@@ -15,6 +15,7 @@ import java.util.List;
 
 import io.neurolab.R;
 import io.neurolab.adapters.DataLoggerListAdapter;
+import io.neurolab.main.ProgramModeActivity;
 
 import static io.neurolab.utilities.FilePathUtil.CSV_DIRECTORY;
 
@@ -26,11 +27,16 @@ public class DataLoggerActivity extends AppCompatActivity {
     private List<String> fileList = new ArrayList<>();
     private List<File> filesList = new ArrayList<>();
 
+    private String flag;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_logger);
         setTitle(R.string.logged_data);
+
+        if (getIntent().getExtras() != null)
+            flag = getIntent().getExtras().getString(ProgramModeActivity.PROGRAM_FLAG_KEY);
 
         dataloggerRecyclerView = findViewById(R.id.recycler_view);
         noLoggedView = findViewById(R.id.data_logger_blank_view);
@@ -50,7 +56,7 @@ public class DataLoggerActivity extends AppCompatActivity {
                 fileList.add(file.getPath());
                 filesList.add(file);
             }
-            DataLoggerListAdapter adapter = new DataLoggerListAdapter(this, filesList);
+            DataLoggerListAdapter adapter = new DataLoggerListAdapter(this, filesList, flag);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
                     this, LinearLayoutManager.VERTICAL, false);
             dataloggerRecyclerView.setLayoutManager(linearLayoutManager);
@@ -63,7 +69,9 @@ public class DataLoggerActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(this, MemoryGraphParent.class));
+        Intent intent = new Intent(this, ProgramModeActivity.class);
+        intent.putExtra(ProgramModeActivity.INTENT_KEY_PROGRAM_MODE, flag);
+        startActivity(intent);
         finish();
     }
 }
