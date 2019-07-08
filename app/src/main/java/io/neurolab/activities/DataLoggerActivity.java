@@ -15,7 +15,6 @@ import java.util.List;
 
 import io.neurolab.R;
 import io.neurolab.adapters.DataLoggerListAdapter;
-import io.neurolab.main.ProgramModeActivity;
 
 import static io.neurolab.utilities.FilePathUtil.CSV_DIRECTORY;
 

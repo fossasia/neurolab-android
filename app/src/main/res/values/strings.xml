@@ -107,6 +107,8 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="freq_label">Frequency (Hertz)</string>
     <string name="eeg_data_label">EEG data (mV)</string>
     <string name="play_graph">Play Graph</string>
+    <string name="save_focus_data">Save Focus Data</string>
+    <string name="focus_program_info">This Program Mode helps you increase your focus and concentration levels on the basis of games.</string>
     <string name="save_graph">Save Graph Data</string>
     <string name="play_focus_anim">Play Focus Animation</string>
     <string name="stop_graph">Stop Memory Graph</string>

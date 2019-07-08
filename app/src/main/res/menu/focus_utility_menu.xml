@@ -17,10 +17,28 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/import_data_focus"
-        android:icon="@drawable/ic_import"
+        android:id="@+id/save_focus_data"
+        android:icon="@drawable/ic_record_white"
         android:orderInCategory="200"
-        android:title="@string/import_dataset"
+        android:title="@string/save_focus_data"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/import_data_focus"
+        android:icon="@drawable/ic_import"
+        android:orderInCategory="300"
+        android:title="@string/import_dataset"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/focus_data_logger"
+        android:orderInCategory="300"
+        android:title="@string/logged_data"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/focus_program_info"
+        android:orderInCategory="300"
+        android:title="@string/program_info_label"
+        app:showAsAction="never" />
 </menu>
