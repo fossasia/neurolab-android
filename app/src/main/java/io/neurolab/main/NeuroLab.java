@@ -34,6 +34,7 @@ import io.neurolab.activities.AboutUsActivity;
 import io.neurolab.activities.MeditationActivity;
 import io.neurolab.activities.MemoryGraphParent;
 import io.neurolab.activities.OnBoardingActivity;
+import io.neurolab.activities.ProgramModeActivity;
 import io.neurolab.activities.SettingsActivity;
 import io.neurolab.activities.TestModeActivity;
 import io.neurolab.communication.USBCommunicationHandler;

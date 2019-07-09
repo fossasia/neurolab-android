@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,18 +19,21 @@ import android.widget.Toast;
 
 import io.neurolab.R;
 import io.neurolab.activities.DataLoggerActivity;
-import io.neurolab.main.ProgramModeActivity;
+import io.neurolab.activities.ProgramModeActivity;
 import io.neurolab.main.output.visual.SpaceAnimationVisuals;
 import io.neurolab.utilities.FilePathUtil;
 import io.neurolab.utilities.PermissionUtils;
 
 import static android.app.Activity.RESULT_OK;
+import static io.neurolab.utilities.FilePathUtil.LOG_FILE_KEY;
 
 public class FocusVisualFragment extends android.support.v4.app.Fragment {
 
     private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT = 1;
     private boolean permission = false;
     private boolean isPlaying = false;
+    private boolean recordState;
+    private String filePath;
     private static Menu menu;
     private static final int ACTIVITY_CHOOSE_FILE1 = 1;
     private static final String[] READ_WRITE_PERMISSIONS = {
@@ -55,6 +59,8 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         if (getArguments() != null) {
             view.findViewById(R.id.animated_view).setVisibility(View.VISIBLE);
             SpaceAnimationVisuals.spaceAnim(view);
+            recordState = true;
+            filePath = getArguments().getString(LOG_FILE_KEY);
         }
         return view;
     }
@@ -66,6 +72,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         toggleMenuItem(menu, !isPlaying);
     }
 
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.focus_utility_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
@@ -84,8 +91,35 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         } else if (id == R.id.stop_focus_anim) {
             SpaceAnimationVisuals.stopAnim();
             toggleMenuItem(menu, isPlaying);
+        } else if (id == R.id.save_focus_data) {
+            try {
+                FilePathUtil.saveData(filePath);
+                toggleRecordState(item, recordState);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (id == R.id.focus_data_logger) {
+            Intent intent = new Intent(getContext(), DataLoggerActivity.class);
+            intent.putExtra(ProgramModeActivity.PROGRAM_FLAG_KEY, FOCUS_FLAG);
+            startActivity(intent);
+        } else if (id == R.id.focus_program_info) {
+            AlertDialog.Builder progress = new AlertDialog.Builder(getContext());
+            progress.setCancelable(true);
+            progress.setTitle(R.string.program_info_label);
+            progress.setMessage(R.string.focus_program_info);
+            AlertDialog infoDialog = progress.create();
+            infoDialog.show();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void toggleRecordState(MenuItem item, boolean state) {
+        if (state) {
+            item.setIcon(R.drawable.ic_record_stop_white);
+            recordState = !state;
+        } else {
+            item.setIcon(R.drawable.ic_record_white);
+        }
     }
 
     @Override
@@ -112,6 +146,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
             case ACTIVITY_CHOOSE_FILE1:
                 if (resultCode == RESULT_OK) {
                     String realPath = FilePathUtil.getRealPath(getContext(), data.getData());
+                    filePath = realPath;
                     FilePathUtil.saveData(realPath);
                     Intent intent = new Intent(getContext(), DataLoggerActivity.class);
                     intent.putExtra(ProgramModeActivity.PROGRAM_FLAG_KEY, FOCUS_FLAG);

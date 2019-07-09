@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import io.neurolab.R;
 import io.neurolab.activities.DataLoggerActivity;
 import io.neurolab.activities.MemoryGraphParent;
+import io.neurolab.activities.ProgramModeActivity;
 import io.neurolab.utilities.FilePathUtil;
 import io.neurolab.utilities.PermissionUtils;
 
@@ -305,6 +306,7 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
     private void importLoggedData(String path) {
         if (!permission)
             getRuntimePermissions();
+        importedFilePath = path;
         toggleMenuItem(menu, isPlaying);
         progressDialog.show();
         new ParseDataAsync(path).execute();
@@ -374,9 +376,15 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
             plotGraph();
             toggleMenuItem(menu, isPlaying);
         } else if (id == R.id.data_logger_menu) {
-            startActivity(new Intent(getContext(), DataLoggerActivity.class));
+            Intent intent = new Intent(getContext(), DataLoggerActivity.class);
+            intent.putExtra(ProgramModeActivity.PROGRAM_FLAG_KEY, MemoryGraphParent.MEMORY_GRAPH_FLAG);
+            startActivity(intent);
         } else if (id == R.id.save_graph_data) {
-            FilePathUtil.saveData(importedFilePath);
+            try {
+                FilePathUtil.saveData(importedFilePath);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         return super.onOptionsItemSelected(item);
     }

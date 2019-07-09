@@ -1,8 +1,6 @@
 package io.neurolab.main.output.visual;
 
 import android.animation.ValueAnimator;
-import android.os.Build;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -44,32 +42,21 @@ public class SpaceAnimationVisuals {
 
     public static void stopAnim() {
         try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                Log.d("Error try", "" + animator.toString());
-                animator.pause();
-            } else {
-                animator.end();
-            }
+            animator.pause();
             travellingRocket.clearAnimation();
             parentSpaceView.findViewById(R.id.animated_view).setVisibility(View.INVISIBLE);
+
         } catch (Exception e) {
-            Log.d("Error message", "" + e);
             e.printStackTrace(); // animator not initialized
         }
     }
 
     public static void playAnim() {
         try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                Log.d("Error try", "" + animator.toString());
-                animator.resume();
-            } else {
-                animator.start();
-            }
+            animator.resume();
             travellingRocket.startAnimation(animation);
             parentSpaceView.findViewById(R.id.animated_view).setVisibility(View.VISIBLE);
         } catch (Exception e) {
-            Log.d("Error message", "" + e);
             e.printStackTrace(); // animator not initialized
         }
     }

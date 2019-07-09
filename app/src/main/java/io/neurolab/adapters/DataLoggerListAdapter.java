@@ -18,7 +18,7 @@ import java.util.List;
 import io.neurolab.R;
 import io.neurolab.fragments.FocusVisualFragment;
 import io.neurolab.fragments.RelaxVisualFragment;
-import io.neurolab.main.ProgramModeActivity;
+import io.neurolab.activities.ProgramModeActivity;
 import io.neurolab.activities.MemoryGraphParent;
 
 import static io.neurolab.utilities.FilePathUtil.LOG_FILE_KEY;
@@ -55,6 +55,7 @@ public class DataLoggerListAdapter extends RecyclerView.Adapter<DataLoggerListAd
                     intent = new Intent(context, ProgramModeActivity.class);
                     bundle.putString(ProgramModeActivity.INTENT_KEY_PROGRAM_MODE, flag);
                     bundle.putString(FocusVisualFragment.FOCUS_FLAG, flag);
+                    bundle.putString(LOG_FILE_KEY, files.get(i).getAbsolutePath());
                     intent.putExtras(bundle);
                     context.startActivity(intent);
                     break;
