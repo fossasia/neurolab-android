@@ -60,7 +60,7 @@ Our brains communicate through neurotransmitters and their activity emits electr
 Current devices in the medical industry are usually not accessible by doctors due to their high pricing. They are also complicated to use. The idea of the device is to integrate it into a headband and focus on signals that can be obtained through the frontal lobe.
 
 A difference to existing projects like OpenBCI is that it will not be necessary to 3D print large headsets. Instead we are focusing on creating a device that collects as much data as possible through the forehead. To achieve this goal we are using high-grade sensors and flexible electronics.</string>
-    <string name="device_is_not_connected">Device is not connected</string>
+    <string name="device_is_not_connected">NeuroLab Device not found</string>
     <string name="set_up">Set up</string>
     <string name="connect_with_us">Connect With Us</string>
 
@@ -75,10 +75,18 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="baud_rate">Baud Rate:</string>
     <string name="connection_opened">Serial Connection Opened!</string>
     <string name="data_sent">Data Sent : </string>
+    <string name="bluetooth_test">Bluetooth Test</string>
     <string name="other_head_nav_drawer">Other</string>
     <string name="share_nav_drawer">Share</string>
     <string name="send_nav_drawer">Send</string>
     <string name="device_connected">Device is Connected</string>
+    <string name="steps_header">Steps to Connect Device:</string>
+    <string name="number_one">1.</string>
+    <string name="number_two">2.</string>
+    <string name="number_three">3.</string>
+    <string name="step_one_info">Connect a Micro USB to NeuroLab</string>
+    <string name="step_two_info">Connect the other end of Micro USB to a OTG</string>
+    <string name="step_three_info">Connect the OTG to the phone</string>
     <string name="import_dataset">Import Dataset</string>
     <string name="perm_not_granted">Permission not granted</string>
     <string name="import_message">Importing Data...</string>

@@ -7,12 +7,6 @@
             <group android:checkableBehavior="single">
 
                 <item
-                    android:id="@+id/nav_test"
-                    android:title="@string/title_activity_test_mode" />
-                <item
-                    android:id="@+id/bluetooth_test"
-                    android:title="Bluetooth Test" />
-                <item
                     android:id="@+id/nav_focus"
                     android:title="@string/focus" />
                 <item
@@ -23,14 +17,15 @@
                     android:title="@string/mem_graph" />
                 <item
                     android:id="@+id/nav_meditation"
-                    android:title="Meditation" />
-                <item
-                    android:id="@+id/nav_connect"
-                    android:title="@string/connect_device" />
+                    android:title="@string/meditation" />
 
             </group>
         </menu>
     </item>
+
+    <item
+        android:id="@+id/nav_connect_device"
+        android:title="@string/connect_device" />
 
     <item android:title="@string/other_head_nav_drawer">
         <menu>

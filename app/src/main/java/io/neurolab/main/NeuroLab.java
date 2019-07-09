@@ -174,7 +174,8 @@ public class NeuroLab extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         this.menu = menu;
-        changeDeviceIcon();
+        if (deviceConnected)
+            changeDeviceIcon();
         return true;
     }
 
@@ -194,6 +195,13 @@ public class NeuroLab extends AppCompatActivity
             return true;
         } else if (id == R.id.device_icon) {
             changeDeviceIcon();
+            return true;
+        } else if (id == R.id.test_mode) {
+            startActivity(new Intent(this, TestModeActivity.class));
+            return true;
+        } else if (id == R.id.bluetooth_test) {
+            startActivity(new Intent(this, BluetoothTestActivity.class));
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -219,16 +227,13 @@ public class NeuroLab extends AppCompatActivity
             startProgramModeActivity(MemoryGraphParent.MEMORY_GRAPH_FLAG);
         } else if (id == R.id.nav_meditation) {
             startActivity(new Intent(this, MeditationActivity.class));
+        } else if (id == R.id.nav_connect_device) {
+            changeDeviceIcon();
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
 
-        } else if (id == R.id.nav_test) {
-            startActivity(new Intent(this, TestModeActivity.class));
-        } else if (id == R.id.bluetooth_test) {
-            startActivity(new Intent(this, BluetoothTestActivity.class));
         }
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
