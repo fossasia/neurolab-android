@@ -21,4 +21,15 @@
         android:title="@string/action_settings"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/test_mode"
+        android:orderInCategory="200"
+        android:title="@string/title_activity_test_mode"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/bluetooth_test"
+        android:orderInCategory="200"
+        android:title="@string/bluetooth_test"
+        app:showAsAction="never"/>
+
 </menu>
