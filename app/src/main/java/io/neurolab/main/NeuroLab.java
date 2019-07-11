@@ -31,6 +31,7 @@ import java.io.UnsupportedEncodingException;
 
 import io.neurolab.R;
 import io.neurolab.activities.AboutUsActivity;
+import io.neurolab.activities.DeviceInstructionsActivity;
 import io.neurolab.activities.MeditationActivity;
 import io.neurolab.activities.MemoryGraphParent;
 import io.neurolab.activities.OnBoardingActivity;
@@ -210,6 +211,8 @@ public class NeuroLab extends AppCompatActivity
         if (deviceConnected) {
             menu.getItem(0).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_device_connected));
             menu.getItem(0).setTitle(getResources().getString(R.string.device_connected));
+        } else {
+            startActivity(new Intent(this, DeviceInstructionsActivity.class));
         }
     }
 
@@ -230,9 +233,9 @@ public class NeuroLab extends AppCompatActivity
         } else if (id == R.id.nav_connect_device) {
             changeDeviceIcon();
         } else if (id == R.id.nav_share) {
-
+            // TODO: Share Intent to be created.
         } else if (id == R.id.nav_send) {
-
+            // TODO: Send Intent to be created.
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

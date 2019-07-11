@@ -85,8 +85,8 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="number_two">2.</string>
     <string name="number_three">3.</string>
     <string name="step_one_info">Connect a Micro USB to NeuroLab</string>
-    <string name="step_two_info">Connect the other end of Micro USB to a OTG</string>
-    <string name="step_three_info">Connect the OTG to the phone</string>
+    <string name="step_two_info">Connect the other end of Micro USB to an OTG cable</string>
+    <string name="step_three_info">Connect the OTG cable to the phone</string>
     <string name="import_dataset">Import Dataset</string>
     <string name="perm_not_granted">Permission not granted</string>
     <string name="import_message">Importing Data...</string>
