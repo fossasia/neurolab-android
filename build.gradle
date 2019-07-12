@@ -56,7 +56,7 @@ ext {
     joglLibraryVersion = '2.3.2'
     circleImageViewLibraryVersion = '3.0.0'
     mpandroidchartLibraryVersion = '3.1.0'
-    usbSerialLibraryVersion = '6.0.6'
+    usbSerialLibraryVersion = '6.1.0'
     appIntroLibraryVersion = '4.2.3'
     jfreechartLibraryVersion = '1.0.14'
     opencsvLibraryVersion = '4.6'
