@@ -45,6 +45,7 @@
     <dimen name="on_boarding_frag_subtitle_size">18sp</dimen>
     <dimen name="on_boarding_frag_subtitle_margin">20dp</dimen>
     <dimen name="on_boarding_frag_view_height">70dp</dimen>
+    <dimen name="meditation_bg_height">150dp</dimen>
     <dimen name="on_boarding_frag_image_size">250dp</dimen>
     <dimen name="spacing_none">0dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
