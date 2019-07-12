@@ -24,7 +24,7 @@
             android:label="@string/title_activity_test_mode"
             android:parentActivityName=".main.NeuroLab" />
         <activity
-            android:name=".main.ProgramModeActivity"
+            android:name=".activities.ProgramModeActivity"
             android:parentActivityName=".main.NeuroLab" />
         <activity
             android:name=".activities.AboutUsActivity"
@@ -61,6 +61,7 @@
             android:name=".communication.bluetooth.BluetoothTestActivity"
             android:parentActivityName=".main.NeuroLab" />
         <activity android:name=".activities.DataLoggerActivity"></activity>
+        <activity android:name=".activities.DeviceInstructionsActivity"></activity>
     </application>
 
 </manifest>
