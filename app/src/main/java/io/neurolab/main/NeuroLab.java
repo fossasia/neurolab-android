@@ -31,8 +31,8 @@ import java.io.UnsupportedEncodingException;
 
 import io.neurolab.R;
 import io.neurolab.activities.AboutUsActivity;
-import io.neurolab.activities.DeviceInstructionsActivity;
-import io.neurolab.activities.MeditationActivity;
+import io.neurolab.activities.FocusParentActivity;
+import io.neurolab.activities.MeditationHome;
 import io.neurolab.activities.MemoryGraphParent;
 import io.neurolab.activities.OnBoardingActivity;
 import io.neurolab.activities.ProgramModeActivity;
@@ -40,7 +40,6 @@ import io.neurolab.activities.SettingsActivity;
 import io.neurolab.activities.TestModeActivity;
 import io.neurolab.communication.USBCommunicationHandler;
 import io.neurolab.communication.bluetooth.BluetoothTestActivity;
-import io.neurolab.fragments.FocusVisualFragment;
 import io.neurolab.fragments.RelaxVisualFragment;
 
 public class NeuroLab extends AppCompatActivity
@@ -56,9 +55,6 @@ public class NeuroLab extends AppCompatActivity
     private Menu menu;
     private int launcherSleepTime;
     public static USBCommunicationHandler usbCommunicationHandler;
-    private CardView focusButton;
-    private CardView relaxButton;
-    private CardView memGraphButton;
     private UsbSerialInterface.UsbReadCallback readCallback = new UsbSerialInterface.UsbReadCallback() { //Defining a Callback which triggers whenever data is read.
         @Override
         public void onReceivedData(byte[] arg0) {
@@ -142,13 +138,15 @@ public class NeuroLab extends AppCompatActivity
 
         // Setting Listeners of the settings checkboxes
 
-        focusButton = findViewById(R.id.focus_card);
-        relaxButton = findViewById(R.id.relax_card);
-        memGraphButton = findViewById(R.id.mem_graph_card);
+        CardView focusButton = findViewById(R.id.focus_card);
+        CardView relaxButton = findViewById(R.id.relax_card);
+        CardView memGraphButton = findViewById(R.id.mem_graph_card);
+        CardView meditationCard = findViewById(R.id.meditation_card);
 
         focusButton.setOnClickListener(this);
         relaxButton.setOnClickListener(this);
         memGraphButton.setOnClickListener(this);
+        meditationCard.setOnClickListener(this);
     }
 
     private void startProgramModeActivity(String mode) {
@@ -211,8 +209,6 @@ public class NeuroLab extends AppCompatActivity
         if (deviceConnected) {
             menu.getItem(0).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_device_connected));
             menu.getItem(0).setTitle(getResources().getString(R.string.device_connected));
-        } else {
-            startActivity(new Intent(this, DeviceInstructionsActivity.class));
         }
     }
 
@@ -223,19 +219,20 @@ public class NeuroLab extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_focus) {
-            startProgramModeActivity(FocusVisualFragment.FOCUS_FLAG);
+            startActivity(new Intent(this, FocusParentActivity.class));
+            finish();
         } else if (id == R.id.nav_relax) {
             startProgramModeActivity(RelaxVisualFragment.RELAX_PROGRAM_FLAG);
         } else if (id == R.id.nav_memory_graph) {
             startProgramModeActivity(MemoryGraphParent.MEMORY_GRAPH_FLAG);
         } else if (id == R.id.nav_meditation) {
-            startActivity(new Intent(this, MeditationActivity.class));
+            startActivity(new Intent(this, MeditationHome.class));
         } else if (id == R.id.nav_connect_device) {
             changeDeviceIcon();
         } else if (id == R.id.nav_share) {
-            // TODO: Share Intent to be created.
+
         } else if (id == R.id.nav_send) {
-            // TODO: Send Intent to be created.
+
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -247,13 +244,17 @@ public class NeuroLab extends AppCompatActivity
         int id = v.getId();
         switch (id) {
             case R.id.focus_card:
-                startProgramModeActivity(FocusVisualFragment.FOCUS_FLAG);
+                startActivity(new Intent(this, FocusParentActivity.class));
+                finish();
                 break;
             case R.id.relax_card:
                 startProgramModeActivity(RelaxVisualFragment.RELAX_PROGRAM_FLAG);
                 break;
             case R.id.mem_graph_card:
                 startProgramModeActivity(MemoryGraphParent.MEMORY_GRAPH_FLAG);
+                break;
+            case R.id.meditation_card:
+                startActivity(new Intent(this, MeditationHome.class));
                 break;
         }
     }

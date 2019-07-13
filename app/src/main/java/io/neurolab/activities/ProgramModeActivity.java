@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
 import io.neurolab.R;
-import io.neurolab.activities.MemoryGraphParent;
 import io.neurolab.fragments.FocusVisualFragment;
 import io.neurolab.fragments.RelaxVisualFragment;
 import io.neurolab.main.NeuroLab;
@@ -91,7 +90,10 @@ public class ProgramModeActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(this, NeuroLab.class));
+        if (mode == FOCUS_PROGRAM_MODE)
+            startActivity(new Intent(this, FocusParentActivity.class));
+        else
+            startActivity(new Intent(this, NeuroLab.class));
         finish();
     }
 }

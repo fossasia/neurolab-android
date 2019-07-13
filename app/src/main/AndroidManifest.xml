@@ -19,6 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activities.MeditationHome"></activity>
+        <activity android:name=".activities.FocusParentActivity" />
         <activity
             android:name=".activities.TestModeActivity"
             android:label="@string/title_activity_test_mode"
@@ -60,8 +62,12 @@
         <activity
             android:name=".communication.bluetooth.BluetoothTestActivity"
             android:parentActivityName=".main.NeuroLab" />
-        <activity android:name=".activities.DataLoggerActivity"></activity>
-        <activity android:name=".activities.DeviceInstructionsActivity"></activity>
+        <activity android:name=".activities.DataLoggerActivity" />
+        <activity android:name=".activities.DeviceInstructionsActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
