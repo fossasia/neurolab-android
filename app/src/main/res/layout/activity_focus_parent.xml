@@ -8,6 +8,20 @@
     android:orientation="vertical"
     tools:context=".activities.FocusParentActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/gradient_focus">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/bg_card_focus"
+            android:tint="@android:color/white" />
+
+    </RelativeLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,17 +30,16 @@
         android:fontFamily="@font/montserrat"
         android:text="@string/info_head"
         android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/heading_text_size"
+        android:textSize="@dimen/text_size_larger"
         android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/layout_margin_large"
+        android:layout_margin="@dimen/layout_margin_medium"
         android:fontFamily="@font/montserrat"
         android:text="@string/focus_program_info"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/about_text_size" />
+        android:textColor="@android:color/black" />
 
     <TextView
         android:layout_width="match_parent"
@@ -35,63 +48,53 @@
         android:fontFamily="@font/montserrat"
         android:text="@string/games_head"
         android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/heading_text_size"
+        android:textSize="@dimen/text_size_larger"
         android:textStyle="bold" />
 
-    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/layout_margin_medium"
-        card_view:cardBackgroundColor="@android:color/transparent"
-        card_view:cardCornerRadius="@dimen/card_radius_none"
-        card_view:cardElevation="@dimen/card_elevation">
+        app:cardCornerRadius="@dimen/card_main_corner"
+        app:cardElevation="@dimen/card_main_elevation"
+        app:cardPreventCornerOverlap="false">
 
-        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            card_view:cardBackgroundColor="@android:color/white"
-            card_view:cardCornerRadius="@dimen/card_elevation_medium"
-            card_view:cardElevation="@dimen/card_radius_none">
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+            <ImageView
+                android:layout_width="@dimen/heading_margin_top"
+                android:layout_height="@dimen/heading_margin_top"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/layout_margin_medium"
+                android:scaleType="fitXY"
+                android:src="@drawable/game_one_pic" />
 
-                <ImageView
-                    android:layout_width="@dimen/heading_margin_top"
-                    android:layout_height="@dimen/heading_margin_top"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="@dimen/layout_margin_medium"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/game_one_pic" />
+            <TextView
+                android:layout_width="@dimen/spacing_none"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginTop="@dimen/layout_margin_medium"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/focus_game_one_info" />
 
-                <TextView
-                    android:layout_width="@dimen/spacing_none"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_small"
-                    android:layout_marginTop="@dimen/layout_margin_medium"
-                    android:layout_marginBottom="@dimen/margin_small"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/montserrat"
-                    android:text="@string/focus_game_one_info" />
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/play_focus_game"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/layout_margin_medium"
+                android:elevation="@dimen/view_width_or_height"
+                android:src="@drawable/ic_play"
+                app:backgroundTint="@color/colorPrimary"
+                app:borderWidth="@dimen/spacing_none"
+                app:pressedTranslationZ="@dimen/view_width_or_height" />
 
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/play_focus_game"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="@dimen/layout_margin_medium"
-                    android:elevation="@dimen/view_width_or_height"
-                    android:src="@drawable/ic_play"
-                    app:backgroundTint="@color/colorPrimary"
-                    app:borderWidth="@dimen/spacing_none"
-                    app:pressedTranslationZ="@dimen/view_width_or_height" />
-
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 
 </LinearLayout>
