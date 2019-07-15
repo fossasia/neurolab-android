@@ -106,7 +106,7 @@ public class StatisticsFragment extends Fragment {
         return dfftData;
     }
 
-    private double[] convertToDouble(String[] parsedData) {
+    public static double[] convertToDouble(String[] parsedData) {
         double[] parsedDoubleData = new double[parsedData.length];
         int startTrimIndex = 0;
         int endTrimIndex = 9;
