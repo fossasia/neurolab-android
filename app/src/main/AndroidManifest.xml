@@ -19,8 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activities.FocusParentActivity"></activity>
         <activity android:name=".activities.MeditationHome"></activity>
-        <activity android:name=".activities.FocusParentActivity" />
         <activity
             android:name=".activities.TestModeActivity"
             android:label="@string/title_activity_test_mode"
