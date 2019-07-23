@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_small">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/instructor_image"
+            android:layout_width="@dimen/meditate_avatar_size"
+            android:layout_height="@dimen/meditate_avatar_size"
+            android:layout_marginStart="@dimen/layout_margin_large"
+            android:src="@drawable/ic_person_black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.363" />
+
+        <TextView
+            android:id="@+id/meditation_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/layout_margin_large"
+            android:fontFamily="@font/montserrat"
+            android:textColor="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/instructor_image"
+            app:layout_constraintStart_toEndOf="@+id/instructor_image"
+            app:layout_constraintTop_toTopOf="@+id/instructor_image" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/play_meditation"
+            android:layout_width="@dimen/padding_extra_large"
+            android:layout_height="@dimen/padding_extra_large"
+            android:layout_marginEnd="@dimen/layout_margin_large"
+            android:clickable="true"
+            android:focusable="true"
+            app:civ_border_color="@color/colorPrimary"
+            app:civ_border_width="@dimen/view_width_or_height"
+            app:layout_constraintBottom_toBottomOf="@+id/meditation_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/meditation_name"
+            android:src="@drawable/ic_play_meditate" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <View
+        android:id="@+id/divider_view_meditation"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_width_or_height"
+        android:layout_margin="@dimen/layout_margin_medium"
+        android:alpha="0.2"
+        android:background="@android:color/black" />
+
+</LinearLayout>

@@ -140,6 +140,8 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="gps_header">Enable GPS</string>
     <string name="gps_info_msg">GPS is currently disabled. Please enable it from your settings.</string>
     <string name="stop_graph">Stop Memory Graph</string>
+    <string name="author_elisha">Elisha Goldstein</string>
+    <string name="default_timer">00:00</string>
 
     <string name="filename_key">filename</string>
     <string name="title_activity_configs">ConfigsActivity</string>

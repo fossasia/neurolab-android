@@ -5,26 +5,26 @@ import android.os.Bundle;
 import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.neurolab.R;
 import io.neurolab.main.output.audio.MediaPlayerHolder;
 import io.neurolab.main.output.audio.PlaybackInfoListener;
 import io.neurolab.main.output.audio.PlayerAdapter;
 
+import static io.neurolab.activities.MeditationHome.MEDITATION_DIR_KEY;
+
 public final class MeditationActivity extends AppCompatActivity {
 
     public static final String TAG = MeditationActivity.class.getCanonicalName();   // TAG for debugging purposes.
-    public static final int MEDIA_RES_ID = R.raw.delta_waves;
+    public static int MEDIA_RES_ID;
 
     // Necessary view references.
-    private TextView textDebug;
     private SeekBar seekbarAudio;
-    private ScrollView scrollContainer;
+    private TextView progressTimeView;
+    private TextView durationView;
 
     // the interface reference which would be used to control the media session from this UI client.
     private PlayerAdapter playerAdapter;
@@ -35,6 +35,8 @@ public final class MeditationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meditation);
+
+        MEDIA_RES_ID = getIntent().getIntExtra(MEDITATION_DIR_KEY, R.raw.soften_and_relax);
 
         grabNecessaryReferencesAndSetListeners();
 
@@ -61,34 +63,19 @@ public final class MeditationActivity extends AppCompatActivity {
 
     // UI initialization part is taken care by this method
     private void grabNecessaryReferencesAndSetListeners() {
-        textDebug = findViewById(R.id.text_debug);
-        Button playButton = findViewById(R.id.button_play);
-        Button pauseButton = findViewById(R.id.button_pause);
-        Button resetButton = findViewById(R.id.button_reset);
+        CircleImageView playButton = findViewById(R.id.button_play);
+        CircleImageView pauseButton = findViewById(R.id.button_pause);
+        CircleImageView resetButton = findViewById(R.id.button_reset);
         seekbarAudio = findViewById(R.id.seekbar_audio);
-        scrollContainer = findViewById(R.id.scroll_container);
+        progressTimeView = findViewById(R.id.progress_time);
+        durationView = findViewById(R.id.duration_view);
 
         pauseButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        playerAdapter.pause();
-                    }
-                });
+                view -> playerAdapter.pause());
         playButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        playerAdapter.play();
-                    }
-                });
+                view -> playerAdapter.play());
         resetButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        playerAdapter.reset();
-                    }
-                });
+                view -> playerAdapter.reset());
 
         setSeekbarListener();
     }
@@ -99,6 +86,17 @@ public final class MeditationActivity extends AppCompatActivity {
         mediaPlayerHolder.setPlaybackInfoListener(new PlaybackListener());
         playerAdapter = mediaPlayerHolder;
         Log.d(TAG, "Inside initializePlaybackController: MediaPlayerHolder progress callback set");
+    }
+
+    private String getTimeString(long millis) {
+        StringBuffer buf = new StringBuffer();
+
+        int minutes = (int) (millis % (1000 * 60 * 60)) / (1000 * 60);
+        int seconds = (int) ((millis % (1000 * 60 * 60)) % (1000 * 60)) / 1000;
+
+        buf.append(String.format("%02d", minutes)).append(":").append(String.format("%02d", seconds));
+
+        return buf.toString();
     }
 
     // Sets the seekbar's listener. Based on UI change the media session gets changed (correspondingly).
@@ -114,6 +112,7 @@ public final class MeditationActivity extends AppCompatActivity {
 
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        progressTimeView.setText(getTimeString((long) progress));
                         if (fromUser) {
                             userSelectedPosition = progress;
                         }
@@ -127,11 +126,18 @@ public final class MeditationActivity extends AppCompatActivity {
                 });
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
     // Defining inner class for getting the references of the OUTER class conveniently
     public class PlaybackListener extends PlaybackInfoListener {
 
         public void onDurationChanged(int duration) {
             seekbarAudio.setMax(duration);
+            durationView.setText(getTimeString((long) duration));
             Log.d(TAG, String.format("setPlaybackDuration: setMax(%d)", duration));
         }
 
@@ -149,24 +155,11 @@ public final class MeditationActivity extends AppCompatActivity {
         }
 
         // TODO: Implementation will be carried out in the future when required.
-        public void onPlaybackCompleted(){
+        public void onPlaybackCompleted() {
             Log.i(TAG, "onPlaybackCompleted");
         }
 
         public void onLogUpdated(String message) {
-            if (textDebug != null) {
-                textDebug.append(message);
-                textDebug.append("\n");
-                // Moves the scrollContainer focus to the end.
-                scrollContainer.post(
-                        new Runnable() {
-                            @Override
-                            public void run() {
-                                scrollContainer.fullScroll(ScrollView.FOCUS_DOWN);
-                            }
-                        });
-            }
         }
     }
-
 }
