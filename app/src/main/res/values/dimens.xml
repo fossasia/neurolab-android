@@ -105,6 +105,7 @@
     <dimen name="config_cb_heading_text_size">15sp</dimen>
     <dimen name="card_main_corner">12dp</dimen>
     <dimen name="card_main_elevation">8dp</dimen>
+    <dimen name="meditate_avatar_size">40dp</dimen>
     <dimen name="card_main_margin_lr">10dp</dimen>
     <dimen name="card_main_margin_tb">5dp</dimen>
     <dimen name="card_main_layout_padding">16dp</dimen>
