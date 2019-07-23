@@ -134,7 +134,11 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="focus_game_one_info">The Rocket Moves Up and Down according to your brain activity. Go ahead and control it.</string>
     <string name="focus_program_info">This Program Mode helps you increase your focus and concentration levels through games. Choose from the games below and strengthen your brain power.</string>
     <string name="save_graph">Save Graph Data</string>
+    <string name="ok_button">OK</string>
+    <string name="cancel">Cancel</string>
     <string name="play_focus_anim">Play Focus Animation</string>
+    <string name="gps_header">Enable GPS</string>
+    <string name="gps_info_msg">GPS is currently disabled. Please enable it from your settings.</string>
     <string name="stop_graph">Stop Memory Graph</string>
 
     <string name="filename_key">filename</string>
