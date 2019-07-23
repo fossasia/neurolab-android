@@ -3,8 +3,10 @@ package io.neurolab.fragments;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -22,6 +24,7 @@ import io.neurolab.activities.DataLoggerActivity;
 import io.neurolab.activities.ProgramModeActivity;
 import io.neurolab.main.output.visual.SpaceAnimationVisuals;
 import io.neurolab.utilities.FilePathUtil;
+import io.neurolab.utilities.LocationTracker;
 import io.neurolab.utilities.PermissionUtils;
 
 import static android.app.Activity.RESULT_OK;
@@ -34,6 +37,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     private boolean isPlaying = false;
     private boolean recordState;
     private String filePath;
+    private LocationTracker locationTracker;
     private static Menu menu;
     private static final int ACTIVITY_CHOOSE_FILE1 = 1;
     private static final String[] READ_WRITE_PERMISSIONS = {
@@ -56,6 +60,8 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.fragment_focus_visual, container, false);
         view.findViewById(R.id.animated_view).setVisibility(View.INVISIBLE);
 
+        locationTracker = new LocationTracker(getContext(), (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE));
+
         if (getArguments() != null) {
             view.findViewById(R.id.animated_view).setVisibility(View.VISIBLE);
             SpaceAnimationVisuals.spaceAnim(view);
@@ -68,8 +74,8 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        this.menu = menu;
-        toggleMenuItem(menu, !isPlaying);
+        FocusVisualFragment.menu = menu;
+        toggleMenuItem(menu, true);
     }
 
     @Override
@@ -86,17 +92,15 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
                 getRuntimePermissions();
             selectCSVFile();
         } else if (id == R.id.play_focus_anim) {
-            SpaceAnimationVisuals.playAnim();
             toggleMenuItem(menu, !isPlaying);
         } else if (id == R.id.stop_focus_anim) {
-            SpaceAnimationVisuals.stopAnim();
             toggleMenuItem(menu, isPlaying);
         } else if (id == R.id.save_focus_data) {
-            try {
-                FilePathUtil.saveData(filePath);
+            // TODO: Record Data from Device (Arduino)
+            locationTracker.startCaptureLocation();
+            if (locationTracker.getDeviceLocation() != null) {
+                Toast.makeText(getContext(), "Latitude:" + locationTracker.getDeviceLocation().getLatitude() + "Longitude: " + locationTracker.getDeviceLocation().getLongitude(), Toast.LENGTH_SHORT).show();
                 toggleRecordState(item, recordState);
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         } else if (id == R.id.focus_data_logger) {
             Intent intent = new Intent(getContext(), DataLoggerActivity.class);
@@ -116,7 +120,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     private void toggleRecordState(MenuItem item, boolean state) {
         if (state) {
             item.setIcon(R.drawable.ic_record_stop_white);
-            recordState = !state;
+            recordState = false;
         } else {
             item.setIcon(R.drawable.ic_record_white);
         }
@@ -132,6 +136,10 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     permission = true;
                 } else
+                    Toast.makeText(getContext(), getResources().getString(R.string.perm_not_granted), Toast.LENGTH_SHORT).show();
+                break;
+            case LocationTracker.GPS_PERMISSION:
+                if (grantResults[0] != PackageManager.PERMISSION_GRANTED)
                     Toast.makeText(getContext(), getResources().getString(R.string.perm_not_granted), Toast.LENGTH_SHORT).show();
                 break;
             default:

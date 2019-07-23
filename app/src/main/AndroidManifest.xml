@@ -7,6 +7,9 @@
 
     <uses-feature android:name="android.hardware.usb.host" />
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
@@ -19,15 +22,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.FocusParentActivity"></activity>
         <activity android:name=".activities.MeditationHome"></activity>
+        <activity
+            android:name=".activities.FocusParentActivity"
+            android:noHistory="true" />
         <activity
             android:name=".activities.TestModeActivity"
             android:label="@string/title_activity_test_mode"
             android:parentActivityName=".main.NeuroLab" />
         <activity
             android:name=".activities.ProgramModeActivity"
-            android:parentActivityName=".main.NeuroLab" />
+            android:noHistory="true" />
         <activity
             android:name=".activities.AboutUsActivity"
             android:label="@string/about_us"
