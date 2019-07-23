@@ -19,9 +19,7 @@ public class FocusParentActivity extends AppCompatActivity {
 
         FloatingActionButton gameButton = findViewById(R.id.play_focus_game);
 
-        gameButton.setOnClickListener(v -> {
-            startProgramModeActivity(FocusVisualFragment.FOCUS_FLAG);
-        });
+        gameButton.setOnClickListener(v -> startProgramModeActivity(FocusVisualFragment.FOCUS_FLAG));
     }
 
     private void startProgramModeActivity(String mode) {
@@ -30,6 +28,7 @@ public class FocusParentActivity extends AppCompatActivity {
         bundle.putString(ProgramModeActivity.INTENT_KEY_PROGRAM_MODE, mode);
         intent.putExtras(bundle);
         startActivity(intent);
+        finish();
     }
 
     @Override

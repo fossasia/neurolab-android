@@ -86,6 +86,7 @@
     <dimen name="view_divider_height">1dp</dimen>
     <dimen name="baud_rate_padding">5dp</dimen>
     <dimen name="baud_rate_spinner_padding">10dp</dimen>
+    <dimen name="rocket_width">101dp</dimen>
     <dimen name="land_margin_top">16dp</dimen>
     <dimen name="land_button_margin">8dp</dimen>
     <dimen name="land_button_bottom_margin">2dp</dimen>
