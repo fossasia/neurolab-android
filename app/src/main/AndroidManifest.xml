@@ -22,7 +22,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.MeditationHome"></activity>
+        <activity android:name=".activities.MeditationListActivity"></activity>
+        <activity android:name=".activities.MeditationHome" />
         <activity
             android:name=".activities.FocusParentActivity"
             android:noHistory="true" />
@@ -61,8 +62,7 @@
         <activity
             android:name=".activities.MeditationActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/meditation_activity_label"
-            android:parentActivityName=".main.NeuroLab" />
+            android:label="@string/meditation_activity_label" />
         <activity android:name=".activities.MemoryGraphParent" />
         <activity
             android:name=".communication.bluetooth.BluetoothTestActivity"
