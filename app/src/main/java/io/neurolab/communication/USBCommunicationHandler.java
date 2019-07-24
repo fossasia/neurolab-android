@@ -42,7 +42,7 @@ public class USBCommunicationHandler {
         matches that of a connected device.
         If found, permission must be requested from the user.
      */
-    private void searchForArduinoDevice(Context context) {
+    public void searchForArduinoDevice(Context context) {
         HashMap usbDevices = usbManager.getDeviceList();
 
         if (!usbDevices.isEmpty()) {
