@@ -13,15 +13,19 @@
                     android:id="@+id/nav_relax"
                     android:title="@string/relax" />
                 <item
-                    android:id="@+id/nav_memory_graph"
-                    android:title="@string/mem_graph" />
-                <item
                     android:id="@+id/nav_meditation"
                     android:title="@string/meditation" />
+                <item
+                    android:id="@+id/nav_memory_graph"
+                    android:title="@string/mem_graph" />
 
             </group>
         </menu>
     </item>
+
+    <item
+        android:id="@+id/nav_data_logger"
+        android:title="@string/logged_data" />
 
     <item
         android:id="@+id/nav_connect_device"
@@ -33,10 +37,7 @@
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="@string/share_nav_drawer" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/send_nav_drawer" />
+
             <item
                 android:id="@+id/nav_version"
                 android:icon="@drawable/ic_update"

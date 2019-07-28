@@ -33,6 +33,7 @@ import java.io.UnsupportedEncodingException;
 
 import io.neurolab.R;
 import io.neurolab.activities.AboutUsActivity;
+import io.neurolab.activities.DataLoggerActivity;
 import io.neurolab.activities.FocusParentActivity;
 import io.neurolab.activities.MeditationHome;
 import io.neurolab.activities.MemoryGraphParent;
@@ -239,12 +240,13 @@ public class NeuroLab extends AppCompatActivity
             startProgramModeActivity(MemoryGraphParent.MEMORY_GRAPH_FLAG);
         } else if (id == R.id.nav_meditation) {
             startActivity(new Intent(this, MeditationHome.class));
+            finish();
         } else if (id == R.id.nav_connect_device) {
             changeDeviceIcon();
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_data_logger) {
+            startActivity(new Intent(this, DataLoggerActivity.class));
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -279,7 +281,6 @@ public class NeuroLab extends AppCompatActivity
         switch (id) {
             case R.id.focus_card:
                 startActivity(new Intent(this, FocusParentActivity.class));
-                finish();
                 break;
             case R.id.relax_card:
                 startProgramModeActivity(RelaxVisualFragment.RELAX_PROGRAM_FLAG);
