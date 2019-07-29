@@ -40,7 +40,6 @@ public class ProgramModeActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_program_mode);
 
-
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         String modeFlag = bundle.getString(INTENT_KEY_PROGRAM_MODE);

@@ -14,13 +14,16 @@ import android.widget.VideoView;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import io.neurolab.R;
+import io.neurolab.gui.GraphicBgRenderer;
 
 public class SpaceAnimationVisuals {
 
-    private Animation animation;
     private ImageView travellingRocket;
-    private VideoView focusBg;
+    private GraphicBgRenderer focusBg;
     private View scrim;
     private View rocketFocusScreen;
 
@@ -34,29 +37,23 @@ public class SpaceAnimationVisuals {
         travellingRocket = view.findViewById(R.id.indicator);
         scrim = view.findViewById(R.id.scrim_focus_screen);
         focusBg = view.findViewById(R.id.focus_bg);
-        travellingRocket = view.findViewById(R.id.indicator);
         rocketFocusScreen = view.findViewById(R.id.rocket_focus_screen);
     }
 
-
     public void playRocketAnim(View view) {
-        animation = new AlphaAnimation(1, 0); //to change visibility from visible to invisible
+        Animation animation = new AlphaAnimation(1, 0); //to change visibility from visible to invisible
         animation.setDuration(300); //1 second duration for each animation cycle
         animation.setInterpolator(new LinearInterpolator());
         animation.setRepeatCount(Animation.INFINITE); //repeating indefinitely
         animation.setRepeatMode(Animation.REVERSE); //animation will start from end point once ended.
         travellingRocket.startAnimation(animation);
-
-
         scrim.startAnimation(AnimationUtils.loadAnimation(view.getContext(), android.R.anim.fade_out));
         scrim.setVisibility(View.GONE);
-
 
         focusBg.setVideoURI(Uri.parse("android.resource://" + view.getContext().getPackageName() + "/" + R.raw.focus_screen_bg));
         focusBg.setOnPreparedListener(mp -> mp.setLooping(true));
         focusBg.setOnCompletionListener(mediaPlayer -> focusBg.startAnimation(AnimationUtils.loadAnimation(view.getContext(), android.R.anim.fade_out)));
         focusBg.start();
-
     }
 
     public void pauseRocketAnim(View view) {
@@ -65,7 +62,6 @@ public class SpaceAnimationVisuals {
         focusBg.pause();
         scrim.startAnimation(AnimationUtils.loadAnimation(view.getContext(), android.R.anim.fade_in));
         scrim.setVisibility(View.VISIBLE);
-
         if (timer != null)
             stop();
     }
@@ -81,7 +77,6 @@ public class SpaceAnimationVisuals {
         valueAnimator[0].addUpdateListener(valueAnimator1 -> {
             float value1 = (float) valueAnimator1.getAnimatedValue();
             rocketFocusScreen.setTranslationY(value1);
-
         });
 
         timerTask = new TimerTask() {
@@ -89,7 +84,6 @@ public class SpaceAnimationVisuals {
             @Override
             public void run() {
                 activity.runOnUiThread(() -> {
-
                     if (count <= data.length) {
 
                         if (valueAnimator[0].isPaused()) {
@@ -97,20 +91,15 @@ public class SpaceAnimationVisuals {
                         } else {
                             valueAnimator[0].start();
                         }
-
                         count++;
                     } else {
                         stop();
                     }
                 });
-
             }
         };
-
         start();
-
     }
-
 
     public void start() {
         if (timer != null) {
@@ -127,6 +116,4 @@ public class SpaceAnimationVisuals {
             timer = null;
         }
     }
-
-
 }

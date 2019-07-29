@@ -1,10 +1,12 @@
 package io.neurolab.main;
 
+import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.hardware.usb.UsbManager;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -41,6 +43,7 @@ import io.neurolab.activities.TestModeActivity;
 import io.neurolab.communication.USBCommunicationHandler;
 import io.neurolab.communication.bluetooth.BluetoothTestActivity;
 import io.neurolab.fragments.RelaxVisualFragment;
+import io.neurolab.utilities.PermissionUtils;
 
 public class NeuroLab extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -53,6 +56,11 @@ public class NeuroLab extends AppCompatActivity
     private static boolean deviceConnected;
     private static String deviceData;
     private Menu menu;
+    private static final String[] READ_WRITE_PERMISSIONS = {
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE
+    };
+    private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT = 1;
     private int launcherSleepTime;
     public static USBCommunicationHandler usbCommunicationHandler;
     private UsbSerialInterface.UsbReadCallback readCallback = new UsbSerialInterface.UsbReadCallback() { //Defining a Callback which triggers whenever data is read.
@@ -116,6 +124,9 @@ public class NeuroLab extends AppCompatActivity
             // The user hasn't seen the OnBoardingActivity yet, so show it
             startActivity(new Intent(this, OnBoardingActivity.class));
         }
+        if (!(PermissionUtils.checkRuntimePermissions(this, READ_WRITE_PERMISSIONS))) {
+            getRuntimePermissions();
+        }
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -164,6 +175,7 @@ public class NeuroLab extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
+            unregisterReceiver(broadcastReceiver);
             super.onBackPressed();
         }
     }
@@ -237,6 +249,28 @@ public class NeuroLab extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (grantResults.length < 1)
+            return;
+        switch (requestCode) {
+            case PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT:
+                if (grantResults[0] != PackageManager.PERMISSION_GRANTED)
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.perm_not_granted), Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.perm_not_granted), Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
+    private void getRuntimePermissions() {
+        PermissionUtils.requestRuntimePermissions(this,
+                READ_WRITE_PERMISSIONS,
+                PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT);
     }
 
     @Override

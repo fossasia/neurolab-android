@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".activities.MeditationListActivity">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="@dimen/heading_margin_left"
+        android:layout_height="@dimen/heading_margin_left"
+        android:src="@drawable/ic_brain"
+        app:civ_border_color="@color/colorPrimary"
+        app:civ_border_width="@dimen/view_width_or_height"
+        android:layout_margin="@dimen/layout_margin_medium"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/author_elisha"
+        android:layout_margin="@dimen/layout_margin_medium"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="@font/montserrat" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/meditation_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

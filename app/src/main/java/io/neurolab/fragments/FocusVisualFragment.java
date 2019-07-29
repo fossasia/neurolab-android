@@ -3,14 +3,18 @@ package io.neurolab.fragments;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Point;
 import android.os.AsyncTask;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -28,8 +32,10 @@ import java.util.ArrayList;
 import io.neurolab.R;
 import io.neurolab.activities.DataLoggerActivity;
 import io.neurolab.activities.ProgramModeActivity;
+import io.neurolab.gui.GraphicBgRenderer;
 import io.neurolab.main.output.visual.SpaceAnimationVisuals;
 import io.neurolab.utilities.FilePathUtil;
+import io.neurolab.utilities.LocationTracker;
 import io.neurolab.utilities.PermissionUtils;
 
 import static android.app.Activity.RESULT_OK;
@@ -44,6 +50,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     private boolean recordState;
     private String[] parsedData;
     private String filePath;
+    private LocationTracker locationTracker;
     private static Menu menu;
     private static final int ACTIVITY_CHOOSE_FILE1 = 1;
     private static final String[] READ_WRITE_PERMISSIONS = {
@@ -53,7 +60,6 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     public static final String FOCUS_FLAG = "Focus";
 
     private SpaceAnimationVisuals rocketAnimation;
-
     private View view;
 
     @Override
@@ -68,19 +74,24 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
 
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_focus_visual, container, false);
-        view.findViewById(R.id.animated_view).setVisibility(View.INVISIBLE);
 
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+
+        GraphicBgRenderer focusBg = view.findViewById(R.id.focus_bg);
+        focusBg.setDimensions(size.x, size.y);
+        focusBg.getHolder().setFixedSize(size.x, size.y);
         rocketAnimation = new SpaceAnimationVisuals(view);
 
-        if (getArguments() != null && StatisticsFragment.parsedData == null) {
+        locationTracker = new LocationTracker(getContext(), (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE));
+
+        if (getArguments() != null) {
             rocketAnimation.playRocketAnim(view);
             recordState = true;
             filePath = getArguments().getString(LOG_FILE_KEY);
-
             new ParseDataAsync(filePath).execute();
-
         } else {
-
             new Handler().postDelayed(() -> rocketAnimation.pauseRocketAnim(view), 400);
         }
 
@@ -91,7 +102,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        this.menu = menu;
+        FocusVisualFragment.menu = menu;
         toggleMenuItem(menu, true);
     }
 
@@ -117,11 +128,11 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
             toggleMenuItem(menu, isPlaying);
             rocketAnimation.pauseRocketAnim(view);
         } else if (id == R.id.save_focus_data) {
-            try {
-                FilePathUtil.saveData(filePath);
+            // TODO: Record Data from Device (Arduino)
+            locationTracker.startCaptureLocation();
+            if (locationTracker.getDeviceLocation() != null) {
+                Toast.makeText(getContext(), "Latitude:" + locationTracker.getDeviceLocation().getLatitude() + "Longitude: " + locationTracker.getDeviceLocation().getLongitude(), Toast.LENGTH_SHORT).show();
                 toggleRecordState(item, recordState);
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         } else if (id == R.id.focus_data_logger) {
             Intent intent = new Intent(getContext(), DataLoggerActivity.class);
@@ -157,6 +168,10 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     permission = true;
                 } else
+                    Toast.makeText(getContext(), getResources().getString(R.string.perm_not_granted), Toast.LENGTH_SHORT).show();
+                break;
+            case LocationTracker.GPS_PERMISSION:
+                if (grantResults[0] != PackageManager.PERMISSION_GRANTED)
                     Toast.makeText(getContext(), getResources().getString(R.string.perm_not_granted), Toast.LENGTH_SHORT).show();
                 break;
             default:
@@ -209,8 +224,6 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
             play.setVisible(false);
             stop.setVisible(false);
         }
-
-
     }
 
     private void selectCSVFile() {
@@ -237,9 +250,6 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         super.onStop();
     }
 
-
-    private ArrayList<String[]> rawData;
-
     private class ParseDataAsync extends AsyncTask<Void, Void, String[]> {
 
         private String filePath;
@@ -250,7 +260,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
 
         @Override
         protected String[] doInBackground(Void... voids) {
-            rawData = new ArrayList<>();
+            ArrayList<String[]> rawData = new ArrayList<>();
             String[] eegValues = null;
             int eegValueSize = 0;
             int rawDataSize = 0;
@@ -278,19 +288,8 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         @Override
         protected void onPostExecute(String[] strings) {
             super.onPostExecute(strings);
-            StatisticsFragment.parsedData = parsedData = strings;
-
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    rocketAnimation.animateRocket(convertToDouble(parsedData), getActivity());
-
-                }
-            });
-
-
+            parsedData = strings;
+            getActivity().runOnUiThread(() -> rocketAnimation.animateRocket(convertToDouble(parsedData), getActivity()));
         }
     }
-
-
 }
