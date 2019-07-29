@@ -94,8 +94,6 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         } else {
             new Handler().postDelayed(() -> rocketAnimation.pauseRocketAnim(view), 400);
         }
-
-
         return view;
     }
 
