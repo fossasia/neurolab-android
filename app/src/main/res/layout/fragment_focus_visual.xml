@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <io.neurolab.gui.GraphicBgRenderer
         android:id="@+id/focus_bg"
         android:layout_width="wrap_content"

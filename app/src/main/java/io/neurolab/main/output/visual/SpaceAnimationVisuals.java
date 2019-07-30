@@ -9,6 +9,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
+import android.widget.VideoView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -43,7 +47,6 @@ public class SpaceAnimationVisuals {
         animation.setRepeatCount(Animation.INFINITE); //repeating indefinitely
         animation.setRepeatMode(Animation.REVERSE); //animation will start from end point once ended.
         travellingRocket.startAnimation(animation);
-
         scrim.startAnimation(AnimationUtils.loadAnimation(view.getContext(), android.R.anim.fade_out));
         scrim.setVisibility(View.GONE);
 
@@ -88,7 +91,6 @@ public class SpaceAnimationVisuals {
                         } else {
                             valueAnimator[0].start();
                         }
-
                         count++;
                     } else {
                         stop();

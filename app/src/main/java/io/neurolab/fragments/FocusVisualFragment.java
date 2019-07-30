@@ -90,7 +90,6 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
             rocketAnimation.playRocketAnim(view);
             recordState = true;
             filePath = getArguments().getString(LOG_FILE_KEY);
-
             new ParseDataAsync(filePath).execute();
         } else {
             new Handler().postDelayed(() -> rocketAnimation.pauseRocketAnim(view), 400);
@@ -288,7 +287,6 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         protected void onPostExecute(String[] strings) {
             super.onPostExecute(strings);
             parsedData = strings;
-
             getActivity().runOnUiThread(() -> rocketAnimation.animateRocket(convertToDouble(parsedData), getActivity()));
         }
     }
