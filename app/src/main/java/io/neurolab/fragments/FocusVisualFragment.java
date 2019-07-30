@@ -5,10 +5,11 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Point;
-import android.os.AsyncTask;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -32,7 +33,10 @@ import java.util.ArrayList;
 import io.neurolab.R;
 import io.neurolab.activities.DataLoggerActivity;
 import io.neurolab.activities.ProgramModeActivity;
+import io.neurolab.communication.USBCommunicationHandler;
+import io.neurolab.communication.USBReceiver;
 import io.neurolab.gui.GraphicBgRenderer;
+import io.neurolab.main.NeuroLab;
 import io.neurolab.main.output.visual.SpaceAnimationVisuals;
 import io.neurolab.utilities.FilePathUtil;
 import io.neurolab.utilities.LocationTracker;
@@ -51,6 +55,8 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     private String[] parsedData;
     private String filePath;
     private LocationTracker locationTracker;
+    private USBCommunicationHandler usbCommunicationHandler;
+    private final String ACTION_USB_PERMISSION = "io.neurolab.USB_PERMISSION";
     private static Menu menu;
     private static final int ACTIVITY_CHOOSE_FILE1 = 1;
     private static final String[] READ_WRITE_PERMISSIONS = {
@@ -84,7 +90,16 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         focusBg.getHolder().setFixedSize(size.x, size.y);
         rocketAnimation = new SpaceAnimationVisuals(view);
 
+        // setting up the UsbManager instance with the desired USB service.
+        usbCommunicationHandler = USBCommunicationHandler.getInstance(getContext(), NeuroLab.getUsbManager());
         locationTracker = new LocationTracker(getContext(), (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE));
+
+        USBReceiver usbReceiver = new USBReceiver(usbCommunicationHandler);
+
+        IntentFilter intentFilter = new IntentFilter();
+        // adding the possible USB intent actions.
+        intentFilter.addAction(ACTION_USB_PERMISSION);
+        getContext().registerReceiver(usbReceiver, intentFilter);
 
         if (getArguments() != null) {
             rocketAnimation.playRocketAnim(view);
@@ -127,7 +142,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
             toggleMenuItem(menu, isPlaying);
             rocketAnimation.pauseRocketAnim(view);
         } else if (id == R.id.save_focus_data) {
-            // TODO: Record Data from Device (Arduino)
+            usbCommunicationHandler.searchForArduinoDevice(getContext());
             locationTracker.startCaptureLocation();
             if (locationTracker.getDeviceLocation() != null) {
                 Toast.makeText(getContext(), "Latitude:" + locationTracker.getDeviceLocation().getLatitude() + "Longitude: " + locationTracker.getDeviceLocation().getLongitude(), Toast.LENGTH_SHORT).show();
