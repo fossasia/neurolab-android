@@ -6,12 +6,15 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -89,9 +92,41 @@ public class FilePathUtil {
         return trimmedPath;
     }
 
+    public static void recordData(String data) {
+        setupPath();
+        Date currentTime = Calendar.getInstance().getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String fileName = sdf.format(currentTime);
+        File csvFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() +
+                File.separator + CSV_DIRECTORY + File.separator + fileName + ".csv");
+        if (!csvFile.exists()) {
+            try {
+                csvFile.createNewFile();
+                writeCsvFile(csvFile, data);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private static void writeCsvFile(File csvFile, String data) {
+        if (csvFile.exists()) {
+            try {
+                PrintWriter out
+                        = new PrintWriter(new BufferedWriter(new FileWriter(csvFile, true)));
+                out.write(data + "\n");
+                out.flush();
+                out.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
     public static void saveData(String importedFilePath) {
         File importedFile = new File(importedFilePath);
-        FilePathUtil.setupPath();
+        setupPath();
         Date currentTime = Calendar.getInstance().getTime();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String fileName = sdf.format(currentTime);
