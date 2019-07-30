@@ -33,8 +33,8 @@ import java.util.ArrayList;
 import io.neurolab.R;
 import io.neurolab.activities.DataLoggerActivity;
 import io.neurolab.activities.ProgramModeActivity;
+import io.neurolab.communication.DataReceiver;
 import io.neurolab.communication.USBCommunicationHandler;
-import io.neurolab.communication.USBReceiver;
 import io.neurolab.gui.GraphicBgRenderer;
 import io.neurolab.main.NeuroLab;
 import io.neurolab.main.output.visual.SpaceAnimationVisuals;
@@ -54,7 +54,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     private boolean recordState;
     private String[] parsedData;
     private String filePath;
-    private LocationTracker locationTracker;
+    public static LocationTracker locationTracker;
     private USBCommunicationHandler usbCommunicationHandler;
     private final String ACTION_USB_PERMISSION = "io.neurolab.USB_PERMISSION";
     private static Menu menu;
@@ -94,12 +94,12 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         usbCommunicationHandler = USBCommunicationHandler.getInstance(getContext(), NeuroLab.getUsbManager());
         locationTracker = new LocationTracker(getContext(), (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE));
 
-        USBReceiver usbReceiver = new USBReceiver(usbCommunicationHandler);
+        DataReceiver dataReceiver = new DataReceiver(usbCommunicationHandler);
 
         IntentFilter intentFilter = new IntentFilter();
         // adding the possible USB intent actions.
         intentFilter.addAction(ACTION_USB_PERMISSION);
-        getContext().registerReceiver(usbReceiver, intentFilter);
+        getContext().registerReceiver(dataReceiver, intentFilter);
 
         if (getArguments() != null) {
             rocketAnimation.playRocketAnim(view);
@@ -144,7 +144,6 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
             usbCommunicationHandler.searchForArduinoDevice(getContext());
             locationTracker.startCaptureLocation();
             if (locationTracker.getDeviceLocation() != null) {
-                Toast.makeText(getContext(), "Latitude:" + locationTracker.getDeviceLocation().getLatitude() + "Longitude: " + locationTracker.getDeviceLocation().getLongitude(), Toast.LENGTH_SHORT).show();
                 toggleRecordState(item, recordState);
             }
         } else if (id == R.id.focus_data_logger) {
