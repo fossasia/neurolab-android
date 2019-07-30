@@ -65,12 +65,15 @@ public class DataLoggerActivity extends AppCompatActivity {
             noLoggedView.setVisibility(View.VISIBLE);
         }
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this, ProgramModeActivity.class);
-        intent.putExtra(ProgramModeActivity.INTENT_KEY_PROGRAM_MODE, flag);
-        startActivity(intent);
+        if (flag != null) {
+            Intent intent = new Intent(this, ProgramModeActivity.class);
+            intent.putExtra(ProgramModeActivity.INTENT_KEY_PROGRAM_MODE, flag);
+            startActivity(intent);
+        }
         finish();
     }
 }
