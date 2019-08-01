@@ -22,7 +22,6 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_larger"
         android:textColor="@color/colorPrimary"
-        android:fontFamily="@font/montserrat"
         android:text="@string/default_timer"
         android:layout_margin="@dimen/layout_margin_medium"
         android:layout_gravity="center"/>
@@ -34,7 +33,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginEnd="@dimen/layout_margin_medium"
-            android:fontFamily="@font/montserrat"
             android:text="@string/default_timer"
             android:textColor="@color/colorPrimary" />
 

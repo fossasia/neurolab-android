@@ -27,7 +27,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/layout_margin_medium"
         android:layout_marginTop="@dimen/layout_margin_medium"
-        android:fontFamily="@font/montserrat"
         android:text="@string/info_head"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/text_size_larger"
@@ -37,7 +36,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/layout_margin_medium"
-        android:fontFamily="@font/montserrat"
         android:text="@string/focus_program_info"
         android:textColor="@android:color/black" />
 
@@ -45,7 +43,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/layout_margin_medium"
-        android:fontFamily="@font/montserrat"
         android:text="@string/games_head"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/text_size_larger"
@@ -79,7 +76,6 @@
                 android:layout_marginTop="@dimen/layout_margin_medium"
                 android:layout_marginBottom="@dimen/margin_small"
                 android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
                 android:text="@string/focus_game_one_info" />
 
             <android.support.design.widget.FloatingActionButton

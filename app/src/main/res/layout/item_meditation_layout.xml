@@ -26,7 +26,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/layout_margin_large"
-            android:fontFamily="@font/montserrat"
             android:textColor="@android:color/black"
             app:layout_constraintBottom_toBottomOf="@+id/instructor_image"
             app:layout_constraintStart_toEndOf="@+id/instructor_image"

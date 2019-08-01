@@ -116,9 +116,8 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="eeg_data_label">EEG data (mV)</string>
     <string name="play_graph">Play Graph</string>
     <string name="save_focus_data">Save Focus Data</string>
-    <string name="info_head">Info:</string>
-    <string name="games_head">Games:</string>
-    <string name="categories_head">Categories:</string>
+    <string name="info_head">Info</string>
+    <string name="games_head">Games</string>
     <string name="happiness_head">Happiness</string>
     <string name="depression_head">Depression</string>
     <string name="short_breaks_head">Short-Breaks</string>
@@ -131,8 +130,8 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="sleep_desc">Meditations while having trouble in sleeping</string>
     <string name="depressed_desc">Meditations when you feel depressed</string>
     <string name="happiness_desc">Meditations while you are in a happy mood</string>
-    <string name="focus_game_one_info">The Rocket Moves Up and Down according to your brain activity. Go ahead and control it.</string>
-    <string name="focus_program_info">This Program Mode helps you increase your focus and concentration levels through games. Choose from the games below and strengthen your brain power.</string>
+    <string name="focus_game_one_info">The Rocket Moves Up and Down according to your brain activity. Concentrate to travel forward or Relax to travel back.</string>
+    <string name="focus_program_info">This Program Mode helps you increase your focus and concentration levels with the help of games. Choose from the games below and strengthen your brain power.</string>
     <string name="save_graph">Save Graph Data</string>
     <string name="ok_button">OK</string>
     <string name="cancel">Cancel</string>
@@ -142,6 +141,10 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="stop_graph">Stop Memory Graph</string>
     <string name="author_elisha">Elisha Goldstein</string>
     <string name="default_timer">00:00</string>
+    <string name="recording_message">Recording Data…</string>
+    <string name="yes_focus_msg">Yes, Start</string>
+    <string name="focus_test_msg">Test Data</string>
+    <string name="focus_rec_ins">Please ensure neurolab device is connected to play this game or play test data.</string>
 
     <string name="filename_key">filename</string>
     <string name="title_activity_configs">ConfigsActivity</string>
@@ -151,6 +154,6 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="bit24_pref_key">bit24</string>
     <string name="advanced_mode_pref_key">advancedMode</string>
     <string name="axis_desc_time">Time (MilliSeconds)</string>
-    <string name="meditation">Meditation</string>
+    <string name="meditation">Meditate</string>
     <string name="meditation_desc">to (cause someone to) become less active and more calm and happy</string>
 </resources>

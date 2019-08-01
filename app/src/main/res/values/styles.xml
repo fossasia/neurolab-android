@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorControlHighlight">@color/colorControlHighlight</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+        <item name="android:fontFamily">@font/montserrat</item>
     </style>
 
     <style name="EditTextPrefTheme" parent="@style/PreferenceFixTheme.Light.DarkActionBar">
