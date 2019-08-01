@@ -18,17 +18,12 @@
             android:scaleType="fitXY"
             android:src="@drawable/meditation_bg" />
 
-        <TextView
+        <View
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/layout_margin_medium"
             android:layout_marginStart="@dimen/layout_margin_medium"
-            android:layout_marginTop="@dimen/layout_margin_medium"
-            android:fontFamily="@font/montserrat"
-            android:text="@string/categories_head"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/text_size_larger"
-            android:textStyle="bold" />
+            android:layout_marginTop="@dimen/layout_margin_medium" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,7 +66,6 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:fontFamily="@font/montserrat"
                                 android:text="@string/happiness_head"
                                 android:textColor="@android:color/white"
                                 android:textSize="@dimen/text_size_large" />
@@ -79,7 +73,6 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:fontFamily="@font/montserrat"
                                 android:text="@string/happiness_desc" />
                         </LinearLayout>
 
@@ -125,7 +118,6 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:fontFamily="@font/montserrat"
                                 android:text="@string/depression_head"
                                 android:textColor="@android:color/white"
                                 android:textSize="@dimen/text_size_large" />
@@ -133,7 +125,6 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:fontFamily="@font/montserrat"
                                 android:text="@string/depressed_desc" />
                         </LinearLayout>
 
@@ -185,7 +176,6 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:fontFamily="@font/montserrat"
                                 android:text="@string/sleep_head"
                                 android:textColor="@android:color/white"
                                 android:textSize="@dimen/text_size_large" />
@@ -193,7 +183,6 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:fontFamily="@font/montserrat"
                                 android:text="@string/sleep_desc" />
                         </LinearLayout>
 
@@ -240,7 +229,6 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:fontFamily="@font/montserrat"
                                 android:text="@string/travel_head"
                                 android:textColor="@android:color/white"
                                 android:textSize="@dimen/text_size_large" />
@@ -248,7 +236,6 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:fontFamily="@font/montserrat"
                                 android:text="@string/travel_desc" />
                         </LinearLayout>
 
@@ -301,7 +288,6 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:fontFamily="@font/montserrat"
                                 android:text="@string/short_breaks_head"
                                 android:textColor="@android:color/white"
                                 android:textSize="@dimen/text_size_large" />
@@ -309,7 +295,6 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:fontFamily="@font/montserrat"
                                 android:text="@string/short_breaks_desc" />
                         </LinearLayout>
 
@@ -356,7 +341,6 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:fontFamily="@font/montserrat"
                                 android:text="@string/long_breaks_head"
                                 android:textColor="@android:color/white"
                                 android:textSize="@dimen/text_size_large" />
@@ -364,7 +348,6 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:fontFamily="@font/montserrat"
                                 android:text="@string/long_breaks_desc" />
                         </LinearLayout>
 
