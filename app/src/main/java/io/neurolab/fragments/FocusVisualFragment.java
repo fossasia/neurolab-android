@@ -54,8 +54,11 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     private boolean recordState;
     private String[] parsedData;
     private String filePath;
+    private AlertDialog recordDialog;
+    private AlertDialog disconnectDialog;
     public static LocationTracker locationTracker;
     private USBCommunicationHandler usbCommunicationHandler;
+    private DataReceiver dataReceiver;
     private final String ACTION_USB_PERMISSION = "io.neurolab.USB_PERMISSION";
     private static Menu menu;
     private static final int ACTIVITY_CHOOSE_FILE1 = 1;
@@ -94,12 +97,15 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         usbCommunicationHandler = USBCommunicationHandler.getInstance(getContext(), NeuroLab.getUsbManager());
         locationTracker = new LocationTracker(getContext(), (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE));
 
-        DataReceiver dataReceiver = new DataReceiver(usbCommunicationHandler);
+        dataReceiver = new DataReceiver(getContext(), usbCommunicationHandler);
 
         IntentFilter intentFilter = new IntentFilter();
         // adding the possible USB intent actions.
         intentFilter.addAction(ACTION_USB_PERMISSION);
         getContext().registerReceiver(dataReceiver, intentFilter);
+
+        buildRecDialog();
+        buildDisconnectDialog();
 
         if (getArguments() != null) {
             rocketAnimation.playRocketAnim(view);
@@ -143,6 +149,9 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         } else if (id == R.id.save_focus_data) {
             usbCommunicationHandler.searchForArduinoDevice(getContext());
             locationTracker.startCaptureLocation();
+            if (usbCommunicationHandler.getSerialPort() != null)
+                recordDialog.show();
+            else disconnectDialog.show();
             if (locationTracker.getDeviceLocation() != null) {
                 toggleRecordState(item, recordState);
             }
@@ -243,6 +252,23 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("text/*");
         startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.import_csv)), ACTIVITY_CHOOSE_FILE1);
+    }
+
+    private void buildRecDialog() {
+        LayoutInflater layoutInflater = ((Activity) getContext()).getLayoutInflater();
+        View progressView = layoutInflater.inflate(R.layout.record_dialog_layout, null);
+        recordDialog = new AlertDialog.Builder(getContext())
+                .setView(progressView)
+                .setCancelable(false)
+                .setPositiveButton(R.string.stop, (dialog, which) -> dataReceiver.stopConnection()).create();
+    }
+
+    private void buildDisconnectDialog() {
+        disconnectDialog = new AlertDialog.Builder(getContext())
+                .setTitle(R.string.no_device)
+                .setMessage(R.string.no_rec_msg)
+                .setPositiveButton(R.string.ok_button, (dialog, which) -> {
+                }).create();
     }
 
     @Override

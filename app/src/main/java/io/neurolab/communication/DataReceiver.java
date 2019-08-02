@@ -15,19 +15,24 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import io.neurolab.R;
+import io.neurolab.activities.DataLoggerActivity;
 import io.neurolab.utilities.FilePathUtil;
 
 import static io.neurolab.fragments.FocusVisualFragment.locationTracker;
 
 public class DataReceiver extends BroadcastReceiver {
+    private Context context;
     private USBCommunicationHandler usbCommunicationHandler;
 
     private static String dataContent = "";
     private boolean collecting = true;
+    private static boolean extStop = false; // For external stop case by user
     private StringBuilder updatedDataContent;
     private int count;
 
-    public DataReceiver(USBCommunicationHandler usbCommunicationHandler) {
+    public DataReceiver(Context context, USBCommunicationHandler usbCommunicationHandler) {
+        this.context = context;
         this.usbCommunicationHandler = usbCommunicationHandler;
     }
 
@@ -46,10 +51,13 @@ public class DataReceiver extends BroadcastReceiver {
                     }
                     // for 'Recorded' message
                     final char END_DETECT_CHAR = 'R';
-                    if (data.charAt(i) == END_DETECT_CHAR) { // To detect the end of file recording
+                    if (data.charAt(i) == END_DETECT_CHAR || extStop) { // To detect the end of file recording
                         count = 0;
                         FilePathUtil.recordData(updateIncomingData(dataContent));
-                        collecting = true;
+                        context.startActivity(new Intent(context, DataLoggerActivity.class));
+                        usbCommunicationHandler.getSerialPort().close();
+                        extStop = false;
+                        return;
                     }
                 }
                 if (!collecting)
@@ -109,7 +117,7 @@ public class DataReceiver extends BroadcastReceiver {
                     int baudRate = 9600;
                     if (usbCommunicationHandler.initializeSerialConnection(baudRate)) {
                         usbCommunicationHandler.getSerialPort().read(readCallback);
-                        Toast.makeText(context, "Serial Connection Opened!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, R.string.connection_opened, Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Log.d("SERIAL", "PERM NOT GRANTED");
@@ -118,5 +126,9 @@ public class DataReceiver extends BroadcastReceiver {
             default:
                 break;
         }
+    }
+
+    public void stopConnection() {
+        extStop = true;
     }
 }
