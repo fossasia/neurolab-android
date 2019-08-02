@@ -142,6 +142,8 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="author_elisha">Elisha Goldstein</string>
     <string name="default_timer">00:00</string>
     <string name="recording_message">Recording Data…</string>
+    <string name="no_device">No Device Connected</string>
+    <string name="no_rec_msg">Please connect the Neurolab device to start a recording</string>
     <string name="yes_focus_msg">Yes, Start</string>
     <string name="focus_test_msg">Test Data</string>
     <string name="focus_rec_ins">Please ensure neurolab device is connected to play this game or play test data.</string>
