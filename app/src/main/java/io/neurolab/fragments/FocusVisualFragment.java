@@ -51,11 +51,12 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT = 1;
     private boolean permission = false;
     private boolean isPlaying = false;
-    private boolean recordState;
     private String[] parsedData;
     private String filePath;
     private AlertDialog recordDialog;
     private AlertDialog disconnectDialog;
+    private AlertDialog instructionsDialog;
+    private static boolean showInstructions = true;
     public static LocationTracker locationTracker;
     private USBCommunicationHandler usbCommunicationHandler;
     private DataReceiver dataReceiver;
@@ -106,10 +107,14 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
 
         buildRecDialog();
         buildDisconnectDialog();
+        buildInstructionDialog();
+        if (showInstructions) {
+            instructionsDialog.show();
+            showInstructions = false;
+        }
 
         if (getArguments() != null) {
             rocketAnimation.playRocketAnim(view);
-            recordState = true;
             filePath = getArguments().getString(LOG_FILE_KEY);
             new ParseDataAsync(filePath).execute();
         } else {
@@ -147,14 +152,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
             toggleMenuItem(menu, isPlaying);
             rocketAnimation.pauseRocketAnim(view);
         } else if (id == R.id.save_focus_data) {
-            usbCommunicationHandler.searchForArduinoDevice(getContext());
-            locationTracker.startCaptureLocation();
-            if (usbCommunicationHandler.getSerialPort() != null)
-                recordDialog.show();
-            else disconnectDialog.show();
-            if (locationTracker.getDeviceLocation() != null) {
-                toggleRecordState(item, recordState);
-            }
+            recordData();
         } else if (id == R.id.focus_data_logger) {
             Intent intent = new Intent(getContext(), DataLoggerActivity.class);
             intent.putExtra(ProgramModeActivity.PROGRAM_FLAG_KEY, FOCUS_FLAG);
@@ -170,13 +168,12 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    private void toggleRecordState(MenuItem item, boolean state) {
-        if (state) {
-            item.setIcon(R.drawable.ic_record_stop_white);
-            recordState = false;
-        } else {
-            item.setIcon(R.drawable.ic_record_white);
-        }
+    private void recordData() {
+        usbCommunicationHandler.searchForArduinoDevice(getContext());
+        locationTracker.startCaptureLocation();
+        if (usbCommunicationHandler.getSerialPort() != null)
+            recordDialog.show();
+        else disconnectDialog.show();
     }
 
     @Override
@@ -269,6 +266,24 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
                 .setMessage(R.string.no_rec_msg)
                 .setPositiveButton(R.string.ok_button, (dialog, which) -> {
                 }).create();
+    }
+
+    private void buildInstructionDialog() {
+        instructionsDialog = new AlertDialog.Builder(getContext())
+                .setTitle(R.string.focus)
+                .setMessage(R.string.focus_rec_ins)
+                // This actually server as a positive action
+                .setNegativeButton(R.string.yes_focus_msg, (dialog, which) -> recordData())
+                // This actually server as a negative action
+                .setNeutralButton(R.string.cancel, (dialog, which) -> {
+                })
+                // This actually server as a neutral action
+                .setPositiveButton(R.string.focus_test_msg, (dialog, which) -> {
+                    Intent intent = new Intent(getContext(), DataLoggerActivity.class);
+                    intent.putExtra(ProgramModeActivity.PROGRAM_FLAG_KEY, FOCUS_FLAG);
+                    startActivity(intent);
+                })
+                .create();
     }
 
     @Override
