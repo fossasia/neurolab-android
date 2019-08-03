@@ -128,6 +128,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         super.onPrepareOptionsMenu(menu);
         FocusVisualFragment.menu = menu;
         toggleMenuItem(menu, true);
+        toggleRecordItem(menu, false);
     }
 
     @Override
@@ -139,6 +140,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+        boolean isRecording = false;
         if (id == R.id.import_data_focus) {
             if (!permission)
                 getRuntimePermissions();
@@ -153,6 +155,12 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
             rocketAnimation.pauseRocketAnim(view);
         } else if (id == R.id.save_focus_data) {
             recordData();
+            toggleRecordItem(menu, !isRecording);
+            // TODO: Implement Snackbar similar to PSLab
+        } else if (id == R.id.stop_record) {
+            toggleRecordItem(menu, isRecording);
+            dataReceiver.stopConnection();
+            // TODO: Implement Snackbar similar to PSLab
         } else if (id == R.id.focus_data_logger) {
             Intent intent = new Intent(getContext(), DataLoggerActivity.class);
             intent.putExtra(ProgramModeActivity.PROGRAM_FLAG_KEY, FOCUS_FLAG);
@@ -242,6 +250,14 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
             play.setVisible(false);
             stop.setVisible(false);
         }
+    }
+
+    private void toggleRecordItem(Menu menu, boolean isRecording) {
+        MenuItem record = menu.findItem(R.id.save_focus_data);
+        MenuItem stop = menu.findItem(R.id.stop_record);
+
+        record.setVisible(!isRecording);
+        stop.setVisible(isRecording);
     }
 
     private void selectCSVFile() {
