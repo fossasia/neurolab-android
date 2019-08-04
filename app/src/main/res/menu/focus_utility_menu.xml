@@ -18,9 +18,16 @@
 
     <item
         android:id="@+id/save_focus_data"
-        android:orderInCategory="200"
         android:icon="@drawable/ic_record_white"
+        android:orderInCategory="200"
         android:title="@string/save_focus_data"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/stop_record"
+        android:icon="@drawable/ic_record_stop_white"
+        android:orderInCategory="200"
+        android:title="@string/stop"
         app:showAsAction="always" />
 
     <item
