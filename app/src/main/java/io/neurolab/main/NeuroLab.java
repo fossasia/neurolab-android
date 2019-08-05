@@ -34,6 +34,7 @@ import java.io.UnsupportedEncodingException;
 import io.neurolab.R;
 import io.neurolab.activities.AboutUsActivity;
 import io.neurolab.activities.DataLoggerActivity;
+import io.neurolab.activities.DeviceInstructionsActivity;
 import io.neurolab.activities.FocusParentActivity;
 import io.neurolab.activities.MeditationHome;
 import io.neurolab.activities.MemoryGraphParent;
@@ -85,7 +86,6 @@ public class NeuroLab extends AppCompatActivity
                     if (granted) {
                         if (usbCommunicationHandler.initializeSerialConnection(baudRate)) {
                             serialPort = usbCommunicationHandler.getSerialPort();
-                            Toast.makeText(context, getResources().getString(R.string.connection_opened), Toast.LENGTH_SHORT).show();
                             deviceConnected = true;
                             serialPort.read(readCallback);
                         }
@@ -185,9 +185,6 @@ public class NeuroLab extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        this.menu = menu;
-        if (deviceConnected)
-            changeDeviceIcon();
         return true;
     }
 
@@ -207,6 +204,7 @@ public class NeuroLab extends AppCompatActivity
             return true;
         } else if (id == R.id.device_icon) {
             changeDeviceIcon();
+            startActivity(new Intent(this, DeviceInstructionsActivity.class));
             return true;
         } else if (id == R.id.test_mode) {
             startActivity(new Intent(this, TestModeActivity.class));
@@ -216,6 +214,14 @@ public class NeuroLab extends AppCompatActivity
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        this.menu = menu;
+        changeDeviceIcon();
+        return true;
     }
 
     private void changeDeviceIcon() {
@@ -243,6 +249,7 @@ public class NeuroLab extends AppCompatActivity
             finish();
         } else if (id == R.id.nav_connect_device) {
             changeDeviceIcon();
+            startActivity(new Intent(this, DeviceInstructionsActivity.class));
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_data_logger) {

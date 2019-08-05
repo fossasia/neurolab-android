@@ -26,7 +26,6 @@
                 android:id="@+id/tv_device_status"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_large"
-                android:layout_marginBottom="@dimen/margin_extra_large"
                 android:gravity="center"
                 android:padding="@dimen/layout_margin_moderate"
                 android:text="@string/device_is_not_connected"
