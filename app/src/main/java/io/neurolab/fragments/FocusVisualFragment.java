@@ -7,13 +7,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -26,6 +29,7 @@ import android.widget.Toast;
 
 import com.opencsv.CSVReader;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -50,10 +54,9 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT = 1;
     private boolean permission = false;
     private boolean isPlaying = false;
+    boolean isRecording = false;
     private static String[] extractedData;
     private String filePath;
-    private AlertDialog recordDialog;
-    private AlertDialog disconnectDialog;
     private AlertDialog instructionsDialog;
     private static boolean showInstructions = true;
     public static LocationTracker locationTracker;
@@ -104,8 +107,6 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         intentFilter.addAction(ACTION_USB_PERMISSION);
         getContext().registerReceiver(dataReceiver, intentFilter);
 
-        buildRecDialog();
-        buildDisconnectDialog();
         buildInstructionDialog();
         if (showInstructions) {
             instructionsDialog.show();
@@ -139,7 +140,6 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        boolean isRecording = false;
         if (id == R.id.play_focus_anim) {
             toggleMenuItem(menu, !isPlaying);
             rocketAnimation.playRocketAnim(view);
@@ -150,12 +150,10 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
             rocketAnimation.pauseRocketAnim(view);
         } else if (id == R.id.save_focus_data) {
             recordData();
-            toggleRecordItem(menu, !isRecording);
-            // TODO: Implement Snackbar similar to PSLab
         } else if (id == R.id.stop_record) {
             toggleRecordItem(menu, isRecording);
             dataReceiver.stopConnection();
-            // TODO: Implement Snackbar similar to PSLab
+            displayLogLocationOnSnackBar();
         } else if (id == R.id.focus_data_logger) {
             if (!permission)
                 getRuntimePermissions();
@@ -169,9 +167,29 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     private void recordData() {
         usbCommunicationHandler.searchForArduinoDevice(getContext());
         locationTracker.startCaptureLocation();
-        if (usbCommunicationHandler.getSerialPort() != null)
-            recordDialog.show();
-        else disconnectDialog.show();
+        if (usbCommunicationHandler.getSerialPort() != null) {
+            toggleRecordItem(menu, !isRecording);
+            Snackbar.make(view, R.string.recording_message, Snackbar.LENGTH_LONG).show();
+        }
+        else
+            Snackbar.make(view, R.string.no_rec_msg, Snackbar.LENGTH_LONG).show();
+    }
+
+    public void displayLogLocationOnSnackBar() {
+        final File logDirectory = new File(
+                Environment.getExternalStorageDirectory().getAbsolutePath() +
+                        File.separator + FilePathUtil.CSV_DIRECTORY);
+        String logLocation;
+        try {
+            logLocation = getString(R.string.log_saved_directory) + logDirectory.getCanonicalPath();
+        } catch (IOException e) {
+            logLocation = getString(R.string.log_saved_failed);
+        }
+
+        Snackbar.make(view, logLocation, Snackbar.LENGTH_LONG).setAction(R.string.open_label, v -> {
+            Intent intent = new Intent(getContext(), DataLoggerActivity.class);
+            startActivity(intent);
+        }).setActionTextColor(Color.RED).show();
     }
 
     @Override
@@ -248,23 +266,6 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
 
         record.setVisible(!isRecording);
         stop.setVisible(isRecording);
-    }
-
-    private void buildRecDialog() {
-        LayoutInflater layoutInflater = ((Activity) getContext()).getLayoutInflater();
-        View progressView = layoutInflater.inflate(R.layout.record_dialog_layout, null);
-        recordDialog = new AlertDialog.Builder(getContext())
-                .setView(progressView)
-                .setCancelable(false)
-                .setPositiveButton(R.string.stop, (dialog, which) -> dataReceiver.stopConnection()).create();
-    }
-
-    private void buildDisconnectDialog() {
-        disconnectDialog = new AlertDialog.Builder(getContext())
-                .setTitle(R.string.no_device)
-                .setMessage(R.string.no_rec_msg)
-                .setPositiveButton(R.string.ok_button, (dialog, which) -> {
-                }).create();
     }
 
     private void buildInstructionDialog() {
