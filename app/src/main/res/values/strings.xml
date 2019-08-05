@@ -130,7 +130,7 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="sleep_desc">Meditations while having trouble in sleeping</string>
     <string name="depressed_desc">Meditations when you feel depressed</string>
     <string name="happiness_desc">Meditations while you are in a happy mood</string>
-    <string name="focus_game_one_info">The Rocket Moves Up and Down according to your brain activity. Concentrate to travel forward or Relax to travel back.</string>
+    <string name="focus_game_one_info">The Rocket Moves Up and Down according to your brain activity. Relax to travel forward or concentrate to travel back.</string>
     <string name="focus_program_info">This Program Mode helps you increase your focus and concentration levels with the help of games. Choose from the games below and strengthen your brain power.</string>
     <string name="save_graph">Save Graph Data</string>
     <string name="ok_button">OK</string>
@@ -141,7 +141,10 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="stop_graph">Stop Memory Graph</string>
     <string name="author_elisha">Elisha Goldstein</string>
     <string name="default_timer">00:00</string>
-    <string name="recording_message">Recording Data…</string>
+    <string name="open_label">OPEN</string>
+    <string name="recording_message">Data Recording started from device</string>
+    <string name="log_saved_directory">Log saved in\n</string>
+    <string name="log_saved_failed">Could not save the log. Please check storage permission.</string>
     <string name="no_device">No Device Connected</string>
     <string name="no_rec_msg">Please connect the Neurolab device to start a recording</string>
     <string name="yes_focus_msg">Yes, Start</string>
