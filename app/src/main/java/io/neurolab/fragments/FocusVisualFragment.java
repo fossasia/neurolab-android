@@ -43,7 +43,6 @@ import io.neurolab.utilities.LocationTracker;
 import io.neurolab.utilities.PermissionUtils;
 
 import static android.app.Activity.RESULT_OK;
-import static io.neurolab.fragments.StatisticsFragment.convertToDouble;
 import static io.neurolab.utilities.FilePathUtil.LOG_FILE_KEY;
 
 public class FocusVisualFragment extends android.support.v4.app.Fragment {
@@ -51,7 +50,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT = 1;
     private boolean permission = false;
     private boolean isPlaying = false;
-    private String[] parsedData;
+    private static String[] extractedData;
     private String filePath;
     private AlertDialog recordDialog;
     private AlertDialog disconnectDialog;
@@ -141,14 +140,10 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         boolean isRecording = false;
-        if (id == R.id.import_data_focus) {
-            if (!permission)
-                getRuntimePermissions();
-            selectCSVFile();
-        } else if (id == R.id.play_focus_anim) {
+        if (id == R.id.play_focus_anim) {
             toggleMenuItem(menu, !isPlaying);
             rocketAnimation.playRocketAnim(view);
-            rocketAnimation.animateRocket(convertToDouble(parsedData), getActivity());
+            rocketAnimation.animateRocket(convertToDouble(extractedData), getActivity());
 
         } else if (id == R.id.stop_focus_anim) {
             toggleMenuItem(menu, isPlaying);
@@ -162,16 +157,11 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
             dataReceiver.stopConnection();
             // TODO: Implement Snackbar similar to PSLab
         } else if (id == R.id.focus_data_logger) {
+            if (!permission)
+                getRuntimePermissions();
             Intent intent = new Intent(getContext(), DataLoggerActivity.class);
             intent.putExtra(ProgramModeActivity.PROGRAM_FLAG_KEY, FOCUS_FLAG);
             startActivity(intent);
-        } else if (id == R.id.focus_program_info) {
-            AlertDialog.Builder progress = new AlertDialog.Builder(view.getContext());
-            progress.setCancelable(true);
-            progress.setTitle(R.string.program_info_label);
-            progress.setMessage(R.string.focus_program_info);
-            AlertDialog infoDialog = progress.create();
-            infoDialog.show();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -260,13 +250,6 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         stop.setVisible(isRecording);
     }
 
-    private void selectCSVFile() {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        intent.setType("text/*");
-        startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.import_csv)), ACTIVITY_CHOOSE_FILE1);
-    }
-
     private void buildRecDialog() {
         LayoutInflater layoutInflater = ((Activity) getContext()).getLayoutInflater();
         View progressView = layoutInflater.inflate(R.layout.record_dialog_layout, null);
@@ -329,23 +312,27 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
 
         @Override
         protected String[] doInBackground(Void... voids) {
-            ArrayList<String[]> rawData = new ArrayList<>();
+            ArrayList<String> rawData = new ArrayList<>();
             String[] eegValues = null;
             int eegValueSize = 0;
             int rawDataSize = 0;
             try {
                 CSVReader reader = new CSVReader(new FileReader(filePath));
-                while ((reader.readNext()) != null) {
-                    rawData.add(rawDataSize, reader.readNext());
+                String[] nextLine;
+                while ((nextLine = reader.readNext()) != null) {
+                    if (rawDataSize == 0) {
+                        rawData.add(rawDataSize, "0.00");
+                        rawDataSize++;
+                        continue;
+                    }
+                    rawData.add(rawDataSize, nextLine[2]);
                     rawDataSize++;
                 }
-                eegValues = new String[(rawDataSize - 1) * rawData.get(0).length];
+                eegValues = new String[rawDataSize];
                 for (int i = 0; i < rawData.size(); i++) {
                     if (rawData.get(i) != null) {
-                        for (int j = 0; j < rawData.get(i).length; j++) {
-                            eegValues[eegValueSize] = rawData.get(i)[j];
-                            eegValueSize++;
-                        }
+                        eegValues[eegValueSize] = rawData.get(i);
+                        eegValueSize++;
                     }
                 }
             } catch (IOException e) {
@@ -357,8 +344,24 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         @Override
         protected void onPostExecute(String[] strings) {
             super.onPostExecute(strings);
-            parsedData = strings;
-            getActivity().runOnUiThread(() -> rocketAnimation.animateRocket(convertToDouble(parsedData), getActivity()));
+            extractedData = strings;
+            getActivity().runOnUiThread(() -> rocketAnimation.animateRocket(convertToDouble(extractedData), getActivity()));
         }
+    }
+
+    private static double[] convertToDouble(String[] parsedData) {
+        double[] parsedDoubleData = new double[parsedData.length];
+        int startTrimIndex = 0;
+        int endTrimIndex = 3;
+        final int maxRawData = 5060;
+        for (int i = 0; i < parsedData.length; i++) {
+            if (parsedData[i].length() > 0) {
+                parsedDoubleData[i] = Double.parseDouble(parsedData[i].substring(startTrimIndex, endTrimIndex));
+                if (parsedDoubleData[i] > maxRawData) {
+                    parsedDoubleData[i] = maxRawData;
+                }
+            }
+        }
+        return parsedDoubleData;
     }
 }
