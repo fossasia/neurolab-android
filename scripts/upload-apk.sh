@@ -55,6 +55,7 @@ git commit -m "Travis build pushed to [$TRAVIS_BRANCH]"
 git branch -D apk
 # Rename current branch to apk
 git branch -m apk
+git branch --unset-upstream
 
 git push origin apk -f --quiet > /dev/null
 
