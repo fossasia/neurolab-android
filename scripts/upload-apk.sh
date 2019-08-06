@@ -58,9 +58,9 @@ git branch -m apk
 
 git push origin apk -f --quiet > /dev/null
 
+# TODO: Prepare when a release is ready
 # Publish App to Play Store
-if [ "$TRAVIS_BRANCH" == "$PUBLISH_BRANCH" ]; then
-    # TODO: Prepare when a release is ready
+#if [ "$TRAVIS_BRANCH" == "$PUBLISH_BRANCH" ]; then
     #gem install fastlane
     #fastlane supply --aab neurolab-master-app.aab --skip_upload_apk true --track alpha --json_key ../scripts/fastlane.json --package_name $PACKAGE_NAME
-fi
+#fi
