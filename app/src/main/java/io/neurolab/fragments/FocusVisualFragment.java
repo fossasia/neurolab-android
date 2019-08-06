@@ -54,6 +54,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT = 1;
     private boolean permission = false;
     private boolean isPlaying = false;
+    private boolean isRecording = false;
     private static String[] extractedData;
     private String filePath;
     private AlertDialog instructionsDialog;
@@ -139,7 +140,6 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        boolean isRecording = false;
         if (id == R.id.play_focus_anim) {
             toggleMenuItem(menu, !isPlaying);
             rocketAnimation.playRocketAnim(view);
@@ -150,7 +150,6 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
             rocketAnimation.pauseRocketAnim(view);
         } else if (id == R.id.save_focus_data) {
             recordData();
-            toggleRecordItem(menu, !isRecording);
         } else if (id == R.id.stop_record) {
             toggleRecordItem(menu, isRecording);
             dataReceiver.stopConnection();
@@ -168,9 +167,10 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     private void recordData() {
         usbCommunicationHandler.searchForArduinoDevice(getContext());
         locationTracker.startCaptureLocation();
-        if (usbCommunicationHandler.getSerialPort() != null)
+        if (usbCommunicationHandler.getSerialPort() != null) {
+            toggleRecordItem(menu, !isRecording);
             Snackbar.make(view, R.string.recording_message, Snackbar.LENGTH_LONG).show();
-        else
+        } else
             Snackbar.make(view, R.string.no_rec_msg, Snackbar.LENGTH_LONG).show();
     }
 

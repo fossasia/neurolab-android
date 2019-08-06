@@ -31,6 +31,10 @@
         android:id="@+id/nav_connect_device"
         android:title="@string/connect_device" />
 
+    <item
+        android:id="@+id/nav_settings"
+        android:title="@string/settings" />
+
     <item android:title="@string/other_head_nav_drawer">
         <menu>
             <item
@@ -39,9 +43,9 @@
                 android:title="@string/share_nav_drawer" />
 
             <item
-                android:id="@+id/nav_version"
-                android:icon="@drawable/ic_update"
-                android:title="@string/version" />
+                android:id="@+id/nav_about_us"
+                android:icon="@drawable/ic_info"
+                android:title="@string/about_us" />
         </menu>
     </item>
 
