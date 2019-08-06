@@ -130,7 +130,7 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="sleep_desc">Meditations while having trouble in sleeping</string>
     <string name="depressed_desc">Meditations when you feel depressed</string>
     <string name="happiness_desc">Meditations while you are in a happy mood</string>
-    <string name="focus_game_one_info">The Rocket Moves Up and Down according to your brain activity. Relax to travel forward or concentrate to travel back.</string>
+    <string name="focus_game_one_info">The rocket moves up and down according to your brain activity. Concentrate to fly up or relax to fly down.</string>
     <string name="focus_program_info">This Program Mode helps you increase your focus and concentration levels with the help of games. Choose from the games below and strengthen your brain power.</string>
     <string name="save_graph">Save Graph Data</string>
     <string name="ok_button">OK</string>

@@ -196,13 +196,7 @@ public class NeuroLab extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            startActivity(new Intent(NeuroLab.this, SettingsActivity.class));
-            return true;
-        } else if (id == R.id.action_about_us) {
-            startActivity(new Intent(NeuroLab.this, AboutUsActivity.class));
-            return true;
-        } else if (id == R.id.device_icon) {
+        if (id == R.id.device_icon) {
             changeDeviceIcon();
             startActivity(new Intent(this, DeviceInstructionsActivity.class));
             return true;
@@ -250,6 +244,10 @@ public class NeuroLab extends AppCompatActivity
         } else if (id == R.id.nav_connect_device) {
             changeDeviceIcon();
             startActivity(new Intent(this, DeviceInstructionsActivity.class));
+        } else if (id == R.id.nav_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
+        } else if (id == R.id.nav_about_us) {
+            startActivity(new Intent(this, AboutUsActivity.class));
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_data_logger) {
