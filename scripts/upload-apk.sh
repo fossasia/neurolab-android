@@ -4,59 +4,63 @@ set -e
 export PUBLISH_BRANCH=${PUBLISH_BRANCH:-master}
 export DEVELOPMENT_BRANCH=${DEVELOPMENT_BRANCH:-development}
 
-#setup git
+# Setup git
 git config --global user.email "noreply@travis.com"
 git config --global user.name "Travis CI" 
 
-#clone the repository
+# Execute the following script only if it's merge to development or master branch
+if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_REPO_SLUG" != "fossasia/neurolab-android" ] || ! [ "$TRAVIS_BRANCH" == "$DEVELOPMENT_BRANCH" -o "$TRAVIS_BRANCH" == "$PUBLISH_BRANCH" ]; then
+    echo "We upload apk only for changes in Development or Master"
+    exit 0
+fi
+
+# Clone the repository
 git clone --quiet --branch=apk https://fossasia:$GITHUB_KEY@github.com/fossasia/neurolab-android apk > /dev/null
 
 cd apk
 
-\cp -r ../app/build/outputs/apk/*/**.apk .
-\cp -r ../app/build/outputs/apk/debug/output.json debug-output.json
-\cp -r ../app/build/outputs/apk/release/output.json release-output.json
-\cp -r ../README.md .
-
-# Signing Apps
-
+# Remove old files
 if [ "$TRAVIS_BRANCH" == "$PUBLISH_BRANCH" ]; then
-    echo "Push to master branch detected, signing the app..."
-    # Retain apk files for testing
-    mv app-debug.apk neurolab-master-debug.apk
-    # Generate temporary apk for signing
-    cp app-release-unsigned.apk app-release-unaligned.apk
-    # TODO: Sign APK
-    # jarsigner -tsa http://timestamp.comodoca.com/rfc3161 -sigalg SHA1withRSA -digestalg SHA1 -keystore ../scripts/key.jks -storepass $STORE_PASS -keypass $KEY_PASS app-release-unaligned.apk $ALIAS
-    # Remove previous release-apk file
-    \rm -f app-release.apk
-    # Generate new release-apk file
-    ${ANDROID_HOME}/build-tools/28.0.3/zipalign -v -p 4 app-release-unaligned.apk app-release.apk
-    # Rename unsigned release apk to master
-    rm -f app-release-unaligned.apk
-    mv app-release-unsigned.apk neurolab-master-release.apk
-    # Push generated apk files to apk branch
-    git checkout apk
-    git add -A
-    git commit -am "Travis build pushed [master]"
-    git push origin apk --force --quiet> /dev/null
+    rm -rf neurolab-master*
+else
+    rm -rf neurolab-dev*
 fi
 
-if [ "$TRAVIS_BRANCH" == "$DEVELOPMENT_BRANCH" ]; then
-    echo "Push to development branch detected, generating apk..."
-    # Rename apks with dev prefixes
-    mv app-debug.apk neurolab-dev-debug.apk
-    mv app-release-unsigned.apk neurolab-dev-release.apk
-    # Push generated apk files to apk branch
-    git checkout apk
-    git add -A
-    git commit -am "Travis build pushed [development]"
-    git push origin apk --force --quiet> /dev/null
-fi
+# Copy apk and aab files
+find ../app/build/outputs -type f -name '*.apk' -exec cp -v {} . \;
+find ../app/build/outputs -type f -name '*.aab' -exec cp -v {} . \;
 
-# TODO: Publish App to Play Store
+for file in app*; do
+    if [ "$TRAVIS_BRANCH" == "$PUBLISH_BRANCH" ]; then
+        if [[ ${file} =~ ".aab" ]]; then
+            mv $file neurolab-master-${file}
+        else
+            mv $file neurolab-master-${file:4}
+        fi
+    elif [ "$TRAVIS_BRANCH" == "$DEVELOPMENT_BRANCH" ]; then
+        if [[ ${file} =~ ".aab" ]]; then
+                mv $file neurolab-dev-${file}
+        else
+                mv $file neurolab-dev-${file:4}
+        fi
+    fi
+done
+
+git checkout --orphan temporary
+
+git add .
+git commit -m "Travis build pushed to [$TRAVIS_BRANCH]"
+
+# Delete current apk branch
+git branch -D apk
+# Rename current branch to apk
+git branch -m apk
+
+git push origin apk -f --quiet > /dev/null
+
+# Publish App to Play Store
 if [ "$TRAVIS_BRANCH" == "$PUBLISH_BRANCH" ]; then
-    # gem install fastlane
-    # fastlane supply --apk app-release.apk --track alpha --json_key ../scripts/fastlane.json --package_name $PACKAGE_NAME
+    # TODO: Prepare when a release is ready
+    #gem install fastlane
+    #fastlane supply --aab neurolab-master-app.aab --skip_upload_apk true --track alpha --json_key ../scripts/fastlane.json --package_name $PACKAGE_NAME
 fi
-
