@@ -43,6 +43,7 @@ import io.neurolab.gui.GraphicBgRenderer;
 import io.neurolab.main.NeuroLab;
 import io.neurolab.main.output.visual.SpaceAnimationVisuals;
 import io.neurolab.utilities.FilePathUtil;
+import io.neurolab.utilities.FrequencyProcessor;
 import io.neurolab.utilities.LocationTracker;
 import io.neurolab.utilities.PermissionUtils;
 
@@ -345,7 +346,9 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         protected void onPostExecute(String[] strings) {
             super.onPostExecute(strings);
             extractedData = strings;
-            getActivity().runOnUiThread(() -> rocketAnimation.animateRocket(convertToDouble(extractedData), getActivity()));
+            FrequencyProcessor frequencyProcessor = new FrequencyProcessor(extractedData.length, 32, 16.0);
+            double[] freq = frequencyProcessor.processFFTData(convertToDouble(extractedData));
+            getActivity().runOnUiThread(() -> rocketAnimation.animateRocket(freq, getActivity()));
         }
     }
 
