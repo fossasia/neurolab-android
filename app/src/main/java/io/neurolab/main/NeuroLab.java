@@ -39,6 +39,7 @@ import io.neurolab.activities.FocusParentActivity;
 import io.neurolab.activities.MeditationHome;
 import io.neurolab.activities.MemoryGraphParent;
 import io.neurolab.activities.OnBoardingActivity;
+import io.neurolab.activities.PinLayoutActivity;
 import io.neurolab.activities.ProgramModeActivity;
 import io.neurolab.activities.SettingsActivity;
 import io.neurolab.activities.TestModeActivity;
@@ -206,6 +207,14 @@ public class NeuroLab extends AppCompatActivity
         } else if (id == R.id.bluetooth_test) {
             startActivity(new Intent(this, BluetoothTestActivity.class));
             return true;
+        } else if (id == R.id.pin_front_lay) {
+            Intent intent = new Intent(this, PinLayoutActivity.class);
+            intent.putExtra("layout", true);
+            startActivity(intent);
+        } else if(id == R.id.pin_back_lay) {
+            Intent intent = new Intent(this, PinLayoutActivity.class);
+            intent.putExtra("layout", false);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

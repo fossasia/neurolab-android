@@ -10,6 +10,18 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/pin_front_lay"
+        android:orderInCategory="200"
+        android:title="Pin front layout"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/pin_back_lay"
+        android:orderInCategory="200"
+        android:title="Pin back layout"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/test_mode"
         android:orderInCategory="200"
         android:title="@string/title_activity_test_mode"
