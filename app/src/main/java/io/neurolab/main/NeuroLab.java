@@ -211,7 +211,7 @@ public class NeuroLab extends AppCompatActivity
             Intent intent = new Intent(this, PinLayoutActivity.class);
             intent.putExtra("layout", true);
             startActivity(intent);
-        } else if(id == R.id.pin_back_lay) {
+        } else if (id == R.id.pin_back_lay) {
             Intent intent = new Intent(this, PinLayoutActivity.class);
             intent.putExtra("layout", false);
             startActivity(intent);

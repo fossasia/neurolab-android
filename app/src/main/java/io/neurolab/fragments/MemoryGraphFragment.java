@@ -55,8 +55,8 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
     private TextView eegLabelView;
     private String[] parsedData;
     private String importedFilePath;
-    private boolean isPlaying;
-    private static Menu menu;
+    private static boolean isPlaying;
+    private static Menu globalMenu;
     private String filePath;
     private ArrayList<String[]> rawData;
     private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT = 1;
@@ -101,7 +101,6 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         }
         if (getArguments().getString(LOG_FILE_KEY) != null && StatisticsFragment.parsedData == null) {
             filePath = getArguments().getString(LOG_FILE_KEY);
-            importLoggedData(filePath);
         }
         return rootView;
     }
@@ -307,7 +306,7 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         if (!permission)
             getRuntimePermissions();
         importedFilePath = path;
-        toggleMenuItem(menu, isPlaying);
+        toggleMenuItem(globalMenu, isPlaying);
         progressDialog.show();
         new ParseDataAsync(path).execute();
     }
@@ -316,7 +315,7 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         importedFilePath = path;
         if (permission && (StatisticsFragment.parsedData == null || parsedData == null)) {
             isPlaying = true;
-            toggleMenuItem(menu, isPlaying);
+            toggleMenuItem(globalMenu, isPlaying);
             progressDialog.show();
             ParseDataAsync parseDataAsync = new ParseDataAsync(path);
             parseDataAsync.execute();
@@ -326,7 +325,7 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
     }
 
     /**
-     * Toggle menu items.
+     * Toggle globalMenu items.
      *
      * @param menu
      * @param isPlaying
@@ -341,8 +340,12 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        this.menu = menu;
-        toggleMenuItem(menu, !isPlaying);
+        MemoryGraphFragment.globalMenu = menu;
+        toggleMenuItem(globalMenu, !isPlaying);
+        if (filePath != null) {
+            isPlaying = true;
+            importLoggedData(filePath);
+        }
     }
 
     @Override
@@ -370,11 +373,11 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
             parsedData = null;
             Toast.makeText(getContext(), "Stopped", Toast.LENGTH_SHORT).show();
             isPlaying = true;
-            toggleMenuItem(menu, !isPlaying);
+            toggleMenuItem(globalMenu, !isPlaying);
         } else if (id == R.id.play_graph && (parsedData == null && StatisticsFragment.parsedData != null)) {
             parsedData = StatisticsFragment.parsedData;
             plotGraph();
-            toggleMenuItem(menu, isPlaying);
+            toggleMenuItem(globalMenu, isPlaying);
         } else if (id == R.id.data_logger_menu) {
             Intent intent = new Intent(getContext(), DataLoggerActivity.class);
             intent.putExtra(ProgramModeActivity.PROGRAM_FLAG_KEY, MemoryGraphParent.MEMORY_GRAPH_FLAG);
