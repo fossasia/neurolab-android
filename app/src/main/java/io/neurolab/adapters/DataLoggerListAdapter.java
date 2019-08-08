@@ -10,16 +10,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.File;
 import java.util.List;
 
 import io.neurolab.R;
+import io.neurolab.activities.MemoryGraphParent;
+import io.neurolab.activities.ProgramModeActivity;
 import io.neurolab.fragments.FocusVisualFragment;
 import io.neurolab.fragments.RelaxVisualFragment;
-import io.neurolab.activities.ProgramModeActivity;
-import io.neurolab.activities.MemoryGraphParent;
 
 import static io.neurolab.utilities.FilePathUtil.LOG_FILE_KEY;
 
@@ -41,13 +42,36 @@ public class DataLoggerListAdapter extends RecyclerView.Adapter<DataLoggerListAd
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(
                 R.layout.logged_data_item, viewGroup, false);
+        if (flag != null) {
+            itemView.findViewById(R.id.focus_play).setVisibility(View.GONE);
+            itemView.findViewById(R.id.mem_graph_play).setVisibility(View.GONE);
+        } else {
+            itemView.findViewById(R.id.gen_play_view).setVisibility(View.GONE);
+        }
         return new ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         viewHolder.fileNameView.setText(files.get(i).getName());
-        viewHolder.loggedCardView.setOnClickListener(v -> {
+        viewHolder.focusPlayView.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            Intent intent = new Intent(context, ProgramModeActivity.class);
+            bundle.putString(ProgramModeActivity.INTENT_KEY_PROGRAM_MODE, FocusVisualFragment.FOCUS_FLAG);
+            bundle.putString(FocusVisualFragment.FOCUS_FLAG, FocusVisualFragment.FOCUS_FLAG);
+            bundle.putString(LOG_FILE_KEY, files.get(i).getAbsolutePath());
+            intent.putExtras(bundle);
+            context.startActivity(intent);
+        });
+        viewHolder.memGraphPlayView.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            Intent intent = new Intent(context, ProgramModeActivity.class);
+            bundle.putString(ProgramModeActivity.INTENT_KEY_PROGRAM_MODE, MemoryGraphParent.MEMORY_GRAPH_FLAG);
+            bundle.putString(LOG_FILE_KEY, files.get(i).getAbsolutePath());
+            intent.putExtras(bundle);
+            context.startActivity(intent);
+        });
+        viewHolder.genPlayView.setOnClickListener(v -> {
             Intent intent;
             Bundle bundle = new Bundle();
             switch (flag) {
@@ -87,11 +111,19 @@ public class DataLoggerListAdapter extends RecyclerView.Adapter<DataLoggerListAd
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView fileNameView;
+        private ImageView focusPlayView;
+        private ImageView memGraphPlayView;
+        private ImageView renameView;
+        private ImageView genPlayView;
         private CardView loggedCardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             fileNameView = itemView.findViewById(R.id.file_name_view);
+            focusPlayView = itemView.findViewById(R.id.focus_play);
+            memGraphPlayView = itemView.findViewById(R.id.mem_graph_play);
+            renameView = itemView.findViewById(R.id.rename_file_btn);
+            genPlayView = itemView.findViewById(R.id.gen_play_view);
             loggedCardView = itemView.findViewById(R.id.parent_logged_card);
         }
     }

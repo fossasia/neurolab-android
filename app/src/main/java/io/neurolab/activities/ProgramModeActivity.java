@@ -11,6 +11,8 @@ import io.neurolab.fragments.FocusVisualFragment;
 import io.neurolab.fragments.RelaxVisualFragment;
 import io.neurolab.main.NeuroLab;
 
+import static io.neurolab.utilities.FilePathUtil.LOG_FILE_KEY;
+
 public class ProgramModeActivity extends AppCompatActivity {
 
     public static final int FOCUS_PROGRAM_MODE = 1;
@@ -73,7 +75,9 @@ public class ProgramModeActivity extends AppCompatActivity {
                 break;
             case MEMORY_GRAPH_MODE:
                 setTitle(R.string.mem_graph);
-                startActivity(new Intent(this, MemoryGraphParent.class));
+                Intent memIntent = new Intent(this, MemoryGraphParent.class);
+                memIntent.putExtra(LOG_FILE_KEY, bundle.getString(LOG_FILE_KEY));
+                startActivity(memIntent);
                 finish();
                 break;
             default:
