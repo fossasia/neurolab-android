@@ -1,6 +1,7 @@
 package io.neurolab.adapters;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +24,7 @@ import io.neurolab.activities.MemoryGraphParent;
 import io.neurolab.activities.ProgramModeActivity;
 import io.neurolab.fragments.FocusVisualFragment;
 import io.neurolab.fragments.RelaxVisualFragment;
+import io.neurolab.utilities.FilePathUtil;
 
 import static io.neurolab.utilities.FilePathUtil.LOG_FILE_KEY;
 
@@ -29,6 +33,7 @@ public class DataLoggerListAdapter extends RecyclerView.Adapter<DataLoggerListAd
     private Context context;
     private List<File> files;
     private String flag;
+    private String newFileName;
 
     public DataLoggerListAdapter(Context context, List<File> files, String flag) {
         this.context = context;
@@ -54,6 +59,28 @@ public class DataLoggerListAdapter extends RecyclerView.Adapter<DataLoggerListAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         viewHolder.fileNameView.setText(files.get(i).getName());
+        viewHolder.renameView.setOnClickListener(v -> {
+            final EditText enterNameView = new EditText(context);
+            FrameLayout container = new FrameLayout(context);
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.leftMargin = context.getResources().getDimensionPixelSize(R.dimen.layout_margin_large);
+            params.rightMargin = context.getResources().getDimensionPixelSize(R.dimen.layout_margin_large);
+            enterNameView.setLayoutParams(params);
+            container.addView(enterNameView);
+            AlertDialog alertDialog = new AlertDialog.Builder(context)
+                    .setTitle("Rename the file")
+                    .setView(container)
+                    .setPositiveButton(R.string.ok_button, (dialog, which) -> {
+                        newFileName = enterNameView.getText().toString();
+                        FilePathUtil.setFileName(files.get(i).getAbsolutePath(), newFileName);
+                        Intent intent = ((Activity) context).getIntent();
+                        ((Activity) context).finish();
+                        context.startActivity(intent);
+                    })
+                    .setNegativeButton(R.string.cancel, (dialog, which) -> {
+                    }).create();
+            alertDialog.show();
+        });
         viewHolder.focusPlayView.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             Intent intent = new Intent(context, ProgramModeActivity.class);
@@ -62,6 +89,7 @@ public class DataLoggerListAdapter extends RecyclerView.Adapter<DataLoggerListAd
             bundle.putString(LOG_FILE_KEY, files.get(i).getAbsolutePath());
             intent.putExtras(bundle);
             context.startActivity(intent);
+            ((Activity) context).finish();
         });
         viewHolder.memGraphPlayView.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
@@ -70,6 +98,7 @@ public class DataLoggerListAdapter extends RecyclerView.Adapter<DataLoggerListAd
             bundle.putString(LOG_FILE_KEY, files.get(i).getAbsolutePath());
             intent.putExtras(bundle);
             context.startActivity(intent);
+            ((Activity) context).finish();
         });
         viewHolder.genPlayView.setOnClickListener(v -> {
             Intent intent;
