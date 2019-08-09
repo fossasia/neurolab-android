@@ -159,4 +159,15 @@ public class FilePathUtil {
             in.close();
         }
     }
+
+    public static void setFileName(String oldName, String newName) {
+        String currentFileName = oldName.substring(oldName.lastIndexOf("/"));
+        currentFileName = currentFileName.substring(1);
+
+        File directory = new File(Environment.getExternalStorageDirectory().getAbsolutePath() +
+                File.separator + CSV_DIRECTORY);
+        File from = new File(directory, currentFileName);
+        File to = new File(directory, newName.trim() + ".csv");
+        from.renameTo(to);
+    }
 }
