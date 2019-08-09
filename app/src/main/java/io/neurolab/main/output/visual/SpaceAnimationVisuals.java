@@ -1,18 +1,16 @@
 package io.neurolab.main.output.visual;
 
+import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.net.Uri;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
-import android.widget.VideoView;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -31,7 +29,8 @@ public class SpaceAnimationVisuals {
     private static Timer timer;
     private static TimerTask timerTask;
 
-    private final ValueAnimator[] valueAnimator = new ValueAnimator[1];
+    private final ValueAnimator[] valueAnimator = new ValueAnimator[3];
+    private ValueAnimator currentAnimator = ValueAnimator.ofFloat(0, 0);
 
     public SpaceAnimationVisuals(View view) {
         travellingRocket = view.findViewById(R.id.indicator);
@@ -70,14 +69,83 @@ public class SpaceAnimationVisuals {
 
         double value = Double.parseDouble(Double.toString(data[count]).substring(0, 3));
         valueAnimator[0] = ValueAnimator.ofFloat(0f, (float) -value);
-        valueAnimator[0].setInterpolator(new LinearInterpolator());
-        valueAnimator[0].setRepeatMode(ValueAnimator.REVERSE);
-        valueAnimator[0].setRepeatCount(3);
-        valueAnimator[0].setDuration(1000);
+        valueAnimator[0].setInterpolator(new AccelerateInterpolator());
+        valueAnimator[0].setDuration(600);
         valueAnimator[0].addUpdateListener(valueAnimator1 -> {
             float value1 = (float) valueAnimator1.getAnimatedValue();
             rocketFocusScreen.setTranslationY(value1);
         });
+        valueAnimator[0].addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                currentAnimator = valueAnimator[1];
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+            }
+        });
+
+        valueAnimator[1] = ValueAnimator.ofFloat((float) -value, (float) -value);
+        valueAnimator[1].setDuration(200);
+        valueAnimator[1].addUpdateListener(valueAnimator1 -> {
+            float value1 = (float) valueAnimator1.getAnimatedValue();
+            rocketFocusScreen.setTranslationY(value1);
+        });
+        valueAnimator[1].addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                currentAnimator = valueAnimator[2];
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+            }
+        });
+
+        valueAnimator[2] = ValueAnimator.ofFloat((float) -value, 0);
+        valueAnimator[2].setInterpolator(new LinearInterpolator());
+        valueAnimator[2].setDuration(1000);
+        valueAnimator[2].addUpdateListener(valueAnimator1 -> {
+            float value1 = (float) valueAnimator1.getAnimatedValue();
+            rocketFocusScreen.setTranslationY(value1);
+        });
+        valueAnimator[2].addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                currentAnimator = valueAnimator[0];
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+            }
+        });
+
+        currentAnimator = valueAnimator[0];
 
         timerTask = new TimerTask() {
 
@@ -86,10 +154,10 @@ public class SpaceAnimationVisuals {
                 activity.runOnUiThread(() -> {
                     if (count <= data.length) {
 
-                        if (valueAnimator[0].isPaused()) {
-                            valueAnimator[0].resume();
+                        if (currentAnimator.isPaused()) {
+                            currentAnimator.resume();
                         } else {
-                            valueAnimator[0].start();
+                            currentAnimator.start();
                         }
                         count++;
                     } else {
@@ -111,7 +179,7 @@ public class SpaceAnimationVisuals {
 
     public void stop() {
         if (timer != null) {
-            valueAnimator[0].pause();
+            currentAnimator.pause();
             timer.cancel();
             timer = null;
         }
