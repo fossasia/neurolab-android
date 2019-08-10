@@ -32,7 +32,9 @@ import com.opencsv.CSVReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import io.neurolab.R;
 import io.neurolab.activities.DataLoggerActivity;
@@ -117,7 +119,9 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         if (getArguments() != null) {
             rocketAnimation.playRocketAnim(view);
             filePath = getArguments().getString(LOG_FILE_KEY);
-            new ParseDataAsync(filePath).execute();
+            new ParseDataAsync(filePath, rocketAnimation, view, getActivity()).execute();
+            new Handler().postDelayed(() -> rocketAnimation.playRocketAnim(view), 400);
+
         } else {
             new Handler().postDelayed(() -> rocketAnimation.pauseRocketAnim(view), 400);
         }
@@ -289,12 +293,17 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        IntentFilter intentFilter = new IntentFilter();
+        // adding the possible USB intent actions.
+        intentFilter.addAction(ACTION_USB_PERMISSION);
+        Objects.requireNonNull(getContext()).registerReceiver(dataReceiver, intentFilter);
         rocketAnimation.playRocketAnim(view);
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        Objects.requireNonNull(getContext()).unregisterReceiver(dataReceiver);
         rocketAnimation.pauseRocketAnim(view);
     }
 
@@ -303,12 +312,19 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         super.onStop();
     }
 
-    private class ParseDataAsync extends AsyncTask<Void, Void, String[]> {
+    private static class ParseDataAsync extends AsyncTask<Void, Void, String[]> {
 
         private String filePath;
 
-        public ParseDataAsync(String filePath) {
+        private WeakReference<SpaceAnimationVisuals> rocketAnimation;
+        private WeakReference<View> view;
+        private WeakReference<Activity> activity;
+
+        ParseDataAsync(String filePath, SpaceAnimationVisuals rocketAnimation, View view, Activity activity) {
             this.filePath = filePath;
+            this.rocketAnimation = new WeakReference<>(rocketAnimation);
+            this.view = new WeakReference<>(view);
+            this.activity = new WeakReference<>(activity);
         }
 
         @Override
@@ -348,7 +364,9 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
             extractedData = strings;
             FrequencyProcessor frequencyProcessor = new FrequencyProcessor(extractedData.length, 32, 16.0);
             double[] freq = frequencyProcessor.processFFTData(convertToDouble(extractedData));
-            getActivity().runOnUiThread(() -> rocketAnimation.animateRocket(freq, getActivity()));
+            rocketAnimation.get().animateRocket(freq, activity.get());
+            rocketAnimation.get().pauseRocketAnim(view.get());
+            rocketAnimation.get().playRocketAnim(view.get());
         }
     }
 
