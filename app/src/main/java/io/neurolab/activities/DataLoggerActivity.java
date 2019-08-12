@@ -48,7 +48,7 @@ public class DataLoggerActivity extends AppCompatActivity {
 
     private void showLoggedDataList(File appDir) {
         File[] files = appDir.listFiles();
-        if (files.length > 0) {
+        if (appDir.listFiles() != null && files.length > 0) {
             noLoggedView.setVisibility(View.GONE);
             fileList.clear();
             for (File file : files) {
