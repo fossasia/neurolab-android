@@ -15,6 +15,5 @@
         <include layout="@layout/card_focus" />
         <include layout="@layout/card_relax" />
         <include layout="@layout/card_mem_graph" />
-        <include layout="@layout/card_meditation" />
     </LinearLayout>
 </ScrollView>

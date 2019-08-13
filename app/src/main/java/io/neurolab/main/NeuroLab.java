@@ -159,7 +159,8 @@ public class NeuroLab extends AppCompatActivity
         focusButton.setOnClickListener(this);
         relaxButton.setOnClickListener(this);
         memGraphButton.setOnClickListener(this);
-        meditationCard.setOnClickListener(this);
+        // TODO: Implement Meditation mode in future when resources are available
+        // meditationCard.setOnClickListener(this);
     }
 
     private void startProgramModeActivity(String mode) {
@@ -247,9 +248,6 @@ public class NeuroLab extends AppCompatActivity
             startProgramModeActivity(RelaxVisualFragment.RELAX_PROGRAM_FLAG);
         } else if (id == R.id.nav_memory_graph) {
             startProgramModeActivity(MemoryGraphParent.MEMORY_GRAPH_FLAG);
-        } else if (id == R.id.nav_meditation) {
-            startActivity(new Intent(this, MeditationHome.class));
-            finish();
         } else if (id == R.id.nav_connect_device) {
             changeDeviceIcon();
             startActivity(new Intent(this, DeviceInstructionsActivity.class));

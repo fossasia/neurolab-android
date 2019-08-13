@@ -268,8 +268,13 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         MenuItem record = menu.findItem(R.id.save_focus_data);
         MenuItem stop = menu.findItem(R.id.stop_record);
 
-        record.setVisible(!isRecording);
-        stop.setVisible(isRecording);
+        if (getArguments() != null) {
+            record.setVisible(false);
+            stop.setVisible(false);
+        } else {
+            record.setVisible(!isRecording);
+            stop.setVisible(isRecording);
+        }
     }
 
     private void buildInstructionDialog() {

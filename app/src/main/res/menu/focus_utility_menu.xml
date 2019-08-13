@@ -31,21 +31,8 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/import_data_focus"
-        android:icon="@drawable/ic_import"
-        android:orderInCategory="300"
-        android:title="@string/import_dataset"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/focus_data_logger"
         android:orderInCategory="300"
         android:title="@string/logged_data"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/focus_program_info"
-        android:orderInCategory="300"
-        android:title="@string/program_info_label"
         app:showAsAction="never" />
 </menu>
