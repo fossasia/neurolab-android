@@ -3,12 +3,16 @@ package io.neurolab.fragments;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -32,6 +36,7 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.opencsv.CSVReader;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,7 +45,11 @@ import io.neurolab.R;
 import io.neurolab.activities.DataLoggerActivity;
 import io.neurolab.activities.MemoryGraphParent;
 import io.neurolab.activities.ProgramModeActivity;
+import io.neurolab.communication.DataReceiver;
+import io.neurolab.communication.USBCommunicationHandler;
+import io.neurolab.main.NeuroLab;
 import io.neurolab.utilities.FilePathUtil;
+import io.neurolab.utilities.LocationTracker;
 import io.neurolab.utilities.PermissionUtils;
 
 import static android.app.Activity.RESULT_OK;
@@ -48,15 +57,22 @@ import static io.neurolab.utilities.FilePathUtil.LOG_FILE_KEY;
 
 public class MemoryGraphFragment extends Fragment implements OnChartValueSelectedListener {
 
-    private static final int ACTIVITY_CHOOSE_FILE1 = 1;
     private LineChart memGraph;
+    private View view;
     private Thread thread;
     private AlertDialog progressDialog;
     private TextView eegLabelView;
     private String[] parsedData;
     private String importedFilePath;
     private static boolean isPlaying;
+    private boolean isRecording = false;
+    private static boolean showInstructions = true;
+    private AlertDialog instructionsDialog;
     private static Menu globalMenu;
+    public static LocationTracker locationTracker;
+    private USBCommunicationHandler usbCommunicationHandler;
+    private DataReceiver dataReceiver;
+    private final String ACTION_USB_PERMISSION = "io.neurolab.USB_PERMISSION";
     private String filePath;
     private ArrayList<String[]> rawData;
     private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT = 1;
@@ -82,27 +98,65 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_memory_graph, container, false);
+        view = inflater.inflate(R.layout.fragment_memory_graph, container, false);
         ((MemoryGraphParent) getActivity()).setActionBarTitle(getResources().getString(R.string.mem_graph));
-        memGraph = rootView.findViewById(R.id.mem_graph);
+        memGraph = view.findViewById(R.id.mem_graph);
         LayoutInflater layoutInflater = getLayoutInflater();
         View progressView = layoutInflater.inflate(R.layout.progress_dialog_layout, null);
         AlertDialog.Builder progress = new AlertDialog.Builder(getContext());
         progress.setView(progressView);
         progress.setCancelable(false);
         progressDialog = progress.create();
-        eegLabelView = rootView.findViewById(R.id.yAxis_label);
+        eegLabelView = view.findViewById(R.id.yAxis_label);
 
         permission = PermissionUtils.checkRuntimePermissions(this, READ_WRITE_PERMISSIONS);
         initializeMemGraph(memGraph);
+
+        buildInstructionDialog();
+        if (showInstructions) {
+            instructionsDialog.show();
+            showInstructions = false;
+        }
+
+        // setting up the UsbManager instance with the desired USB service.
+        usbCommunicationHandler = USBCommunicationHandler.getInstance(getContext(), NeuroLab.getUsbManager());
+        locationTracker = new LocationTracker(getContext(), (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE));
+
+        dataReceiver = new DataReceiver(getContext(), usbCommunicationHandler);
+
+        IntentFilter intentFilter = new IntentFilter();
+        // adding the possible USB intent actions.
+        intentFilter.addAction(ACTION_USB_PERMISSION);
+        getContext().registerReceiver(dataReceiver, intentFilter);
+
         if (StatisticsFragment.parsedData != null) {
+            instructionsDialog.dismiss();
             parsedData = StatisticsFragment.parsedData;
             plotGraph();
         }
         if (getArguments().getString(LOG_FILE_KEY) != null && StatisticsFragment.parsedData == null) {
+            instructionsDialog.dismiss();
             filePath = getArguments().getString(LOG_FILE_KEY);
         }
-        return rootView;
+        return view;
+    }
+
+    private void buildInstructionDialog() {
+        instructionsDialog = new AlertDialog.Builder(getContext())
+                .setTitle(R.string.mem_graph)
+                .setMessage(R.string.focus_rec_ins)
+                // This actually server as a positive action
+                .setNegativeButton(R.string.yes_focus_msg, (dialog, which) -> recordData())
+                // This actually server as a negative action
+                .setNeutralButton(R.string.cancel, (dialog, which) -> {
+                })
+                // This actually server as a neutral action
+                .setPositiveButton(R.string.focus_test_msg, (dialog, which) -> {
+                    Intent intent = new Intent(getContext(), DataLoggerActivity.class);
+                    intent.putExtra(ProgramModeActivity.PROGRAM_FLAG_KEY, MemoryGraphParent.MEMORY_GRAPH_FLAG);
+                    startActivity(intent);
+                })
+                .create();
     }
 
     @Override
@@ -279,20 +333,14 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         }
     }
 
-    private void selectCSVFile() {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        intent.setType("text/*");
-        startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.import_csv)), ACTIVITY_CHOOSE_FILE1);
-    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         switch (requestCode) {
-            case ACTIVITY_CHOOSE_FILE1:
+            case 1:
                 if (resultCode == RESULT_OK) {
                     String realPath = FilePathUtil.getRealPath(getContext(), data.getData());
-                    importData(realPath);
+                    importLoggedData(realPath);
                 }
                 break;
             default:
@@ -311,19 +359,6 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         new ParseDataAsync(path).execute();
     }
 
-    private void importData(String path) {
-        importedFilePath = path;
-        if (permission && (StatisticsFragment.parsedData == null || parsedData == null)) {
-            isPlaying = true;
-            toggleMenuItem(globalMenu, isPlaying);
-            progressDialog.show();
-            ParseDataAsync parseDataAsync = new ParseDataAsync(path);
-            parseDataAsync.execute();
-        } else {
-            getRuntimePermissions();
-        }
-    }
-
     /**
      * Toggle globalMenu items.
      *
@@ -332,9 +367,37 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
      */
     private void toggleMenuItem(Menu menu, boolean isPlaying) {
         MenuItem play = menu.findItem(R.id.play_graph);
-        play.setVisible(!isPlaying);
         MenuItem stop = menu.findItem(R.id.stop_data);
-        stop.setVisible(isPlaying);
+
+        if (getArguments().getString(LOG_FILE_KEY) == null) {
+            play.setVisible(false);
+            stop.setVisible(false);
+        } else {
+            play.setVisible(!isPlaying);
+            stop.setVisible(isPlaying);
+        }
+    }
+
+    private void toggleRecordMenuItem(Menu menu, boolean isRecording) {
+        MenuItem record = menu.findItem(R.id.save_graph_data);
+        MenuItem stop = menu.findItem(R.id.stop_graph_data);
+
+        if (getArguments().getString(LOG_FILE_KEY) != null) {
+            record.setVisible(false);
+            stop.setVisible(false);
+        } else {
+            record.setVisible(!isRecording);
+            stop.setVisible(isRecording);
+        }
+    }
+
+    private void recordData() {
+        locationTracker.startCaptureLocation();
+        if (usbCommunicationHandler.getSerialPort() != null) {
+            toggleRecordMenuItem(globalMenu, !isRecording);
+            Snackbar.make(view, R.string.recording_message, Snackbar.LENGTH_LONG).show();
+        } else
+            Snackbar.make(view, R.string.no_rec_msg, Snackbar.LENGTH_LONG).show();
     }
 
     @Override
@@ -342,6 +405,7 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         super.onPrepareOptionsMenu(menu);
         MemoryGraphFragment.globalMenu = menu;
         toggleMenuItem(globalMenu, !isPlaying);
+        toggleRecordMenuItem(globalMenu, false);
         if (filePath != null) {
             isPlaying = true;
             importLoggedData(filePath);
@@ -358,10 +422,7 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.import_data) {
-            getRuntimePermissions();
-            selectCSVFile();
-        } else if (id == R.id.info_program) {
+        if (id == R.id.info_program) {
             AlertDialog.Builder progress = new AlertDialog.Builder(getContext());
             progress.setCancelable(true);
             progress.setTitle(R.string.program_info_label);
@@ -379,17 +440,37 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
             plotGraph();
             toggleMenuItem(globalMenu, isPlaying);
         } else if (id == R.id.data_logger_menu) {
+            if (!permission)
+                getRuntimePermissions();
             Intent intent = new Intent(getContext(), DataLoggerActivity.class);
             intent.putExtra(ProgramModeActivity.PROGRAM_FLAG_KEY, MemoryGraphParent.MEMORY_GRAPH_FLAG);
             startActivity(intent);
         } else if (id == R.id.save_graph_data) {
-            try {
-                FilePathUtil.saveData(importedFilePath);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            recordData();
+        } else if (id == R.id.stop_graph_data) {
+            toggleRecordMenuItem(globalMenu, isRecording);
+            dataReceiver.stopConnection();
+            displayLogLocationOnSnackBar();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void displayLogLocationOnSnackBar() {
+        final File logDirectory = new File(
+                Environment.getExternalStorageDirectory().getAbsolutePath() +
+                        File.separator + FilePathUtil.CSV_DIRECTORY);
+        String logLocation;
+        try {
+            logLocation = getString(R.string.log_saved_directory) + logDirectory.getCanonicalPath();
+        } catch (IOException e) {
+            logLocation = getString(R.string.log_saved_failed);
+        }
+
+        Snackbar.make(view, logLocation, Snackbar.LENGTH_LONG).setAction(R.string.open_label, v -> {
+            Intent intent = new Intent(getContext(), DataLoggerActivity.class);
+            intent.putExtra(ProgramModeActivity.PROGRAM_FLAG_KEY, MemoryGraphParent.MEMORY_GRAPH_FLAG);
+            startActivity(intent);
+        }).setActionTextColor(Color.RED).show();
     }
 
     @Override
@@ -446,4 +527,3 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         }
     }
 }
-

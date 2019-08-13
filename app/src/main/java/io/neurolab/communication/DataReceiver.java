@@ -16,7 +16,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 import io.neurolab.R;
-import io.neurolab.activities.DataLoggerActivity;
 import io.neurolab.utilities.FilePathUtil;
 
 import static io.neurolab.fragments.FocusVisualFragment.locationTracker;
@@ -34,6 +33,7 @@ public class DataReceiver extends BroadcastReceiver {
     public DataReceiver(Context context, USBCommunicationHandler usbCommunicationHandler) {
         this.context = context;
         this.usbCommunicationHandler = usbCommunicationHandler;
+        this.usbCommunicationHandler.searchForArduinoDevice(context);
     }
 
     private UsbSerialInterface.UsbReadCallback readCallback = new UsbSerialInterface.UsbReadCallback() { //Defining a Callback which triggers whenever data is read.
@@ -54,7 +54,6 @@ public class DataReceiver extends BroadcastReceiver {
                     if (data.charAt(i) == END_DETECT_CHAR || extStop) { // To detect the end of file recording
                         count = 0;
                         FilePathUtil.recordData(updateIncomingData(dataContent));
-                        context.startActivity(new Intent(context, DataLoggerActivity.class));
                         usbCommunicationHandler.getSerialPort().close();
                         extStop = false;
                         return;

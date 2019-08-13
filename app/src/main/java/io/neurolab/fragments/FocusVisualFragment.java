@@ -170,7 +170,6 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     }
 
     private void recordData() {
-        usbCommunicationHandler.searchForArduinoDevice(getContext());
         locationTracker.startCaptureLocation();
         if (usbCommunicationHandler.getSerialPort() != null) {
             toggleRecordItem(menu, !isRecording);
@@ -192,6 +191,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
 
         Snackbar.make(view, logLocation, Snackbar.LENGTH_LONG).setAction(R.string.open_label, v -> {
             Intent intent = new Intent(getContext(), DataLoggerActivity.class);
+            intent.putExtra(ProgramModeActivity.PROGRAM_FLAG_KEY, FOCUS_FLAG);
             startActivity(intent);
         }).setActionTextColor(Color.RED).show();
     }
