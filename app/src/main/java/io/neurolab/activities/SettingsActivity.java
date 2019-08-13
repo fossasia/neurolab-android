@@ -1,13 +1,15 @@
 package io.neurolab.activities;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import io.neurolab.R;
 import io.neurolab.fragments.ConfigFragment;
 import io.neurolab.fragments.NeuroSettingsFragment;
+import io.neurolab.main.NeuroLab;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -24,4 +26,10 @@ public class SettingsActivity extends AppCompatActivity {
                 .commit();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this, NeuroLab.class));
+        finish();
+    }
 }

@@ -116,6 +116,10 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="eeg_data_label">EEG data (mV)</string>
     <string name="play_graph">Play Graph</string>
     <string name="save_focus_data">Save Focus Data</string>
+    <string name="dev_mode_msg">Developer mode is ON</string>
+    <string name="dev_mode_key">developerMode</string>
+    <string name="dev_mode_label">Developer mode</string>
+    <string name="dev_mode_summary">Turn on to see features in development</string>
     <string name="info_head">Info</string>
     <string name="games_head">Games</string>
     <string name="happiness_head">Happiness</string>
