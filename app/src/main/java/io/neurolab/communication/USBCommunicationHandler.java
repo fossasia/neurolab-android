@@ -34,7 +34,6 @@ public class USBCommunicationHandler {
 
     private USBCommunicationHandler(Context context, UsbManager usbManager) {
         this.usbManager = usbManager;
-        searchForArduinoDevice(context);
     }
 
     /*

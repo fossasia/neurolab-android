@@ -1,6 +1,7 @@
 package io.neurolab.fragments;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -40,6 +41,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import io.neurolab.R;
 import io.neurolab.activities.DataLoggerActivity;
@@ -117,17 +119,6 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
             instructionsDialog.show();
             showInstructions = false;
         }
-
-        // setting up the UsbManager instance with the desired USB service.
-        usbCommunicationHandler = USBCommunicationHandler.getInstance(getContext(), NeuroLab.getUsbManager());
-        locationTracker = new LocationTracker(getContext(), (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE));
-
-        dataReceiver = new DataReceiver(getContext(), usbCommunicationHandler);
-
-        IntentFilter intentFilter = new IntentFilter();
-        // adding the possible USB intent actions.
-        intentFilter.addAction(ACTION_USB_PERMISSION);
-        getContext().registerReceiver(dataReceiver, intentFilter);
 
         if (StatisticsFragment.parsedData != null) {
             instructionsDialog.dismiss();
@@ -221,41 +212,47 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         LineData data = memGraph.getData();
         Float currPlotValue;
 
-        if (data != null) {
-
-            ILineDataSet set = data.getDataSetByIndex(0);
-
-            if (set == null) {
-                set = createSet();
-                data.addDataSet(set);
-            }
-            if (parsedData[i].length() > 0) {
+        if (data != null && parsedData != null && parsedData.length > i) {
+            Activity memActivity = getActivity();
+            if (parsedData[i].length() > 0 && !(parsedData[i].isEmpty())) {
                 currPlotValue = createPlotValues(parsedData[i]);
                 if (currPlotValue < maxEEGValue) {
-                    data.addEntry(new Entry(set.getEntryCount(), currPlotValue + effectiveDistance), 0);
+                    if (memActivity != null)
+                        memActivity.runOnUiThread(() -> {
+                            ILineDataSet set = data.getDataSetByIndex(0);
+                            if (set == null) {
+                                set = createSet();
+                                data.addDataSet(set);
+                            }
+                            data.addEntry(new Entry(set.getEntryCount(), currPlotValue + effectiveDistance), 0);
+                            data.notifyDataChanged();
+
+                            // let the memGraph know it's data has changed
+                            memGraph.notifyDataSetChanged();
+
+                            // limit the number of visible entries
+                            if (parsedData != null)
+                                memGraph.setVisibleXRangeMaximum(parsedData.length);
+                            // memGraph.setVisibleYRange(30, AxisDependency.LEFT);
+
+                            // move to the latest entry
+                            memGraph.moveViewToX(data.getEntryCount());
+                        });
                 } else
                     return;
-            } else
-                return;
-
-            data.notifyDataChanged();
-
-            // let the memGraph know it's data has changed
+            } else {
+                memGraph.clear();
+                data.clearValues();
+                memGraph.notifyDataSetChanged();
+            }
+        } else {
+            memGraph.clear();
             memGraph.notifyDataSetChanged();
-
-            // limit the number of visible entries
-            memGraph.setVisibleXRangeMaximum(parsedData.length);
-            // memGraph.setVisibleYRange(30, AxisDependency.LEFT);
-
-            // move to the latest entry
-            memGraph.moveViewToX(data.getEntryCount());
         }
     }
 
     private Float createPlotValues(String value) {
-        int startTrimIndex = 0;
-        int endTrimIndex = 9;
-        return (float) Double.parseDouble(value.substring(startTrimIndex, endTrimIndex));
+        return (float) Double.parseDouble(value);
     }
 
     private LineDataSet createSet() {
@@ -284,12 +281,12 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         thread = new Thread(() -> {
             int i = 0;
             while (parsedData != null) {
-                if (i < parsedData.length / 4) {
+                if (i < parsedData.length) {
                     int dataIndex = i;
                     addEntry(dataIndex);
                     i++;
                     try {
-                        Thread.sleep(25);
+                        Thread.sleep(100);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -327,12 +324,19 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
     @Override
     public void onPause() {
         super.onPause();
-
         if (thread != null) {
             thread.interrupt();
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        IntentFilter intentFilter = new IntentFilter();
+        // adding the possible USB intent actions.
+        intentFilter.addAction(ACTION_USB_PERMISSION);
+        Objects.requireNonNull(getContext()).registerReceiver(dataReceiver, intentFilter);
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -392,6 +396,16 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
     }
 
     private void recordData() {
+        usbCommunicationHandler = USBCommunicationHandler.getInstance(getContext(), NeuroLab.getUsbManager());
+        locationTracker = new LocationTracker(getContext(), (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE));
+
+        dataReceiver = new DataReceiver(getContext(), usbCommunicationHandler);
+
+        IntentFilter intentFilter = new IntentFilter();
+        // adding the possible USB intent actions.
+        intentFilter.addAction(ACTION_USB_PERMISSION);
+        getContext().registerReceiver(dataReceiver, intentFilter);
+        usbCommunicationHandler.searchForArduinoDevice(getContext());
         locationTracker.startCaptureLocation();
         if (usbCommunicationHandler.getSerialPort() != null) {
             toggleRecordMenuItem(globalMenu, !isRecording);
@@ -409,6 +423,9 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         if (filePath != null) {
             isPlaying = true;
             importLoggedData(filePath);
+        }
+        if (StatisticsFragment.parsedData != null) {
+            toggleMenuItem(globalMenu, isPlaying);
         }
     }
 
@@ -493,23 +510,29 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
 
         @Override
         protected String[] doInBackground(Void... voids) {
-            rawData = new ArrayList<>();
+            ArrayList<String> rawData = new ArrayList<>();
             String[] eegValues = null;
             int eegValueSize = 0;
             int rawDataSize = 0;
             try {
                 CSVReader reader = new CSVReader(new FileReader(filePath));
-                while ((reader.readNext()) != null) {
-                    rawData.add(rawDataSize, reader.readNext());
+                String[] nextLine;
+                while ((nextLine = reader.readNext()) != null) {
+                    if (rawDataSize == 0) {
+                        rawData.add(rawDataSize, "4150.00"); // Default min value
+                        rawDataSize++;
+                        continue;
+                    }
+                    if (nextLine.length <= 2)
+                        continue;
+                    rawData.add(rawDataSize, nextLine[2]);
                     rawDataSize++;
                 }
-                eegValues = new String[(rawDataSize - 1) * rawData.get(0).length];
+                eegValues = new String[rawDataSize];
                 for (int i = 0; i < rawData.size(); i++) {
                     if (rawData.get(i) != null) {
-                        for (int j = 0; j < rawData.get(i).length; j++) {
-                            eegValues[eegValueSize] = rawData.get(i)[j];
-                            eegValueSize++;
-                        }
+                        eegValues[eegValueSize] = rawData.get(i);
+                        eegValueSize++;
                     }
                 }
             } catch (IOException e) {
@@ -522,7 +545,7 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         protected void onPostExecute(String[] strings) {
             super.onPostExecute(strings);
             StatisticsFragment.parsedData = parsedData = strings;
-            progressDialog.hide();
+            progressDialog.dismiss();
             plotGraph();
         }
     }

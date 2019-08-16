@@ -11,8 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import io.neurolab.R;
-import io.neurolab.model.DefaultFFTData;
 import io.neurolab.activities.MemoryGraphParent;
+import io.neurolab.model.DefaultFFTData;
 
 public class StatisticsFragment extends Fragment {
 
@@ -83,13 +83,13 @@ public class StatisticsFragment extends Fragment {
         calmEmojiView.setVisibility(View.VISIBLE);
         angerEmojiView.setVisibility(View.VISIBLE);
 
-        if(calculatedValues[0] < 40000)
+        if (calculatedValues[0] < 40000)
             concEmojiView.setImageResource(R.drawable.ic_sad);
-        if(calculatedValues[1] < 40000)
+        if (calculatedValues[1] < 40000)
             sleepEmojiView.setImageResource(R.drawable.ic_sad);
-        if(calculatedValues[2] < 40000)
+        if (calculatedValues[2] < 40000)
             calmEmojiView.setImageResource(R.drawable.ic_sad);
-        if(calculatedValues[3] > 150000)
+        if (calculatedValues[3] > 150000)
             angerEmojiView.setImageResource(R.drawable.ic_sad);
 
     }
@@ -100,7 +100,11 @@ public class StatisticsFragment extends Fragment {
         double[][] dfftData = new double[rows][columns];
         for (int j = 0; j < rows; j++) {
             for (int i = 0; i < columns; i++) {
-                dfftData[j][i] = data[j * 4 + i];
+                int pos = j * 4 + i;
+                if (pos < data.length)
+                    dfftData[j][i] = data[pos];
+                else
+                    return dfftData;
             }
         }
         return dfftData;
@@ -108,11 +112,9 @@ public class StatisticsFragment extends Fragment {
 
     public static double[] convertToDouble(String[] parsedData) {
         double[] parsedDoubleData = new double[parsedData.length];
-        int startTrimIndex = 0;
-        int endTrimIndex = 9;
         for (int i = 0; i < parsedData.length; i++) {
             if (parsedData[i].length() > 0) {
-                parsedDoubleData[i] = Double.parseDouble(parsedData[i].substring(startTrimIndex, endTrimIndex));
+                parsedDoubleData[i] = Double.parseDouble(parsedData[i]);
                 if (parsedDoubleData[i] > 5060) {
                     parsedDoubleData[i] = 5060;
                 }

@@ -99,17 +99,6 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         focusBg.getHolder().setFixedSize(size.x, size.y);
         rocketAnimation = new SpaceAnimationVisuals(view);
 
-        // setting up the UsbManager instance with the desired USB service.
-        usbCommunicationHandler = USBCommunicationHandler.getInstance(getContext(), NeuroLab.getUsbManager());
-        locationTracker = new LocationTracker(getContext(), (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE));
-
-        dataReceiver = new DataReceiver(getContext(), usbCommunicationHandler);
-
-        IntentFilter intentFilter = new IntentFilter();
-        // adding the possible USB intent actions.
-        intentFilter.addAction(ACTION_USB_PERMISSION);
-        getContext().registerReceiver(dataReceiver, intentFilter);
-
         buildInstructionDialog();
         if (showInstructions) {
             instructionsDialog.show();
@@ -170,6 +159,17 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     }
 
     private void recordData() {
+        usbCommunicationHandler = USBCommunicationHandler.getInstance(getContext(), NeuroLab.getUsbManager());
+        locationTracker = new LocationTracker(getContext(), (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE));
+
+        dataReceiver = new DataReceiver(getContext(), usbCommunicationHandler);
+
+        IntentFilter intentFilter = new IntentFilter();
+        // adding the possible USB intent actions.
+        intentFilter.addAction(ACTION_USB_PERMISSION);
+        getContext().registerReceiver(dataReceiver, intentFilter);
+
+        usbCommunicationHandler.searchForArduinoDevice(getContext());
         locationTracker.startCaptureLocation();
         if (usbCommunicationHandler.getSerialPort() != null) {
             toggleRecordItem(menu, !isRecording);
@@ -308,7 +308,6 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        Objects.requireNonNull(getContext()).unregisterReceiver(dataReceiver);
         rocketAnimation.pauseRocketAnim(view);
     }
 
@@ -347,6 +346,8 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
                         rawDataSize++;
                         continue;
                     }
+                    if (nextLine.length <= 2)
+                        continue;
                     rawData.add(rawDataSize, nextLine[2]);
                     rawDataSize++;
                 }
