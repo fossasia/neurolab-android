@@ -14,6 +14,9 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_REPO_SLUG" != "fossasia/neuro
     exit 0
 fi
 
+# Generate Playstore bundle
+./gradlew bundlePlaystoreRelease
+
 # Clone the repository
 git clone --quiet --branch=apk https://fossasia:$GITHUB_KEY@github.com/fossasia/neurolab-android apk > /dev/null
 
