@@ -92,12 +92,13 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="import_message">Importing data…</string>
     <string name="import_csv">Import CSV file</string>
     <string name="connect_device">Connect device</string>
-    <string name="calmness_label">Calmness score:</string>
-    <string name="anger_label">Anger score:</string>
-    <string name="concentration_label">Concentration score:</string>
+    <string name="scores_label">Your scores are here</string>
+    <string name="calmness_label">Calmness score</string>
+    <string name="anger_label">Anger score</string>
+    <string name="concentration_label">Concentration score</string>
     <string name="program_info_label">Program info</string>
     <string name="program_info">Memory graph is the program mode where you can import your datasets and analyze the data in the form of real time graphs, statistics or score and spectral density graphs. </string>
-    <string name="sleep_label">Sleep score:</string>
+    <string name="sleep_label">Sleep score</string>
     <string name="delta">Delta:</string>
     <string name="theta">Theta:</string>
     <string name="low_alpha">Low Alpha:</string>

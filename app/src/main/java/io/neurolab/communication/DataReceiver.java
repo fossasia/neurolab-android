@@ -33,7 +33,6 @@ public class DataReceiver extends BroadcastReceiver {
     public DataReceiver(Context context, USBCommunicationHandler usbCommunicationHandler) {
         this.context = context;
         this.usbCommunicationHandler = usbCommunicationHandler;
-        this.usbCommunicationHandler.searchForArduinoDevice(context);
     }
 
     private UsbSerialInterface.UsbReadCallback readCallback = new UsbSerialInterface.UsbReadCallback() { //Defining a Callback which triggers whenever data is read.
