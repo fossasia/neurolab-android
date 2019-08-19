@@ -20,25 +20,69 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
 <table>
         
   <tr>
-  <td><img src = "/docs/images/start_screen_1.png" height = "500" width="250"></td>
-
-  <td><img src = "/docs/images/start_screen_2.png" height = "500" width="250"></td>  
-
-  <td><img src = "/docs/images/start_screen_3.png" height = "500" width="250"></td>
+  <td><img src="/docs/images/start_screen_1.png" height="500" width="250"></td>
+  <td><img src="/docs/images/home_screen.jpg" height="500" width="250"></td>
+  <td><img src="/docs/images/nav_menu.png" height="500" width="250"></td>
+  </tr>
+  
+  <tr>
+  <td><img src="/docs/images/focus_mode.png" height="500" width="250"></td>
+  <td><img src="/docs/images/memory_graph_sc.jpeg" height="500" width="250"></td>
+  <td><img src="/docs/images/pinlayout.jpeg" height="500" width="250"></td>
   </tr>
 
   <tr>
-  <td><img src = "/docs/images/Demo.gif" height = "500" width="250"></td>
-  <td><img src = "/docs/images/home_screen.png" height = "500" width="250"></td>
-  <td><img src = "/docs/images/nav_menu.png" height = "500" width="250"></td>
-  </tr>
-
-  <tr>
-  <td><img src = "/docs/images/about_screen.png" height = "500" width="250"></td>
-  <td><img src = "/docs/images/settings_screen.png" height = "500" width="250"></td>
+  <td><img src="/docs/images/meditate.jpg" height="500" width="250"></td>
+  <td><img src="/docs/images/about_screen.png" height="500" width="250"></td>
+  <td><img src="/docs/images/settings_screen.jpeg" height="500" width="250"></td>
   </tr>
 
   </table>
+  
+## Features
+
+### Launcher Screen
+
+<td><img src = "/docs/images/home_screen.jpg" height = "500" width="250"></td>
+
+The four major program modes:
+*  [Focus](#focus-program-mode)
+*  [Relax](#relax-program-mode)
+*  [Memory Graph](#memory-graph-program-mode)
+*  [Meditation](#meditation-program-mode)
+
+Every program mode is responsible for specific activities and games with your brain activity.
+
+### Focus program Mode
+
+<td><img src="/docs/images/focus_mode.png" height="500" width="250"></td>
+
+Focus program mode helps users to increase their focus and concentration power by playing games.
+The rocket game comes with features like play, stop, record, program info, datalogger, seek to specific time, etc.
+
+### Relax program mode
+
+<td><img src="/docs/images/relax.jpg" height="500" width="250"></td>
+
+Relax program mode is intended to help users relax his mind and diminish their stress in life.
+
+### Memory Graph program mode
+
+<td><img src="/docs/images/memory_graph_sc.jpeg" height="500" width="250"></td>
+
+Memory Graph is a data visualization mode with the help of graphs, user friendly stats and a density spectrum.
+Users can import a dataset into the datalogger from where they can visualize it in the actual mode.
+This mode is implemented with features like play, stop, record, data logger, etc.
+
+### Meditation program mode
+(Under Development)
+
+<td><img src="/docs/images/meditate.jpg" height="500" width="250"></td>
+
+Meditation program mode helps users with providing different categories of meditations which they can choose depending upon their mood.
+Every category has a list of meditations directed for that particular mood.
+
+Feel free to check out the in-development features of the app like the Meditation mode, bluetooth mode, etc. by enabling the Developer mode from the settings menu. We will be happy to receive your feedback and work on that.
   
 ## Contributions Best Practices
 
@@ -91,3 +135,9 @@ If you are a tester and want to test the app, you have two ways to do that:
 *   [JFreeChart](https://mvnrepository.com/artifact/org.jfree/jfreechart/1.0.14)
 *   [OpenCSV](https://mvnrepository.com/artifact/com.opencsv/opencsv/4.6)
 *   [Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson/2.8.5)
+
+## Maintainers and Developers
+
+*   Jaideep Prasad ([@jddeep](https://github.com/jddeep))
+*   Mario Behling ([@mariobehling](http://github.com/mariobehling))
+*   Padmal ([@CloudyPadmal](https://github.com/CloudyPadmal))
