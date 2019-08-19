@@ -1,15 +1,57 @@
 package io.neurolab.fragments;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.preference.CheckBoxPreference;
+import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 
 import io.neurolab.R;
+import io.neurolab.main.NeuroLab;
 
-public class ConfigFragment extends PreferenceFragmentCompat {
+import static io.neurolab.main.NeuroLab.DEV_MODE_KEY;
+
+public class ConfigFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener, Preference.OnPreferenceChangeListener {
+
+    private CheckBoxPreference developerModeCheck;
+    private SharedPreferences sharedPreferences;
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
         setPreferencesFromResource(R.xml.fragment_config_settings, s);
+
+        developerModeCheck = (CheckBoxPreference) getPreferenceScreen().findPreference(DEV_MODE_KEY);
+        sharedPreferences = getPreferenceScreen().getSharedPreferences();
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        developerModeCheck.setOnPreferenceChangeListener(this);
+        sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        switch (key) {
+            case DEV_MODE_KEY:
+                if (!developerModeCheck.isChecked())
+                    NeuroLab.developerMode = true;
+                else
+                    NeuroLab.developerMode = false;
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object o) {
+        return true;
+    }
 }

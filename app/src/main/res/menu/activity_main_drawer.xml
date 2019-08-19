@@ -13,6 +13,9 @@
                     android:id="@+id/nav_relax"
                     android:title="@string/relax" />
                 <item
+                    android:id="@+id/nav_meditation"
+                    android:title="@string/meditation" />
+                <item
                     android:id="@+id/nav_memory_graph"
                     android:title="@string/mem_graph" />
 

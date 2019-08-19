@@ -52,6 +52,8 @@ public class NeuroLab extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private static final String ACTION_USB_PERMISSION = "io.neurolab.USB_PERMISSION";
+    public static boolean developerMode = false;
+    public static final String DEV_MODE_KEY = "developerMode";
     public static UsbSerialDevice serialPort;
     public static IntentFilter intentFilter;
     private static UsbManager usbManager;
@@ -120,6 +122,9 @@ public class NeuroLab extends AppCompatActivity
 
         SharedPreferences sharedPreferences =
                 PreferenceManager.getDefaultSharedPreferences(this);
+        developerMode = sharedPreferences.getBoolean(DEV_MODE_KEY, false);
+        if (developerMode)
+            Toast.makeText(this, R.string.dev_mode_msg, Toast.LENGTH_SHORT).show();
         // Check if we need to display our OnBoardingActivity
         if (!sharedPreferences.getBoolean(
                 OnBoardingActivity.getOnBoardingPrefKey(), false)) {
@@ -148,6 +153,11 @@ public class NeuroLab extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        Menu menuNav = navigationView.getMenu();
+        MenuItem navMeditate = menuNav.findItem(R.id.nav_meditation);
+
+        if (!developerMode)
+            navMeditate.setVisible(false);
 
         // Setting Listeners of the settings checkboxes
 
@@ -159,8 +169,12 @@ public class NeuroLab extends AppCompatActivity
         focusButton.setOnClickListener(this);
         relaxButton.setOnClickListener(this);
         memGraphButton.setOnClickListener(this);
-        // TODO: Implement Meditation mode in future when resources are available
-        // meditationCard.setOnClickListener(this);
+        meditationCard.setVisibility(View.GONE);
+
+        if (developerMode) {
+            meditationCard.setVisibility(View.VISIBLE);
+            meditationCard.setOnClickListener(this);
+        }
     }
 
     private void startProgramModeActivity(String mode) {
@@ -225,6 +239,13 @@ public class NeuroLab extends AppCompatActivity
         super.onPrepareOptionsMenu(menu);
         this.menu = menu;
         changeDeviceIcon();
+        if (!developerMode) {
+            MenuItem testMode = this.menu.findItem(R.id.test_mode);
+            MenuItem bluetoothMode = this.menu.findItem(R.id.bluetooth_test);
+
+            testMode.setVisible(false);
+            bluetoothMode.setVisible(false);
+        }
         return true;
     }
 
@@ -253,6 +274,7 @@ public class NeuroLab extends AppCompatActivity
             startActivity(new Intent(this, DeviceInstructionsActivity.class));
         } else if (id == R.id.nav_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
+            finish();
         } else if (id == R.id.nav_about_us) {
             startActivity(new Intent(this, AboutUsActivity.class));
         } else if (id == R.id.nav_share) {
