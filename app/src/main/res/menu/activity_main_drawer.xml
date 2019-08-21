@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-    <item android:title="Program Modes">
+    <item android:title="@string/programs">
         <menu>
             <group android:checkableBehavior="single">
 
