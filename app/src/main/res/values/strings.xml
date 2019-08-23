@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Neuro Lab</string>
+    <string name="app_name">NeuroLab</string>
     <string name="welcome_app_name">Welcome to NeuroLab</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -43,7 +43,7 @@
     <string name="meditation_activity_play_btn_txt">Play</string>
     <string name="meditation_activity_reset_btn_txt">Reset</string>
 
-    <string name="programs">Programs</string>
+    <string name="programs">Program modes</string>
     <string name="focus">Focus</string>
     <string name="relax">Relax</string>
     <string name="mem_graph">Memory graph</string>

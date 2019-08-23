@@ -41,7 +41,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 import io.neurolab.R;
 import io.neurolab.activities.DataLoggerActivity;
@@ -241,13 +240,10 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
                 } else
                     return;
             } else {
-                memGraph.clear();
-                data.clearValues();
-                memGraph.notifyDataSetChanged();
+                memActivity.runOnUiThread(() -> memGraph.notifyDataSetChanged());
             }
         } else {
-            memGraph.clear();
-            memGraph.notifyDataSetChanged();
+            getActivity().runOnUiThread(() -> memGraph.notifyDataSetChanged());
         }
     }
 
@@ -332,10 +328,6 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
     @Override
     public void onResume() {
         super.onResume();
-        IntentFilter intentFilter = new IntentFilter();
-        // adding the possible USB intent actions.
-        intentFilter.addAction(ACTION_USB_PERMISSION);
-        Objects.requireNonNull(getContext()).registerReceiver(dataReceiver, intentFilter);
     }
 
     @Override

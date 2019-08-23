@@ -23,6 +23,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -32,9 +33,7 @@ import com.opencsv.CSVReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Objects;
 
 import io.neurolab.R;
 import io.neurolab.activities.DataLoggerActivity;
@@ -58,7 +57,9 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     private boolean permission = false;
     private boolean isPlaying = false;
     private boolean isRecording = false;
+    private static boolean isVisible = true;
     private static String[] extractedData;
+    private AlertDialog progressDialog;
     private String filePath;
     private AlertDialog instructionsDialog;
     private static boolean showInstructions = true;
@@ -90,6 +91,30 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_focus_visual, container, false);
 
+        view.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+
+                if (event.getAction() == MotionEvent.ACTION_MOVE) {
+                    if (isVisible) {
+                        view.findViewById(R.id.anim_seekbar).setVisibility(View.INVISIBLE);
+                        view.findViewById(R.id.anim_timer).setVisibility(View.INVISIBLE);
+                    } else {
+                        view.findViewById(R.id.anim_seekbar).setVisibility(View.VISIBLE);
+                        view.findViewById(R.id.anim_timer).setVisibility(View.VISIBLE);
+                    }
+                    isVisible = !isVisible;
+                }
+                return true;
+            }
+        });
+
+        LayoutInflater layoutInflater = getLayoutInflater();
+        View progressView = layoutInflater.inflate(R.layout.progress_dialog_layout, null);
+        AlertDialog.Builder progress = new AlertDialog.Builder(getContext());
+        progress.setView(progressView);
+        progress.setCancelable(false);
+        progressDialog = progress.create();
+
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
@@ -106,10 +131,9 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         }
 
         if (getArguments() != null) {
-            rocketAnimation.playRocketAnim(view);
+            progressDialog.show();
             filePath = getArguments().getString(LOG_FILE_KEY);
             new ParseDataAsync(filePath, rocketAnimation, view, getActivity()).execute();
-            new Handler().postDelayed(() -> rocketAnimation.playRocketAnim(view), 400);
 
         } else {
             new Handler().postDelayed(() -> rocketAnimation.pauseRocketAnim(view), 400);
@@ -298,17 +322,14 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        IntentFilter intentFilter = new IntentFilter();
-        // adding the possible USB intent actions.
-        intentFilter.addAction(ACTION_USB_PERMISSION);
-        Objects.requireNonNull(getContext()).registerReceiver(dataReceiver, intentFilter);
-        rocketAnimation.playRocketAnim(view);
     }
 
     @Override
     public void onPause() {
         super.onPause();
         rocketAnimation.pauseRocketAnim(view);
+        extractedData = null;
+        SpaceAnimationVisuals.count = 0;
     }
 
     @Override
@@ -316,19 +337,19 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         super.onStop();
     }
 
-    private static class ParseDataAsync extends AsyncTask<Void, Void, String[]> {
+    private class ParseDataAsync extends AsyncTask<Void, Void, String[]> {
 
         private String filePath;
 
-        private WeakReference<SpaceAnimationVisuals> rocketAnimation;
-        private WeakReference<View> view;
-        private WeakReference<Activity> activity;
+        private SpaceAnimationVisuals rocketAnimation;
+        private View view;
+        private Activity activity;
 
-        ParseDataAsync(String filePath, SpaceAnimationVisuals rocketAnimation, View view, Activity activity) {
+        public ParseDataAsync(String filePath, SpaceAnimationVisuals rocketAnimation, View view, Activity activity) {
             this.filePath = filePath;
-            this.rocketAnimation = new WeakReference<>(rocketAnimation);
-            this.view = new WeakReference<>(view);
-            this.activity = new WeakReference<>(activity);
+            this.rocketAnimation = rocketAnimation;
+            this.view = view;
+            this.activity = activity;
         }
 
         @Override
@@ -370,9 +391,18 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
             extractedData = strings;
             FrequencyProcessor frequencyProcessor = new FrequencyProcessor(extractedData.length, 32, 16.0);
             double[] freq = frequencyProcessor.processFFTData(convertToDouble(extractedData));
-            rocketAnimation.get().animateRocket(freq, activity.get());
-            rocketAnimation.get().pauseRocketAnim(view.get());
-            rocketAnimation.get().playRocketAnim(view.get());
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (extractedData != null) {
+                        progressDialog.dismiss();
+                        rocketAnimation.animateRocket(freq, getActivity());
+                        rocketAnimation.playRocketAnim(view);
+                    } else {
+                        rocketAnimation.pauseRocketAnim(view);
+                    }
+                }
+            });
         }
     }
 
@@ -382,7 +412,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         int endTrimIndex = 3;
         final int maxRawData = 5060;
         for (int i = 0; i < parsedData.length; i++) {
-            if (parsedData[i].length() > 0) {
+            if (parsedData[i].length() > 3) {
                 parsedDoubleData[i] = Double.parseDouble(parsedData[i].substring(startTrimIndex, endTrimIndex));
                 if (parsedDoubleData[i] > maxRawData) {
                     parsedDoubleData[i] = maxRawData;
