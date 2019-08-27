@@ -43,10 +43,10 @@
     <string name="meditation_activity_play_btn_txt">Play</string>
     <string name="meditation_activity_reset_btn_txt">Reset</string>
 
-    <string name="programs">Program modes</string>
+    <string name="programs">Program Modes</string>
     <string name="focus">Focus</string>
     <string name="relax">Relax</string>
-    <string name="mem_graph">Memory graph</string>
+    <string name="mem_graph">Memory Graph</string>
     <string name="focus_desc">Test the focus strength of your brain. Improve your score with more new sessions.</string>
     <string name="relax_desc">Relax yourself. Regular sessions can help level up your concentration.</string>
 
@@ -91,13 +91,13 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="perm_not_granted">Permission not granted</string>
     <string name="import_message">Importing data…</string>
     <string name="import_csv">Import CSV file</string>
-    <string name="connect_device">Connect device</string>
+    <string name="connect_device">Connect Device</string>
     <string name="scores_label">Your scores are here</string>
     <string name="calmness_label">Calmness score</string>
     <string name="anger_label">Anger score</string>
     <string name="concentration_label">Concentration score</string>
     <string name="program_info_label">Program info</string>
-    <string name="program_info">Memory graph is the program mode where you can import your datasets and analyze the data in the form of real time graphs, statistics or score and spectral density graphs. </string>
+    <string name="program_info">Memory Graph is the program mode where you can import your datasets and analyze the data in the form of real time graphs, statistics or score and spectral density graphs. </string>
     <string name="sleep_label">Sleep score</string>
     <string name="delta">Delta:</string>
     <string name="theta">Theta:</string>
@@ -112,7 +112,7 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="sleep_range">Sleep Range - data in the delta state range</string>
     <string name="pallete">Spectrum Color Palette</string>
     <string name="spectrum">Spectrum</string>
-    <string name="logged_data">Logged data</string>
+    <string name="logged_data">Logged Data</string>
     <string name="freq_label">Frequency (Hertz)</string>
     <string name="eeg_data_label">EEG data (mV)</string>
     <string name="play_graph">Play Graph</string>
@@ -151,7 +151,7 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="log_saved_directory">Log saved in\n</string>
     <string name="log_saved_failed">Could not save the log. Please check storage permission.</string>
     <string name="no_device">No Device Connected</string>
-    <string name="no_rec_msg">Please connect the NeuroLab device to start a recording</string>
+    <string name="no_rec_msg">Check NeuroLab device connection/Start recording from top option</string>
     <string name="yes_focus_msg">Yes, Start</string>
     <string name="focus_test_msg">Test Data</string>
     <string name="focus_rec_ins">Please ensure NeuroLab device is connected to play this game or play test data.</string>

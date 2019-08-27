@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mem_graph_card"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/nav_header_height"
     android:layout_marginStart="@dimen/card_main_margin_lr"
     android:layout_marginTop="@dimen/card_main_margin_tb"
     android:layout_marginEnd="@dimen/card_main_margin_lr"
@@ -19,7 +19,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:alpha="0.3"
             android:scaleType="fitCenter"
@@ -55,6 +55,7 @@
                     android:layout_marginStart="@dimen/image_main_layout_margin"
                     android:layout_marginEnd="@dimen/image_main_layout_margin"
                     android:text="@string/mem_graph"
+                    android:textSize="@dimen/heading_text_size"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                     android:textColor="#fff" />
 
