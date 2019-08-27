@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/device_icon"
+        android:icon="@drawable/ic_disconnected"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/device_is_not_connected"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/pin_front_lay"
+        android:orderInCategory="200"
+        android:title="Pin front layout"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/pin_back_lay"
+        android:orderInCategory="200"
+        android:title="Pin back layout"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/test_mode"
+        android:orderInCategory="200"
+        android:title="@string/title_activity_test_mode"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/bluetooth_test"
+        android:orderInCategory="200"
+        android:title="@string/bluetooth_test"
+        app:showAsAction="never" />
+
 </menu>

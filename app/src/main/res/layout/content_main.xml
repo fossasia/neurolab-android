@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="io.neurolab.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@color/home_activity_background"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/padding_extra_larger"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-</android.support.constraint.ConstraintLayout>
+        <include layout="@layout/card_focus" />
+        <include layout="@layout/card_relax" />
+        <include layout="@layout/card_mem_graph" />
+        <include layout="@layout/card_meditation" />
+    </LinearLayout>
+</ScrollView>

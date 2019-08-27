@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/animated_view_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <io.neurolab.gui.GraphicBgRenderer
+        android:id="@+id/focus_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:id="@+id/scrim_focus_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#A61B1B1B" />
+
+    <FrameLayout
+        android:id="@+id/rocket_focus_screen"
+        android:layout_width="@dimen/rocket_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="@dimen/margin_large">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/ic_rocket_focus" />
+
+        <ImageView
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/ic_rocket_focus_indicator" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+
+        <SeekBar
+            android:id="@+id/anim_seekbar"
+            android:layout_width="@dimen/spacing_none"
+            android:layout_height="@dimen/heading_margin_top"
+            android:layout_weight="0.8"
+            android:background="@android:color/black" />
+
+        <TextView
+            android:id="@+id/anim_timer"
+            android:layout_width="@dimen/spacing_none"
+            android:layout_height="@dimen/heading_margin_top"
+            android:layout_weight="0.2"
+            android:background="@android:color/black"
+            android:gravity="center"
+            android:text="@string/default_timer"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="@dimen/text_size_large" />
+
+    </LinearLayout>
+</FrameLayout>

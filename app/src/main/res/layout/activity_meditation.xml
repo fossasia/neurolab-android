@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="@dimen/nav_header_height"
+        android:layout_height="@dimen/nav_header_height"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_person_black"
+        android:layout_margin="@dimen/layout_margin_medium"
+        app:civ_border_color="@color/colorPrimary"
+        app:civ_border_width="@dimen/view_width_or_height"/>
+
+    <TextView
+        android:id="@+id/progress_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_larger"
+        android:textColor="@color/colorPrimary"
+        android:text="@string/default_timer"
+        android:layout_margin="@dimen/layout_margin_medium"
+        android:layout_gravity="center"/>
+
+
+        <TextView
+            android:id="@+id/duration_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/layout_margin_medium"
+            android:text="@string/default_timer"
+            android:textColor="@color/colorPrimary" />
+
+    <SeekBar
+        android:id="@+id/seekbar_audio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progressTint="@color/colorPrimary"
+        android:thumbTint="@color/colorPrimary"
+        android:layout_marginBottom="@dimen/layout_margin_large"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/layout_margin_medium"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/button_play"
+            android:layout_width="@dimen/heading_margin_top"
+            android:layout_height="@dimen/heading_margin_top"
+            android:layout_weight="1"
+            android:src="@drawable/ic_play_meditate"
+            app:civ_border_color="@color/colorPrimary"
+            app:civ_border_width="@dimen/view_width_or_height"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/button_pause"
+            android:layout_width="@dimen/heading_margin_top"
+            android:layout_height="@dimen/heading_margin_top"
+            android:layout_weight="1"
+            android:src="@drawable/ic_pause_meditate"
+            app:civ_border_color="@color/colorPrimary"
+            app:civ_border_width="@dimen/view_width_or_height"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/button_reset"
+            android:layout_width="@dimen/heading_margin_top"
+            android:layout_height="@dimen/heading_margin_top"
+            android:layout_weight="1"
+            android:src="@drawable/ic_refresh_meditate"
+            app:civ_border_color="@color/colorPrimary"
+            app:civ_border_width="@dimen/view_width_or_height"
+            android:clickable="true"
+            android:focusable="true"/>
+
+    </LinearLayout>
+
+</LinearLayout>

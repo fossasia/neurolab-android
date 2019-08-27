@@ -1,0 +1,42 @@
+package io.neurolab.activities;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
+
+import io.neurolab.R;
+
+public class MeditationHome extends AppCompatActivity {
+
+    public static final String MEDITATION_DIR_KEY = "MEDITATION";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_meditation_home);
+        setTitle(R.string.meditation);
+
+        CardView happinessView = findViewById(R.id.happy_card);
+        CardView depressionView = findViewById(R.id.depression_card);
+        CardView sleepView = findViewById(R.id.sleep_card);
+        CardView travelView = findViewById(R.id.travel_card);
+        CardView shBreakView = findViewById(R.id.sh_break_card);
+        CardView lgBreakView = findViewById(R.id.lg_break_card);
+
+        setMeditationCategoryIntent(happinessView);
+        setMeditationCategoryIntent(depressionView);
+        setMeditationCategoryIntent(sleepView);
+        setMeditationCategoryIntent(travelView);
+        setMeditationCategoryIntent(shBreakView);
+        setMeditationCategoryIntent(lgBreakView);
+    }
+
+    private void setMeditationCategoryIntent(CardView view) {
+        view.setOnClickListener(v -> {
+                    startActivity(new Intent(MeditationHome.this, MeditationListActivity.class));
+                    finish();
+                }
+        );
+    }
+}

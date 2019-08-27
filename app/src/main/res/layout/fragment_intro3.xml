@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/on_boarding_activity_bg_color"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/on_boarding_frag_rellayout_height"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/intro3ImageView"
+            android:layout_margin="@dimen/on_boarding_frag_title_margin"
+            android:text="@string/on_boarding_frag3_title"
+            android:fontFamily="sans-serif-medium"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/on_boarding_frag_title_size" />
+
+        <ImageView
+            android:id="@+id/intro3ImageView"
+            android:layout_width="@dimen/on_boarding_frag_image_size"
+            android:layout_height="@dimen/on_boarding_frag_image_size"
+            android:layout_centerInParent="true"
+            app:srcCompat="@drawable/ic_intro_guide3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/on_boarding_frag_subtitle_margin"
+            android:layout_below="@id/intro3ImageView"
+            android:textAlignment="center"
+            android:fontFamily="sans-serif"
+            android:text="@string/on_boarding_frag3_subtitle"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/on_boarding_frag_subtitle_size" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/appIntro2BottomBarView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/on_boarding_frag_view_height" />
+
+</LinearLayout>

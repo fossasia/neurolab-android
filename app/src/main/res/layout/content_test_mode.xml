@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activities.TestModeActivity"
+    android:orientation="vertical"
+    tools:showIn="@layout/activity_test_mode">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/test_buttons_container"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/begin"
+            android:id="@+id/buttonBegin"
+            android:textAllCaps="false"
+            android:layout_toRightOf="@+id/buttonRead"
+            android:layout_toEndOf="@+id/buttonRead" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/read"
+            android:enabled="false"
+            android:textAllCaps="false"
+            android:id="@+id/buttonRead"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/write"
+            android:id="@+id/buttonWrite"
+            android:enabled="false"
+            android:textAllCaps="false"
+            android:layout_toRightOf="@+id/buttonRead"
+            android:layout_toEndOf="@+id/buttonRead" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/stop"
+            android:id="@+id/buttonStop"
+            android:enabled="false"
+            android:textAllCaps="false"
+            android:layout_toRightOf="@+id/buttonRead"
+            android:layout_toEndOf="@+id/buttonRead" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/baud_rate"
+        android:padding="@dimen/baud_rate_padding"/>
+
+    <Spinner
+        android:id="@+id/baud_rates_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/baud_rate_spinner_padding">
+    </Spinner>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/displayData"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/editText"
+        android:layout_alignEnd="@+id/editText"
+        android:layout_alignParentBottom="true" />
+
+</LinearLayout>

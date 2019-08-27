@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="@string/audio_feedback_pref_key"
+        android:summary="@string/audio_feedback_summary"
+        android:title="@string/audio_feedback"
+        app:iconSpaceReserved="false" />
+
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="@string/bit24_pref_key"
+        android:summary="@string/mode_24_bit_summary"
+        android:title="@string/mode_24bit"
+        app:iconSpaceReserved="false" />
+
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="@string/advanced_mode_pref_key"
+        android:summary="@string/mode_advanced_summary"
+        android:title="@string/mode_advanced"
+        app:iconSpaceReserved="false" />
+
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="@string/dev_mode_key"
+        android:summary="@string/dev_mode_summary"
+        android:title="@string/dev_mode_label"
+        app:iconSpaceReserved="false" />
+
+</PreferenceScreen>

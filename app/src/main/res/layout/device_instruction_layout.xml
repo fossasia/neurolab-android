@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/home_content_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/layout_margin_moderate">
+
+            <ImageView
+                android:id="@+id/img_device_status"
+                android:layout_width="@dimen/heading_margin_left"
+                android:layout_height="@dimen/heading_margin_left"
+                android:layout_gravity="center"
+                android:src="@drawable/icons_usb_disconnected_100" />
+
+            <TextView
+                android:id="@+id/tv_device_status"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_large"
+                android:gravity="center"
+                android:padding="@dimen/layout_margin_moderate"
+                android:text="@string/device_is_not_connected"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="@dimen/about_text_size"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/tv_connect_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/about_txt_margin"
+                android:paddingRight="@dimen/about_txt_margin">
+
+                <TextView
+                    android:id="@+id/steps_header_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/about_txt_margin"
+                    android:gravity="center"
+                    android:text="@string/steps_header"
+                    android:textSize="@dimen/text_size_larger"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="@dimen/about_txt_margin"
+                    android:layout_marginStart="@dimen/about_txt_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/number_one"
+                        android:textSize="@dimen/text_size_large" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/padding_feedback_views"
+                        android:layout_marginStart="@dimen/padding_feedback_views"
+                        android:text="@string/step_one_info"
+                        android:textSize="@dimen/text_size_large" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="@dimen/about_txt_margin"
+                    android:layout_marginStart="@dimen/about_txt_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/number_two"
+                        android:textSize="@dimen/text_size_large" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/padding_feedback_views"
+                        android:layout_marginStart="@dimen/padding_feedback_views"
+                        android:text="@string/step_two_info"
+                        android:textSize="@dimen/text_size_large" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/about_txt_margin"
+                    android:layout_marginStart="@dimen/about_txt_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/number_three"
+                        android:textSize="@dimen/text_size_large" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/padding_feedback_views"
+                        android:layout_marginStart="@dimen/padding_feedback_views"
+                        android:text="@string/step_three_info"
+                        android:textSize="@dimen/text_size_large" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_width_or_height"
+                android:layout_marginLeft="@dimen/layout_margin_huge"
+                android:layout_marginRight="@dimen/layout_margin_huge"
+                android:layout_marginTop="@dimen/card_margin_large"
+                android:background="@android:color/black" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <EditTextPreference
+        android:defaultValue="3"
+        android:digits="0123456789"
+        android:inputType="numberDecimal"
+        android:key="@string/samples_pref_key"
+        android:numeric="integer"
+        android:title="@string/samples_pref_label"
+        android:imeOptions="actionDone"
+        app:iconSpaceReserved="false" />
+
+    <EditTextPreference
+        android:defaultValue="4"
+        android:digits="0123456789"
+        android:inputType="numberDecimal"
+        android:key="@string/bins_pref_key"
+        android:numeric="integer"
+        android:title="@string/bins_pref_label"
+        android:imeOptions="actionDone"
+        app:iconSpaceReserved="false" />
+
+    <EditTextPreference
+        android:defaultValue="2"
+        android:digits="0123456789"
+        android:inputType="numberDecimal"
+        android:key="@string/num_channels_pref_key"
+        android:numeric="integer"
+        android:title="@string/num_channels_pref_label"
+        android:imeOptions="actionDone"
+        app:iconSpaceReserved="false" />
+
+</PreferenceScreen>

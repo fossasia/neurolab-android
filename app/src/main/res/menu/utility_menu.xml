@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/play_graph"
+        android:title="@string/play_graph"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_play" />
+
+    <item
+        android:id="@+id/stop_data"
+        android:title="@string/stop_graph"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_stop" />
+
+    <item
+        android:id="@+id/save_graph_data"
+        android:title="Record data"
+        android:orderInCategory="200"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_record_white"/>
+
+    <item
+        android:id="@+id/stop_graph_data"
+        android:title="@string/stop"
+        android:orderInCategory="200"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_record_stop_white" />
+
+    <item
+        android:id="@+id/info_program"
+        android:title="@string/program_info_label"
+        android:orderInCategory="400"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_info" />
+
+    <item
+        android:id="@+id/data_logger_menu"
+        android:title="@string/logged_data"
+        android:orderInCategory="500"
+        app:showAsAction="never" />
+
+</menu>

@@ -12,21 +12,58 @@ android {
         versionCode 1
         versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue "string", "version", "${defaultConfig.versionName}"
         }
+        debug {
+            versionNameSuffix "Version: "
+            resValue "string", "version", "${versionNameSuffix}${defaultConfig.versionName}"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+        disable 'RestrictedApi'
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "com.google.code.gson:gson:$rootProject.gsonLibraryVersion"
     implementation "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    implementation "com.takisoft.fix:preference-v7:$rootProject.prefFixLibraryVersion"
     implementation "com.android.support:design:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
     implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutVersion"
+    implementation "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    implementation "com.github.medyo:android-about-page:$rootProject.aboutPageLibraryVersion"
+    implementation "com.github.iamareebjamal:jsyn:$rootProject.jsynLibraryVersion"
+    implementation "com.illposed.osc:javaosc-core:$rootProject.javaOscLibraryVersion"
+    implementation "org.scream3r:jssc:$rootProject.jsscLibraryVersion"
+    implementation "net.sourceforge.jtransforms:jtransforms:$rootProject.jtransformsLibraryVersion", { exclude group: 'junit' }
+    implementation "org.jogamp.jogl:jogl-all:$rootProject.joglLibraryVersion"
+    implementation "de.hdodenhof:circleimageview:$rootProject.circleImageViewLibraryVersion"
+    implementation "com.github.PhilJay:MPAndroidChart:v$rootProject.mpandroidchartLibraryVersion"
+    implementation "com.github.felHR85:UsbSerial:$rootProject.usbSerialLibraryVersion"
+    implementation "com.github.AppIntro:AppIntro:$rootProject.appIntroLibraryVersion"
+    implementation "org.jfree:jfreechart:$rootProject.jfreechartLibraryVersion"
+    implementation "com.opencsv:opencsv:$rootProject.opencsvLibraryVersion", {
+        exclude group: "commons-logging", module: "commons-logging"
+    }
     // Test
     testImplementation "junit:junit:$rootProject.junitVersion"
     androidTestImplementation "com.android.support.test:runner:$rootProject.testRunnerRulesVersion"

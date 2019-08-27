@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/stop_focus_anim"
+        android:icon="@drawable/ic_stop"
+        android:orderInCategory="100"
+        android:title="@string/stop"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/play_focus_anim"
+        android:icon="@drawable/ic_play"
+        android:orderInCategory="100"
+        android:title="@string/play_focus_anim"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/save_focus_data"
+        android:icon="@drawable/ic_record_white"
+        android:orderInCategory="200"
+        android:title="@string/save_focus_data"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/stop_record"
+        android:icon="@drawable/ic_record_stop_white"
+        android:orderInCategory="200"
+        android:title="@string/stop"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/focus_data_logger"
+        android:orderInCategory="300"
+        android:title="@string/logged_data"
+        app:showAsAction="never" />
+</menu>

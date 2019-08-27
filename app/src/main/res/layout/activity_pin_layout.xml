@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".activities.PinLayoutActivity">
+
+    <ImageView
+        android:id="@+id/pin_lay_img_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/img_neurolab_color_map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:visibility="invisible"
+        tools:ignore="ContentDescription" />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,24 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="io.neurolab">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.usb.host" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="AllowBackup">
+        <activity android:name=".activities.PinLayoutActivity" />
+        <activity android:name=".activities.MeditationListActivity" />
+        <activity android:name=".activities.MeditationHome" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.FocusParentActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".activities.TestModeActivity"
+            android:label="@string/title_activity_test_mode"
+            android:parentActivityName=".main.NeuroLab" />
+        <activity
+            android:name=".activities.ProgramModeActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".activities.AboutUsActivity"
+            android:label="@string/about_us"
+            android:parentActivityName=".main.NeuroLab" />
+        <activity
+            android:name=".main.NeuroLab"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.Launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
         </activity>
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:parentActivityName=".main.NeuroLab" />
+        <activity
+            android:name=".activities.OnBoardingActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.MeditationActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/meditation_activity_label" />
+        <activity android:name=".activities.MemoryGraphParent" />
+        <activity
+            android:name=".communication.bluetooth.BluetoothTestActivity"
+            android:parentActivityName=".main.NeuroLab" />
+        <activity android:name=".activities.DataLoggerActivity" />
+        <activity android:name=".activities.DeviceInstructionsActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
