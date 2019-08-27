@@ -16,7 +16,7 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:icon="@drawable/ic_app_brain_icon"
+        android:icon="@drawable/ic_neurolab_app"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
