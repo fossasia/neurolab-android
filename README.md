@@ -30,21 +30,57 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
 <table>
         
   <tr>
-  <td><img src="/docs/images/start_screen_1.png" height="500" width="250"></td>
-  <td><img src="/docs/images/home_screen.jpg" height="500" width="250"></td>
-  <td><img src="/docs/images/nav_menu.png" height="500" width="250"></td>
+  <td>
+  <img src="/docs/images/start_screen_1.jpeg" align="top">
+  
+  One of the On-boarding screens of the app.
+  </td>
+  <td>
+  <img src="/docs/images/home_screen.jpeg" align="top">
+  
+  Home and launcher screen of the app.
+  </td>
+  <td>
+  <img src="/docs/images/relax.jpg" align="top">
+  
+  Relax mode - Relaxation screen of the app.
+  </td>
   </tr>
   
   <tr>
-  <td><img src="/docs/images/focus_mode.png" height="500" width="250"></td>
-  <td><img src="/docs/images/memory_graph_sc.jpeg" height="500" width="250"></td>
-  <td><img src="/docs/images/pinlayout.jpeg" height="500" width="250"></td>
+  <td>
+  <img src="/docs/images/focus_mode.png" align="top">
+
+  Focus mode - Rocket game screen of the app.
+  </td>
+  <td>
+  <img src="/docs/images/memory_graph_sc.jpeg" align="top">
+  
+  Memory Graph mode - Brain data visualization.
+  </td>
+  <td>
+  <img src="/docs/images/pinlayout.jpeg" align="top">
+  
+  Pin layout screen of the app with pin descriptions.
+  </td>
   </tr>
 
   <tr>
-  <td><img src="/docs/images/meditate.jpg" height="500" width="250"></td>
-  <td><img src="/docs/images/about_screen.png" height="500" width="250"></td>
-  <td><img src="/docs/images/settings_screen.jpeg" height="500" width="250"></td>
+  <td>
+  <img src="/docs/images/meditate.jpg" align="top">
+  
+  Meditation mode - Meditations screen of the app.
+  </td>
+  <td>
+  <img src="/docs/images/about_screen.jpeg" align="top">
+  
+  About us page of the project in the app.
+  </td>
+  <td>
+  <img src="/docs/images/settings_screen.jpeg" align="top">
+  
+  Settings screen of the app with a Developer mode.
+  </td>
   </tr>
 
   </table>
@@ -53,7 +89,7 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
 
 ### Launcher Screen
 
-<td><img src = "/docs/images/home_screen.jpg" height = "500" width="250"></td>
+<td><img src = "/docs/images/home_screen.jpeg" height = "500" width="250"></td>
 
 The four major program modes:
 *  [Focus](#focus-program-mode)
@@ -72,7 +108,7 @@ The rocket game comes with features like play, stop, record, program info, datal
 
 ### Relax program mode
 
-<td><img src="/docs/images/relax.jpg" height="500" width="250"></td>
+<td><img src="/docs/images/relax.jpg" width=250></td>
 
 Relax program mode is intended to help users relax his mind and diminish their stress in life.
 
