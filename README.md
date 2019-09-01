@@ -99,6 +99,11 @@ Please check out the in-development features of the app like the Meditation mode
 | <img src = "/docs/images/memory_graph_sc.jpeg" width="200"/>    |  Memory Graph program mode  | Memory Graph is a data visualization mode with the help of graphs, user friendly stats and a density spectrum. Users can import a dataset into the datalogger from where they can visualize it in the actual mode. This mode is implemented with features like play, stop, record, data logger, etc. | :heavy_check_mark: |
 | <img src = "/docs/images/meditate.jpg" width="200"/>    |  Meditation program mode  | Meditation program mode helps users with providing different categories of meditations which they can choose depending upon their mood. Every category has a list of meditations directed for that particular mood. | Development Mode |
 
+## App workflow Videos
+
+[NeuroLab App Overview](https://youtu.be/udXVOB4VPis)
+[Device recording and file rename features](https://youtu.be/0jYBJDMOz_E)
+
 ## Dependencies
 
 *   [Preference Fix Library](https://github.com/Gericop/Android-Support-Preference-V7-Fix)
