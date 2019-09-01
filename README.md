@@ -101,8 +101,8 @@ Please check out the in-development features of the app like the Meditation mode
 
 ## App workflow Videos
 
-[NeuroLab App Overview](https://youtu.be/udXVOB4VPis)
-[Device recording and file rename features](https://youtu.be/0jYBJDMOz_E)
+*   [NeuroLab App Overview](https://youtu.be/udXVOB4VPis)
+*   [Device recording and file rename features](https://youtu.be/0jYBJDMOz_E)
 
 ## Dependencies
 
