@@ -2,50 +2,52 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-    <item android:title="@string/programs">
-        <menu>
-            <group android:checkableBehavior="single">
 
-                <item
-                    android:id="@+id/nav_focus"
-                    android:title="@string/focus" />
-                <item
-                    android:id="@+id/nav_relax"
-                    android:title="@string/relax" />
-                <item
-                    android:id="@+id/nav_meditation"
-                    android:title="@string/meditation" />
-                <item
-                    android:id="@+id/nav_memory_graph"
-                    android:title="@string/mem_graph" />
-
-            </group>
-        </menu>
-    </item>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_focus"
+            android:icon="@drawable/ic_card_focus"
+            android:title="@string/focus" />
+        <item
+            android:id="@+id/nav_relax"
+            android:icon="@drawable/ic_card_relax"
+            android:title="@string/relax" />
+        <item
+            android:id="@+id/nav_meditation"
+            android:icon="@drawable/ic_card_meditation"
+            android:title="@string/meditation" />
+        <item
+            android:id="@+id/nav_memory_graph"
+            android:icon="@drawable/ic_card_mem_graph"
+            android:title="@string/mem_graph" />
+    </group>
 
     <item
         android:id="@+id/nav_data_logger"
+        android:icon="@drawable/ic_import"
         android:title="@string/logged_data" />
 
     <item
         android:id="@+id/nav_connect_device"
+        android:icon="@drawable/ic_device_connected"
         android:title="@string/connect_device" />
 
     <item
         android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_settings"
         android:title="@string/settings" />
 
     <item android:title="@string/other_head_nav_drawer">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/share_nav_drawer" />
-
-            <item
                 android:id="@+id/nav_about_us"
                 android:icon="@drawable/ic_info"
                 android:title="@string/about_us" />
+
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/share_nav_drawer" />
         </menu>
     </item>
 

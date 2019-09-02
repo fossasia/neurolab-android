@@ -139,7 +139,7 @@ public class SpaceAnimationVisuals {
     public void animateRocket(double[] data, Activity activity) {
 
         if (count < data.length) {
-            double value = Double.parseDouble(Double.toString(data[count]).substring(0, 3));
+            double value = Double.parseDouble(Double.toString(data[count] * 100));
             valueAnimator[0] = ValueAnimator.ofFloat(0f, (float) -value);
             valueAnimator[0].setInterpolator(new AccelerateInterpolator());
             valueAnimator[0].setDuration(600);

@@ -59,6 +59,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     private boolean isRecording = false;
     private static boolean isVisible = true;
     private static String[] extractedData;
+    private static double[] freq;
     private AlertDialog progressDialog;
     private String filePath;
     private AlertDialog instructionsDialog;
@@ -161,7 +162,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         if (id == R.id.play_focus_anim) {
             toggleMenuItem(menu, !isPlaying);
             rocketAnimation.playRocketAnim(view);
-            rocketAnimation.animateRocket(convertToDouble(extractedData), getActivity());
+            rocketAnimation.animateRocket(freq, getActivity());
 
         } else if (id == R.id.stop_focus_anim) {
             toggleMenuItem(menu, isPlaying);
@@ -329,6 +330,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         super.onPause();
         rocketAnimation.pauseRocketAnim(view);
         extractedData = null;
+        freq = null;
         SpaceAnimationVisuals.count = 0;
     }
 
@@ -390,13 +392,13 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
             super.onPostExecute(strings);
             extractedData = strings;
             FrequencyProcessor frequencyProcessor = new FrequencyProcessor(extractedData.length, 32, 16.0);
-            double[] freq = frequencyProcessor.processFFTData(convertToDouble(extractedData));
-            getActivity().runOnUiThread(new Runnable() {
+            freq = frequencyProcessor.processFFTData(convertToDouble(extractedData));
+            activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     if (extractedData != null) {
                         progressDialog.dismiss();
-                        rocketAnimation.animateRocket(freq, getActivity());
+                        rocketAnimation.animateRocket(freq, activity);
                         rocketAnimation.playRocketAnim(view);
                     } else {
                         rocketAnimation.pauseRocketAnim(view);

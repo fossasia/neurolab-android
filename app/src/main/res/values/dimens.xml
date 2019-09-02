@@ -48,9 +48,9 @@
     <dimen name="meditation_bg_height">150dp</dimen>
     <dimen name="on_boarding_frag_image_size">250dp</dimen>
     <dimen name="spacing_none">0dp</dimen>
-    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="nav_header_height">175dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="heading_text_size">26sp</dimen>
+    <dimen name="heading_text_size">25sp</dimen>
     <dimen name="padding_feedback_views">5dp</dimen>
     <dimen name="spectrum_screen_height">400dp</dimen>
     <dimen name="view_width_or_height">1dp</dimen>

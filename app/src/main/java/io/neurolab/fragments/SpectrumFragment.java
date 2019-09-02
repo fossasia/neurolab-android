@@ -91,11 +91,9 @@ public class SpectrumFragment extends Fragment {
 
     private double[] convertToDouble(String[] parsedData) {
         double[] parsedDoubleData = new double[parsedData.length];
-        int startTrimIndex = 0;
-        int endTrimIndex = 9;
         for (int i = 0; i < parsedData.length; i++) {
             if (parsedData[i].length() > 0) {
-                parsedDoubleData[i] = Double.parseDouble(parsedData[i].substring(startTrimIndex, endTrimIndex));
+                parsedDoubleData[i] = Double.parseDouble(parsedData[i]);
                 if (parsedDoubleData[i] > 5060) {
                     parsedDoubleData[i] = 5060;
                 }
