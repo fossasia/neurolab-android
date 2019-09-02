@@ -94,7 +94,6 @@ This repository holds the Android app for the Neurolab Hardware. We are developi
   Spectrum - Density spectrum of brain activity data in Memory Graph mode.
   </td>
   </tr>
-
   </table>
   
 ## Goal
