@@ -76,6 +76,24 @@ This repository holds the Android app for the Neurolab Hardware. We are developi
   Settings screen of the app with a Developer mode.
   </td>
   </tr>
+  
+  <tr>
+  <td>
+  <img src="/docs/images/nav_menu.jpeg" align="top">
+  
+  Navigation menu of the app - Navigate to different modes and screens.
+  </td>
+  <td>
+  <img src="/docs/images/statistics.jpeg" align="top">
+  
+  Statistics - Scores generated using brain activity data in Memory Graph mode.
+  </td>
+  <td>
+  <img src="/docs/images/spectrum.png" align="top">
+  
+  Spectrum - Density spectrum of brain activity data in Memory Graph mode.
+  </td>
+  </tr>
 
   </table>
   
