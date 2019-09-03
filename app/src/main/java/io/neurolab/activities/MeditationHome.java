@@ -30,12 +30,24 @@ public class MeditationHome extends AppCompatActivity {
         setMeditationCategoryIntent(travelView);
         setMeditationCategoryIntent(shBreakView);
         setMeditationCategoryIntent(lgBreakView);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 
     private void setMeditationCategoryIntent(CardView view) {
         view.setOnClickListener(v -> {
                     startActivity(new Intent(MeditationHome.this, MeditationListActivity.class));
-                    finish();
                 }
         );
     }

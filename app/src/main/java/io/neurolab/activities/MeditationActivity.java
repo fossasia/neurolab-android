@@ -36,6 +36,8 @@ public final class MeditationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meditation);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         MEDIA_RES_ID = getIntent().getIntExtra(MEDITATION_DIR_KEY, R.raw.soften_and_relax);
 
         grabNecessaryReferencesAndSetListeners();
@@ -127,8 +129,13 @@ public final class MeditationActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        return true;
+    }
+
+    @Override
     public void onBackPressed() {
-        super.onBackPressed();
         finish();
     }
 

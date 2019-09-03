@@ -34,6 +34,8 @@ public class DataLoggerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_data_logger);
         setTitle(R.string.logged_data);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         if (getIntent().getExtras() != null)
             flag = getIntent().getExtras().getString(ProgramModeActivity.PROGRAM_FLAG_KEY);
 
@@ -64,6 +66,12 @@ public class DataLoggerActivity extends AppCompatActivity {
             dataloggerRecyclerView.setVisibility(View.GONE);
             noLoggedView.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        return true;
     }
 
     @Override
