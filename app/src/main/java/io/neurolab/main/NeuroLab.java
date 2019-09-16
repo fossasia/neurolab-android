@@ -41,33 +41,33 @@ import io.neurolab.activities.MemoryGraphParent;
 import io.neurolab.activities.OnBoardingActivity;
 import io.neurolab.activities.PinLayoutActivity;
 import io.neurolab.activities.ProgramModeActivity;
+import io.neurolab.activities.RelaxParentActivity;
 import io.neurolab.activities.SettingsActivity;
 import io.neurolab.activities.TestModeActivity;
 import io.neurolab.communication.USBCommunicationHandler;
 import io.neurolab.communication.bluetooth.BluetoothTestActivity;
-import io.neurolab.fragments.RelaxVisualFragment;
 import io.neurolab.utilities.PermissionUtils;
 
 public class NeuroLab extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
-    private static final String ACTION_USB_PERMISSION = "io.neurolab.USB_PERMISSION";
-    public static boolean developerMode = false;
     public static final String DEV_MODE_KEY = "developerMode";
-    public static UsbSerialDevice serialPort;
-    public static IntentFilter intentFilter;
-    private static UsbManager usbManager;
-    private static int baudRate = 9600;
-    private static boolean deviceConnected;
-    private static String deviceData;
-    private Menu menu;
+    private static final String ACTION_USB_PERMISSION = "io.neurolab.USB_PERMISSION";
     private static final String[] READ_WRITE_PERMISSIONS = {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE
     };
     private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT = 1;
-    private int launcherSleepTime;
+    public static boolean developerMode = false;
+    public static UsbSerialDevice serialPort;
+    public static IntentFilter intentFilter;
     public static USBCommunicationHandler usbCommunicationHandler;
+    private static UsbManager usbManager;
+    private static int baudRate = 9600;
+    private static boolean deviceConnected;
+    private static String deviceData;
+    private Menu menu;
+    private int launcherSleepTime;
     private UsbSerialInterface.UsbReadCallback readCallback = new UsbSerialInterface.UsbReadCallback() { //Defining a Callback which triggers whenever data is read.
         @Override
         public void onReceivedData(byte[] arg0) {
@@ -266,7 +266,8 @@ public class NeuroLab extends AppCompatActivity
             startActivity(new Intent(this, FocusParentActivity.class));
             finish();
         } else if (id == R.id.nav_relax) {
-            startProgramModeActivity(RelaxVisualFragment.RELAX_PROGRAM_FLAG);
+            startActivity(new Intent(this, RelaxParentActivity.class));
+            finish();
         } else if (id == R.id.nav_memory_graph) {
             startProgramModeActivity(MemoryGraphParent.MEMORY_GRAPH_FLAG);
         } else if (id == R.id.nav_connect_device) {
@@ -317,7 +318,7 @@ public class NeuroLab extends AppCompatActivity
                 startActivity(new Intent(this, FocusParentActivity.class));
                 break;
             case R.id.relax_card:
-                startProgramModeActivity(RelaxVisualFragment.RELAX_PROGRAM_FLAG);
+                startActivity(new Intent(this, RelaxParentActivity.class));
                 break;
             case R.id.mem_graph_card:
                 startProgramModeActivity(MemoryGraphParent.MEMORY_GRAPH_FLAG);

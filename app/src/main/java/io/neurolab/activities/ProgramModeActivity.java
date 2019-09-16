@@ -71,6 +71,8 @@ public class ProgramModeActivity extends AppCompatActivity {
             case RELAX_PROGRAM_MODE:
                 setTitle(R.string.relax);
                 fragment = new RelaxVisualFragment();
+                if (bundle.getString(RelaxVisualFragment.RELAX_PROGRAM_FLAG) != null)
+                    fragment.setArguments(bundle);
                 moveToFragment(fragment);
                 break;
             case MEMORY_GRAPH_MODE:
@@ -95,6 +97,8 @@ public class ProgramModeActivity extends AppCompatActivity {
         super.onBackPressed();
         if (mode == FOCUS_PROGRAM_MODE)
             startActivity(new Intent(this, FocusParentActivity.class));
+        else if (mode == RELAX_PROGRAM_MODE)
+            startActivity(new Intent(this, RelaxParentActivity.class));
         else
             startActivity(new Intent(this, NeuroLab.class));
         finish();

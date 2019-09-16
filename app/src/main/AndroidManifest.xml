@@ -23,6 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
+        <activity android:name=".activities.RelaxParentActivity"/>
         <activity android:name=".activities.PinLayoutActivity" />
         <activity android:name=".activities.MeditationListActivity" />
         <activity android:name=".activities.MeditationHome" />

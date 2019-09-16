@@ -7,9 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
 import io.neurolab.R;
+import io.neurolab.activities.MemoryGraphParent;
 import io.neurolab.fragments.FocusVisualFragment;
 import io.neurolab.fragments.RelaxVisualFragment;
-import io.neurolab.activities.MemoryGraphParent;
 
 public class ProgramModeActivity extends AppCompatActivity {
 
@@ -68,6 +68,8 @@ public class ProgramModeActivity extends AppCompatActivity {
             case RELAX_PROGRAM_MODE:
                 setTitle(R.string.relax);
                 fragment = new RelaxVisualFragment();
+                if (bundle.getString(RelaxVisualFragment.RELAX_PROGRAM_FLAG) != null)
+                    fragment.setArguments(bundle);
                 moveToFragment(fragment);
                 break;
             case MEMORY_GRAPH_MODE:
