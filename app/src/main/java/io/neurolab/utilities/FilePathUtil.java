@@ -6,6 +6,8 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 
+import com.opencsv.CSVWriter;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,11 +15,18 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import static io.neurolab.activities.DataLoggerActivity.PACKAGE_NAME;
+import static io.neurolab.activities.DataLoggerActivity.fileList;
+import static io.neurolab.activities.DataLoggerActivity.filesList;
+import static io.neurolab.activities.DataLoggerActivity.context;
 
 public class FilePathUtil {
 
@@ -138,6 +147,36 @@ public class FilePathUtil {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public static void readWriteData(String filename, File appDir) {
+        String fileName = filename;
+        String filePath = appDir + File.separator + fileName + ".csv";
+        File file = new File(filePath);
+
+        try {
+            FileWriter outputfile = new FileWriter(file);
+            CSVWriter writer = new CSVWriter(outputfile);
+            String line = "";
+
+            InputStream ins = context.getResources().openRawResource(context.getResources().getIdentifier(filename, "raw", PACKAGE_NAME));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(ins, Charset.forName("UTF-8")));
+
+            try {
+                while ((line = reader.readLine()) != null) {
+                    String[] nextRecord = line.split(",");
+                    writer.writeNext(nextRecord);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            writer.close();
+            fileList.add(file.getPath());
+            filesList.add(file);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
