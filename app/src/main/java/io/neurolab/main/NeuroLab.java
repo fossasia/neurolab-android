@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.usb.UsbManager;
@@ -28,6 +29,11 @@ import android.widget.Toast;
 
 import com.felhr.usbserial.UsbSerialDevice;
 import com.felhr.usbserial.UsbSerialInterface;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.Task;
 
 import java.io.UnsupportedEncodingException;
 
@@ -48,6 +54,8 @@ import io.neurolab.communication.USBCommunicationHandler;
 import io.neurolab.communication.bluetooth.BluetoothTestActivity;
 import io.neurolab.utilities.PermissionUtils;
 
+import static com.google.android.play.core.install.model.AppUpdateType.IMMEDIATE;
+
 public class NeuroLab extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
@@ -57,6 +65,7 @@ public class NeuroLab extends AppCompatActivity
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE
     };
+    private static final int MY_REQUEST_CODE = 111;
     private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT = 1;
     public static boolean developerMode = false;
     public static UsbSerialDevice serialPort;
@@ -68,6 +77,8 @@ public class NeuroLab extends AppCompatActivity
     private static String deviceData;
     private Menu menu;
     private int launcherSleepTime;
+    private static AppUpdateManager appUpdateManager;
+    private static Task<AppUpdateInfo> appUpdateInfoTask;
     private UsbSerialInterface.UsbReadCallback readCallback = new UsbSerialInterface.UsbReadCallback() { //Defining a Callback which triggers whenever data is read.
         @Override
         public void onReceivedData(byte[] arg0) {
@@ -144,6 +155,8 @@ public class NeuroLab extends AppCompatActivity
         // adding the possible USB intent actions.
         intentFilter.addAction(ACTION_USB_PERMISSION);
         registerReceiver(broadcastReceiver, intentFilter);
+        appUpdateManager = AppUpdateManagerFactory.create(getApplicationContext());
+        appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -175,6 +188,50 @@ public class NeuroLab extends AppCompatActivity
             meditationCard.setVisibility(View.VISIBLE);
             meditationCard.setOnClickListener(this);
         }
+
+        checkForUpdates(appUpdateManager, appUpdateInfoTask);
+    }
+
+    private void checkForUpdates(AppUpdateManager appUpdateManager, Task<AppUpdateInfo> appUpdateInfoTask) {
+        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(IMMEDIATE)) {
+                try {
+                    appUpdateManager.startUpdateFlowForResult(appUpdateInfo, IMMEDIATE, this, MY_REQUEST_CODE);
+                } catch (IntentSender.SendIntentException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == MY_REQUEST_CODE && resultCode != RESULT_OK) {
+            checkForUpdates(appUpdateManager, appUpdateInfoTask);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        appUpdateManager
+                .getAppUpdateInfo()
+                .addOnSuccessListener(
+                        appUpdateInfo -> {
+                            if (appUpdateInfo.updateAvailability()
+                                    == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
+                                try {
+                                    appUpdateManager.startUpdateFlowForResult(
+                                            appUpdateInfo,
+                                            IMMEDIATE,
+                                            this,
+                                            MY_REQUEST_CODE);
+                                } catch (IntentSender.SendIntentException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
     }
 
     private void startProgramModeActivity(String mode) {
