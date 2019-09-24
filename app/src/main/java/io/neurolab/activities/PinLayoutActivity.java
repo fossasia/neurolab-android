@@ -43,6 +43,7 @@ public class PinLayoutActivity extends AppCompatActivity implements View.OnTouch
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_pin_layout);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         boolean frontSide = getIntent().getBooleanExtra("layout", true);
         ImageView pinImageView = findViewById(R.id.pin_lay_img_view);
@@ -185,5 +186,11 @@ public class PinLayoutActivity extends AppCompatActivity implements View.OnTouch
             y = event.getY(0) + event.getY(1);
         } catch (Exception e) {/**/}
         point.set(x / 2, y / 2);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 }

@@ -16,6 +16,7 @@ public class MeditationListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meditation_list);
         setTitle("Meditations");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         RecyclerView meditationsRecyclerView = findViewById(R.id.meditation_recycler_view);
 
@@ -27,7 +28,12 @@ public class MeditationListActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+     public void onBackPressed() {
         super.onBackPressed();
         startActivity(new Intent(this, MeditationHome.class));
         finish();

@@ -1,6 +1,5 @@
 package io.neurolab.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -11,7 +10,6 @@ import io.neurolab.R;
 import io.neurolab.fragments.MemoryGraphFragment;
 import io.neurolab.fragments.SpectrumFragment;
 import io.neurolab.fragments.StatisticsFragment;
-import io.neurolab.main.NeuroLab;
 
 import static io.neurolab.utilities.FilePathUtil.LOG_FILE_KEY;
 
@@ -25,6 +23,8 @@ public class MemoryGraphParent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memory_graph_parent);
         setTitle(R.string.mem_graph);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         if (getIntent().getExtras() != null) {
             filePath = getIntent().getStringExtra(LOG_FILE_KEY);
         }
@@ -61,11 +61,15 @@ public class MemoryGraphParent extends AppCompatActivity {
     }
 
     @Override
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        return true;
+    }
+
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
         StatisticsFragment.parsedData = null;
-        startActivity(new Intent(this, NeuroLab.class));
-        finish();
     }
 
     public void setActionBarTitle(String title) {
