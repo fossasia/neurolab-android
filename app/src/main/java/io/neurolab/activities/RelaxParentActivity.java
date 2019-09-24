@@ -16,6 +16,7 @@ public class RelaxParentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_relax_parent);
         setTitle(R.string.relax);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         FloatingActionButton gameButton = findViewById(R.id.play_relax_illusion);
 
@@ -29,6 +30,12 @@ public class RelaxParentActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        return true;
     }
 
     @Override

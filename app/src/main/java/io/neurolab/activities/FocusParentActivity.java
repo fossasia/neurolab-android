@@ -20,6 +20,7 @@ public class FocusParentActivity extends AppCompatActivity {
         FloatingActionButton gameButton = findViewById(R.id.play_focus_game);
 
         gameButton.setOnClickListener(v -> startProgramModeActivity(FocusVisualFragment.FOCUS_FLAG));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void startProgramModeActivity(String mode) {
@@ -29,6 +30,12 @@ public class FocusParentActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        return true;
     }
 
     @Override

@@ -35,6 +35,7 @@ public final class MeditationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meditation);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         MEDIA_RES_ID = getIntent().getIntExtra(MEDITATION_DIR_KEY, R.raw.soften_and_relax);
 
@@ -127,9 +128,9 @@ public final class MeditationActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
+    public boolean onSupportNavigateUp(){
         finish();
+        return true;
     }
 
     // Defining inner class for getting the references of the OUTER class conveniently

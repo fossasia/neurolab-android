@@ -12,7 +12,6 @@ import android.widget.TextView;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
 import io.neurolab.R;
 import io.neurolab.adapters.DataLoggerListAdapter;
 
@@ -37,6 +36,8 @@ public class DataLoggerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_logger);
         setTitle(R.string.logged_data);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         PACKAGE_NAME = getApplicationContext().getPackageName();
         context = getApplicationContext();
 
@@ -85,7 +86,11 @@ public class DataLoggerActivity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
     @Override
     public void onBackPressed() {

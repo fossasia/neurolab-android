@@ -16,6 +16,7 @@ public class MeditationHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meditation_home);
         setTitle(R.string.meditation);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         CardView happinessView = findViewById(R.id.happy_card);
         CardView depressionView = findViewById(R.id.depression_card);
@@ -30,6 +31,12 @@ public class MeditationHome extends AppCompatActivity {
         setMeditationCategoryIntent(travelView);
         setMeditationCategoryIntent(shBreakView);
         setMeditationCategoryIntent(lgBreakView);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 
     private void setMeditationCategoryIntent(CardView view) {
