@@ -209,4 +209,8 @@ public class FilePathUtil {
         File to = new File(directory, newName.trim() + ".csv");
         from.renameTo(to);
     }
+
+    public static void deleteFile(File csvFile) {
+        csvFile.delete();
+    }
 }
