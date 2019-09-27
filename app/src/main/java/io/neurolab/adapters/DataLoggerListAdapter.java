@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.io.File;
 import java.util.List;
 
@@ -79,6 +78,21 @@ public class DataLoggerListAdapter extends RecyclerView.Adapter<DataLoggerListAd
                     })
                     .setNegativeButton(R.string.cancel, (dialog, which) -> {
                     }).create();
+            alertDialog.show();
+        });
+        viewHolder.deleteFileView.setOnClickListener(v -> {
+            FrameLayout container = new FrameLayout(context);
+            AlertDialog alertDialog = new AlertDialog.Builder(context)
+                    .setTitle("Delete file " + files.get(i).getName())
+                    .setView(container).
+                    setPositiveButton(R.string.ok_button, ((dialog, which) -> {
+                        FilePathUtil.deleteFile(files.get(i));
+                        files.remove(i);
+                        notifyItemRemoved(i);
+                        notifyItemRangeChanged(i,1);
+                    }))
+                    .setNegativeButton(R.string.cancel, ((dialog, which) -> {
+                    })).create();
             alertDialog.show();
         });
         viewHolder.focusPlayView.setOnClickListener(v -> {
@@ -145,6 +159,7 @@ public class DataLoggerListAdapter extends RecyclerView.Adapter<DataLoggerListAd
         private ImageView renameView;
         private ImageView genPlayView;
         private CardView loggedCardView;
+        private ImageView deleteFileView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -154,6 +169,7 @@ public class DataLoggerListAdapter extends RecyclerView.Adapter<DataLoggerListAd
             renameView = itemView.findViewById(R.id.rename_file_btn);
             genPlayView = itemView.findViewById(R.id.gen_play_view);
             loggedCardView = itemView.findViewById(R.id.parent_logged_card);
+            deleteFileView = itemView.findViewById(R.id.delete_file_btn);
         }
     }
 }

@@ -91,6 +91,7 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="perm_not_granted">Permission not granted</string>
     <string name="import_message">Importing data…</string>
     <string name="import_csv">Import CSV file</string>
+    <string name="delete">Delete file</string>
     <string name="connect_device">Connect Device</string>
     <string name="scores_label">Your scores are here</string>
     <string name="calmness_label">Calmness score</string>

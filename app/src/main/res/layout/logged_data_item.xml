@@ -49,8 +49,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/layout_margin_medium"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/mem_graph_play"
+            app:layout_constraintEnd_toStartOf="@+id/delete_file_btn"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.472"
             app:srcCompat="@drawable/ic_edit" />
 
         <ImageView
@@ -73,6 +74,18 @@
             app:layout_constraintEnd_toStartOf="@+id/focus_play"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_card_mem_graph" />
+
+        <ImageView
+            android:id="@+id/delete_file_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/layout_margin_medium"
+            android:tint="@color/focus_screen_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/mem_graph_play"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.428"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
     </android.support.constraint.ConstraintLayout>
 
     </android.support.v7.widget.CardView>
