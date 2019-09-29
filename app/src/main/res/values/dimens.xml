@@ -91,6 +91,7 @@
     <dimen name="land_button_margin">8dp</dimen>
     <dimen name="land_button_bottom_margin">2dp</dimen>
     <dimen name="land_button_margin_top">4dp</dimen>
+    <dimen name="land_image_dimen">200dp</dimen>
     <item name="last_session_horizontal_bias" type="dimen" format="float">0.739</item>
     <item name="zero_vertical_bias" type="dimen" format="float">0.0</item>
     <item name="guideline_constraint_one" type="dimen" format="float">0.21</item>
