@@ -75,10 +75,12 @@ public class NeuroLab extends AppCompatActivity
     private static int baudRate = 9600;
     private static boolean deviceConnected;
     private static String deviceData;
-    private Menu menu;
-    private int launcherSleepTime;
     private static AppUpdateManager appUpdateManager;
     private static Task<AppUpdateInfo> appUpdateInfoTask;
+    private MenuItem navMeditate;
+    private Menu menu;
+    private CardView meditationCard;
+    private int launcherSleepTime;
     private UsbSerialInterface.UsbReadCallback readCallback = new UsbSerialInterface.UsbReadCallback() { //Defining a Callback which triggers whenever data is read.
         @Override
         public void onReceivedData(byte[] arg0) {
@@ -167,7 +169,7 @@ public class NeuroLab extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         Menu menuNav = navigationView.getMenu();
-        MenuItem navMeditate = menuNav.findItem(R.id.nav_meditation);
+        navMeditate = menuNav.findItem(R.id.nav_meditation);
 
         if (!developerMode)
             navMeditate.setVisible(false);
@@ -177,7 +179,7 @@ public class NeuroLab extends AppCompatActivity
         CardView focusButton = findViewById(R.id.focus_card);
         CardView relaxButton = findViewById(R.id.relax_card);
         CardView memGraphButton = findViewById(R.id.mem_graph_card);
-        CardView meditationCard = findViewById(R.id.meditation_card);
+        meditationCard = findViewById(R.id.meditation_card);
 
         focusButton.setOnClickListener(this);
         relaxButton.setOnClickListener(this);
@@ -214,6 +216,22 @@ public class NeuroLab extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
+
+        SharedPreferences sharedPreferences =
+                PreferenceManager.getDefaultSharedPreferences(this);
+        developerMode = sharedPreferences.getBoolean(DEV_MODE_KEY, false);
+        if (developerMode) {
+            meditationCard.setVisibility(View.VISIBLE);
+            meditationCard.setOnClickListener(this);
+            navMeditate.setVisible(true);
+            invalidateOptionsMenu();
+        }
+
+        if (!developerMode) {
+            meditationCard.setVisibility(View.GONE);
+            navMeditate.setVisible(false);
+            invalidateOptionsMenu();
+        }
 
         appUpdateManager
                 .getAppUpdateInfo()
@@ -302,6 +320,12 @@ public class NeuroLab extends AppCompatActivity
 
             testMode.setVisible(false);
             bluetoothMode.setVisible(false);
+        } else {
+            MenuItem testMode = this.menu.findItem(R.id.test_mode);
+            MenuItem bluetoothMode = this.menu.findItem(R.id.bluetooth_test);
+
+            testMode.setVisible(true);
+            bluetoothMode.setVisible(true);
         }
         return true;
     }

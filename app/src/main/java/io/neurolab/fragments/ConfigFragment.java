@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.preference.CheckBoxPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
+import android.widget.Toast;
 
 import io.neurolab.R;
 import io.neurolab.main.NeuroLab;
@@ -42,8 +43,10 @@ public class ConfigFragment extends PreferenceFragmentCompat implements SharedPr
             case DEV_MODE_KEY:
                 if (!developerModeCheck.isChecked())
                     NeuroLab.developerMode = true;
-                else
+                else {
                     NeuroLab.developerMode = false;
+                    Toast.makeText(getActivity(), R.string.dev_mode_msg, Toast.LENGTH_SHORT).show();
+                }
                 break;
             default:
                 break;
