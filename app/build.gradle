@@ -54,7 +54,9 @@ dependencies {
     implementation "com.github.iamareebjamal:jsyn:$rootProject.jsynLibraryVersion"
     implementation "com.illposed.osc:javaosc-core:$rootProject.javaOscLibraryVersion"
     implementation "org.scream3r:jssc:$rootProject.jsscLibraryVersion"
-    implementation "net.sourceforge.jtransforms:jtransforms:$rootProject.jtransformsLibraryVersion", { exclude group: 'junit' }
+    implementation "net.sourceforge.jtransforms:jtransforms:$rootProject.jtransformsLibraryVersion", {
+        exclude group: 'junit'
+    }
     implementation "org.jogamp.jogl:jogl-all:$rootProject.joglLibraryVersion"
     implementation "de.hdodenhof:circleimageview:$rootProject.circleImageViewLibraryVersion"
     implementation "com.github.PhilJay:MPAndroidChart:v$rootProject.mpandroidchartLibraryVersion"
@@ -66,6 +68,7 @@ dependencies {
         exclude group: "commons-logging", module: "commons-logging"
     }
     // Test
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation "junit:junit:$rootProject.junitVersion"
     androidTestImplementation "com.android.support.test:runner:$rootProject.testRunnerRulesVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"

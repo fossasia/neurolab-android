@@ -335,7 +335,7 @@ public class NeuroLab extends AppCompatActivity
         } else if (id == R.id.nav_about_us) {
             startActivity(new Intent(this, AboutUsActivity.class));
         } else if (id == R.id.nav_share) {
-
+            startActivity(new Intent(this,DataLoggerActivity.class));
         } else if (id == R.id.nav_data_logger) {
             startActivity(new Intent(this, DataLoggerActivity.class));
         }

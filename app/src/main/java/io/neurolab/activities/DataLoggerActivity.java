@@ -2,16 +2,24 @@ package io.neurolab.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import io.neurolab.BuildConfig;
 import io.neurolab.R;
 import io.neurolab.adapters.DataLoggerListAdapter;
 
@@ -47,7 +55,6 @@ public class DataLoggerActivity extends AppCompatActivity {
 
         dataloggerRecyclerView = findViewById(R.id.recycler_view);
         noLoggedView = findViewById(R.id.data_logger_blank_view);
-
         File appDir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator +
                 CSV_DIRECTORY);
 
@@ -101,5 +108,23 @@ public class DataLoggerActivity extends AppCompatActivity {
             startActivity(intent);
         }
         finish();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.data_logger_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int itemId = item.getItemId();
+            if(itemId == R.id.share)
+            {
+              Intent intent = new Intent(this,ShareDataActivity.class);
+                  startActivity(intent);
+            }
+        return true;
     }
 }

@@ -170,4 +170,5 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="axis_desc_time">Time (MilliSeconds)</string>
     <string name="meditation">Meditate</string>
     <string name="meditation_desc">to (cause someone to) become less active and more calm and happy</string>
+    <string name="title_activity_share">ShareActivity</string>
 </resources>
