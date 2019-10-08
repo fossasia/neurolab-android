@@ -26,6 +26,9 @@ cache:
 install:
     - echo yes | ${ANDROID_HOME}/tools/bin/sdkmanager "platforms;android-28"
 
+before_install:
+  - 'chmod +x gradlew'
+
 script:
   - './gradlew build --stacktrace; '
 
