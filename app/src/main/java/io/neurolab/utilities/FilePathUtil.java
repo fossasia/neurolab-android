@@ -213,4 +213,11 @@ public class FilePathUtil {
     public static void deleteFile(File csvFile) {
         csvFile.delete();
     }
+
+    public static String getFileNameFromPath(String Path)
+    {
+        String [] tokens = Path.split("/NeuroLab/",2);
+        String name = tokens[1];
+        return name;
+    }
 }

@@ -1,12 +1,13 @@
 package io.neurolab.activities;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import java.io.File;
@@ -58,14 +59,12 @@ public class ShareDataActivity extends AppCompatActivity {
                         filesList.add(file);
             }
 
-            ShareDataAdapter adapter = new ShareDataAdapter(fileList, context);
+            ShareDataAdapter adapter = new ShareDataAdapter(fileList,filesList,context);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
                     this, LinearLayoutManager.VERTICAL, false);
             shareDataRecyclerView.setLayoutManager(linearLayoutManager);
             shareDataRecyclerView.setAdapter(adapter);
         } else {
-
-
             setupPath();
             // noLoggedView.setVisibility(View.GONE);
 
@@ -74,7 +73,7 @@ public class ShareDataActivity extends AppCompatActivity {
             readWriteData("sample3", appDir);
             readWriteData("sample4", appDir);
 
-            ShareDataAdapter adapter = new ShareDataAdapter(fileList, context);
+            ShareDataAdapter adapter = new ShareDataAdapter(fileList, filesList, context);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
                     this, LinearLayoutManager.VERTICAL, false);
             shareDataRecyclerView.setLayoutManager(linearLayoutManager);
@@ -92,5 +91,23 @@ public class ShareDataActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp(){
         finish();
         return true;
+    }
+
+    public void onShareClicked(View v)
+    {
+      //  Log.d("Share Button"," Clicked!");
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND_MULTIPLE);
+        intent.putExtra(Intent.EXTRA_SUBJECT,"Here are files you shared.");
+        intent.setType("*/*");
+
+        ArrayList<Uri> uris = new ArrayList<Uri>();
+        for(String path : fileList){
+            File file = new File(path);
+            Uri uri = Uri.fromFile(file);
+            uris.add(uri);
+        }
+        intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+        startActivity(intent);
     }
 }
