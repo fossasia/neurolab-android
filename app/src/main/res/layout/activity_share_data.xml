@@ -7,12 +7,17 @@
     tools:context=".activities.ShareDataActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/share_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/linear_layout"
+        android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="69dp"></android.support.v7.widget.RecyclerView>
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="8dp"/>
 
     <LinearLayout
         android:id="@+id/linear_layout"
@@ -21,7 +26,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="1dp"
-        android:layout_marginBottom="29dp"
+        android:layout_marginBottom="8dp"
         android:gravity="bottom"
         android:orientation="horizontal">
 
@@ -31,15 +36,16 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/layout_margin_medium"
             android:text="Share"
-            android:textSize="18sp"></Button>
+            android:textSize="18sp"/>
 
         <Button
             android:id="@+id/cancel_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/layout_margin_medium"
+            android:onClick="onCancelClick"
             android:text="Cancel"
-            android:textSize="18sp"></Button>
+            android:textSize="18sp"/>
 
     </LinearLayout>
 

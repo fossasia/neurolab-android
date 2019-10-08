@@ -4,26 +4,18 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.io.File;
-import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.List;
 
 import io.neurolab.R;
@@ -41,8 +33,6 @@ public class DataLoggerListAdapter extends RecyclerView.Adapter<DataLoggerListAd
     private List<File> files;
     private String flag;
     private String newFileName;
-    private static List<File> selectedFile = new ArrayList<>();
-    static int number = 1;
 
     public DataLoggerListAdapter(Context context, List<File> files, String flag) {
         this.context = context;
@@ -68,7 +58,6 @@ public class DataLoggerListAdapter extends RecyclerView.Adapter<DataLoggerListAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         viewHolder.fileNameView.setText(files.get(i).getName());
-        viewHolder.fileNameView.setLongClickable(true);
         viewHolder.renameView.setOnClickListener(v -> {
             final EditText enterNameView = new EditText(context);
             FrameLayout container = new FrameLayout(context);
@@ -91,30 +80,17 @@ public class DataLoggerListAdapter extends RecyclerView.Adapter<DataLoggerListAd
                     }).create();
             alertDialog.show();
         });
-       /* viewHolder.checkBox.setOnClickListener(v ->{
-            if(viewHolder.checkBox.isSelected()){
-                selectedFile.add(files.get(number));
-            //    number++;
-                Log.i("file","selected");
-            }
-
-            for (File member : selectedFile){
-                Log.i("Member name: ", member.getName());
-            }
-        });
-
-        */
         viewHolder.deleteFileView.setOnClickListener(v -> {
             FrameLayout container = new FrameLayout(context);
             AlertDialog alertDialog = new AlertDialog.Builder(context)
                     .setTitle("Delete file " + files.get(i).getName())
                     .setView(container).
-                    setPositiveButton(R.string.ok_button, ((dialog, which) -> {
-                        FilePathUtil.deleteFile(files.get(i));
-                        files.remove(i);
-                        notifyItemRemoved(i);
-                        notifyItemRangeChanged(i,1);
-                    }))
+                            setPositiveButton(R.string.ok_button, ((dialog, which) -> {
+                                FilePathUtil.deleteFile(files.get(i));
+                                files.remove(i);
+                                notifyItemRemoved(i);
+                                notifyItemRangeChanged(i,1);
+                            }))
                     .setNegativeButton(R.string.cancel, ((dialog, which) -> {
                     })).create();
             alertDialog.show();
@@ -168,22 +144,6 @@ public class DataLoggerListAdapter extends RecyclerView.Adapter<DataLoggerListAd
             }
             ((Activity) context).finish();
         });
-/*
-        viewHolder.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                //selectedFile.add(viewHolder.fileNameView.)
-                Log.i("Selected","Item" + v.toString());
-                return false;
-
-            }
-        })
- */
-    }
-
-    public File getFile(File file)
-    {
-        return file;
     }
 
     @Override

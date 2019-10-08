@@ -2,24 +2,20 @@ package io.neurolab.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.TextView;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.neurolab.BuildConfig;
 import io.neurolab.R;
 import io.neurolab.adapters.DataLoggerListAdapter;
 
