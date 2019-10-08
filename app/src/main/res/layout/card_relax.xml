@@ -51,7 +51,6 @@
                 android:orientation="vertical">
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/relax_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingStart="@dimen/main_content_padding_textview"
@@ -63,7 +62,6 @@
                     android:textColor="#fff" />
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/relax_subtitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/main_content_padding_textview"

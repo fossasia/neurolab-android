@@ -1,14 +1,10 @@
 <resources>
     <string name="app_name">NeuroLab</string>
-    <string name="welcome_app_name">Welcome to NeuroLab</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
     <string name="drawer_name">Welcome to NeuroLab</string>
-    <string name="feedback_settings_title">Feedback Settings</string>
-    <string name="new_session">New Session</string>
-    <string name="configs">Configurations</string>
 
     <string name="samples_pref_key">samples</string>
     <string name="bins_pref_key">bins</string>
@@ -18,11 +14,8 @@
     <string name="bins_pref_label">Bins</string>
     <string name="num_channels_pref_label">Number Channels</string>
     <string name="about_us">About Us</string>
-    <string name="last_session_head">Last Sessions</string>
 
     <string name="settings">Settings</string>
-    <string name="simulation">Simulation</string>
-    <string name="load_from_phone">Load resources from phone</string>
     <string name="audio_feedback">Audio Feedback</string>
     <string name="mode_24bit">24 Bit</string>
     <string name="mode_advanced">Advanced Mode</string>
@@ -39,20 +32,13 @@
     <string name="on_boarding_frag3_subtitle">Analyze and improve your mental health and mood.</string>
 
     <string name="meditation_activity_label">Meditation</string>
-    <string name="meditation_activity_pause_btn_txt">Pause</string>
-    <string name="meditation_activity_play_btn_txt">Play</string>
-    <string name="meditation_activity_reset_btn_txt">Reset</string>
 
-    <string name="programs">Program Modes</string>
     <string name="focus">Focus</string>
     <string name="relax">Relax</string>
     <string name="mem_graph">Memory Graph</string>
     <string name="focus_desc">Test the focus strength of your brain. Improve your score with more new sessions.</string>
     <string name="relax_desc">Relax yourself. Regular sessions can help level up your concentration.</string>
 
-    <string name="focus_toast">Focus Program Mode Clicked</string>
-    <string name="relax_toast">Relax Program Mode Clicked</string>
-    <string name="mem_graph_toast">Memory Graph Mode Clicked</string>
     <string name="about_us_content">The goal of the NeuroLab project is to create an easy to use open hardware measurement headset device for brain waves that can be plugged into an Android smartphone and a software application and enables us to understand our brains better.
 
 Our brains communicate through neurotransmitters and their activity emits electricity. The neuroheadset measures that electricity on the skin of the forehead and the software processes the signal so that it can translated into a visual or auditory representation. The data that can be collected can be analysed to identify mental health, stress, relaxation and even diseases like Alzheimer.
@@ -61,24 +47,17 @@ Current devices in the medical industry are usually not accessible by doctors du
 
 A difference to existing projects like OpenBCI is that it will not be necessary to 3D print large headsets. Instead we are focusing on creating a device that collects as much data as possible through the forehead. To achieve this goal we are using high-grade sensors and flexible electronics.</string>
     <string name="device_is_not_connected">NeuroLab Device not found</string>
-    <string name="set_up">Set up</string>
     <string name="connect_with_us">Connect With Us</string>
 
-    <string name="statusLabel">Status Label</string>
-    <string name="ipField">IP Field</string>
-    <string name="portField">Port Field</string>
-    <string name="forward">Forward</string>
     <string name="begin">Begin</string>
     <string name="read">Read</string>
     <string name="write">Write</string>
     <string name="stop">Stop</string>
     <string name="baud_rate">Baud Rate:</string>
     <string name="connection_opened">Serial Connection Opened!</string>
-    <string name="data_sent">Data Sent : </string>
     <string name="bluetooth_test">Bluetooth Test</string>
     <string name="other_head_nav_drawer">Other</string>
     <string name="share_nav_drawer">Share</string>
-    <string name="send_nav_drawer">Send</string>
     <string name="device_connected">Device is Connected</string>
     <string name="steps_header">Steps to Connect Device:</string>
     <string name="number_one">1.</string>
@@ -87,11 +66,8 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="step_one_info">Connect a Micro USB to NeuroLab</string>
     <string name="step_two_info">Connect the other end of Micro USB to an OTG cable</string>
     <string name="step_three_info">Connect the OTG cable to the phone</string>
-    <string name="import_dataset">Import dataset</string>
     <string name="perm_not_granted">Permission not granted</string>
     <string name="import_message">Importing data…</string>
-    <string name="import_csv">Import CSV file</string>
-    <string name="delete">Delete file</string>
     <string name="connect_device">Connect Device</string>
     <string name="scores_label">Your scores are here</string>
     <string name="calmness_label">Calmness score</string>
@@ -100,17 +76,10 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="program_info_label">Program info</string>
     <string name="program_info">Memory Graph is the program mode where you can import your datasets and analyze the data in the form of real time graphs, statistics or score and spectral density graphs. </string>
     <string name="sleep_label">Sleep score</string>
-    <string name="delta">Delta:</string>
-    <string name="theta">Theta:</string>
-    <string name="low_alpha">Low Alpha:</string>
-    <string name="high_alpha">High Alpha:</string>
-    <string name="low_beta">Low Beta:</string>
-    <string name="high_beta">High Beta:</string>
     <string name="no_logs">No Logged Data</string>
     <string name="statistics">Statistics</string>
     <string name="anger_range">Anger Zone - Brain in Active/beta state range</string>
     <string name="calm_range">Calm Zone - Brain in Relaxed/alpha state range</string>
-    <string name="sleep_range">Sleep Range - data in the delta state range</string>
     <string name="pallete">Spectrum Color Palette</string>
     <string name="spectrum">Spectrum</string>
     <string name="logged_data">Logged Data</string>
@@ -141,7 +110,6 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="relax_illusion_one_info">The optical illusion enable you to increase your suggestibility and to open up your subconscious mind, to receive your suggestions</string>
     <string name="focus_program_info">Focus program mode helps you to increase your focus and concentration levels with the help of games. Choose from the games below and strengthen your brain power.</string>
     <string name="relax_program_info">Relax program mode helps you to delve deep into your subconscious to open it up and eventually relaxes you. Choose from the illusions and calm your senses by self hypnosis.  </string>
-    <string name="save_graph">Save Graph Data</string>
     <string name="ok_button">OK</string>
     <string name="cancel">Cancel</string>
     <string name="play_focus_anim">Play Focus Animation</string>
@@ -154,14 +122,12 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="recording_message">Data Recording started from device</string>
     <string name="log_saved_directory">Log saved in\n</string>
     <string name="log_saved_failed">Could not save the log. Please check storage permission.</string>
-    <string name="no_device">No Device Connected</string>
     <string name="no_rec_msg">Check NeuroLab device connection/Start recording from top option</string>
     <string name="yes_focus_msg">Yes, Start</string>
     <string name="focus_test_msg">Test Data</string>
     <string name="focus_rec_ins">Please ensure NeuroLab device is connected to play this game or play test data.</string>
 
     <string name="filename_key">filename</string>
-    <string name="title_activity_configs">ConfigsActivity</string>
     <string name="title_activity_test_mode">Test Mode</string>
     <string name="mem_graph_desc">Take a look at the activity of your awesome brain in a graphical representation</string>
     <string name="audio_feedback_pref_key">audioFeedback</string>

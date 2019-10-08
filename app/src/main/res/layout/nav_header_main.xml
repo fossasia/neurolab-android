@@ -13,7 +13,6 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
-        android:id="@+id/profile_image"
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:alpha="0.8"

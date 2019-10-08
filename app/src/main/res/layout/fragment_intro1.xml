@@ -42,7 +42,6 @@
     </RelativeLayout>
 
     <View
-        android:id="@+id/appIntro2BottomBarView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/on_boarding_frag_view_height" />
     

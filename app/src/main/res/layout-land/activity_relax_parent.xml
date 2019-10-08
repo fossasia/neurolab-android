@@ -7,7 +7,6 @@
     tools:context=".activities.RelaxParentActivity">
 
     <LinearLayout
-        android:id="@+id/relax_parent_home_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">

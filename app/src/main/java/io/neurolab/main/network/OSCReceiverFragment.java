@@ -34,13 +34,6 @@ public class OSCReceiverFragment extends FragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         Bundle bundle = getIntent().getExtras();
         super.onCreate(savedInstanceState);
-        listenerTextList = findViewById(R.id.listenerTextList);
-        messageOutputTextList = findViewById(R.id.messageOutputTextList);
-        frameLayout = findViewById(R.id.frame);
-        statusLabel = findViewById(R.id.statuslabel);
-        ipField = findViewById(R.id.ipField);
-        portField = findViewById(R.id.portField);
-        forwardButton = findViewById(R.id.forwardButton);
 
         getItemList();
 

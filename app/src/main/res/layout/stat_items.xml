@@ -2,7 +2,6 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/stat_item_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -32,7 +31,6 @@
         app:cardElevation="@dimen/card_elevation_medium">
 
         <android.support.v7.widget.CardView
-            android:id="@+id/stats_card"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -46,7 +44,6 @@
                 android:orientation="vertical">
 
                 <android.support.constraint.ConstraintLayout
-                    android:id="@+id/delta_parent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_medium">
@@ -103,7 +100,6 @@
                     android:background="@android:color/darker_gray" />
 
                 <android.support.constraint.ConstraintLayout
-                    android:id="@+id/theta_parent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_medium">
@@ -162,7 +158,6 @@
                     android:background="@android:color/darker_gray" />
 
                 <android.support.constraint.ConstraintLayout
-                    android:id="@+id/low_alpha_parent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_medium">
@@ -221,7 +216,6 @@
                     android:background="@android:color/darker_gray" />
 
                 <android.support.constraint.ConstraintLayout
-                    android:id="@+id/high_alpha_parent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_medium">

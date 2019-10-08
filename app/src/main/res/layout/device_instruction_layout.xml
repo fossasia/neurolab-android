@@ -4,7 +4,6 @@
     android:layout_height="match_parent">
 
     <ScrollView
-        android:id="@+id/home_content_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true">
@@ -16,14 +15,12 @@
             android:padding="@dimen/layout_margin_moderate">
 
             <ImageView
-                android:id="@+id/img_device_status"
                 android:layout_width="@dimen/heading_margin_left"
                 android:layout_height="@dimen/heading_margin_left"
                 android:layout_gravity="center"
                 android:src="@drawable/icons_usb_disconnected_100" />
 
             <TextView
-                android:id="@+id/tv_device_status"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_large"
                 android:gravity="center"
@@ -34,7 +31,6 @@
                 android:textStyle="bold" />
 
             <LinearLayout
-                android:id="@+id/tv_connect_msg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -42,7 +38,6 @@
                 android:paddingRight="@dimen/about_txt_margin">
 
                 <TextView
-                    android:id="@+id/steps_header_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/about_txt_margin"
