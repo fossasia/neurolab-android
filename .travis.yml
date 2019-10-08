@@ -29,8 +29,6 @@ install:
 before_install:
   - 'chmod +x gradlew'
 
-script:
-  - './gradlew build --stacktrace; '
 
 after_success:
   - bash scripts/prep-key.sh
