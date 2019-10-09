@@ -1,27 +1,19 @@
 package io.neurolab.main.network;
 
-import android.content.Context;
-
 import com.illposed.osc.OSCListener;
 import com.illposed.osc.OSCPortIn;
 
 import java.net.SocketException;
 import java.util.ArrayList;
 
-import io.neurolab.model.Config;
-
 public class OSCReceiver {
     protected OSCPortIn receiver;
     protected ArrayList<String> senderList;
-    protected boolean exit = false;
     protected boolean listening = false;
-    protected boolean forwarding = false;
     private String address;
     private OSCListener oscListener;
-    private Context context;
 
     public static void run(String fileName) throws SocketException {
-        Config config = new Config(fileName);
         ArrayList<String> senderList = new ArrayList<>();
         senderList.add("/dev/rfcomm0/");
         senderList.add("/dev/rfcomm1/");

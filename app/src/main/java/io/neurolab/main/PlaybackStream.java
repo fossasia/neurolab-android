@@ -6,7 +6,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -21,7 +20,6 @@ public class PlaybackStream implements InputInterface {
     private int numberOfChannels;
     private boolean loopPlayback = false;
     private Timer timer;
-    static Random random = new Random();
     static ArrayList<ArrayList<double[]>> data;
 
     private Context context;

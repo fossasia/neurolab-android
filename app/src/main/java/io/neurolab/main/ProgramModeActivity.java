@@ -23,7 +23,6 @@ public class ProgramModeActivity extends AppCompatActivity {
     public static final String SETTING_AUDIO_FEEDBACK = "SETTING_AUDIO_FEEDBACK";
     public static final String SETTING_24BIT = "SETTING_24BIT";
     public static final String SETTING_ADVANCED = "SETTING_ADVANCED";
-    public static final String PROGRAM_FLAG_KEY = "FLAG";
 
     private boolean settingSimulation;
     private boolean settingLoadResourcesFromPhn;

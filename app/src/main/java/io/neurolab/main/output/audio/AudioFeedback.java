@@ -52,8 +52,6 @@ public class AudioFeedback extends Feedback {
                 soundMixSamples[i] = this.config.getPref(Config.audiofeedback, String.valueOf(Config.audiofeedback_params.sample) + i);
                 volume[i] = Float.valueOf(config.getPref(Config.audiofeedback, String.valueOf(Config.audiofeedback_params.volume) + i));
             }
-            int x = Integer.valueOf(config.getPref(Config.audiofeedback, String.valueOf(Config.audiofeedback_params.x)));
-            int y = Integer.valueOf(config.getPref(Config.audiofeedback, String.valueOf(Config.audiofeedback_params.y)));
         }
     }
 

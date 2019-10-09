@@ -36,14 +36,8 @@ public class NeuroGameRenderer {
     private int shortSideHalf;
     private int offsetX;
     private int offsetY;
-    private Texture[] textures;
-    private int currentForestIn = 2;
-    private int currentForestOut = 1;
-    private Texture noiseTexture = null;
     private float angle = 0f;
-    private float slowAngle = 0f;
     private String[] themes = {"nforest", "universe"};
-    private float oldFeedback = 0f;
 
     public NeuroGameRenderer(GLProfile glprofile2) {
         this.glprofile = glprofile2;
@@ -134,13 +128,9 @@ public class NeuroGameRenderer {
         gl2.glPolygonMode(GL2.GL_FRONT_AND_BACK, GL2.GL_FILL);
         gl2.glClearColor(fogcol[0], fogcol[1], fogcol[2], fogcol[3]);
 
-        float w5 = width / 5f;
-        float h5 = height / 5f;
         float hw = width / 2f;
         float hh = height / 2f;
         float quadWidth = 2f * width / numHorizontalQuads;
-
-        float pos = (0.001f + angle / 360f);
 
         gl2.glPushMatrix();
         gl2.glRotatef(180f, 0, 0, -1);
@@ -165,13 +155,8 @@ public class NeuroGameRenderer {
         float lastVal = 0f;
 
         for (int i = 0; i < numDepthQuads; i++) {
-            float ia = i + (0.001f + angle / 360f);
             int pc = (i + pointer) % numDepthQuads;
             int pn = (i + pointer + 1) % numDepthQuads;
-            float z = ia / (float) numDepthQuads;
-            float zn = (ia + 1) / (float) numDepthQuads;
-            float sc = width - (z * hw) * 2;
-            float sn = width - (zn * hw) * 2;
 
             lastVal = rnd.nextFloat() * 30f;
             gl2.glBegin(GL2.GL_QUAD_STRIP); // draw using triangles
@@ -179,7 +164,6 @@ public class NeuroGameRenderer {
 
                 float zOffset = -.5f + (float) j / (float) numHorizontalQuads;
                 zOffset = zOffset * zOffset;
-                float[] rgb = ColorMap.getRGB(angle, .75f + slowFeedback / 4f, .8f);
                 float colorc = Math.max(landscape[pc][j], 0f);
                 float colorn = Math.max(landscape[pn][j], 0f);
 

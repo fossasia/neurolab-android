@@ -9,7 +9,6 @@ import com.illposed.osc.OSCPortIn;
 public class OSCFeedback extends Feedback {
 
     private static OSCPortIn receiver;
-    double currentFeedback = 0;
 
     public OSCFeedback(FeedbackSettings feedbackSettings) {
         super(feedbackSettings);

@@ -2,7 +2,6 @@ package io.neurolab.main.output.visual;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,7 +32,6 @@ public class ZenSpaceGLRenderer {
     private int currentForestIn = 2;
     private int currentForestOut = 1;
 
-    private Texture noiseTexture = null;
     private float angle = 0f;
 
     private static Random random = new Random();
@@ -41,8 +39,6 @@ public class ZenSpaceGLRenderer {
 
     private String[] themes = {"nforest", "universe"};
     int currentTheme = 1;
-
-    private float oldFeedback = 0f;
 
     public ZenSpaceGLRenderer(Context context, GLProfile glprofile2) {
         this.context = context;
@@ -78,7 +74,6 @@ public class ZenSpaceGLRenderer {
         if (texYantra == null) {
             try {
                 File resourceFile = ResourceManager.getInstance().getResource(context, "yantra_white.png");
-                Bitmap bitmap = BitmapFactory.decodeFile(resourceFile.getAbsolutePath());
                 texYantra = AWTTextureIO.newTexture(resourceFile, false);
 
                 textures = new Texture[3];
@@ -215,7 +210,6 @@ public class ZenSpaceGLRenderer {
     }
 
     public Bitmap generateWhiteNoise(GL2 gl2, int width, int height) {
-        float[] noise = new float[width * height];
 
         Bitmap bitmap = Bitmap.createBitmap(width / 2, height / 2, Bitmap.Config.ARGB_4444);
 

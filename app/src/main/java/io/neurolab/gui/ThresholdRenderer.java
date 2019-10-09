@@ -1,6 +1,5 @@
 package io.neurolab.gui;
 
-import android.gesture.GestureStroke;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Rect;
@@ -19,8 +18,6 @@ public class ThresholdRenderer {
     private int panelWidth;
     private int panelHeight;
     private Image renderImage;
-    private ImageView renderGraphics;
-    private GestureStroke stroke;
     private int pos;
 
     public synchronized void setRange(float min, float max) {

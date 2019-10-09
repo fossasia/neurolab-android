@@ -1,9 +1,6 @@
 package io.neurolab.main.task;
 
 import android.util.Log;
-
-import java.net.DatagramSocket;
-
 import io.neurolab.main.NFBServer;
 import io.neurolab.main.network.SerialForwarder;
 import io.neurolab.model.Config;
@@ -14,10 +11,7 @@ public class SerialForwardTask implements Task {
 
     long currentTimestamp = -1;
     long nextRenderTimestamp = -1;
-    private float defaultMin = -2f;
-    private float defaultMax = 3f;
     private int messageInterval = 75;
-    private DatagramSocket socket = null;
     private String address;
     private String baudRate;
     private NFBServer nfbServer;
@@ -25,8 +19,6 @@ public class SerialForwardTask implements Task {
     private float[] maxValues;
     private float[] rangeValues;
     private DefaultFFTData fftData;
-    private int mode = 0;     // 0 = per channel per bin, 1 = per channel per bin
-    private int forwardMode = 0;
     private SerialForwarder serialForwarder;
     private boolean serialForwardMaskInterfaceVisible;
     private boolean connected = false;

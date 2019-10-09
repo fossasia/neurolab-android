@@ -8,9 +8,6 @@ public abstract class Feedback implements Runnable {
     protected double currentFeedback;
     protected boolean running;
 
-    protected Feedback() {
-    }
-
     public void updateCurrentMultivariateFeedback(double[][][] currentMultivariateFeedback) {
         this.currentMultivariateFeedback = currentMultivariateFeedback;
     }
@@ -25,9 +22,6 @@ public abstract class Feedback implements Runnable {
 
     public Feedback(FeedbackSettings feedbackSettings) {
         this.feedbackSettings = feedbackSettings;
-    }
-
-    public void init() {
     }
 
     @Override

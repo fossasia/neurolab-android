@@ -9,9 +9,6 @@ import io.neurolab.model.DefaultFFTData;
 public class RelaxFeedbackSettings extends FeedbackSettings {
     private float lastFeedback;
 
-
-    public double trainingFactor = 0.1;
-
     @Override
     public String getFeedbackSettingsName() {
         return "relax";

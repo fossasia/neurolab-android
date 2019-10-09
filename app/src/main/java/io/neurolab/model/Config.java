@@ -20,7 +20,6 @@ public class Config {
     public static String serial_settings = "serial_settings";
     public static String osc_settings = "osc_settings";
     public static String audiofeedback = "default_audiofeedback";
-    public static String server_settings = "server_settings";
 
     private File iniFile;
     public Preferences prefs;
