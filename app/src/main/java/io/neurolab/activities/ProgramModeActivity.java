@@ -20,11 +20,6 @@ public class ProgramModeActivity extends AppCompatActivity {
     public static final int MEMORY_GRAPH_MODE = 3;
 
     public static final String INTENT_KEY_PROGRAM_MODE = "MODE";
-    public static final String SETTING_SIMULATION = "SETTING_SIMULATION";
-    public static final String SETTING_LOAD_RESOURCES_FROM_PHN = "SETTING_LOAD_RESOURCES_FROM_PHN";
-    public static final String SETTING_AUDIO_FEEDBACK = "SETTING_AUDIO_FEEDBACK";
-    public static final String SETTING_24BIT = "SETTING_24BIT";
-    public static final String SETTING_ADVANCED = "SETTING_ADVANCED";
     public static final String PROGRAM_FLAG_KEY = "FLAG";
     private int mode;
 

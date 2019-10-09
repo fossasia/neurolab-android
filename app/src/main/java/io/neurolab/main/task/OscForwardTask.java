@@ -2,9 +2,6 @@ package io.neurolab.main.task;
 
 import com.illposed.osc.OSCBundle;
 import com.illposed.osc.OSCMessage;
-
-import java.net.DatagramSocket;
-
 import io.neurolab.main.NFBServer;
 import io.neurolab.main.network.OSCForwarder;
 import io.neurolab.model.Config;
@@ -14,13 +11,8 @@ import io.neurolab.interfaces.Task;
 
 public class OscForwardTask implements Task {
 
-    private float defaultMin = -2f;
-    private float defaultMax = 3f;
-
-    private DatagramSocket socket = null;
     private String address;
     private String port;
-    private String oscAddress;
     private NFBServer nfbServer;
     private String[] outputs;
 
@@ -29,9 +21,6 @@ public class OscForwardTask implements Task {
     private float[] rangeValues;
 
     private DefaultFFTData fftData;
-
-    private int mode = 0;
-    private int forwardMode = 0;
 
     private OSCForwarder oscForwarder;
     private OSCForwardMask oscForwardMask;

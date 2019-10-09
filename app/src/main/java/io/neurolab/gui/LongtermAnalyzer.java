@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.text.DecimalFormat;
 import java.util.Scanner;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.locks.ReentrantLock;
@@ -29,8 +28,6 @@ public class LongtermAnalyzer {
 
     private int minimumNewSamples = 8;
     private boolean selection = false;
-
-    private DecimalFormat df = new DecimalFormat("#.###");
 
     // default analysis settings
     private int size = 500;
@@ -61,7 +58,6 @@ public class LongtermAnalyzer {
     private double minFFT = 0;
     private double range = Math.max(minFFT, maxFFT) - Math.min(minFFT, maxFFT);
 
-    private int trackWidth;
     private int trackHeight;
     private int binsPerPixel;
     private int heightPerChannel;
@@ -78,8 +74,6 @@ public class LongtermAnalyzer {
 
     private int displaySampleOffset = 0;
     private double sampleTimePerSecond = 33;
-    private int barStep = 100;
-    private int numBars = 14;
     private RelaxFeedbackSettings rewardSettings;
     private int currentCounter = 0;
     private boolean fileOpened = false;
@@ -144,7 +138,6 @@ public class LongtermAnalyzer {
             try {
                 Scanner scanner = new Scanner(file);
 
-                double currentTime = 0l;
                 double startTime = 0;
                 ConcurrentLinkedDeque<double[]> currentData = neuroSettings.getCurrentData();
 
@@ -192,7 +185,6 @@ public class LongtermAnalyzer {
                         if (s % minimumNewSamples == 0)
                             fftPreprocessor.run();
 
-                        double a;
                         if ((s > numberOfLines / 8) && (fftPreprocessor.getFFTData().getTrainingFactor() < 0.45d))
                             fftPreprocessor.getFFTData().setTrainingFactor(.5d);
 

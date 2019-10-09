@@ -40,7 +40,6 @@ public class NFBGraph implements Task {
         if (nfbServer.getNumSamples() < 1)
             return;
 
-        int numSamples = 1;
         ts = System.currentTimeMillis();
     }
 

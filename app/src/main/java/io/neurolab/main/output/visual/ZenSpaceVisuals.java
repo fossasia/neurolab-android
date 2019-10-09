@@ -4,14 +4,11 @@ import android.content.Context;
 
 import io.neurolab.main.output.feedback.Feedback;
 import io.neurolab.settings.FeedbackSettings;
-
-import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
 
 public class ZenSpaceVisuals extends Feedback {
 
     private Context context;
-    private double currentFeedback = 0;
     private ZenSpaceGLRenderer zenSpaceRenderer;
 
     public ZenSpaceVisuals(Context context, FeedbackSettings feedbackSettings) {
@@ -21,7 +18,6 @@ public class ZenSpaceVisuals extends Feedback {
         GLProfile glprofile = GLProfile.getDefault();
 
         zenSpaceRenderer = new ZenSpaceGLRenderer(context, glprofile);
-        GLCapabilities glcapabilities = new GLCapabilities(glprofile);
     }
 
     public void setCurrentFeedback(float currentFeedback) {

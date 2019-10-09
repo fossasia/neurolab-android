@@ -3,22 +3,18 @@ package io.neurolab.tools;
 public class WindowFunction {
 
     public enum FunctionType {
-        RECTANGULAR, HANNING, HAMMING, BLACKMAN
+        HANNING, HAMMING, BLACKMAN
     }
 
     FunctionType windowType = FunctionType.HAMMING;
     private double[] filter;
     private FunctionType type;
-    private final static double freq = 1d;
 
     // private static double[] staticFilter = generate(8,FunctionType.HAMMING);
     private static double[] staticFilter = generate(4, FunctionType.HAMMING); // default
 
     public static void setStaticFilter(int width, FunctionType type) {
         WindowFunction.staticFilter = generate(width, type);
-    }
-
-    public WindowFunction() {
     }
 
     public WindowFunction(int filterWidth, FunctionType type) {

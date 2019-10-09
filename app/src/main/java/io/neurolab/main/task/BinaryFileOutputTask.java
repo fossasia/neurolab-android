@@ -9,7 +9,6 @@ import io.neurolab.interfaces.Task;
 
 public class BinaryFileOutputTask implements Task {
 
-    private static final byte[] FileOutputStream = null;
     private NFBServer nfbServer;
     private FileOutputStream out = null;
     private byte[] stopBytes;

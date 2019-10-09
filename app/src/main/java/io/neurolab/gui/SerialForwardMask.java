@@ -14,9 +14,6 @@ import io.neurolab.model.DefaultFFTData;
 
 public class SerialForwardMask {
 
-    private static final long serialVersionUID = 1L;
-    private static int serialWidth = 580;
-    private static int serialHeight = 700;
     private DecimalFormat df = new DecimalFormat("#.##");
     private ThresholdRenderer[] thresholdRenderers;
     private SerialForwarder serialForwarder;

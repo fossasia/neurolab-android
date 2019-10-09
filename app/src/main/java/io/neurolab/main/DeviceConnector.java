@@ -1,23 +1,15 @@
 package io.neurolab.main;
 
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
 import android.hardware.usb.UsbDevice;
-import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
 
 import com.felhr.usbserial.UsbSerialDevice;
-import java.util.HashMap;
-import java.util.Map;
 
 public class DeviceConnector {
 
-    Context context;
     private UsbManager usbManager;
     private UsbDevice device;
     private UsbSerialDevice serialPort;
-    private UsbDeviceConnection connection;
     private int baudRate = 9600;
     private int arduinoVid = 0x2341;
 
