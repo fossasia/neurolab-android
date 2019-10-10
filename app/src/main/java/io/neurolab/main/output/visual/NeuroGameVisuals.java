@@ -2,11 +2,8 @@ package io.neurolab.main.output.visual;
 
 import android.content.Context;
 
-import io.neurolab.main.output.audio.AudioFeedback;
 import io.neurolab.main.output.feedback.Feedback;
 import io.neurolab.settings.FeedbackSettings;
-
-import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
 
 public class NeuroGameVisuals extends Feedback {

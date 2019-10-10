@@ -1,14 +1,10 @@
 package io.neurolab.main.network;
 
-import android.content.Context;
-
 import com.illposed.osc.OSCListener;
 import com.illposed.osc.OSCPortIn;
 
 import java.net.SocketException;
 import java.util.ArrayList;
-
-import io.neurolab.model.Config;
 
 public class OSCReceiver {
     protected OSCPortIn receiver;

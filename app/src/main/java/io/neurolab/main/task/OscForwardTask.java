@@ -2,9 +2,6 @@ package io.neurolab.main.task;
 
 import com.illposed.osc.OSCBundle;
 import com.illposed.osc.OSCMessage;
-
-import java.net.DatagramSocket;
-
 import io.neurolab.main.NFBServer;
 import io.neurolab.main.network.OSCForwarder;
 import io.neurolab.model.Config;

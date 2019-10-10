@@ -1,9 +1,6 @@
 package io.neurolab.main.task;
 
 import android.util.Log;
-
-import java.net.DatagramSocket;
-
 import io.neurolab.main.NFBServer;
 import io.neurolab.main.network.SerialForwarder;
 import io.neurolab.model.Config;

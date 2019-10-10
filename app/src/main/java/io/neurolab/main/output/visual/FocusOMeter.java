@@ -1,7 +1,5 @@
 package io.neurolab.main.output.visual;
 
-import android.content.Context;
-
 import com.illposed.osc.OSCPortIn;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLCapabilities;

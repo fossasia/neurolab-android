@@ -158,8 +158,6 @@ public class NeuroGameRenderer {
             float ia = i + (0.001f + angle / 360f);
             int pc = (i + pointer) % numDepthQuads;
             int pn = (i + pointer + 1) % numDepthQuads;
-            float z = ia / (float) numDepthQuads;
-            float zn = (ia + 1) / (float) numDepthQuads;
 
             lastVal = rnd.nextFloat() * 30f;
             gl2.glBegin(GL2.GL_QUAD_STRIP); // draw using triangles

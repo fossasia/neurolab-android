@@ -14,14 +14,10 @@ public class LongtermFFTVisualizer implements Task {
     private int windowHeight = 600;
 
     private int topOffset = 50;
-    private int displayHeight = 550;
 
     private int numChannels = 2;
 
     private NFBServer nfbServer;
-
-    private int fftHeight = 256;
-    private int nSteps = 8;
 
     private int playbackSpeed = 1;
     private int numPlaybackModes = 3;
@@ -38,7 +34,7 @@ public class LongtermFFTVisualizer implements Task {
         this.nfbServer = nfbServer;
         this.fftData = fftData;
         this.numChannels = nfbServer.getNumChannels();
-        this.displayHeight = windowHeight - topOffset;
+        int displayHeight = windowHeight - topOffset;
         this.fbSettings = nfbServer.getCurrentFeedbackSettings();
     }
 

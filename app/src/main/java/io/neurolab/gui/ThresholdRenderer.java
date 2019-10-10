@@ -1,6 +1,5 @@
 package io.neurolab.gui;
 
-import android.gesture.GestureStroke;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Rect;

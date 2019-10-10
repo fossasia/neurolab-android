@@ -1,9 +1,7 @@
 package io.neurolab.main.network;
 
-import java.net.DatagramSocket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
-import com.illposed.osc.OSCPortOut;
 import jssc.SerialPort;
 import jssc.SerialPortException;
 
