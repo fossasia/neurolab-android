@@ -34,7 +34,6 @@ public class LongtermFFTVisualizer implements Task {
         this.nfbServer = nfbServer;
         this.fftData = fftData;
         this.numChannels = nfbServer.getNumChannels();
-        int displayHeight = windowHeight - topOffset;
         this.fbSettings = nfbServer.getCurrentFeedbackSettings();
     }
 

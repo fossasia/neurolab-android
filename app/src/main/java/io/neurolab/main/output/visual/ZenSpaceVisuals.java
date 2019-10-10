@@ -4,8 +4,6 @@ import android.content.Context;
 
 import io.neurolab.main.output.feedback.Feedback;
 import io.neurolab.settings.FeedbackSettings;
-
-import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
 
 public class ZenSpaceVisuals extends Feedback {

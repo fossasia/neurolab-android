@@ -155,7 +155,6 @@ public class NeuroGameRenderer {
         float lastVal = 0f;
 
         for (int i = 0; i < numDepthQuads; i++) {
-            float ia = i + (0.001f + angle / 360f);
             int pc = (i + pointer) % numDepthQuads;
             int pn = (i + pointer + 1) % numDepthQuads;
 
