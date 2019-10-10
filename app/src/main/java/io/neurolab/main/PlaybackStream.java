@@ -21,7 +21,6 @@ public class PlaybackStream implements InputInterface {
     private int numberOfChannels;
     private boolean loopPlayback = false;
     private Timer timer;
-    static Random random = new Random();
     static ArrayList<ArrayList<double[]>> data;
 
     private Context context;

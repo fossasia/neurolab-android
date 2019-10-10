@@ -10,9 +10,6 @@ public class Filter {
     private double[] inputHistory = new double[2];
     private double[] outputHistory = new double[3];
 
-    public Filter() {
-    }
-
     public Filter(double frequency, int sampleRate, boolean lowPass, double resonance) {
         setFilter(frequency, sampleRate, lowPass, resonance);
     }

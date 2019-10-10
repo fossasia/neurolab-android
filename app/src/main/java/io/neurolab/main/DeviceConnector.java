@@ -13,11 +13,9 @@ import java.util.Map;
 
 public class DeviceConnector {
 
-    Context context;
     private UsbManager usbManager;
     private UsbDevice device;
     private UsbSerialDevice serialPort;
-    private UsbDeviceConnection connection;
     private int baudRate = 9600;
     private int arduinoVid = 0x2341;
 

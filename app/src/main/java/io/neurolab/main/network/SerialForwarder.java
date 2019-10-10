@@ -10,14 +10,9 @@ import jssc.SerialPortException;
 public class SerialForwarder {
 
     private SerialPort serialPort;
-    private static int n = 0;
-    private DatagramSocket socket = null;
     private String address;
     private int baudrate;
-    private String oscAddress;
-    private OSCPortOut oscPortOut;
     private boolean connected = false;
-    private boolean connectionSuccessful;
 
     public static void main(String[] args) throws UnknownHostException, SocketException, InterruptedException {
         SerialForwarder of = new SerialForwarder("/dev/ttyACM0", 230400);

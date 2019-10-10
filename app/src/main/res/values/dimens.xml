@@ -1,26 +1,25 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <!-- margin specifics -->
-<!--    <dimen name="layout_margin_extra_small">2dp</dimen>-->
-<!--    <dimen name="layout_margin_small">6dp</dimen>-->
+
     <dimen name="layout_margin_medium">8dp</dimen>
     <dimen name="layout_margin_moderate">10dp</dimen>
     <dimen name="layout_margin_large">16dp</dimen>
     <dimen name="layout_margin_extra_large">32dp</dimen>
-<!--    <dimen name="layout_margin_extreme_large">56dp</dimen>-->
+
     <dimen name="layout_margin_huge">120dp</dimen>
 
     <!-- padding specifics -->
-<!--    <dimen name="padding_extra_small">2dp</dimen>-->
+
     <dimen name="padding_small">6dp</dimen>
     <dimen name="padding_medium">8dp</dimen>
     <dimen name="padding_large">16dp</dimen>
-<!--    <dimen name="padding_intermediate">24dp</dimen>-->
+
     <dimen name="padding_extra_large">32dp</dimen>
     <dimen name="padding_extra_larger">64dp</dimen>
-<!--    <dimen name="padding_mem_graph">54dp</dimen>-->
+
     <dimen name="margin_large">60dp</dimen>
-<!--    <dimen name="margin_extra_large">248dp</dimen>-->
+
     <dimen name="margin_small">4dp</dimen>
 
     <!-- card details -->
@@ -31,12 +30,12 @@
     <dimen name="card_elevation_medium">10dp</dimen>
 
     <!--text size-->
-<!--    <dimen name="text_size_extra_large">32sp</dimen>-->
+
     <dimen name="text_size_large">16sp</dimen>
     <dimen name="text_size_larger">18sp</dimen>
     <dimen name="text_size_medium">14sp</dimen>
     <dimen name="text_size_small">12sp</dimen>
-<!--    <dimen name="text_size_very_large">42sp</dimen>-->
+
 
     <!--view specifies-->
     <dimen name="on_boarding_frag_rellayout_height">0dp</dimen>
@@ -49,62 +48,33 @@
     <dimen name="on_boarding_frag_image_size">250dp</dimen>
     <dimen name="spacing_none">0dp</dimen>
     <dimen name="nav_header_height">175dp</dimen>
-<!--    <dimen name="fab_margin">16dp</dimen>-->
+
     <dimen name="heading_text_size">25sp</dimen>
     <dimen name="padding_feedback_views">5dp</dimen>
     <dimen name="spectrum_screen_height">400dp</dimen>
     <dimen name="view_width_or_height">1dp</dimen>
-<!--    <dimen name="view_height">65dp</dimen>-->
-<!--    <dimen name="bin_value_text_padding_large">20dp</dimen>-->
+
+
     <dimen name="bin_value_text_padding">10dp</dimen>
     <dimen name="heading_margin_left">80dp</dimen>
     <dimen name="heading_margin_top">50dp</dimen>
-<!--    <dimen name="content_heading_text_size">50sp</dimen>-->
+
     <dimen name="bin_image_margin_top">100dp</dimen>
-<!--    <dimen name="rocket_image_height">116dp</dimen>-->
-<!--    <dimen name="rocket_image_margin_start">50dp</dimen>-->
-<!--    <dimen name="rocket_image_margin_end">33dp</dimen>-->
-<!--    <dimen name="nav_bar_heading_size">18sp</dimen>-->
-<!--    <dimen name="cbs_text_view_title_margin">6dp</dimen>-->
-<!--    <dimen name="launcher_title_text_size">16sp</dimen>-->
-<!--    <dimen name="btns_text_view_title_margin">4dp</dimen>-->
-<!--    <dimen name="child_program_linear_layout_margin">8dp</dimen>-->
-<!--    <dimen name="launcher_btn_height">80dp</dimen>-->
-<!--    <dimen name="launcher_btn_width">0dp</dimen>-->
-<!--    <dimen name="about_txt_padding">10dp</dimen>-->
+
     <dimen name="about_txt_margin">20dp</dimen>
-<!--    <dimen name="content_padding">15dp</dimen>-->
+
     <dimen name="about_text_size">20sp</dimen>
-<!--    <dimen name="about_txt_elevation">10dp</dimen>-->
-<!--    <dimen name="set_up_title_margin_top">24dp</dimen>-->
-<!--    <dimen name="vertical_seperator_height">150dp</dimen>-->
-<!--    <dimen name="constraint_margin_top">8dp</dimen>-->
-<!--    <dimen name="last_session_margin_start">8dp</dimen>-->
-<!--    <dimen name="last_session_margin_left">8dp</dimen>-->
-<!--    <dimen name="last_session_margin_top">36dp</dimen>-->
-<!--    <dimen name="last_session_margin_end">8dp</dimen>-->
+
     <dimen name="view_divider_height">1dp</dimen>
     <dimen name="baud_rate_padding">5dp</dimen>
     <dimen name="baud_rate_spinner_padding">10dp</dimen>
     <dimen name="rocket_width">101dp</dimen>
-<!--    <dimen name="land_margin_top">16dp</dimen>-->
-<!--    <dimen name="land_button_margin">8dp</dimen>-->
-<!--    <dimen name="land_button_bottom_margin">2dp</dimen>-->
-<!--    <dimen name="land_button_margin_top">4dp</dimen>-->
+
     <dimen name="land_image_dimen">200dp</dimen>
-<!--    <item name="last_session_horizontal_bias" type="dimen" format="float">0.739</item>-->
-<!--    <item name="zero_vertical_bias" type="dimen" format="float">0.0</item>-->
-<!--    <item name="guideline_constraint_one" type="dimen" format="float">0.21</item>-->
-<!--    <item name="guideline_constraint_two" type="dimen" format="float">0.66</item>-->
-<!--    <item name="new_session_constraint_bias" type="dimen" format="float">0.113</item>-->
-<!--    <dimen name="card_corner_rad_program">12.0dip</dimen>-->
-<!--    <dimen name="card_elevation_program">8.0dip</dimen>-->
-<!--    <dimen name="linear_layout_padding">16.0dip</dimen>-->
-<!--    <dimen name="content_padding_program_one">12.0dip</dimen>-->
+
     <dimen name="connection_card_margin_top">64dp</dimen>
     <dimen name="connection_card_layout_width">300dp</dimen>
-<!--    <dimen name="config_cb_description_margin_left">8dp</dimen>-->
-<!--    <dimen name="config_cb_heading_text_size">15sp</dimen>-->
+
     <dimen name="card_main_corner">12dp</dimen>
     <dimen name="card_main_elevation">8dp</dimen>
     <dimen name="meditate_avatar_size">40dp</dimen>

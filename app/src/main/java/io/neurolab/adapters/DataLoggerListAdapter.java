@@ -158,7 +158,6 @@ public class DataLoggerListAdapter extends RecyclerView.Adapter<DataLoggerListAd
         private ImageView memGraphPlayView;
         private ImageView renameView;
         private ImageView genPlayView;
-        private CardView loggedCardView;
         private ImageView deleteFileView;
 
         public ViewHolder(@NonNull View itemView) {
@@ -168,7 +167,6 @@ public class DataLoggerListAdapter extends RecyclerView.Adapter<DataLoggerListAd
             memGraphPlayView = itemView.findViewById(R.id.mem_graph_play);
             renameView = itemView.findViewById(R.id.rename_file_btn);
             genPlayView = itemView.findViewById(R.id.gen_play_view);
-            loggedCardView = itemView.findViewById(R.id.parent_logged_card);
             deleteFileView = itemView.findViewById(R.id.delete_file_btn);
         }
     }

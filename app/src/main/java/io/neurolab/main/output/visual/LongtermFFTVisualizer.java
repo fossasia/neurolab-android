@@ -11,21 +11,17 @@ public class LongtermFFTVisualizer implements Task {
 
     private DefaultFFTData fftData;
 
-    private int windowWidth = 800;
     private int windowHeight = 600;
 
     private int topOffset = 50;
     private int displayHeight = 550;
 
     private int numChannels = 2;
-    private int heightPerChannel = displayHeight / numChannels;
 
-    private int sideBorder = 150;
     private NFBServer nfbServer;
 
     private int fftHeight = 256;
     private int nSteps = 8;
-    private int step = fftHeight / nSteps;
 
     private int playbackSpeed = 1;
     private int numPlaybackModes = 3;
@@ -34,7 +30,6 @@ public class LongtermFFTVisualizer implements Task {
     private double maxFFT = 250;
     private double minFFT = 0;
 
-    private long lastTimestamp = 0l;
     private FeedbackSettings fbSettings;
     int[] sampleCounter;
 

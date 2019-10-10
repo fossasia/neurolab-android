@@ -75,7 +75,6 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
     private DataReceiver dataReceiver;
     private final String ACTION_USB_PERMISSION = "io.neurolab.USB_PERMISSION";
     private String filePath;
-    private ArrayList<String[]> rawData;
     private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT = 1;
     private float maxEEGValue = 9000f;
     private float effectiveDistance = 30f;

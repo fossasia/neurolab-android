@@ -21,7 +21,7 @@ import io.neurolab.utilities.FilePathUtil;
 import static io.neurolab.fragments.FocusVisualFragment.locationTracker;
 
 public class DataReceiver extends BroadcastReceiver {
-    private Context context;
+    Context context;
     private USBCommunicationHandler usbCommunicationHandler;
 
     private static String dataContent = "";

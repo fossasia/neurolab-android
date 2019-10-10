@@ -16,10 +16,8 @@ public class OSCForwarder {
         OSCForwarder of = new OSCForwarder();
     }
 
-    private DatagramSocket socket = null;
     private String address;
     private String port;
-    private String oscAddress;
     private OSCPortOut oscPortOut;
     private boolean connected = false;
 
@@ -53,8 +51,6 @@ public class OSCForwarder {
             return false;
         }
 
-        int i = 1;
-        Object[] args = new Object[1];
         return true;
     }
 

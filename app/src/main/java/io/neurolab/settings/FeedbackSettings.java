@@ -20,9 +20,6 @@ import io.neurolab.model.DefaultFFTData;
 
 public class FeedbackSettings {
 
-    private SharedPreferences sharedPreferences;
-
-    protected int smpls_per_sec;
     protected int bins;
     protected int num_channels;
 
@@ -31,25 +28,16 @@ public class FeedbackSettings {
     protected int[] binRangesAmount;
 
     protected double[][] rewardFFTBins = new double[bins][num_channels];
-    protected double[][] lastRewardFFTBins = new double[bins][num_channels];
 
     protected float currentFeedback;
     protected float lastFeedback;
 
-    protected boolean[] notBrainwaves = {false, false, false, false};
-    protected boolean baseline = false;
-
-    protected long currentTimestamp = System.currentTimeMillis();
     protected ReentrantLock lock;
 
     protected ArrayList<Feedback> feedbacks;
     protected DefaultFFTData fftData;
     private ArrayList<Thread> feedbackThreads;
     private Config config;
-
-    private TextView smpls_txt_view;
-    private TextView bins_txt_view;
-    private TextView numChannels_txt_view;
 
     public FeedbackSettings() {
 
@@ -77,7 +65,6 @@ public class FeedbackSettings {
     }
 
     private static float sensitivity = 0.5f;
-    protected FrameLayout frame;
 
     public static float getSensitivity() {
         return sensitivity;

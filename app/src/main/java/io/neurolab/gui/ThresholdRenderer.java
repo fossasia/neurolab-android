@@ -19,8 +19,6 @@ public class ThresholdRenderer {
     private int panelWidth;
     private int panelHeight;
     private Image renderImage;
-    private ImageView renderGraphics;
-    private GestureStroke stroke;
     private int pos;
 
     public synchronized void setRange(float min, float max) {

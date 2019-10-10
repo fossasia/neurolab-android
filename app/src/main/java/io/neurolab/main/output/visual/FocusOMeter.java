@@ -15,19 +15,12 @@ import io.neurolab.settings.FeedbackSettings;
 public class FocusOMeter extends Feedback {
 
     private static OSCPortIn receiver;
-    private Context context;
 
     private GLCapabilities glcapabilities;
-
-    public FocusOMeter(Context context) {
-        this.context = context;
-    }
 
     public void setCurrentFeedback(float currentFeedback) {
         FocusOMeterGLRenderer.setCurrentFeedback(currentFeedback);
     }
-
-    double currentFeedback = 0;
 
     public void setOSCInput(int port) {
         try {
