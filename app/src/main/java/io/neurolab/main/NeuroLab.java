@@ -49,6 +49,7 @@ import io.neurolab.activities.PinLayoutActivity;
 import io.neurolab.activities.ProgramModeActivity;
 import io.neurolab.activities.RelaxParentActivity;
 import io.neurolab.activities.SettingsActivity;
+import io.neurolab.activities.ShareDataActivity;
 import io.neurolab.activities.TestModeActivity;
 import io.neurolab.communication.USBCommunicationHandler;
 import io.neurolab.communication.bluetooth.BluetoothTestActivity;
@@ -335,7 +336,7 @@ public class NeuroLab extends AppCompatActivity
         } else if (id == R.id.nav_about_us) {
             startActivity(new Intent(this, AboutUsActivity.class));
         } else if (id == R.id.nav_share) {
-
+            startActivity(new Intent(this, ShareDataActivity.class));
         } else if (id == R.id.nav_data_logger) {
             startActivity(new Intent(this, DataLoggerActivity.class));
         }

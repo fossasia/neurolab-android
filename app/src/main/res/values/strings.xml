@@ -50,6 +50,8 @@
     <string name="focus_desc">Test the focus strength of your brain. Improve your score with more new sessions.</string>
     <string name="relax_desc">Relax yourself. Regular sessions can help level up your concentration.</string>
 
+    <string name="share_toast">Please select at least one record</string>
+    <string name="share_screen_toast">Tap to select and Share</string>
     <string name="focus_toast">Focus Program Mode Clicked</string>
     <string name="relax_toast">Relax Program Mode Clicked</string>
     <string name="mem_graph_toast">Memory Graph Mode Clicked</string>
@@ -170,4 +172,5 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="axis_desc_time">Time (MilliSeconds)</string>
     <string name="meditation">Meditate</string>
     <string name="meditation_desc">to (cause someone to) become less active and more calm and happy</string>
+    <string name="title_activity_share">ShareActivity</string>
 </resources>

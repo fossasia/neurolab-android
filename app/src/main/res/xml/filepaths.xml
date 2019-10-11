@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-path
+        name="external"
+        path="NeuroLab" />
+    <external-files-path
+        name="external_files"
+        path="NeuroLab" />
+    <cache-path
+        name="cache"
+        path="NeuroLab" />
+    <external-cache-path
+        name="external_cache"
+        path="NeuroLab" />
+    <files-path
+        name="files"
+        path="NeuroLab" />
+</paths>
