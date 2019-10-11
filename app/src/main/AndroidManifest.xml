@@ -23,7 +23,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".activities.RelaxParentActivity"/>
+        <activity android:name=".activities.ShareDataActivity"></activity>
+        <activity android:name=".activities.RelaxParentActivity" />
         <activity android:name=".activities.PinLayoutActivity" />
         <activity android:name=".activities.MeditationListActivity" />
         <activity android:name=".activities.MeditationHome" />
@@ -73,6 +74,16 @@
             android:parentActivityName=".main.NeuroLab" />
         <activity android:name=".activities.DataLoggerActivity" />
         <activity android:name=".activities.DeviceInstructionsActivity" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="io.neurolab.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
 
         <meta-data
             android:name="preloaded_fonts"
