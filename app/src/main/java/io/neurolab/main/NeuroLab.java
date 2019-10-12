@@ -75,10 +75,10 @@ public class NeuroLab extends AppCompatActivity
     private static int baudRate = 9600;
     private static boolean deviceConnected;
     private static String deviceData;
-    private Menu menu;
-    private int launcherSleepTime;
     private static AppUpdateManager appUpdateManager;
     private static Task<AppUpdateInfo> appUpdateInfoTask;
+    private Menu menu;
+    private int launcherSleepTime;
     private UsbSerialInterface.UsbReadCallback readCallback = new UsbSerialInterface.UsbReadCallback() { //Defining a Callback which triggers whenever data is read.
         @Override
         public void onReceivedData(byte[] arg0) {
@@ -325,6 +325,8 @@ public class NeuroLab extends AppCompatActivity
         } else if (id == R.id.nav_relax) {
             startActivity(new Intent(this, RelaxParentActivity.class));
             finish();
+        } else if (id == R.id.nav_meditation) {
+            startActivity(new Intent(this, MeditationHome.class));
         } else if (id == R.id.nav_memory_graph) {
             startProgramModeActivity(MemoryGraphParent.MEMORY_GRAPH_FLAG);
         } else if (id == R.id.nav_connect_device) {
