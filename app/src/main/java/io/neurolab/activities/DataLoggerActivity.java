@@ -55,6 +55,7 @@ public class DataLoggerActivity extends AppCompatActivity {
     }
 
     private void showLoggedDataList(File appDir) {
+        clearRedundantFiles();
         File[] files = appDir.listFiles();
         if (appDir.listFiles() != null && files.length > 0) {
             noLoggedView.setVisibility(View.GONE);
@@ -84,6 +85,11 @@ public class DataLoggerActivity extends AppCompatActivity {
             dataloggerRecyclerView.setLayoutManager(linearLayoutManager);
             dataloggerRecyclerView.setAdapter(adapter);
         }
+    }
+
+    public void clearRedundantFiles() {
+        filesList.clear();
+        fileList.clear();
     }
 
     @Override
