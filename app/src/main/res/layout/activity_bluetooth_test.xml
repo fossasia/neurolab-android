@@ -1,45 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/tv_bluetooth_adapter_state_viewer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/about_description_text_size"/>
 
     <Button
         android:id="@+id/enable_bluetooth_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enable"
-        android:visibility="gone" />
+        android:text="@string/enable"
+        android:padding="@dimen/about_description_text_size"
+        android:visibility="gone"
+        android:textColor="#ffffff"
+        android:background="@color/memory_graph_background"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tv_bluetooth_adapter_state_viewer"/>
 
     <TextView
         android:id="@+id/tv_is_paired_with_headset_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
-
-    <EditText
-        android:id="@+id/edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/about_description_text_size"
+        android:layout_below="@+id/enable_bluetooth_btn"/>
+
+    <EditText
+        android:layout_below="@+id/tv_is_paired_with_headset_status"
+        android:id="@+id/edit_text"
+        android:padding="@dimen/about_description_text_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"/>
 
     <Button
+        android:layout_below="@+id/edit_text"
         android:id="@+id/send_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send"
-        android:visibility="gone" />
+        android:text="@string/send"
+        android:padding="@dimen/about_description_text_size"
+        android:visibility="gone"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:background="@color/memory_graph_background"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
     <TextView
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/send_btn"
         android:id="@+id/received_data_display_tv"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:padding="@dimen/about_description_text_size"
         android:layout_height="wrap_content"
-        android:text="received data display"
+        android:text="@string/received_data_display"
         android:visibility="gone" />
 
-</LinearLayout>
+</RelativeLayout>
