@@ -36,6 +36,7 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.File;
 import java.io.FileReader;
@@ -527,7 +528,7 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
                         eegValueSize++;
                     }
                 }
-            } catch (IOException e) {
+            } catch (IOException | CsvValidationException e) {
                 e.printStackTrace();
             }
             return eegValues;
