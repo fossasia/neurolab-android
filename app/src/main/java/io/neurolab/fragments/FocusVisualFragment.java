@@ -29,6 +29,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.File;
 import java.io.FileReader;
@@ -381,7 +382,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
                         eegValueSize++;
                     }
                 }
-            } catch (IOException e) {
+            } catch (IOException | CsvValidationException e) {
                 e.printStackTrace();
             }
             return eegValues;
