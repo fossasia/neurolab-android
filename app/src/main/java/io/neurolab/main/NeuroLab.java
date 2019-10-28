@@ -82,6 +82,8 @@ public class NeuroLab extends AppCompatActivity
     private Menu menu;
     private CardView meditationCard;
     private int launcherSleepTime;
+    private static final int TIME_INTERVAL = 2000;
+    private long mBackPressed;
     private UsbSerialInterface.UsbReadCallback readCallback = new UsbSerialInterface.UsbReadCallback() { //Defining a Callback which triggers whenever data is read.
         @Override
         public void onReceivedData(byte[] arg0) {
@@ -269,7 +271,13 @@ public class NeuroLab extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             unregisterReceiver(broadcastReceiver);
-            super.onBackPressed();
+            if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis()) {
+                super.onBackPressed();
+                return;
+            } else {
+                Toast.makeText(getBaseContext(), R.string.double_tap_back, Toast.LENGTH_SHORT).show();
+            }
+            mBackPressed = System.currentTimeMillis();
         }
     }
 
