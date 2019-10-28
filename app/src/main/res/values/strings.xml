@@ -9,6 +9,7 @@
     <string name="feedback_settings_title">Feedback Settings</string>
     <string name="new_session">New Session</string>
     <string name="configs">Configurations</string>
+    <string name="double_tap_back">Press back again to exit</string>
 
     <string name="samples_pref_key">samples</string>
     <string name="bins_pref_key">bins</string>
