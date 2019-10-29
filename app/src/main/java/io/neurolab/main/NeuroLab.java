@@ -354,10 +354,8 @@ public class NeuroLab extends AppCompatActivity
 
         if (id == R.id.nav_focus) {
             startActivity(new Intent(this, FocusParentActivity.class));
-            finish();
         } else if (id == R.id.nav_relax) {
             startActivity(new Intent(this, RelaxParentActivity.class));
-            finish();
         } else if (id == R.id.nav_meditation) {
             startActivity(new Intent(this, MeditationHome.class));
         } else if (id == R.id.nav_memory_graph) {
