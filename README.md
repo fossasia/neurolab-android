@@ -145,6 +145,10 @@ We have the following branches
 * **master** This contains shipped code. After significant features/bugfixes are accumulated on development, we make a version update and make a release.
 * **apk** This branch contains two apk's, that are automatically generated on the merged pull request a) debug apk and b) release apk.
 
+## Setting Up NeuroLab App
+
+Read [CONTRIBUTING.md](https://github.com/fossasia/neurolab-android/blob/development/CONTRIBUTING.md) to setup NeuroLab Android app in your system.
+
 ## Contributions Best Practices
 
 Please help us follow the best practice to make it easy for the reviewer as well as the contributor. We want to focus on the code quality more than on managing pull request ethics.
