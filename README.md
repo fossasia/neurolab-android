@@ -8,7 +8,7 @@ Repository of Android app for the Neurolab Open Hardware platform.
 [![Mailing List](https://img.shields.io/badge/Mailing%20List-FOSSASIA-blue.svg)](https://groups.google.com/forum/#!forum/pslab-fossasia)
 [![Twitter Follow](https://img.shields.io/twitter/follow/pslabio.svg?style=social&label=Follow&maxAge=2592000?style=flat-square)](https://twitter.com/pslabio)
 
-This repository holds the Android app for the Neurolab Hardware. We are developing a neuro-device as a headband with integrated electronics. The goal of the Neurolab project is to create an easy to use open hardware measurement headset device for brain waves that can be plugged into an Android smartphone and a software application and enables us to understand our brains better.
+This repository holds the Android app for the Neurolab Hardware. We are developing a neuro-device as a headband with integrated electronics. The goal of the Neurolab project is to create an easy way to use open hardware measurement headset device for brain waves that can be plugged into an Android smartphone and a software application and enables us to understand our brains better.
 
 ## Buy
 
@@ -98,7 +98,7 @@ This repository holds the Android app for the Neurolab Hardware. We are developi
   
 ## Goal
 
-Our brains communicate through neurotransmitters and their activity emits electricity. The neuroheadset measures that electricity on the skin of the forehead and the software processes the signal so that it can translated into a visual or auditory representation. The data that can be collected can be analysed to identify mental health, stress, relaxation and even diseases like Alzheimer. 
+Our brains communicate through neurotransmitters and their activity emits electricity. The neuroheadset measures that electricity on the skin of the forehead and the software processes the signal so that it can be translated into a visual or auditory representation. The data that can be collected can be analyzed to identify mental health, stress, relaxation and even diseases like Alzheimer. 
 
 Current devices in the medical industry are usually not accessible by doctors due to their high pricing. They are also complicated to use. The idea of the device is to integrate it into a headband and focus on signals that can be obtained through the frontal lobe.
 
@@ -111,10 +111,10 @@ Please check out the in-development features of the app like the Meditation mode
 |   **Image**       |   **Feature**          | **Description**                               | **Status**         |
 |-------------------|------------------------|-----------------------------------------------|--------------------|
 | <img src = "/docs/images/home_screen.jpeg" width="200"/>  |  Launcher Screen  | The four major program modes: Focus, Relax, Memory Graph, Meditation, Every program mode is responsible for specific activities and games with your brain activity. | :heavy_check_mark: |
-| <img src = "/docs/images/focus_mode.png" width="200"/>    |  Focus program Mode  | Focus program mode helps users to increase their focus and concentration power by playing games. The rocket game comes with features like play, stop, record, program info, datalogger, seek to specific time, etc. | :heavy_check_mark: |
-| <img src = "/docs/images/relax.jpg" width="200"/>    |  Relax program mode  | Relax program mode is intended to help users relax his mind and diminish their stress in life. | :soon: In Progress |
+| <img src = "/docs/images/focus_mode.png" width="200"/>    |  Focus program Mode  | Focus program mode helps the users to increase their focus and concentration power by playing games. The rocket game comes with features like play, stop, record, program info, datalogger, seek to specific time, etc. | :heavy_check_mark: |
+| <img src = "/docs/images/relax.jpg" width="200"/>    |  Relax program mode  | Relax program mode is intended to help users  to relax their mind and diminish their stress in life. | :soon: In Progress |
 | <img src = "/docs/images/memory_graph_sc.jpeg" width="200"/>    |  Memory Graph program mode  | Memory Graph is a data visualization mode with the help of graphs, user friendly stats and a density spectrum. Users can import a dataset into the datalogger from where they can visualize it in the actual mode. This mode is implemented with features like play, stop, record, data logger, etc. | :heavy_check_mark: |
-| <img src = "/docs/images/meditate.jpg" width="200"/>    |  Meditation program mode  | Meditation program mode helps users with providing different categories of meditations which they can choose depending upon their mood. Every category has a list of meditations directed for that particular mood. | Development Mode |
+| <img src = "/docs/images/meditate.jpg" width="200"/>    |  Meditation program mode  | Meditation program mode helps the users with providing different categories of meditations which they can choose depending upon their mood. Every category has a list of meditations directed for that particular mood. | Development Mode |
 
 ## App workflow Videos
 
