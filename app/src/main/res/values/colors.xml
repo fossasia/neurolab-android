@@ -21,4 +21,5 @@
     <color name="side_nav_end_color">#7367ee</color>
     <color name="white_trans">#99FFFFFF</color>
     <color name="memory_graph_background">#673AB7</color>
+    <color name="ic_launcher_background">#FFFFFF</color>
 </resources>
