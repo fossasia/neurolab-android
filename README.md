@@ -8,7 +8,7 @@ Repository of Android app for the Neurolab Open Hardware platform.
 [![Mailing List](https://img.shields.io/badge/Mailing%20List-FOSSASIA-blue.svg)](https://groups.google.com/forum/#!forum/pslab-fossasia)
 [![Twitter Follow](https://img.shields.io/twitter/follow/pslabio.svg?style=social&label=Follow&maxAge=2592000?style=flat-square)](https://twitter.com/pslabio)
 
-This repository holds the Android app for the Neurolab Hardware. We are developing a neuro-device as a headband with integrated electronics. The goal of the Neurolab project is to create an easy way to use open hardware measurement headset device for brain waves that can be plugged into an Android smartphone and a software application and enables us to understand our brains better.
+This repository holds the Android app for the Neurolab Hardware. We are developing a neuro-device as a headband with integrated electronics. The goal of the Neurolab project is to create an easy to use open hardware measurement headset device for brain waves that can be plugged into an Android smartphone and a software application and enables us to understand our brains better.
 
 ## Buy
 
