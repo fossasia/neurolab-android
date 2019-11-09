@@ -20,7 +20,7 @@ Open a terminal/shell.
 
 Type
 
-`$ git clone https://github.com/fossasia/neurolab-android.git`
+`$ git clone https://github.com/username/neurolab-android.git`
 
 where 'username' is your username.
 
