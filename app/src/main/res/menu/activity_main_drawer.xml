@@ -48,6 +48,11 @@
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="@string/share_nav_drawer" />
+
+            <item
+                android:id="@+id/nav_share_app"
+                android:icon="@drawable/ic_android"
+                android:title="@string/share_app" />
         </menu>
     </item>
 

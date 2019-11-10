@@ -177,4 +177,7 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="enable">Enable</string>
     <string name="received_data_display">received data display</string>
     <string name="send">Send</string>
+
+    <string name="share_app">Share Application</string>
+    <string name="share_msg_body">Check out this awesome NeuroLab App\n\nThe goal of the NeuroLab project is to create an easy to use open hardware measurement headset device for brain waves that can be plugged into an Android smartphone and a software application and enables us to understand our brains better. </string>
 </resources>
