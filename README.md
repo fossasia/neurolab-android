@@ -147,7 +147,7 @@ We have the following branches
 
 ## Setting Up NeuroLab App
 
-Read [CONTRIBUTING.md](https://github.com/chintu-stacks/neurolab-android/blob/development/CONTRIBUTING.md) to setup NeuroLab Android app in your system.
+Read [CONTRIBUTING.md](https://github.com/fossasia/neurolab-android/blob/development/CONTRIBUTING.md) to setup NeuroLab Android app in your system.
 
 ## Contributions Best Practices
 
