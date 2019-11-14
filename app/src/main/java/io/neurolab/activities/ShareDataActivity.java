@@ -14,7 +14,9 @@ import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.io.File;
 import java.util.ArrayList;
@@ -39,6 +41,8 @@ public class ShareDataActivity extends AppCompatActivity {
     private static ArrayList<Uri> selectedUri = new ArrayList<Uri>();
     private static Set<Uri> set;
     private static SparseBooleanArray sparseBooleanArray;
+    private static TextView numberOfFiles;
+    private static Button shareButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +50,10 @@ public class ShareDataActivity extends AppCompatActivity {
         setContentView(R.layout.activity_share_data);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Toast.makeText(this, R.string.share_screen_toast, Toast.LENGTH_SHORT).show();
 
         fileListView = findViewById(R.id.fileListView);
+        shareButton = findViewById(R.id.share_btn);
+        numberOfFiles = findViewById(R.id.fileNumberView);
         context = getApplicationContext();
 
         resultIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
@@ -70,6 +75,14 @@ public class ShareDataActivity extends AppCompatActivity {
                 newFileName[i] = files[i].getName();
                 j++;
             }
+            numberOfFiles.setVisibility(View.INVISIBLE);
+            Toast.makeText(this, R.string.share_screen_toast, Toast.LENGTH_SHORT).show();
+        }
+
+        if (appDir.listFiles().length == 0) {
+            numberOfFiles.setVisibility(View.VISIBLE);
+            numberOfFiles.setText(R.string.no_datasets_message);
+            shareButton.setVisibility(View.INVISIBLE);
         }
 
         final List<String> file_list = new ArrayList<String>(Arrays.asList(newFileName));

@@ -34,9 +34,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/linear_layout"
+        android:layout_below="@+id/fileNumberView"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_marginTop="@dimen/layout_margin_medium"
         android:layout_marginBottom="@dimen/layout_margin_medium" />
+
+    <TextView
+        android:id="@+id/fileNumberView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/layout_margin_medium"
+        android:textAlignment="center"
+        android:textSize="@dimen/text_size_larger" />
 
 </RelativeLayout>

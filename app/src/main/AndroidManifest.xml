@@ -23,7 +23,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".activities.ShareDataActivity" />
+        <activity android:name=".activities.ShareDataActivity"
+            android:label="Share"/>
         <activity android:name=".activities.RelaxParentActivity" />
         <activity android:name=".activities.PinLayoutActivity" />
         <activity android:name=".activities.MeditationListActivity" />
