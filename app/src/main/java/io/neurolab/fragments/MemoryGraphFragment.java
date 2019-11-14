@@ -81,6 +81,8 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
     private float maxEEGValue = 9000f;
     private float effectiveDistance = 30f;
     private boolean permission = false;
+    private boolean isReceiverRegistered = false;
+
     private static final String[] READ_WRITE_PERMISSIONS = {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE
@@ -324,11 +326,22 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         if (thread != null) {
             thread.interrupt();
         }
+        if (dataReceiver != null && isReceiverRegistered) {
+            getContext().unregisterReceiver(dataReceiver);
+            isReceiverRegistered = false;
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        IntentFilter intentFilter = new IntentFilter();
+        // adding the possible USB intent actions.
+        intentFilter.addAction(ACTION_USB_PERMISSION);
+        if (dataReceiver != null && !isReceiverRegistered){
+            getContext().registerReceiver(dataReceiver, intentFilter);
+            isReceiverRegistered = true;
+        }
     }
 
     @Override
@@ -398,6 +411,8 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
         // adding the possible USB intent actions.
         intentFilter.addAction(ACTION_USB_PERMISSION);
         getContext().registerReceiver(dataReceiver, intentFilter);
+        isReceiverRegistered = true;
+
         usbCommunicationHandler.searchForArduinoDevice(getContext());
         locationTracker.startCaptureLocation();
         if (usbCommunicationHandler.getSerialPort() != null) {

@@ -76,6 +76,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
             Manifest.permission.READ_EXTERNAL_STORAGE
     };
     public static final String FOCUS_FLAG = "Focus";
+    private boolean isReceiverRegistered = false;
 
     private SpaceAnimationVisuals rocketAnimation;
     private View view;
@@ -194,6 +195,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         // adding the possible USB intent actions.
         intentFilter.addAction(ACTION_USB_PERMISSION);
         getContext().registerReceiver(dataReceiver, intentFilter);
+        isReceiverRegistered = true;
 
         usbCommunicationHandler.searchForArduinoDevice(getContext());
         locationTracker.startCaptureLocation();
@@ -324,6 +326,13 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        IntentFilter intentFilter = new IntentFilter();
+        // adding the possible USB intent actions.
+        intentFilter.addAction(ACTION_USB_PERMISSION);
+        if (dataReceiver != null && !isReceiverRegistered) {
+            getContext().registerReceiver(dataReceiver, intentFilter);
+            isReceiverRegistered = true;
+        }
     }
 
     @Override
@@ -333,6 +342,10 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
         extractedData = null;
         freq = null;
         SpaceAnimationVisuals.count = 0;
+        if (dataReceiver != null && isReceiverRegistered) {
+            getContext().unregisterReceiver(dataReceiver);
+            isReceiverRegistered = false;
+        }
     }
 
     @Override
