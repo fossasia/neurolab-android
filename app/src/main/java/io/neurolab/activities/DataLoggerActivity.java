@@ -67,12 +67,13 @@ public class DataLoggerActivity extends AppCompatActivity {
                 filesList.add(file);
             }
             DataLoggerListAdapter adapter = new DataLoggerListAdapter(this, filesList, flag);
+            checkAdapterStateChanged(adapter);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
                     this, LinearLayoutManager.VERTICAL, false);
             dataloggerRecyclerView.setLayoutManager(linearLayoutManager);
             dataloggerRecyclerView.setAdapter(adapter);
-        } else {
-
+        }
+        else {
             setupPath();
             noLoggedView.setVisibility(View.GONE);
 
@@ -82,11 +83,40 @@ public class DataLoggerActivity extends AppCompatActivity {
             readWriteData("sample4", appDir);
 
             DataLoggerListAdapter adapter = new DataLoggerListAdapter(this, filesList, flag);
+            checkAdapterStateChanged(adapter);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
                     this, LinearLayoutManager.VERTICAL, false);
             dataloggerRecyclerView.setLayoutManager(linearLayoutManager);
             dataloggerRecyclerView.setAdapter(adapter);
         }
+    }
+
+    public void checkAdapterStateChanged(DataLoggerListAdapter adapter){
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+
+            @Override
+            public void onChanged() {
+                super.onChanged();
+                checkEmpty();
+            }
+
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                super.onItemRangeInserted(positionStart, itemCount);
+                checkEmpty();
+            }
+
+            @Override
+            public void onItemRangeRemoved(int positionStart, int itemCount) {
+                super.onItemRangeRemoved(positionStart, itemCount);
+                checkEmpty();
+            }
+
+            void checkEmpty() {
+                noLoggedView.setVisibility(adapter.getItemCount() == 0 ? View.VISIBLE : View.GONE);
+            }
+        });
+
     }
 
     @Override
