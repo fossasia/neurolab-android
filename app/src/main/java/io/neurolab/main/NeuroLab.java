@@ -159,7 +159,7 @@ public class NeuroLab extends AppCompatActivity
         intentFilter = new IntentFilter();
         // adding the possible USB intent actions.
         intentFilter.addAction(ACTION_USB_PERMISSION);
-        registerReceiver(broadcastReceiver, intentFilter);
+
         appUpdateManager = AppUpdateManagerFactory.create(getApplicationContext());
         appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
 
@@ -220,6 +220,7 @@ public class NeuroLab extends AppCompatActivity
     protected void onResume() {
         super.onResume();
 
+        registerReceiver(broadcastReceiver, intentFilter);
         SharedPreferences sharedPreferences =
                 PreferenceManager.getDefaultSharedPreferences(this);
         developerMode = sharedPreferences.getBoolean(DEV_MODE_KEY, false);
@@ -270,7 +271,6 @@ public class NeuroLab extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            unregisterReceiver(broadcastReceiver);
             if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis()) {
                 super.onBackPressed();
                 return;
@@ -417,5 +417,12 @@ public class NeuroLab extends AppCompatActivity
                 break;
         }
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(broadcastReceiver);
+    }
+
 
 }
