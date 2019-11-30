@@ -26,8 +26,15 @@
         android:layout_margin="@dimen/layout_margin_medium"
         android:layout_gravity="center"/>
 
+    <TextView
+        android:id="@+id/track_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_larger"
+        android:textColor="@color/focus_screen_bg"
+        android:layout_gravity="center" />
 
-        <TextView
+    <TextView
             android:id="@+id/duration_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

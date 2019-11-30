@@ -32,7 +32,15 @@
             android:text="@string/default_timer"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/text_size_larger" />
-        
+
+        <TextView
+            android:id="@+id/track_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="@dimen/text_size_larger"
+            android:textColor="@color/focus_screen_bg"/>
+
         <TextView
             android:id="@+id/duration_view"
             android:layout_width="wrap_content"

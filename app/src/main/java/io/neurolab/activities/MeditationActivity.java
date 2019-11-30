@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.TypedValue;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ public final class MeditationActivity extends AppCompatActivity {
     private SeekBar seekbarAudio;
     private TextView progressTimeView;
     private TextView durationView;
+    private TextView trackNameView;
 
     // the interface reference which would be used to control the media session from this UI client.
     private PlayerAdapter playerAdapter;
@@ -40,6 +42,8 @@ public final class MeditationActivity extends AppCompatActivity {
         MEDIA_RES_ID = getIntent().getIntExtra(MEDITATION_DIR_KEY, R.raw.soften_and_relax);
 
         grabNecessaryReferencesAndSetListeners();
+
+        setTrackName(MEDIA_RES_ID);
 
         initializePlaybackController();
     }
@@ -70,6 +74,7 @@ public final class MeditationActivity extends AppCompatActivity {
         seekbarAudio = findViewById(R.id.seekbar_audio);
         progressTimeView = findViewById(R.id.progress_time);
         durationView = findViewById(R.id.duration_view);
+        trackNameView = findViewById(R.id.track_name);
 
         pauseButton.setOnClickListener(
                 view -> playerAdapter.pause());
@@ -79,6 +84,33 @@ public final class MeditationActivity extends AppCompatActivity {
                 view -> playerAdapter.reset());
 
         setSeekbarListener();
+    }
+
+    private void setTrackName(int MEDIA_RES_ID) {
+        TypedValue value = new TypedValue();
+        getResources().getValue(MEDIA_RES_ID, value, true);
+        String trackName = getMeditationName(getName(value.string.toString()));
+        trackNameView.setText(trackName);
+    }
+
+    private String getName(String path) {
+        String[] token = path.split("/raw/", 2);
+        String[] nextToken = token[1].split(".mp3", 2);
+        String finalName = nextToken[0];
+        return finalName;
+    }
+
+    private String getMeditationName(String rawName) {
+        String name = "" + rawName.charAt(0);
+        name = name.toUpperCase();
+        for (int i = 1; i < rawName.length(); i++) {
+            if (rawName.charAt(i) == '_') {
+                name += ' ';
+                continue;
+            }
+            name += rawName.charAt(i);
+        }
+        return name;
     }
 
     private void initializePlaybackController() {
