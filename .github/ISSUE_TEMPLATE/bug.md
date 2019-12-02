@@ -3,7 +3,7 @@ name: Report a bug
 about: Report a bug which you have noticed, to help us improve NeuroLab Android app
 title: ''
 labels: Bug
-assignees: jddeep, suresh-gandhi
+assignees:
 
 ---
 
