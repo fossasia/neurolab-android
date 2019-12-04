@@ -57,6 +57,7 @@
                     android:paddingEnd="@dimen/main_content_padding_textview"
                     android:paddingBottom="0dip"
                     android:text="@string/meditation"
+                    android:textSize="@dimen/text_size_extra_large"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                     android:textColor="#fff" />
 
@@ -64,7 +65,11 @@
                     android:id="@+id/meditation_subtitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/main_content_padding_textview"
+                    android:textSize="@dimen/text_size_medium"
+                    android:paddingLeft="@dimen/main_content_padding_textview"
+                    android:paddingRight="@dimen/main_content_padding_textview"
+                    android:paddingTop="@dimen/padding_feedback_views"
+                    android:paddingBottom="@dimen/padding_feedback_views"
                     android:text="@string/meditation_desc"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="#fff" />

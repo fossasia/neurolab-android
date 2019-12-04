@@ -26,6 +26,7 @@
             android:tint="#fff"
             app:srcCompat="@drawable/bg_card_focus" />
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,6 +58,7 @@
                     android:paddingEnd="@dimen/main_content_padding_textview"
                     android:paddingBottom="0dip"
                     android:text="@string/focus"
+                    android:textSize="@dimen/text_size_extra_large"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                     android:textColor="#fff" />
 
@@ -64,8 +66,12 @@
                     android:id="@+id/focus_subtitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/main_content_padding_textview"
+                    android:paddingTop="@dimen/padding_feedback_views"
+                    android:paddingBottom="@dimen/padding_feedback_views"
+                    android:paddingLeft="@dimen/main_content_padding_textview"
+                    android:paddingRight="@dimen/main_content_padding_textview"
                     android:text="@string/focus_desc"
+                    android:textSize="@dimen/text_size_medium"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="#fff" />
 

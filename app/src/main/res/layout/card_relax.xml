@@ -59,6 +59,7 @@
                     android:paddingEnd="@dimen/main_content_padding_textview"
                     android:paddingBottom="0dip"
                     android:text="@string/relax"
+                    android:textSize="@dimen/text_size_extra_large"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                     android:textColor="#fff" />
 
@@ -66,7 +67,11 @@
                     android:id="@+id/relax_subtitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/main_content_padding_textview"
+                    android:paddingLeft="@dimen/main_content_padding_textview"
+                    android:paddingRight="@dimen/main_content_padding_textview"
+                    android:paddingTop="@dimen/main_content_padding_textview"
+                    android:paddingBottom="@dimen/main_content_padding_textview"
+                    android:textSize="@dimen/text_size_medium"
                     android:text="@string/relax_desc"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="#fff" />
