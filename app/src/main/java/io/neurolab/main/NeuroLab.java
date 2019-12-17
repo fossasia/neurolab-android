@@ -352,6 +352,7 @@ public class NeuroLab extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        item.setCheckable(false);
         if (id == R.id.nav_focus) {
             startActivity(new Intent(this, FocusParentActivity.class));
         } else if (id == R.id.nav_relax) {
