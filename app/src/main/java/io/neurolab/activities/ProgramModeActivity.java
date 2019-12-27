@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
 import io.neurolab.R;
+import io.neurolab.fragments.RelaxHypnoticFragment;
 import io.neurolab.fragments.FocusVisualFragment;
 import io.neurolab.fragments.RelaxVisualFragment;
 import io.neurolab.main.NeuroLab;
@@ -18,6 +19,7 @@ public class ProgramModeActivity extends AppCompatActivity {
     public static final int FOCUS_PROGRAM_MODE = 1;
     public static final int RELAX_PROGRAM_MODE = 2;
     public static final int MEMORY_GRAPH_MODE = 3;
+    public static final int RELAX_PROGRAM_HYPNO_MODE = 4;
 
     public static final String INTENT_KEY_PROGRAM_MODE = "MODE";
     public static final String SETTING_SIMULATION = "SETTING_SIMULATION";
@@ -51,6 +53,8 @@ public class ProgramModeActivity extends AppCompatActivity {
             mode = MEMORY_GRAPH_MODE;
         else if (modeFlag.equals(RelaxVisualFragment.RELAX_PROGRAM_FLAG))
             mode = RELAX_PROGRAM_MODE;
+        else if(modeFlag.equals(RelaxHypnoticFragment.RELAX_PROGRAM_HYPNOTIC_FLAG))
+            mode = RELAX_PROGRAM_HYPNO_MODE;
 
 //        settingSimulation = bundle.getBoolean(SETTING_SIMULATION);
 //        settingLoadResourcesFromPhn = bundle.getBoolean(SETTING_LOAD_RESOURCES_FROM_PHN);
@@ -72,6 +76,13 @@ public class ProgramModeActivity extends AppCompatActivity {
                 setTitle(R.string.relax);
                 fragment = new RelaxVisualFragment();
                 if (bundle.getString(RelaxVisualFragment.RELAX_PROGRAM_FLAG) != null)
+                    fragment.setArguments(bundle);
+                moveToFragment(fragment);
+                break;
+            case RELAX_PROGRAM_HYPNO_MODE:
+                setTitle("Relax");
+                fragment = new RelaxHypnoticFragment();
+                if (bundle.getString(RelaxHypnoticFragment.RELAX_PROGRAM_HYPNOTIC_FLAG) != null)
                     fragment.setArguments(bundle);
                 moveToFragment(fragment);
                 break;

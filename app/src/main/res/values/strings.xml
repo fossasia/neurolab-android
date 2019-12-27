@@ -142,6 +142,7 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="happiness_desc">Meditations while you are in a happy mood</string>
     <string name="focus_game_one_info">The rocket flies fast and slow according to your brain activity. Concentrate to fly faster or relax to fly slower.</string>
     <string name="relax_illusion_one_info">The optical illusion enable you to increase your suggestibility and to open up your subconscious mind, to receive your suggestions</string>
+    <string name="relax_hypno_info">The hypnotic illusion helps you to activate deep relaxation response in your body and accelerates healing.</string>
     <string name="focus_program_info">Focus program mode helps you to increase your focus and concentration levels with the help of games. Choose from the games below and strengthen your brain power.</string>
     <string name="relax_program_info">Relax program mode helps you to delve deep into your subconscious to open it up and eventually relaxes you. Choose from the illusions and calm your senses by self hypnosis.  </string>
     <string name="save_graph">Save Graph Data</string>
