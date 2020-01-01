@@ -43,7 +43,7 @@ ext {
 
     // Test Dependencies
     testRunnerRulesVersion = '1.0.2'
-    junitVersion = '4.12'
+    junitVersion = '4.13'
     espressoVersion = '3.0.2'
 
     // External Libraries
