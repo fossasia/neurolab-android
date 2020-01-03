@@ -62,7 +62,8 @@
         </activity>
         <activity
             android:name=".activities.SettingsActivity"
-            android:parentActivityName=".main.NeuroLab" />
+            android:parentActivityName=".main.NeuroLab"
+            android:configChanges="orientation|keyboardHidden"/>
         <activity
             android:name=".activities.OnBoardingActivity"
             android:theme="@style/AppTheme.NoActionBar" />
