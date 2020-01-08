@@ -8,9 +8,9 @@ import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.takisoft.fix.support.v7.preference.EditTextPreference;
-
 import com.takisoft.fix.support.v7.preference.PreferenceFragmentCompat;
 
 import io.neurolab.R;
@@ -40,6 +40,19 @@ public class NeuroSettingsFragment extends PreferenceFragmentCompat implements S
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+
+        if (samplesPref.getText().isEmpty()) {
+            samplesPref.setText("3");
+            Toast.makeText(getActivity(), "Enter valid input !", Toast.LENGTH_SHORT).show();
+        }
+        if (binsPref.getText().isEmpty()) {
+            binsPref.setText("4");
+            Toast.makeText(getActivity(), "Enter valid input !", Toast.LENGTH_SHORT).show();
+        }
+        if (channelsPref.getText().isEmpty()) {
+            channelsPref.setText("2");
+            Toast.makeText(getActivity(), "Enter valid input !", Toast.LENGTH_SHORT).show();
+        }
         switch (key) {
             // TODO: Set limits to following preferences
             case KEY_SAMPLES:
@@ -91,7 +104,7 @@ public class NeuroSettingsFragment extends PreferenceFragmentCompat implements S
 
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-        if(actionId == EditorInfo.IME_ACTION_DONE){
+        if (actionId == EditorInfo.IME_ACTION_DONE) {
             InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
             return true;
