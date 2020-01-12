@@ -43,7 +43,7 @@ public class LocationTracker {
                     Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                     context.startActivity(intent);
                 })
-                .setNegativeButton(R.string.cancel, (dialogInterface, i) -> Toast.makeText(context, "Recording without Location", Toast.LENGTH_SHORT).show())
+                .setNegativeButton(R.string.cancel, (dialogInterface, i) -> Toast.makeText(context, R.string.recording_without_location, Toast.LENGTH_SHORT).show())
                 .create();
     }
 

@@ -21,12 +21,13 @@ public class AboutUsActivity extends AppCompatActivity {
                 .addItem(new Element(getString(R.string.version), R.drawable.ic_update))
                 .setDescription(getResources().getString(R.string.about_us_content))
                 .addGroup(getResources().getString(R.string.connect_with_us))
-                .addWebsite("https://fossasia.org/")
-                .addFacebook("fossasia")
-                .addTwitter("fossasia")
-                .addYoutube("UCQprMsG-raCIMlBudm20iLQ")
-                .addInstagram("fossasia")
-                .addGitHub("fossasia")
+                .addWebsite(getString(R.string.website_fossasia))
+                .addYoutube(getResources().getString(R.string.fossaisa))
+                .addFacebook(getResources().getString(R.string.fossaisa))
+                .addTwitter(getResources().getString(R.string.fossaisa))
+                .addYoutube(getResources().getString(R.string.aboutus_youtube))
+                .addInstagram(getResources().getString(R.string.fossaisa))
+                .addGitHub(getResources().getString(R.string.fossaisa))
                 .create();
         FrameLayout frameLayout = new FrameLayout(this);
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);

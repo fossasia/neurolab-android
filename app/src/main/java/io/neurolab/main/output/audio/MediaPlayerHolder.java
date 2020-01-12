@@ -9,6 +9,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import io.neurolab.R;
+
 public final class MediaPlayerHolder implements PlayerAdapter {
 
     public static final int PLAYBACK_POSITION_REFRESH_INTERVAL_MS = 1000;
@@ -32,14 +34,14 @@ public final class MediaPlayerHolder implements PlayerAdapter {
                 @Override
                 public void onCompletion(MediaPlayer mediaPlayer) {
                     stopUpdatingCallbackWithPosition(true);
-                    logDisplay("MediaPlayer playback completed");   // They are just used for debugging and validation by me and so hardcoded
+                    logDisplay(context.getString(R.string.media_playback_completed));   // They are just used for debugging and validation by me and so hardcoded
                     if (playbackInfoListener != null) {
                         playbackInfoListener.onStateChanged(PlaybackInfoListener.State.COMPLETED);
                         playbackInfoListener.onPlaybackCompleted();
                     }
                 }
             });
-            logDisplay("Media Player object constructed");
+            logDisplay(context.getString(R.string.mediaplayer_object_constructed));
         }
     }
 
@@ -59,28 +61,28 @@ public final class MediaPlayerHolder implements PlayerAdapter {
         AssetFileDescriptor assetFileDescriptor =
                 context.getResources().openRawResourceFd(this.resourceId);
         try {
-            logDisplay("LoadingMedia process {1. setDataSource}");
+            logDisplay(context.getString(R.string.loadingmedia_setdatasource));
             mediaPlayer.setDataSource(assetFileDescriptor);
         } catch (Exception e) {
             logDisplay(e.toString());
         }
 
         try {
-            logDisplay("LoadingMedia process {2. prepare}");
+            logDisplay(context.getString(R.string.loadingmedia_prepare));
             mediaPlayer.prepare();
         } catch (Exception e) {
             logDisplay(e.toString());
         }
 
         initializeProgressCallback();
-        logDisplay("initializeProgressCallback() is called");
+        logDisplay(context.getString(R.string.initializeprogrescallback_called));
     }
 
     // Necessary for releasing the resources and doing the required clean up.
     @Override
     public void release() {
         if (mediaPlayer != null) {
-            logDisplay("released the media player resources and mediaPlayer is set to null");
+            logDisplay(context.getString(R.string.mediaplayer_resources_released));
             mediaPlayer.release();
             mediaPlayer = null;
         }
@@ -110,7 +112,7 @@ public final class MediaPlayerHolder implements PlayerAdapter {
     @Override
     public void reset() {
         if (mediaPlayer != null) {
-            logDisplay("playback is reset");
+            logDisplay(context.getString(R.string.playback_reset));
             mediaPlayer.reset();
             loadMedia(resourceId);
             if (playbackInfoListener != null) {
@@ -127,7 +129,7 @@ public final class MediaPlayerHolder implements PlayerAdapter {
             if (playbackInfoListener != null) {
                 playbackInfoListener.onStateChanged(PlaybackInfoListener.State.PAUSED);
             }
-            logDisplay("play back is paused");
+            logDisplay(context.getString(R.string.playback_paused));
         }
     }
 
