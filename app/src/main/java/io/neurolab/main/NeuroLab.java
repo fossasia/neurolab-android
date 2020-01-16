@@ -75,6 +75,7 @@ public class NeuroLab extends AppCompatActivity
     private static UsbManager usbManager;
     private static int baudRate = 9600;
     private static boolean deviceConnected;
+    private static boolean devmode_toast_flag = true;
     private static String deviceData;
     private static AppUpdateManager appUpdateManager;
     private static Task<AppUpdateInfo> appUpdateInfoTask;
@@ -139,8 +140,11 @@ public class NeuroLab extends AppCompatActivity
         SharedPreferences sharedPreferences =
                 PreferenceManager.getDefaultSharedPreferences(this);
         developerMode = sharedPreferences.getBoolean(DEV_MODE_KEY, false);
-        if (developerMode)
-            Toast.makeText(this, R.string.dev_mode_msg, Toast.LENGTH_SHORT).show();
+        if(devmode_toast_flag) {
+            if (developerMode)
+                Toast.makeText(this, R.string.dev_mode_msg, Toast.LENGTH_SHORT).show();
+        devmode_toast_flag = false;
+        }
         // Check if we need to display our OnBoardingActivity
         if (!sharedPreferences.getBoolean(
                 OnBoardingActivity.getOnBoardingPrefKey(), false)) {
