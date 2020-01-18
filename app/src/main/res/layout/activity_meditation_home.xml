@@ -36,6 +36,7 @@
                 android:layout_height="@dimen/bin_image_margin_top"
                 android:layout_margin="@dimen/layout_margin_medium"
                 android:layout_weight="1"
+                android:foreground="?android:attr/selectableItemBackground"
                 app:cardCornerRadius="@dimen/card_main_corner"
                 app:cardElevation="@dimen/card_main_elevation"
                 app:cardPreventCornerOverlap="false">
@@ -88,6 +89,7 @@
                 android:layout_height="@dimen/bin_image_margin_top"
                 android:layout_margin="@dimen/layout_margin_medium"
                 android:layout_weight="1"
+                android:foreground="?android:attr/selectableItemBackground"
                 app:cardCornerRadius="@dimen/card_main_corner"
                 app:cardElevation="@dimen/card_main_elevation"
                 app:cardPreventCornerOverlap="false">
@@ -146,6 +148,7 @@
                 android:layout_height="@dimen/bin_image_margin_top"
                 android:layout_margin="@dimen/layout_margin_medium"
                 android:layout_weight="1"
+                android:foreground="?android:attr/selectableItemBackground"
                 app:cardCornerRadius="@dimen/card_main_corner"
                 app:cardElevation="@dimen/card_main_elevation"
                 app:cardPreventCornerOverlap="false">
@@ -199,6 +202,7 @@
                 android:layout_height="@dimen/bin_image_margin_top"
                 android:layout_margin="@dimen/layout_margin_medium"
                 android:layout_weight="1"
+                android:foreground="?android:attr/selectableItemBackground"
                 app:cardCornerRadius="@dimen/card_main_corner"
                 app:cardElevation="@dimen/card_main_elevation"
                 app:cardPreventCornerOverlap="false">
@@ -257,6 +261,7 @@
                 android:layout_height="@dimen/layout_margin_huge"
                 android:layout_margin="@dimen/layout_margin_medium"
                 android:layout_weight="1"
+                android:foreground="?android:attr/selectableItemBackground"
                 app:cardCornerRadius="@dimen/card_main_corner"
                 app:cardElevation="@dimen/card_main_elevation"
                 app:cardPreventCornerOverlap="false">
@@ -310,6 +315,7 @@
                 android:layout_height="@dimen/layout_margin_huge"
                 android:layout_margin="@dimen/layout_margin_medium"
                 android:layout_weight="1"
+                android:foreground="?android:attr/selectableItemBackground"
                 app:cardCornerRadius="@dimen/card_main_corner"
                 app:cardElevation="@dimen/card_main_elevation"
                 app:cardPreventCornerOverlap="false">

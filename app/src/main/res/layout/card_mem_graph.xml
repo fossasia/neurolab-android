@@ -8,6 +8,7 @@
     android:layout_marginTop="@dimen/card_main_margin_tb"
     android:layout_marginEnd="@dimen/card_main_margin_lr"
     android:layout_marginBottom="@dimen/card_main_margin_tb"
+    android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="@dimen/card_main_corner"
     app:cardElevation="@dimen/card_main_elevation"
     app:cardPreventCornerOverlap="false">
@@ -55,9 +56,9 @@
                     android:layout_marginStart="@dimen/image_main_layout_margin"
                     android:layout_marginEnd="@dimen/image_main_layout_margin"
                     android:text="@string/mem_graph"
-                    android:textSize="@dimen/heading_text_size"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    android:textColor="#fff" />
+                    android:textColor="#fff"
+                    android:textSize="@dimen/heading_text_size" />
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/mem_graph_subtitle"

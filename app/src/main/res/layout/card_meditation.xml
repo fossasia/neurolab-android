@@ -8,6 +8,7 @@
     android:layout_marginTop="@dimen/card_main_margin_tb"
     android:layout_marginEnd="@dimen/card_main_margin_lr"
     android:layout_marginBottom="@dimen/card_main_margin_tb"
+    android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="@dimen/card_main_corner"
     app:cardElevation="@dimen/card_main_elevation"
     app:cardPreventCornerOverlap="false">
