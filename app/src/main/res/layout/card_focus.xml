@@ -45,6 +45,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -52,22 +53,25 @@
                     android:id="@+id/focus_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
                     android:paddingStart="@dimen/main_content_padding_textview"
                     android:paddingTop="@dimen/main_content_padding_textview"
                     android:paddingEnd="@dimen/main_content_padding_textview"
-                    android:paddingBottom="0dip"
+                    android:paddingBottom="0dp"
                     android:text="@string/focus"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    android:textColor="#fff" />
+                    android:textColor="#fff"
+                    android:textSize="24sp" />
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/focus_subtitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/main_content_padding_textview"
+                    android:padding="2dp"
                     android:text="@string/focus_desc"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="#fff" />
+                    android:textColor="#fff"
+                    android:textSize="9sp" />
 
             </LinearLayout>
         </LinearLayout>

@@ -60,7 +60,8 @@
                     android:paddingBottom="0dip"
                     android:text="@string/relax"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    android:textColor="#fff" />
+                    android:textColor="#fff"
+                    android:textSize="24sp" />
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/relax_subtitle"
@@ -69,7 +70,8 @@
                     android:padding="@dimen/main_content_padding_textview"
                     android:text="@string/relax_desc"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="#fff" />
+                    android:textColor="#fff"
+                    android:textSize="10sp" />
 
             </LinearLayout>
         </LinearLayout>
