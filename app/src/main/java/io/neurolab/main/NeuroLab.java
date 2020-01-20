@@ -41,6 +41,7 @@ import io.neurolab.R;
 import io.neurolab.activities.AboutUsActivity;
 import io.neurolab.activities.DataLoggerActivity;
 import io.neurolab.activities.DeviceInstructionsActivity;
+import io.neurolab.activities.FAQActivity;
 import io.neurolab.activities.FocusParentActivity;
 import io.neurolab.activities.MeditationHome;
 import io.neurolab.activities.MemoryGraphParent;
@@ -368,6 +369,8 @@ public class NeuroLab extends AppCompatActivity
             startActivity(new Intent(this, SettingsActivity.class));
         } else if (id == R.id.nav_about_us) {
             startActivity(new Intent(this, AboutUsActivity.class));
+        } else if (id == R.id.nav_faq) {
+            startActivity(new Intent(this, FAQActivity.class));
         } else if (id == R.id.nav_share) {
             startActivity(new Intent(this, ShareDataActivity.class));
         } else if (id == R.id.nav_data_logger) {

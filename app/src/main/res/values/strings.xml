@@ -178,4 +178,30 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="enable">Enable</string>
     <string name="received_data_display">received data display</string>
     <string name="send">Send</string>
+    <string name="faq">FAQ</string>
+
+    <string name="question">Q:</string>
+    <string-array name="faq_questions">
+        <item>What is NeuroLab? What can I do with it?</item>
+        <item>Where can I download the desktop app for NeuroLab for Windows, Linux and Mac?</item>
+        <item>Do you have an iOS app for Apple devices?</item>
+        <item>How can I connect to the device? What kind of USB cable do I need? What is an OTG USB cable?</item>
+        <item>I found a bug in one of your apps or hardware. What to do? Where should I report it?</item>
+        <item>Can I record or save data in the apps and export or import it?</item>
+        <item>Who develops NeuroLab? When did you start it? What is the story behind it?</item>
+        <item>I found a mistake on the website, where can I submit the issue?</item>
+    </string-array>
+
+    <string name="answer">A:</string>
+    <string-array name="faq_answers">
+        <item>NeuroLab is a small USB powered hardware board that can be used for focus, meditation and in dealing with depression. It works as an extension for Android phones or PCs.</item>
+        <item>We are developing a desktop app for Windows, Linux and Mac in &lt;a href = \"https://github.com/fossasia/neurolab"&gt;our desktop Git repository. You can find it in the install branch of the project here&lt;/a&gt;. The app is still under development. We are using technologies like Electron and Python, that work on all platforms. However, to make the final installer work everywhere requires some tweaks and improvements here and there. So, please expect some glitches. You can use the tracker in the repository to submit issues, bugs and feature requests.</item>
+        <item>Unfortunately Apple has tight restrictions and controls users in a way that prevents them to connect other hardware to their own Apple devices. Many people argue that this is against the freedom of users. The majority of hardware producers are not able to provide options to connect their products with Apple devices. Apple in many cases simply does not permit non-Apple products to be connected with its phones, pads and other hardware. It is only sometimes possible after a long and expensive process, but even if we would try to go through such a process it is not sure, that it would be possible to get Apple’s cooperation to connect a Pocket Science Lab. Due to Apple’s restrictive policies and proprietary approach that restricts the freedom of users of Apple products we are not currently able to provide an iOS app. The community regularly discusses new approaches, but unfortunately we have not found a solution yet. Apple does not have an interest to support users due to its main objective of profit generation instead of allowing users to use their devices in a way that they want. Apple’s behavior is seen by some in a way that it restricts basic human rights and the freedom of people who happen to be users of Apple products.</item>
+        <item>To connect to the device you need an OTG USB cable (&lt;a href = \"https://en.wikipedia.org/wiki/USB_On-The-Go\"&gt;OTG = On the go&lt;/a&gt;) which is a USB cable that allows connected devices to switch back and forth between the roles of host and device. &lt;u&gt;USB cables that are not OTG compatible will NOT work&lt;/u&gt;. It is also possible to extend the PSLab with an ESP WiFi chip or a Bluetooth chip and communicate through these gateways using the Android app. You can refer to the &lt;a href = \"https://github.com/fossasia/pslab-hardware\"&gt;hardware developer documentation and code on GitHub for more details here&lt;/a&gt;.</item>
+        <item>We have issue trackers in all our projects. They are currently hosted on GitHub. In order to submit a bug or feature request you need to login to the service. &lt;a href = \"https://github.com/fossasia?utf8=%E2%9C%93&amp;q=pslab\"&gt;A list of our PSLab repositories is here&lt;/a&gt; (scroll down a bit, when you access this page).</item>
+        <item>Yes, we have implemented a record and play function or a way to save and open configurations in the instruments on the Android and desktop app. Data you record can be imported into the apps and viewed. This feature is still under heavy development, but works well in most places. You can find it in the top bar of the apps. There are buttons to record, play, save and open data.</item>
+        <item>NeuroLab is developed with a community at &lt;a href = \"https://fossasia.org/\"&gt;FOSSASIA&lt;/a&gt;. There are over 100 developers who have contributed to the project across different repositories. </item>
+        <item>We use issue trackers for most of our work. You can submit &lt;a href = \"https://github.com/fossasia/neurolab-android/issues\"&gt;issues you find regarding the website on our issue tracker here&lt;/a&gt;.</item>
+    </string-array>
+
 </resources>

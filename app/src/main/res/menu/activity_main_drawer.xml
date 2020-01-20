@@ -45,6 +45,11 @@
                 android:title="@string/about_us" />
 
             <item
+                android:id="@+id/nav_faq"
+                android:icon="@drawable/ic_feedback_black_24dp"
+                android:title="@string/faq" />
+
+            <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="@string/share_nav_drawer" />
