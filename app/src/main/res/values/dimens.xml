@@ -113,5 +113,16 @@
     <dimen name="card_main_layout_padding">16dp</dimen>
     <dimen name="image_main_layout_margin">8dp</dimen>
     <dimen name="main_content_padding_textview">12dp</dimen>
+    <dimen name="faq_answer_margin_start">15dp</dimen>
+    <dimen name="dimen_zero_dp">0dp</dimen>
+    <dimen name="text_size_wavegen">14sp</dimen>
+    <dimen name="list_item_padding">5dp</dimen>
+    <dimen name="text_padding_top">10dp</dimen>
+    <dimen name="faq_answer_margin">20dp</dimen>
+    <dimen name="faq_question_text_size">20dp</dimen>
+    <dimen name="faq_question_margin_top">10dp</dimen>
+    <dimen name="text_size">17sp</dimen>
+    <dimen name="list_group_layout_height">52dp</dimen>
+    <dimen name="list_group_layout_width">52dp</dimen>
 
 </resources>
