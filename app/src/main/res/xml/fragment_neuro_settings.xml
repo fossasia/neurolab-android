@@ -4,7 +4,7 @@
 
     <EditTextPreference
         android:defaultValue="3"
-        android:digits="0123456789"
+        android:digits="123456789"
         android:inputType="numberDecimal"
         android:key="@string/samples_pref_key"
         android:numeric="integer"
@@ -14,7 +14,7 @@
 
     <EditTextPreference
         android:defaultValue="4"
-        android:digits="0123456789"
+        android:digits="123456789"
         android:inputType="numberDecimal"
         android:key="@string/bins_pref_key"
         android:numeric="integer"
@@ -24,7 +24,7 @@
 
     <EditTextPreference
         android:defaultValue="2"
-        android:digits="0123456789"
+        android:digits="123456789"
         android:inputType="numberDecimal"
         android:key="@string/num_channels_pref_key"
         android:numeric="integer"
