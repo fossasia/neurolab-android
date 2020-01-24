@@ -99,7 +99,7 @@ public class NeuroSettingsFragment extends PreferenceFragmentCompat implements S
     }
 
     private String pluralize(String text) {
-        return (text.equals("0") || text.equals("1")) ? "" : "s";
+        return ("0".equals(text) || "1".equals(text)) ? "" : "s";
     }
 
     @Override
