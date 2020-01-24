@@ -57,15 +57,15 @@ public class NeuroSettingsFragment extends PreferenceFragmentCompat implements S
             // TODO: Set limits to following preferences
             case KEY_SAMPLES:
                 samplesPref.setSummary(samplesPref.getText() + " sample" +
-                        pluralize(Integer.valueOf(samplesPref.getText())));
+                        pluralize(samplesPref.getText()));
                 break;
             case KEY_BINS:
                 binsPref.setSummary(binsPref.getText() + " bin" +
-                        pluralize(Integer.valueOf(binsPref.getText())));
+                        pluralize(binsPref.getText()));
                 break;
             case KEY_CHANNELS:
                 channelsPref.setSummary(channelsPref.getText() + " channel" +
-                        pluralize(Integer.valueOf(channelsPref.getText())));
+                        pluralize(channelsPref.getText()));
                 break;
             default:
                 break;
@@ -91,15 +91,15 @@ public class NeuroSettingsFragment extends PreferenceFragmentCompat implements S
     public void onResume() {
         super.onResume();
         samplesPref.setSummary(samplesPref.getText() + " sample" +
-                pluralize(Integer.valueOf(samplesPref.getText())));
+                pluralize(samplesPref.getText()));
         binsPref.setSummary(binsPref.getText() + " bin" +
-                pluralize(Integer.valueOf(binsPref.getText())));
+                pluralize(binsPref.getText()));
         channelsPref.setSummary(channelsPref.getText() + " channel" +
-                pluralize(Integer.valueOf(channelsPref.getText())));
+                pluralize(channelsPref.getText()));
     }
 
-    private String pluralize(int count) {
-        return count > 1 ? "s" : "";
+    private String pluralize(String text) {
+        return (text.equals("0") || text.equals("1")) ? "" : "s";
     }
 
     @Override
