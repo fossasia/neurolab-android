@@ -7,6 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".fragments.StatisticsFragment">
 
-    <include layout="@layout/stat_items" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/stat_items" />
+
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
