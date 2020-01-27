@@ -54,7 +54,7 @@ ext {
     jsscLibraryVersion = '2.8.0'
     jtransformsLibraryVersion = '2.4.0'
     joglLibraryVersion = '2.3.2'
-    circleImageViewLibraryVersion = '3.0.1'
+    circleImageViewLibraryVersion = '3.1.0'
     mpandroidchartLibraryVersion = '3.1.0'
     usbSerialLibraryVersion = '6.1.0'
     appIntroLibraryVersion = '4.2.3'
