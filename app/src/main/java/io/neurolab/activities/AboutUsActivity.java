@@ -1,5 +1,7 @@
 package io.neurolab.activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -27,12 +29,27 @@ public class AboutUsActivity extends AppCompatActivity {
                 .addYoutube("UCQprMsG-raCIMlBudm20iLQ")
                 .addInstagram("fossasia")
                 .addGitHub("fossasia")
+                .addItem(addDevelopers())
                 .create();
         FrameLayout frameLayout = new FrameLayout(this);
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         frameLayout.setLayoutParams(params);
         frameLayout.addView(aboutPage);
         setContentView(frameLayout);
+    }
+
+    private Element addDevelopers() {
+        Element developersElement = new Element();
+        developersElement.setTitle(getString(R.string.developers));
+        developersElement.setOnClickListener(v -> {
+            String url = getString(R.string.github_developers_link);
+            if (!url.startsWith("http://") && !url.startsWith("https://")) {
+                url = "https://" + url;
+            }
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(browserIntent);
+        });
+        return developersElement;
     }
 
 }
