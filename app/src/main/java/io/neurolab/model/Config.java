@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
+import io.neurolab.R;
 import io.neurolab.tools.ResourceManager;
 
 public class Config {
@@ -27,7 +28,7 @@ public class Config {
 
     public Config(String filename) {
         iniFile = new File(filename);
-        System.out.println("opening config from " + filename);
+        System.out.println(R.string.config_opening + filename);
         try {
             loadConfig(iniFile);
         } catch (BackingStoreException e) {
@@ -40,7 +41,7 @@ public class Config {
     public boolean loadConfig(File iniFile) throws BackingStoreException, IOException {
         System.out.println(iniFile);
 
-        System.out.println("loaded config");
+        System.out.println(R.string.config_loaded);
         return true;
     }
 
@@ -66,7 +67,7 @@ public class Config {
 
     public boolean store() {
         try {
-            System.out.println("stored config");
+            System.out.println(R.string.config_stored);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

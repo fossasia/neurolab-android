@@ -68,7 +68,7 @@ public class FocusVisualFragment extends android.support.v4.app.Fragment {
     public static LocationTracker locationTracker;
     private USBCommunicationHandler usbCommunicationHandler;
     private DataReceiver dataReceiver;
-    private final String ACTION_USB_PERMISSION = "io.neurolab.USB_PERMISSION";
+    private final String ACTION_USB_PERMISSION = getString(R.string.usb_permission);
     private static Menu menu;
     private static final int ACTIVITY_CHOOSE_FILE1 = 1;
     private static final String[] READ_WRITE_PERMISSIONS = {

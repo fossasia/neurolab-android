@@ -44,18 +44,18 @@ public class BluetoothTestActivity extends AppCompatActivity {
                 final int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR);
                 switch (state) {
                     case BluetoothAdapter.STATE_OFF:
-                        Log.d(TAG, "stateChangeBroadcastReceiver onReceive: STATE OFF");
+                        Log.d(TAG, getString(R.string.bluetooth_broadcastreciever_off));
                         disabledStateUI();
                         break;
                     case BluetoothAdapter.STATE_TURNING_OFF:
-                        Log.d(TAG, "stateChangeBroadcastReceiver onReceive: STATE TURNING OFF");
+                        Log.d(TAG, getString(R.string.bluetooth_broadcastreciever_turningoff));
                         break;
                     case BluetoothAdapter.STATE_ON:
-                        Log.d(TAG, "stateChangeBroadcastReceiver onReceive: STATE ON");
+                        Log.d(TAG, getString(R.string.bluetooth_broadcastreciever_on));
                         enabledStateUI();
                         break;
                     case BluetoothAdapter.STATE_TURNING_ON:
-                        Log.d(TAG, "stateChangeBroadcastReceiver onReceive: STATE TURNING ON");
+                        Log.d(TAG, getString(R.string.bluetooth_broadcastreciever_turningon));
                         break;
                     default:
                         break;
@@ -104,7 +104,7 @@ public class BluetoothTestActivity extends AppCompatActivity {
     }
 
     private void disabledStateUI() {
-        bluetoothAdapterStateTextView.setText("Bluetooth Disabled");
+        bluetoothAdapterStateTextView.setText(R.string.bluetooth_disabled);
         enableBluetoothBtn.setVisibility(View.VISIBLE);
         isPairedWithTheHeadsetStatusTextView.setVisibility(View.GONE);
         sendBtn.setVisibility(View.GONE);
@@ -114,7 +114,7 @@ public class BluetoothTestActivity extends AppCompatActivity {
     }
 
     private void enabledStateUI() {
-        bluetoothAdapterStateTextView.setText("Bluetooth Enabled");
+        bluetoothAdapterStateTextView.setText(R.string.bluetooth_on);
         enableBluetoothBtn.setVisibility(View.GONE);
         editText.setVisibility(View.GONE);
         sendBtn.setVisibility(View.GONE);
@@ -125,15 +125,15 @@ public class BluetoothTestActivity extends AppCompatActivity {
         BluetoothDevice bluetoothDevice = bluetoothConnectionManager.returnPairedHeadset();
 
         if (bluetoothDevice == null) {
-            isPairedWithTheHeadsetStatusTextView.setText("Please pair your phone with the headset.");
+            isPairedWithTheHeadsetStatusTextView.setText(R.string.bluetooth_pair_message);
         } else {
-            isPairedWithTheHeadsetStatusTextView.setText("Phone-Headset paired");
+            isPairedWithTheHeadsetStatusTextView.setText(R.string.bluetooth_paired);
 
             BluetoothSocket bluetoothSocket = bluetoothConnectionManager.createBluetoothConnection(bluetoothDevice);
             if (bluetoothSocket == null) {
-                Toast.makeText(this, "failed to establish the bluetooth connection", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.bluetooth_pairing_failed, Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "connection established", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.bluetooth_connection_established, Toast.LENGTH_SHORT).show();
                 editText.setVisibility(View.VISIBLE);
                 sendBtn.setVisibility(View.VISIBLE);
                 receivedDataDisplayTextView.setVisibility(View.VISIBLE);

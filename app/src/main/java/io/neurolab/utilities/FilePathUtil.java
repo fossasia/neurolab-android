@@ -23,6 +23,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import io.neurolab.R;
+
 import static io.neurolab.activities.DataLoggerActivity.PACKAGE_NAME;
 import static io.neurolab.activities.DataLoggerActivity.fileList;
 import static io.neurolab.activities.DataLoggerActivity.filesList;
@@ -107,7 +109,7 @@ public class FilePathUtil {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String fileName = sdf.format(currentTime);
         File csvFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() +
-                File.separator + CSV_DIRECTORY + File.separator + fileName + ".csv");
+                File.separator + CSV_DIRECTORY + File.separator + fileName + R.string.csv);
         if (!csvFile.exists()) {
             try {
                 csvFile.createNewFile();
@@ -152,7 +154,7 @@ public class FilePathUtil {
 
     public static void readWriteData(String filename, File appDir) {
         String fileName = filename;
-        String filePath = appDir + File.separator + fileName + ".csv";
+        String filePath = appDir + File.separator + fileName +R.string.csv;
         File file = new File(filePath);
 
         try {
@@ -206,7 +208,7 @@ public class FilePathUtil {
         File directory = new File(Environment.getExternalStorageDirectory().getAbsolutePath() +
                 File.separator + CSV_DIRECTORY);
         File from = new File(directory, currentFileName);
-        File to = new File(directory, newName.trim() + ".csv");
+        File to = new File(directory, newName.trim() + R.string.csv);
         from.renameTo(to);
     }
 

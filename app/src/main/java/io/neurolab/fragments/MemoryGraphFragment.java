@@ -442,7 +442,7 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
 
         } else if (id == R.id.stop_data) {
             parsedData = null;
-            Toast.makeText(getContext(), "Stopped", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.stopped), Toast.LENGTH_SHORT).show();
             isPlaying = true;
             toggleMenuItem(globalMenu, !isPlaying);
         } else if (id == R.id.play_graph && (parsedData == null && StatisticsFragment.parsedData != null)) {

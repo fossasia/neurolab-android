@@ -58,26 +58,26 @@ public class PinLayoutActivity extends AppCompatActivity implements View.OnTouch
     }
 
     private void populatePinDetails() {
-        pinDetails.add(new PinDetails("ADO", "Analog input 0", Color.parseColor("#406743"), Color.parseColor("#226a0c")));
-        pinDetails.add(new PinDetails("AD1", "Analog input 1", Color.parseColor("#406743"), Color.parseColor("#d28080")));
-        pinDetails.add(new PinDetails("AD2", "Analog input 2", Color.parseColor("#406743"), Color.parseColor("#aa44aa")));
-        pinDetails.add(new PinDetails("AD3", "Analog input 3", Color.parseColor("#406743"), Color.parseColor("#baaa22")));
-        pinDetails.add(new PinDetails("CLK", "Clock pin to clock data out of data pin", Color.parseColor("#6b40a9"), Color.parseColor("#dc1616")));
-        pinDetails.add(new PinDetails("Rx", "Receiver pin for UART communication", Color.parseColor("#4372a2"), Color.parseColor("#1616dc")));
-        pinDetails.add(new PinDetails("Tx", "Transmitter pin for UART communication", Color.parseColor("#4372a2"), Color.parseColor("#37dc16")));
-        pinDetails.add(new PinDetails("GND", "Ground pin (0 V)", Color.parseColor("#ff4040"), Color.parseColor("#16dcda")));
-        pinDetails.add(new PinDetails("MISO", "SPI interface pin - Master in slave out", Color.parseColor("#ffe040"), Color.parseColor("#b01498")));
-        pinDetails.add(new PinDetails("MOSI", "SPI interface pin - Master out slave in", Color.parseColor("#7d5840"), Color.parseColor("#890b41")));
-        pinDetails.add(new PinDetails("SCL", "Serial clock pin", Color.parseColor("#4372a2"), Color.parseColor("#6e4472")));
-        pinDetails.add(new PinDetails("CS", "Chip select pin", Color.parseColor("#7d5840"), Color.parseColor("#ff0b41")));
-        pinDetails.add(new PinDetails("USB", "Micro B type USB socket", Color.parseColor("#6b40a9"), Color.parseColor("#ff2b4f")));
-        pinDetails.add(new PinDetails("VCC", "Voltage supply pin (+5.0 V)", Color.parseColor("#ff4040"), Color.parseColor("#5c3c14")));
-        pinDetails.add(new PinDetails("LED", "Pin for LED (anode/cathode) attachment", Color.parseColor("#406743"), Color.parseColor("#226aba")));
+        pinDetails.add(new PinDetails(getString(R.string.ado), getString(R.string.analog_input_0), Color.parseColor("#406743"), Color.parseColor("#226a0c")));
+        pinDetails.add(new PinDetails(getString(R.string.ad1), getString(R.string.analog_input_1), Color.parseColor("#406743"), Color.parseColor("#d28080")));
+        pinDetails.add(new PinDetails(getString(R.string.ad2), getString(R.string.analog_input_2), Color.parseColor("#406743"), Color.parseColor("#aa44aa")));
+        pinDetails.add(new PinDetails(getString(R.string.ad3), getString(R.string.analog_input_3), Color.parseColor("#406743"), Color.parseColor("#baaa22")));
+        pinDetails.add(new PinDetails(getString(R.string.clk), getString(R.string.clockpin_description), Color.parseColor("#6b40a9"), Color.parseColor("#dc1616")));
+        pinDetails.add(new PinDetails(getString(R.string.rx), getString(R.string.recieverpin_description), Color.parseColor("#4372a2"), Color.parseColor("#1616dc")));
+        pinDetails.add(new PinDetails(getString(R.string.tx), getString(R.string.transmitterpin_description), Color.parseColor("#4372a2"), Color.parseColor("#37dc16")));
+        pinDetails.add(new PinDetails(getString(R.string.gnd), getString(R.string.groundpin), Color.parseColor("#ff4040"), Color.parseColor("#16dcda")));
+        pinDetails.add(new PinDetails(getString(R.string.miso), getString(R.string.master_in_slave_out), Color.parseColor("#ffe040"), Color.parseColor("#b01498")));
+        pinDetails.add(new PinDetails(getString(R.string.mosi), getString(R.string.master_out_slave_in), Color.parseColor("#7d5840"), Color.parseColor("#890b41")));
+        pinDetails.add(new PinDetails(getString(R.string.scl), getString(R.string.serial_clock_pin), Color.parseColor("#4372a2"), Color.parseColor("#6e4472")));
+        pinDetails.add(new PinDetails(getString(R.string.cs), getString(R.string.chip_select_pin), Color.parseColor("#7d5840"), Color.parseColor("#ff0b41")));
+        pinDetails.add(new PinDetails(getString(R.string.usb), getString(R.string.usb_micro_b), Color.parseColor("#6b40a9"), Color.parseColor("#ff2b4f")));
+        pinDetails.add(new PinDetails(getString(R.string.vcc), getString(R.string.voltage_supply_pin), Color.parseColor("#ff4040"), Color.parseColor("#5c3c14")));
+        pinDetails.add(new PinDetails(getString(R.string.led), getString(R.string.led_attachment_pin), Color.parseColor("#406743"), Color.parseColor("#226aba")));
         pinDetails.add(new PinDetails("+5V", "Test pin +5.0 V for power supplying", Color.parseColor("#ff4040"), Color.parseColor("#765f40")));
-        pinDetails.add(new PinDetails("I1+", "Current measuring pin", Color.parseColor("#406743"), Color.parseColor("#e7a41a")));
-        pinDetails.add(new PinDetails("I1-", "Current measuring pin", Color.parseColor("#406743"), Color.parseColor("#e7a4ff")));
-        pinDetails.add(new PinDetails("I2+", "Current measuring pin", Color.parseColor("#406743"), Color.parseColor("#ad2d00")));
-        pinDetails.add(new PinDetails("I2-", "Current measuring pin", Color.parseColor("#406743"), Color.parseColor("#0053ad")));
+        pinDetails.add(new PinDetails(getString(R.string.i1_plus), getString(R.string.current_measuring_pin), Color.parseColor("#406743"), Color.parseColor("#e7a41a")));
+        pinDetails.add(new PinDetails(getString(R.string.i1_minus), getString(R.string.current_measuring_pin), Color.parseColor("#406743"), Color.parseColor("#e7a4ff")));
+        pinDetails.add(new PinDetails(getString(R.string.i2_plus), getString(R.string.current_measuring_pin), Color.parseColor("#406743"), Color.parseColor("#ad2d00")));
+        pinDetails.add(new PinDetails(getString(R.string.i2_minus), getString(R.string.current_measuring_pin), Color.parseColor("#406743"), Color.parseColor("#0053ad")));
         pinDetails.add(new PinDetails("+5.5V", "Test pin +5.5 V for power supplying", Color.parseColor("#ff4040"), Color.parseColor("#6b6500")));
     }
 

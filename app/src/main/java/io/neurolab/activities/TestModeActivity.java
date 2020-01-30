@@ -74,10 +74,10 @@ public class TestModeActivity extends AppCompatActivity implements AdapterView.O
                             setUiEnabled(true);
                             usbCommunicationHandler.getSerialPort().read(readCallback);
                             feedConfigSetToArduino();
-                            updateView(displayView, "Serial Connection Opened!\\n");
+                            updateView(displayView, getString(R.string.serial_connection_opened));
                         }
                     } else {
-                        Log.d("SERIAL", "PERM NOT GRANTED");
+                        Log.d(getString(R.string.serial), "PERM NOT GRANTED");
                     }
                     break;
                 default:

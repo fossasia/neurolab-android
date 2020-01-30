@@ -71,7 +71,7 @@ public class DataLoggerListAdapter extends RecyclerView.Adapter<DataLoggerListAd
             container.addView(enterNameView);
             enterNameView.setText(files.get(i).getName());
             AlertDialog alertDialog = new AlertDialog.Builder(context)
-                    .setTitle("Rename the file")
+                    .setTitle(R.string.rename_file)
                     .setView(container)
                     .setPositiveButton(R.string.ok_button, (dialog, which) -> {
                         newFileName = enterNameView.getText().toString();
@@ -107,7 +107,7 @@ public class DataLoggerListAdapter extends RecyclerView.Adapter<DataLoggerListAd
         viewHolder.deleteFileView.setOnClickListener(v -> {
             FrameLayout container = new FrameLayout(context);
             AlertDialog alertDialog = new AlertDialog.Builder(context)
-                    .setTitle("Delete file " + files.get(i).getName())
+                    .setTitle(R.string.delete_file + files.get(i).getName())
                     .setView(container).
                             setPositiveButton(R.string.ok_button, ((dialog, which) -> {
                                 FilePathUtil.deleteFile(files.get(i));

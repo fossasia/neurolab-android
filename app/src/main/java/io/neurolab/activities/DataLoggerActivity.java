@@ -77,10 +77,10 @@ public class DataLoggerActivity extends AppCompatActivity {
             setupPath();
             noLoggedView.setVisibility(View.GONE);
 
-            readWriteData("sample1", appDir);
-            readWriteData("sample2", appDir);
-            readWriteData("sample3", appDir);
-            readWriteData("sample4", appDir);
+            readWriteData(getString(R.string.sample_1), appDir);
+            readWriteData(getString(R.string.sample_2), appDir);
+            readWriteData(getString(R.string.sample_3), appDir);
+            readWriteData(getString(R.string.sample_4), appDir);
 
             DataLoggerListAdapter adapter = new DataLoggerListAdapter(this, filesList, flag);
             checkAdapterStateChanged(adapter);

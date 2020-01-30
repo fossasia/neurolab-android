@@ -2,6 +2,7 @@ package io.neurolab.main.output.audio;
 
 import android.content.Context;
 
+import io.neurolab.R;
 import io.neurolab.main.output.feedback.Feedback;
 import io.neurolab.model.Config;
 import io.neurolab.settings.FeedbackSettings;
@@ -33,7 +34,7 @@ public class AudioFeedback extends Feedback {
     private int numSamples = 5;
     private float[] volume = {.5f, .5f, .5f, .5f, .7f};
     private float[] defaultVolume = {.5f, .5f, .5f, .5f, .7f};
-    private String[] soundMixSamples = {"audio/pad_.wav", "audio/pad1.wav", "audio/lownoise.wav", "audio/pad2.wav", "audio/forest.wav"};
+    private String[] soundMixSamples = {context.getString(R.string.audio_pad), context.getString(R.string.audio_pad1), context.getString(R.string.audio_lownosie), context.getString(R.string.audio_pad2), context.getString(R.string.audio_forest)};
     private double[] rates;
     private Config config;
     private double oldValue = 0d;

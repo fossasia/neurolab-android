@@ -56,15 +56,15 @@ public class NeuroSettingsFragment extends PreferenceFragmentCompat implements S
         switch (key) {
             // TODO: Set limits to following preferences
             case KEY_SAMPLES:
-                samplesPref.setSummary(samplesPref.getText() + " sample" +
+                samplesPref.setSummary(samplesPref.getText() + getString(R.string.sample) +
                         pluralize(Integer.valueOf(samplesPref.getText())));
                 break;
             case KEY_BINS:
-                binsPref.setSummary(binsPref.getText() + " bin" +
+                binsPref.setSummary(binsPref.getText() + getString(R.string.bin) +
                         pluralize(Integer.valueOf(binsPref.getText())));
                 break;
             case KEY_CHANNELS:
-                channelsPref.setSummary(channelsPref.getText() + " channel" +
+                channelsPref.setSummary(channelsPref.getText() + getString(R.string.channel) +
                         pluralize(Integer.valueOf(channelsPref.getText())));
                 break;
             default:
@@ -90,11 +90,11 @@ public class NeuroSettingsFragment extends PreferenceFragmentCompat implements S
     @Override
     public void onResume() {
         super.onResume();
-        samplesPref.setSummary(samplesPref.getText() + " sample" +
+        samplesPref.setSummary(samplesPref.getText() + getString(R.string.sample) +
                 pluralize(Integer.valueOf(samplesPref.getText())));
-        binsPref.setSummary(binsPref.getText() + " bin" +
+        binsPref.setSummary(binsPref.getText() + getString(R.string.bin) +
                 pluralize(Integer.valueOf(binsPref.getText())));
-        channelsPref.setSummary(channelsPref.getText() + " channel" +
+        channelsPref.setSummary(channelsPref.getText() + getString(R.string.channel) +
                 pluralize(Integer.valueOf(channelsPref.getText())));
     }
 
