@@ -1,287 +1,290 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/stat_item_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:fillViewport="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        android:textSize="25sp"
-        android:layout_marginTop="@dimen/margin_large"
-        android:text="@string/scores_label"
-        android:padding="6dp"/>
-
-    <android.support.v7.widget.CardView
+    <LinearLayout
+        android:id="@+id/stat_item_parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:cardBackgroundColor="@android:color/transparent"
-        app:cardCornerRadius="@dimen/card_radius_none"
-        android:layout_marginTop="@dimen/layout_margin_medium"
-        android:layout_marginBottom="@dimen/card_margin_large"
-        android:layout_marginLeft="@dimen/card_margin_large"
-        android:layout_marginRight="@dimen/card_margin_large"
-        app:cardElevation="@dimen/card_elevation_medium">
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_large"
+            android:padding="6dp"
+            android:text="@string/scores_label"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
         <android.support.v7.widget.CardView
-            android:id="@+id/stats_card"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:cardCornerRadius="@dimen/card_elevation_medium"
-            app:cardElevation="@dimen/card_radius_none"
-            >
+            android:layout_marginLeft="@dimen/card_margin_large"
+            android:layout_marginTop="@dimen/layout_margin_medium"
+            android:layout_marginRight="@dimen/card_margin_large"
+            android:layout_marginBottom="@dimen/card_margin_large"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="@dimen/card_radius_none"
+            app:cardElevation="@dimen/card_elevation_medium">
 
-            <LinearLayout
+            <android.support.v7.widget.CardView
+                android:id="@+id/stats_card"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_gravity="center"
+                app:cardCornerRadius="@dimen/card_elevation_medium"
+                app:cardElevation="@dimen/card_radius_none">
 
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/delta_parent"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/padding_medium">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/delta_label"
-                        android:layout_width="wrap_content"
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/delta_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/padding_medium"
-                        android:layout_marginLeft="@dimen/padding_medium"
-                        android:layout_marginStart="@dimen/padding_medium"
-                        android:layout_marginTop="@dimen/padding_medium"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/black"
-                        android:padding="@dimen/padding_medium"
-                        android:text="@string/concentration_label"
-                        android:textSize="@dimen/text_size_large"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:padding="@dimen/padding_medium">
 
-                    <TextView
-                        android:id="@+id/delta_value"
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/delta_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/padding_medium"
+                            android:layout_marginLeft="@dimen/padding_medium"
+                            android:layout_marginTop="@dimen/padding_medium"
+                            android:layout_marginBottom="@dimen/padding_medium"
+                            android:padding="@dimen/padding_medium"
+                            android:text="@string/concentration_label"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/text_size_large"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/delta_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/padding_medium"
+                            android:padding="@dimen/padding_medium"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/text_size_medium"
+                            app:layout_constraintBottom_toBottomOf="@+id/delta_label"
+                            app:layout_constraintStart_toEndOf="@+id/delta_label"
+                            app:layout_constraintTop_toTopOf="@+id/delta_label"
+                            app:layout_constraintVertical_bias="1.0" />
+
+                        <ImageView
+                            android:id="@+id/concentrate_emoji"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/padding_medium"
+                            android:layout_marginEnd="@dimen/padding_large"
+                            android:layout_marginRight="@dimen/padding_large"
+                            android:layout_marginBottom="@dimen/margin_small"
+                            android:visibility="invisible"
+                            app:layout_constraintBottom_toBottomOf="@+id/delta_value"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/delta_value"
+                            app:layout_constraintVertical_bias="1.0"
+                            app:srcCompat="@drawable/ic_happy" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/view_width_or_height"
+                        android:background="@android:color/darker_gray" />
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/theta_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/padding_medium"
-                        android:padding="@dimen/padding_medium"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/text_size_medium"
-                        app:layout_constraintBottom_toBottomOf="@+id/delta_label"
-                        app:layout_constraintStart_toEndOf="@+id/delta_label"
-                        app:layout_constraintTop_toTopOf="@+id/delta_label"
-                        app:layout_constraintVertical_bias="1.0" />
+                        android:padding="@dimen/padding_medium">
 
-                    <ImageView
-                        android:id="@+id/concentrate_emoji"
-                        android:layout_width="wrap_content"
+                        <ImageView
+                            android:id="@+id/sleep_emoji"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/padding_medium"
+                            android:layout_marginEnd="@dimen/padding_large"
+                            android:layout_marginRight="@dimen/padding_large"
+                            android:layout_marginBottom="@dimen/padding_medium"
+                            android:visibility="invisible"
+                            app:layout_constraintBottom_toBottomOf="@+id/theta_value"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/theta_value"
+                            app:layout_constraintVertical_bias="0.8"
+                            app:srcCompat="@drawable/ic_happy" />
+
+                        <TextView
+                            android:id="@+id/theta_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/padding_medium"
+                            android:layout_marginLeft="@dimen/padding_medium"
+                            android:layout_marginTop="@dimen/padding_medium"
+                            android:layout_marginBottom="@dimen/padding_medium"
+                            android:padding="@dimen/padding_medium"
+                            android:text="@string/sleep_label"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/text_size_large"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/theta_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/padding_extra_larger"
+                            android:layout_marginLeft="@dimen/padding_extra_larger"
+                            android:layout_marginTop="@dimen/padding_medium"
+                            android:padding="@dimen/padding_medium"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/text_size_medium"
+                            app:layout_constraintBottom_toBottomOf="@+id/theta_label"
+                            app:layout_constraintStart_toEndOf="@+id/theta_label"
+                            app:layout_constraintTop_toTopOf="@+id/theta_label"
+                            app:layout_constraintVertical_bias="1.0" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/view_width_or_height"
+                        android:background="@android:color/darker_gray" />
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/low_alpha_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_small"
-                        android:layout_marginEnd="@dimen/padding_large"
-                        android:layout_marginRight="@dimen/padding_large"
-                        android:layout_marginTop="@dimen/padding_medium"
-                        app:layout_constraintBottom_toBottomOf="@+id/delta_value"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/delta_value"
-                        app:layout_constraintVertical_bias="1.0"
-                        android:visibility="invisible"
-                        app:srcCompat="@drawable/ic_happy" />
-                </android.support.constraint.ConstraintLayout>
+                        android:padding="@dimen/padding_medium">
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/view_width_or_height"
-                    android:background="@android:color/darker_gray" />
+                        <ImageView
+                            android:id="@+id/calm_emoji"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/padding_medium"
+                            android:layout_marginEnd="@dimen/padding_large"
+                            android:layout_marginRight="@dimen/padding_large"
+                            android:layout_marginBottom="@dimen/padding_medium"
+                            android:visibility="invisible"
+                            app:layout_constraintBottom_toBottomOf="@+id/low_alpha_value"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/low_alpha_value"
+                            app:layout_constraintVertical_bias="0.8"
+                            app:srcCompat="@drawable/ic_happy" />
 
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/theta_parent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/padding_medium">
+                        <TextView
+                            android:id="@+id/low_alpha_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/padding_medium"
+                            android:layout_marginLeft="@dimen/padding_medium"
+                            android:layout_marginTop="@dimen/padding_medium"
+                            android:layout_marginBottom="@dimen/padding_medium"
+                            android:padding="@dimen/padding_medium"
+                            android:text="@string/calmness_label"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/text_size_large"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageView
-                        android:id="@+id/sleep_emoji"
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/low_alpha_value"
+                            android:layout_width="@dimen/spacing_none"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/padding_extra_large"
+                            android:layout_marginLeft="@dimen/padding_extra_large"
+                            android:layout_marginTop="@dimen/padding_medium"
+                            android:padding="@dimen/padding_medium"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/text_size_medium"
+                            app:layout_constraintBottom_toBottomOf="@+id/low_alpha_label"
+                            app:layout_constraintStart_toEndOf="@+id/low_alpha_label"
+                            app:layout_constraintTop_toTopOf="@+id/low_alpha_label"
+                            app:layout_constraintVertical_bias="1.0" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/view_width_or_height"
+                        android:background="@android:color/darker_gray" />
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/high_alpha_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/padding_medium"
-                        android:layout_marginEnd="@dimen/padding_large"
-                        android:layout_marginRight="@dimen/padding_large"
-                        android:layout_marginTop="@dimen/padding_medium"
-                        app:layout_constraintBottom_toBottomOf="@+id/theta_value"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/theta_value"
-                        app:layout_constraintVertical_bias="0.8"
-                        android:visibility="invisible"
-                        app:srcCompat="@drawable/ic_happy" />
+                        android:padding="@dimen/padding_medium">
 
-                    <TextView
-                        android:id="@+id/theta_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/padding_medium"
-                        android:layout_marginLeft="@dimen/padding_medium"
-                        android:layout_marginStart="@dimen/padding_medium"
-                        android:layout_marginTop="@dimen/padding_medium"
-                        android:padding="@dimen/padding_medium"
-                        android:text="@string/sleep_label"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/text_size_large"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        <ImageView
+                            android:id="@+id/anger_emoji"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/padding_medium"
+                            android:layout_marginEnd="@dimen/padding_large"
+                            android:layout_marginRight="@dimen/padding_large"
+                            android:layout_marginBottom="@dimen/padding_medium"
+                            android:visibility="invisible"
+                            app:layout_constraintBottom_toBottomOf="@+id/high_alpha_value"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/high_alpha_value"
+                            app:layout_constraintVertical_bias="0.8"
+                            app:srcCompat="@drawable/ic_happy" />
 
-                    <TextView
-                        android:id="@+id/theta_value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/padding_extra_larger"
-                        android:layout_marginStart="@dimen/padding_extra_larger"
-                        android:layout_marginTop="@dimen/padding_medium"
-                        android:padding="@dimen/padding_medium"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/text_size_medium"
-                        app:layout_constraintBottom_toBottomOf="@+id/theta_label"
-                        app:layout_constraintStart_toEndOf="@+id/theta_label"
-                        app:layout_constraintTop_toTopOf="@+id/theta_label"
-                        app:layout_constraintVertical_bias="1.0" />
-                </android.support.constraint.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/high_alpha_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/padding_medium"
+                            android:layout_marginLeft="@dimen/padding_medium"
+                            android:layout_marginTop="@dimen/padding_medium"
+                            android:layout_marginBottom="@dimen/padding_medium"
+                            android:padding="@dimen/padding_medium"
+                            android:text="@string/anger_label"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/text_size_large"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/view_width_or_height"
-                    android:background="@android:color/darker_gray" />
+                        <TextView
+                            android:id="@+id/high_alpha_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_large"
+                            android:layout_marginLeft="@dimen/margin_large"
+                            android:layout_marginTop="@dimen/padding_medium"
+                            android:padding="@dimen/padding_medium"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/text_size_medium"
+                            app:layout_constraintBottom_toBottomOf="@+id/high_alpha_label"
+                            app:layout_constraintStart_toEndOf="@+id/high_alpha_label"
+                            app:layout_constraintTop_toTopOf="@+id/high_alpha_label"
+                            app:layout_constraintVertical_bias="1.0" />
+                    </android.support.constraint.ConstraintLayout>
 
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/low_alpha_parent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/padding_medium">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/view_width_or_height"
+                        android:background="@android:color/darker_gray" />
 
-                    <ImageView
-                        android:id="@+id/calm_emoji"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/padding_medium"
-                        android:layout_marginEnd="@dimen/padding_large"
-                        android:layout_marginRight="@dimen/padding_large"
-                        android:layout_marginTop="@dimen/padding_medium"
-                        app:layout_constraintBottom_toBottomOf="@+id/low_alpha_value"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/low_alpha_value"
-                        app:layout_constraintVertical_bias="0.8"
-                        android:visibility="invisible"
-                        app:srcCompat="@drawable/ic_happy" />
+                </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/low_alpha_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/padding_medium"
-                        android:layout_marginLeft="@dimen/padding_medium"
-                        android:layout_marginStart="@dimen/padding_medium"
-                        android:layout_marginTop="@dimen/padding_medium"
-                        android:padding="@dimen/padding_medium"
-                        android:text="@string/calmness_label"
-                        android:textSize="@dimen/text_size_large"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/black"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/low_alpha_value"
-                        android:layout_width="@dimen/spacing_none"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/padding_extra_large"
-                        android:layout_marginStart="@dimen/padding_extra_large"
-                        android:layout_marginTop="@dimen/padding_medium"
-                        android:padding="@dimen/padding_medium"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/text_size_medium"
-                        app:layout_constraintBottom_toBottomOf="@+id/low_alpha_label"
-                        app:layout_constraintStart_toEndOf="@+id/low_alpha_label"
-                        app:layout_constraintTop_toTopOf="@+id/low_alpha_label"
-                        app:layout_constraintVertical_bias="1.0" />
-                </android.support.constraint.ConstraintLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/view_width_or_height"
-                    android:background="@android:color/darker_gray" />
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/high_alpha_parent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/padding_medium">
-
-                    <ImageView
-                        android:id="@+id/anger_emoji"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/padding_medium"
-                        android:layout_marginEnd="@dimen/padding_large"
-                        android:layout_marginRight="@dimen/padding_large"
-                        android:layout_marginTop="@dimen/padding_medium"
-                        app:layout_constraintBottom_toBottomOf="@+id/high_alpha_value"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/high_alpha_value"
-                        app:layout_constraintVertical_bias="0.8"
-                        android:visibility="invisible"
-                        app:srcCompat="@drawable/ic_happy" />
-
-                    <TextView
-                        android:id="@+id/high_alpha_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/padding_medium"
-                        android:layout_marginLeft="@dimen/padding_medium"
-                        android:layout_marginStart="@dimen/padding_medium"
-                        android:layout_marginTop="@dimen/padding_medium"
-                        android:padding="@dimen/padding_medium"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/black"
-                        android:text="@string/anger_label"
-                        android:textSize="@dimen/text_size_large"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/high_alpha_value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_large"
-                        android:layout_marginStart="@dimen/margin_large"
-                        android:layout_marginTop="@dimen/padding_medium"
-                        android:padding="@dimen/padding_medium"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/text_size_medium"
-                        app:layout_constraintBottom_toBottomOf="@+id/high_alpha_label"
-                        app:layout_constraintStart_toEndOf="@+id/high_alpha_label"
-                        app:layout_constraintTop_toTopOf="@+id/high_alpha_label"
-                        app:layout_constraintVertical_bias="1.0" />
-                </android.support.constraint.ConstraintLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/view_width_or_height"
-                    android:background="@android:color/darker_gray" />
-
-            </LinearLayout>
+            </android.support.v7.widget.CardView>
 
         </android.support.v7.widget.CardView>
-
-    </android.support.v7.widget.CardView>
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
