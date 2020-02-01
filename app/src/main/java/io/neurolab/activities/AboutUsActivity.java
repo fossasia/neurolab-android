@@ -41,6 +41,7 @@ public class AboutUsActivity extends AppCompatActivity {
     private Element addDevelopers() {
         Element developersElement = new Element();
         developersElement.setTitle(getString(R.string.developers));
+        developersElement.setIconDrawable(R.drawable.round_supervised_user_circle_24);
         developersElement.setOnClickListener(v -> {
             String url = getString(R.string.github_developers_link);
             if (!url.startsWith("http://") && !url.startsWith("https://")) {
