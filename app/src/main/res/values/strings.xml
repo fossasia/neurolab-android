@@ -63,6 +63,11 @@ Our brains communicate through neurotransmitters and their activity emits electr
 Current devices in the medical industry are usually not accessible by doctors due to their high pricing. They are also complicated to use. The idea of the device is to integrate it into a headband and focus on signals that can be obtained through the frontal lobe.
 
 A difference to existing projects like OpenBCI is that it will not be necessary to 3D print large headsets. Instead we are focusing on creating a device that collects as much data as possible through the forehead. To achieve this goal we are using high-grade sensors and flexible electronics.</string>
+    <string name="app_version">Version 1.0.0</string>
+    <string name="report_bug">Report Bug</string>
+    <string name="app_license">License</string>
+    <string name="bug_report">https://github.com/fossasia/neurolab-android/issues/new/choose</string>
+    <string name="license_link">https://github.com/fossasia/neurolab-android/blob/development/LICENSE</string>
     <string name="device_is_not_connected">NeuroLab Device not found</string>
     <string name="set_up">Set up</string>
     <string name="connect_with_us">Connect With Us</string>
