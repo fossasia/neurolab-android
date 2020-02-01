@@ -1,75 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/my_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".fragments.SpectrumFragment">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/memory_graph_background"
-        android:text="@string/freq_label"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/text_size_small" />
+    android:fillViewport="true">
 
     <LinearLayout
+        android:id="@+id/my_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/memory_graph_background"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".fragments.SpectrumFragment">
 
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/frequency_spectrum_chart"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/spectrum_screen_height"
-            android:background="@color/memory_graph_background">
-
-        </com.github.mikephil.charting.charts.LineChart>
+            android:layout_height="wrap_content"
+            android:background="@color/memory_graph_background"
+            android:text="@string/freq_label"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_small" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding_medium"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:background="@color/memory_graph_background"
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="@dimen/card_margin_large"
-                android:layout_height="@dimen/card_margin_large"
-                android:src="@android:color/holo_red_dark" />
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/frequency_spectrum_chart"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spectrum_screen_height"
+                android:background="@color/memory_graph_background">
 
-            <TextView
-                android:layout_width="wrap_content"
+            </com.github.mikephil.charting.charts.LineChart>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/padding_small"
-                android:text="@string/anger_range"
-                android:textSize="@dimen/text_size_small"
-                android:textColor="@android:color/white" />
+                android:layout_margin="@dimen/padding_medium"
+                android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="@dimen/card_margin_large"
+                    android:layout_height="@dimen/card_margin_large"
+                    android:src="@android:color/holo_red_dark" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_small"
+                    android:text="@string/anger_range"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_size_small" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_medium"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/card_margin_large"
+                    android:layout_height="@dimen/card_margin_large"
+                    android:src="@color/calm_green" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_small"
+                    android:text="@string/calm_range"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_size_small" />
+
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding_medium"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="@dimen/card_margin_large"
-                android:layout_height="@dimen/card_margin_large"
-                android:src="@color/calm_green" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/padding_small"
-                android:text="@string/calm_range"
-                android:textSize="@dimen/text_size_small"
-                android:textColor="@android:color/white" />
-
-        </LinearLayout>
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>
