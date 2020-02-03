@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v7.widget.CardView xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="60dp"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/parent_logged_card"
-    android:elevation="@dimen/card_elevation_medium"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
     android:layout_margin="@dimen/padding_medium"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:elevation="@dimen/card_elevation_medium">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -22,6 +21,7 @@
             android:layout_marginLeft="@dimen/padding_large"
             android:layout_marginTop="@dimen/padding_medium"
             android:layout_marginBottom="@dimen/padding_medium"
+            android:foreground="?android:attr/selectableItemBackground"
             android:textColor="@android:color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +36,7 @@
             android:layout_marginBottom="@dimen/padding_medium"
             android:clickable="true"
             android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             android:textColor="@android:color/black"
             app:layout_constraintBottom_toBottomOf="@+id/file_name_view"
             app:layout_constraintEnd_toStartOf="@+id/gen_play_view"
@@ -48,6 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/layout_margin_medium"
+            android:foreground="?android:attr/selectableItemBackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/delete_file_btn"
             app:layout_constraintTop_toTopOf="parent"
@@ -59,17 +61,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/layout_margin_medium"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:tint="@android:color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_play"
-            android:tint="@android:color/black"/>
+            app:srcCompat="@drawable/ic_play" />
 
         <ImageView
             android:id="@+id/mem_graph_play"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/layout_margin_medium"
+            android:foreground="?android:attr/selectableItemBackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/focus_play"
             app:layout_constraintTop_toTopOf="parent"
@@ -80,6 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/layout_margin_medium"
+            android:foreground="?android:attr/selectableItemBackground"
             android:tint="@color/focus_screen_bg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/mem_graph_play"
@@ -88,4 +93,4 @@
             app:srcCompat="@android:drawable/ic_menu_delete" />
     </android.support.constraint.ConstraintLayout>
 
-    </android.support.v7.widget.CardView>
+</android.support.v7.widget.CardView>
