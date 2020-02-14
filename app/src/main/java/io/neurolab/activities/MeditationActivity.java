@@ -58,7 +58,7 @@ public final class MeditationActivity extends AppCompatActivity {
 
             setTrackName(MEDIA_RES_ID);
 
-            durationView.setText(savedInstanceState.getCharSequence("Max"));
+            durationView.setText(savedInstanceState.getCharSequence(KEY_DURATIONVIEW));
 
             mediaPlayerHolder = (MediaPlayerHolder)savedInstanceState.getSerializable(KEY_PLAYER);
             mediaPlayerHolder.setPlaybackInfoListener(new PlaybackListener());
