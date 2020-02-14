@@ -60,11 +60,11 @@ public final class MeditationActivity extends AppCompatActivity {
 
             durationView.setText(savedInstanceState.getCharSequence("Max"));
 
-            mediaPlayerHolder=(MediaPlayerHolder)savedInstanceState.getSerializable(KEY_PLAYER);
+            mediaPlayerHolder = (MediaPlayerHolder)savedInstanceState.getSerializable(KEY_PLAYER);
             mediaPlayerHolder.setPlaybackInfoListener(new PlaybackListener());
             mediaPlayerHolder.initializeProgressCallback();
 
-            playerAdapter=mediaPlayerHolder;
+            playerAdapter = mediaPlayerHolder;
         }
     }
     @Override
