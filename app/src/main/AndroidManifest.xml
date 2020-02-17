@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tag="http://schemas.android.com/apk/distribution"
     package="io.neurolab">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -70,7 +71,9 @@
         <activity
             android:name=".activities.MeditationActivity"
             android:label="@string/meditation_activity_label" />
-        <activity android:name=".activities.MemoryGraphParent" />
+        <activity android:name=".activities.MemoryGraphParent"
+            android:launchMode="singleInstance"
+            />
         <activity
             android:name=".communication.bluetooth.BluetoothTestActivity"
             android:parentActivityName=".main.NeuroLab" />

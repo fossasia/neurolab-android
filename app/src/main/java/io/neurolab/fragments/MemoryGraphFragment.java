@@ -145,6 +145,7 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
                 .setPositiveButton(R.string.focus_test_msg, (dialog, which) -> {
                     Intent intent = new Intent(getContext(), DataLoggerActivity.class);
                     intent.putExtra(ProgramModeActivity.PROGRAM_FLAG_KEY, MemoryGraphParent.MEMORY_GRAPH_FLAG);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
                     startActivity(intent);
                 })
                 .create();
