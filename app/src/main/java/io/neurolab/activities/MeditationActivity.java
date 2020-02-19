@@ -6,6 +6,7 @@ import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -75,13 +76,28 @@ public final class MeditationActivity extends AppCompatActivity {
         progressTimeView = findViewById(R.id.progress_time);
         durationView = findViewById(R.id.duration_view);
         trackNameView = findViewById(R.id.track_name);
+        pauseButton.setVisibility(View.GONE); // The pause button should be invisible initially
 
+        //Handling Play-Pause-Reset buttons according to the player state.
         pauseButton.setOnClickListener(
-                view -> playerAdapter.pause());
+                view -> {
+                    playerAdapter.pause();
+                    pauseButton.setVisibility(View.GONE);
+                    playButton.setVisibility(View.VISIBLE);
+                });
+
         playButton.setOnClickListener(
-                view -> playerAdapter.play());
+                view -> {
+                    playerAdapter.play();
+                    pauseButton.setVisibility(View.VISIBLE);
+                    playButton.setVisibility(View.GONE);
+                });
         resetButton.setOnClickListener(
-                view -> playerAdapter.reset());
+                view -> {
+                    playerAdapter.reset();
+                    playButton.setVisibility(View.VISIBLE);
+                    pauseButton.setVisibility(View.INVISIBLE);
+                });
 
         setSeekbarListener();
     }
