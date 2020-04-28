@@ -80,6 +80,7 @@ This repository holds the Android app for the Neurolab Hardware. We are developi
   <tr>
   <td>
   <img src="/docs/images/nav_menu.jpeg" align="top">
+
   
   Navigation drawer - Navigate to different app screens.
   </td>
