@@ -17,6 +17,7 @@ public class MemoryGraphParent extends AppCompatActivity {
 
     private String filePath;
     public static final String MEMORY_GRAPH_FLAG = "Memory";
+    private static Fragment defaultProgram = MemoryGraphFragment.newInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +50,11 @@ public class MemoryGraphParent extends AppCompatActivity {
             selectedFragment.setArguments(bundle);
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.frame_layout, selectedFragment);
+            defaultProgram = selectedFragment;
             transaction.commit();
             return true;
         });
-
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        Fragment defaultProgram = MemoryGraphFragment.newInstance();
         defaultProgram.setArguments(bundle);
         transaction.replace(R.id.frame_layout, defaultProgram);
         transaction.commit();
@@ -70,6 +70,7 @@ public class MemoryGraphParent extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         StatisticsFragment.parsedData = null;
+        defaultProgram = MemoryGraphFragment.newInstance();
     }
 
     public void setActionBarTitle(String title) {
