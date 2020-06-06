@@ -96,7 +96,7 @@ public final class MeditationActivity extends AppCompatActivity {
                 view -> {
                     playerAdapter.reset();
                     playButton.setVisibility(View.VISIBLE);
-                    pauseButton.setVisibility(View.INVISIBLE);
+                    pauseButton.setVisibility(View.GONE);
                 });
 
         setSeekbarListener();
