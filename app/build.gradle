@@ -63,7 +63,7 @@ dependencies {
     implementation "com.github.felHR85:UsbSerial:$rootProject.usbSerialLibraryVersion"
     implementation "com.github.AppIntro:AppIntro:$rootProject.appIntroLibraryVersion"
     implementation "org.jfree:jfreechart:$rootProject.jfreechartLibraryVersion"
-    implementation 'com.google.android.play:core:1.6.4'
+    implementation 'com.google.android.play:core:1.8.0'
     implementation "com.opencsv:opencsv:$rootProject.opencsvLibraryVersion", {
         exclude group: "commons-logging", module: "commons-logging"
     }
