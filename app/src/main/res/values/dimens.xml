@@ -110,7 +110,7 @@
     <dimen name="meditate_avatar_size">40dp</dimen>
     <dimen name="card_main_margin_lr">10dp</dimen>
     <dimen name="card_main_margin_tb">5dp</dimen>
-    <dimen name="card_main_layout_padding">16dp</dimen>
+    <dimen name="card_main_layout_padding">10dp</dimen>
     <dimen name="image_main_layout_margin">8dp</dimen>
     <dimen name="main_content_padding_textview">12dp</dimen>
 
