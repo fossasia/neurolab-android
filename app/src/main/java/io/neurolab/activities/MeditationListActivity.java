@@ -20,7 +20,7 @@ public class MeditationListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meditation_list);
-        setTitle("Meditations");
+        setTitle(getString(R.string.meditations));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ArrayList<Field> resFields;
         ArrayList<Field> finalList;

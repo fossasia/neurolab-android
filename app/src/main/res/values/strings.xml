@@ -183,4 +183,5 @@ A difference to existing projects like OpenBCI is that it will not be necessary 
     <string name="enable">Enable</string>
     <string name="received_data_display">received data display</string>
     <string name="send">Send</string>
+    <string name="meditations">Meditations</string>
 </resources>
