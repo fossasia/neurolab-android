@@ -127,7 +127,7 @@ Please check out the in-development features of the app like the Meditation mode
 *   [Preference Fix Library](https://github.com/Gericop/Android-Support-Preference-V7-Fix)
 *   [JSyn Library](http://www.softsynth.com/jsyn/beta/jsyn_on_android.php)
 *   [Android About Page](https://github.com/medyo/android-about-page)
-*   [Open Sound Control library](https://github.com/medyo/android-about-page)
+*   [Open Sound Control library](https://mvnrepository.com/artifact/com.illposed.osc/javaosc-core)
 *   [Java Simple Serial Connector](https://mvnrepository.com/artifact/org.scream3r/jssc/2.8.0)
 *   [JTransforms](https://mvnrepository.com/artifact/net.sourceforge.jtransforms/jtransforms/2.4.0)
 *   [Java Open GL](https://mvnrepository.com/artifact/org.jogamp.jogl/jogl-all-main/2.3.2)
