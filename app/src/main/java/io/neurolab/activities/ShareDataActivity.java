@@ -1,6 +1,7 @@
 package io.neurolab.activities;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.support.v4.content.FileProvider;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseBooleanArray;
 import android.view.View;
@@ -65,59 +67,81 @@ public class ShareDataActivity extends AppCompatActivity {
         File appDir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator +
                 CSV_DIRECTORY);
         File[] files = appDir.listFiles();
-        fileList = new String[files.length];
-        newFileName = new String[files.length];
+        if (files.length==0) {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setTitle("Error!");
+            builder1.setMessage("Files not found");
+            builder1.setCancelable(true);
 
-        if (appDir.listFiles() != null && files.length > 0) {
-            int j = 0;
-            for (int i = 0; i < files.length; i++) {
-                fileList[j] = files[i].getAbsolutePath();
-                newFileName[i] = files[i].getName();
-                j++;
+            builder1.setPositiveButton(
+                    "Ok",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+
+
+        } else {
+            fileList = new String[files.length];
+            newFileName = new String[files.length];
+
+            if (appDir.listFiles() != null && files.length > 0) {
+                int j = 0;
+                for (int i = 0; i < files.length; i++) {
+                    fileList[j] = files[i].getAbsolutePath();
+                    newFileName[i] = files[i].getName();
+                    j++;
+                }
+                numberOfFiles.setVisibility(View.INVISIBLE);
+                Toast.makeText(this, R.string.share_screen_toast, Toast.LENGTH_SHORT).show();
             }
-            numberOfFiles.setVisibility(View.INVISIBLE);
-            Toast.makeText(this, R.string.share_screen_toast, Toast.LENGTH_SHORT).show();
+
+            if (appDir.listFiles().length == 0) {
+                numberOfFiles.setVisibility(View.VISIBLE);
+                numberOfFiles.setText(R.string.no_datasets_message);
+                shareButton.setVisibility(View.INVISIBLE);
+            }
+
+            final List<String> file_list = new ArrayList<String>(Arrays.asList(newFileName));
+            final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
+                    (this, android.R.layout.simple_list_item_multiple_choice, file_list);
+            fileListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+            fileListView.setItemsCanFocus(false);
+            fileListView.setAdapter(arrayAdapter);
+
+            fileListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                                    @Override
+                                                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long rowId) {
+
+                                                        sparseBooleanArray = fileListView.getCheckedItemPositions();
+                                                        File requestFile = new File(fileList[position]);
+
+                                                        try {
+                                                            fileUri = FileProvider.getUriForFile(ShareDataActivity.this, "io.neurolab.fileprovider", requestFile);
+                                                        } catch (IllegalArgumentException e) {
+                                                            e.printStackTrace();
+                                                        }
+
+                                                        for (int i = 0; i < fileListView.getCount(); i++) {
+                                                            if (sparseBooleanArray.get(i)) {
+                                                                selectedFiles.add(files[i]);
+                                                            } else if (!sparseBooleanArray.get(i)) {
+                                                                selectedFiles.remove(files[i]);
+                                                            }
+                                                        }
+                                                        updateSelectedFiles(selectedFiles);
+                                                        setPermission();
+                                                    }
+                                                }
+            );
         }
-
-        if (appDir.listFiles().length == 0) {
-            numberOfFiles.setVisibility(View.VISIBLE);
-            numberOfFiles.setText(R.string.no_datasets_message);
-            shareButton.setVisibility(View.INVISIBLE);
-        }
-
-        final List<String> file_list = new ArrayList<String>(Arrays.asList(newFileName));
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
-                (this, android.R.layout.simple_list_item_multiple_choice, file_list);
-        fileListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        fileListView.setItemsCanFocus(false);
-        fileListView.setAdapter(arrayAdapter);
-
-        fileListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> adapterView, View view, int position, long rowId) {
-
-           sparseBooleanArray = fileListView.getCheckedItemPositions();
-           File requestFile = new File(fileList[position]);
-
-           try {
-               fileUri = FileProvider.getUriForFile(ShareDataActivity.this, "io.neurolab.fileprovider", requestFile);
-           } catch (IllegalArgumentException e) {
-               e.printStackTrace();
-           }
-
-           for (int i = 0; i < fileListView.getCount(); i++) {
-               if (sparseBooleanArray.get(i)) {
-                   selectedFiles.add(files[i]);
-               } else if (!sparseBooleanArray.get(i)) {
-                   selectedFiles.remove(files[i]);
-               }
-           }
-          updateSelectedFiles(selectedFiles);
-          setPermission();
-         }
-       }
-     );
-   }
+    }
 
     private void setPermission() {
           List<ResolveInfo> resInfoList = getApplicationContext().getPackageManager().queryIntentActivities(resultIntent, PackageManager.MATCH_DEFAULT_ONLY);
