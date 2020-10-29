@@ -58,6 +58,6 @@ ext {
     mpandroidchartLibraryVersion = '3.1.0'
     usbSerialLibraryVersion = '6.1.0'
     appIntroLibraryVersion = '4.2.3'
-    jfreechartLibraryVersion = '1.0.14'
+    jfreechartLibraryVersion = '1.5.1'
     opencsvLibraryVersion = '5.0'
 }
