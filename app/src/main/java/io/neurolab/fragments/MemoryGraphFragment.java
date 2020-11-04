@@ -364,17 +364,18 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
      * @param isPlaying
      */
     private void toggleMenuItem(Menu menu, boolean isPlaying) {
-        if(check_for_stopped_graph=true && count_for_first_execution==1)
-            isPlaying=false;
         MenuItem play = menu.findItem(R.id.play_graph);
         MenuItem stop = menu.findItem(R.id.stop_data);
-
+        boolean var;
+        if(check_for_stopped_graph && count_for_first_execution==1)
+            var=false;
+        else var=isPlaying;
         if (getArguments().getString(LOG_FILE_KEY) == null) {
             play.setVisible(false);
             stop.setVisible(false);
         } else {
-            play.setVisible(!isPlaying);
-            stop.setVisible(isPlaying);
+            play.setVisible(!var);
+            stop.setVisible(var);
         }
     }
 
@@ -544,7 +545,7 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
             StatisticsFragment.parsedData = parsedData = strings;
             progressDialog.dismiss();
             plotGraph();
-            if(check_for_stopped_graph==true){
+            if(check_for_stopped_graph){
                 parsedData=null;
                 toggleMenuItem(globalMenu,false);
             }
