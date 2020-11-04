@@ -58,7 +58,8 @@ import static android.app.Activity.RESULT_OK;
 import static io.neurolab.utilities.FilePathUtil.LOG_FILE_KEY;
 
 public class MemoryGraphFragment extends Fragment implements OnChartValueSelectedListener {
-
+    private boolean check_for_stopped_graph=false;
+    private int count_for_first_execution=0;
     private LineChart memGraph;
     private View view;
     private Thread thread;
@@ -363,6 +364,8 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
      * @param isPlaying
      */
     private void toggleMenuItem(Menu menu, boolean isPlaying) {
+        if(check_for_stopped_graph=true && count_for_first_execution==1)
+            isPlaying=false;
         MenuItem play = menu.findItem(R.id.play_graph);
         MenuItem stop = menu.findItem(R.id.stop_data);
 
@@ -441,11 +444,12 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
             infoDialog.show();
 
         } else if (id == R.id.stop_data) {
-            parsedData = null;
+            parsedData = null;check_for_stopped_graph=true;count_for_first_execution=1;
             Toast.makeText(getContext(), "Stopped", Toast.LENGTH_SHORT).show();
             isPlaying = true;
             toggleMenuItem(globalMenu, !isPlaying);
         } else if (id == R.id.play_graph && (parsedData == null && StatisticsFragment.parsedData != null)) {
+            check_for_stopped_graph=false;count_for_first_execution=0;
             parsedData = StatisticsFragment.parsedData;
             plotGraph();
             toggleMenuItem(globalMenu, isPlaying);
@@ -540,6 +544,10 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
             StatisticsFragment.parsedData = parsedData = strings;
             progressDialog.dismiss();
             plotGraph();
+            if(check_for_stopped_graph==true){
+                parsedData=null;
+                toggleMenuItem(globalMenu,false);
+            }
         }
     }
 }
