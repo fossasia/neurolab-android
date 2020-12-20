@@ -25,7 +25,6 @@ public class MeditationCardAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     List<MeditationCardData> mdata;
     Context mcxt;
-    private boolean setheadersdata_flag;
 
     public MeditationCardAdapter(Context cxt, List<MeditationCardData> data){
         this.mcxt=cxt;
@@ -53,7 +52,7 @@ public class MeditationCardAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
 
         if (holder instanceof HeaderViewHolder){
-            setheadersdata_flag = true;
+
             HeaderViewHolder headerViewHolder = (HeaderViewHolder) holder;
 
             // You have to set your header items values with the help of model class and you can modify as per your needs
@@ -68,12 +67,9 @@ public class MeditationCardAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             itemViewHolder.mic.setImageResource(mdata.get(position-1).getIcon());
             itemViewHolder.mtext1.setText(mdata.get(position-1).getHead());
             itemViewHolder.mtext2.setText(mdata.get(position-1).getDesc());
-            itemViewHolder.mcardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(mcxt , MeditationListActivity.class);
-                    mcxt.startActivity(intent);
-                }
+            itemViewHolder.mcardView.setOnClickListener(v -> {
+                Intent intent = new Intent(mcxt , MeditationListActivity.class);
+                mcxt.startActivity(intent);
             });
 
         }
@@ -98,7 +94,7 @@ public class MeditationCardAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
 
-    private class HeaderViewHolder extends RecyclerView.ViewHolder {
+    private static class HeaderViewHolder extends RecyclerView.ViewHolder {
         ImageView mimage;
 
         public HeaderViewHolder(View view) {
@@ -108,7 +104,7 @@ public class MeditationCardAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         }
     }
 
-    public class viewHolder extends RecyclerView.ViewHolder{
+    public static class viewHolder extends RecyclerView.ViewHolder{
 
         ImageView mic;
         TextView mtext1;

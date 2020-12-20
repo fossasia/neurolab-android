@@ -2,9 +2,9 @@ package io.neurolab.model;
 
 public class MeditationCardData {
 
-    private int mIcon;
-    private String mHead;
-    private String mDesc;
+    private final int mIcon;
+    private final String mHead;
+    private final String mDesc;
 
     public MeditationCardData(int icon, String head, String desc) {
         mIcon = icon;
