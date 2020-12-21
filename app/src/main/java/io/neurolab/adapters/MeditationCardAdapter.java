@@ -23,8 +23,8 @@ public class MeditationCardAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private static final int TYPE_ITEM = 1;
 
 
-    List<MeditationCardData> mdata;
-    Context mcxt;
+    private List<MeditationCardData> mdata;
+    private Context mcxt;
 
     public MeditationCardAdapter(Context cxt, List<MeditationCardData> data){
         this.mcxt=cxt;
@@ -35,12 +35,12 @@ public class MeditationCardAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == TYPE_ITEM) {
-            // Here Inflating your recyclerview item layout
+            // Here Inflating recyclerview item layout
             View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_meditation_cardlist_item, parent, false);
-            return new viewHolder(itemView);
+            return new ItemViewHolder(itemView);
         }
         else if (viewType == TYPE_HEADER) {
-            // Here Inflating your header view
+            // Here Inflating header view
             View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_meditation_header_image, parent, false);
             return new HeaderViewHolder(itemView);
         }
@@ -60,9 +60,9 @@ public class MeditationCardAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             headerViewHolder.mimage.setImageResource(R.drawable.meditation_bg);
 
         }
-        else if (holder instanceof viewHolder){
+        else if (holder instanceof ItemViewHolder){
 
-            final viewHolder itemViewHolder = (viewHolder) holder;
+            final ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
 
             itemViewHolder.mic.setImageResource(mdata.get(position-1).getIcon());
             itemViewHolder.mtext1.setText(mdata.get(position-1).getHead());
@@ -95,7 +95,7 @@ public class MeditationCardAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
 
     private static class HeaderViewHolder extends RecyclerView.ViewHolder {
-        ImageView mimage;
+        private ImageView mimage;
 
         public HeaderViewHolder(View view) {
             super(view);
@@ -104,14 +104,14 @@ public class MeditationCardAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         }
     }
 
-    public static class viewHolder extends RecyclerView.ViewHolder{
+    public static class ItemViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView mic;
-        TextView mtext1;
-        TextView mtext2;
-        CardView mcardView;
+        private ImageView mic;
+        private TextView mtext1;
+        private TextView mtext2;
+        private CardView mcardView;
 
-        public viewHolder(@NonNull View itemView) {
+        public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mic=(ImageView) itemView.findViewById(R.id.icon2_0);
