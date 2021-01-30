@@ -38,16 +38,16 @@ ext {
 
     // App Dependencies
     supportLibraryVersion = '28.0.0'
-    constraintLayoutVersion = '2.0.1'
+    constraintLayoutVersion = '2.0.4'
     prefFixLibraryVersion = '28.0.0.0'
 
     // Test Dependencies
     testRunnerRulesVersion = '1.0.2'
-    junitVersion = '4.13'
+    junitVersion = '4.13.1'
     espressoVersion = '3.0.2'
 
     // External Libraries
-    gsonLibraryVersion = '2.8.5'
+    gsonLibraryVersion = '2.8.6'
     aboutPageLibraryVersion = '1.2.5'
     jsynLibraryVersion = '16.8.0a'
     javaOscLibraryVersion = '0.3'
