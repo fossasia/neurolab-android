@@ -60,4 +60,4 @@ ext {
     appIntroLibraryVersion = '4.2.3'
     jfreechartLibraryVersion = '1.0.14'
     opencsvLibraryVersion = '5.0'
-}  
+}
