@@ -455,6 +455,7 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
             Intent intent = new Intent(getContext(), DataLoggerActivity.class);
             intent.putExtra(ProgramModeActivity.PROGRAM_FLAG_KEY, MemoryGraphParent.MEMORY_GRAPH_FLAG);
             startActivity(intent);
+            getActivity().finish();
         } else if (id == R.id.save_graph_data) {
             recordData();
         } else if (id == R.id.stop_graph_data) {
