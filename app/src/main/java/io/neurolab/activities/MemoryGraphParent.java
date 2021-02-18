@@ -1,5 +1,6 @@
 package io.neurolab.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import static io.neurolab.utilities.FilePathUtil.LOG_FILE_KEY;
 public class MemoryGraphParent extends AppCompatActivity {
 
     private String filePath;
+    private boolean DATA_LOGGER_MODE = false;
     public static final String MEMORY_GRAPH_FLAG = "Memory";
 
     @Override
@@ -27,6 +29,7 @@ public class MemoryGraphParent extends AppCompatActivity {
 
         if (getIntent().getExtras() != null) {
             filePath = getIntent().getStringExtra(LOG_FILE_KEY);
+            DATA_LOGGER_MODE = getIntent().getBooleanExtra(ProgramModeActivity.FROM_DATA_LOGGER, false);
         }
         Bundle bundle = new Bundle();
         bundle.putString(LOG_FILE_KEY, filePath);
@@ -70,6 +73,9 @@ public class MemoryGraphParent extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         StatisticsFragment.parsedData = null;
+        if (DATA_LOGGER_MODE) {
+            startActivity(new Intent(this, DataLoggerActivity.class));
+        }
     }
 
     public void setActionBarTitle(String title) {

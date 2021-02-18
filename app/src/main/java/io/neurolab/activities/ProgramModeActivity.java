@@ -19,6 +19,9 @@ public class ProgramModeActivity extends AppCompatActivity {
     public static final int RELAX_PROGRAM_MODE = 2;
     public static final int MEMORY_GRAPH_MODE = 3;
 
+    public static final String FROM_DATA_LOGGER = "FROM_DATA_LOGGER";
+    private boolean DATA_LOGGER_MODE = false;
+
     public static final String INTENT_KEY_PROGRAM_MODE = "MODE";
     public static final String SETTING_SIMULATION = "SETTING_SIMULATION";
     public static final String SETTING_LOAD_RESOURCES_FROM_PHN = "SETTING_LOAD_RESOURCES_FROM_PHN";
@@ -46,6 +49,9 @@ public class ProgramModeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         String modeFlag = bundle.getString(INTENT_KEY_PROGRAM_MODE);
+        if (bundle.getBoolean(FROM_DATA_LOGGER)) {
+            DATA_LOGGER_MODE = true;
+        }
         if (modeFlag.equals(FocusVisualFragment.FOCUS_FLAG))
             mode = FOCUS_PROGRAM_MODE;
         else if (modeFlag.equals(MemoryGraphParent.MEMORY_GRAPH_FLAG))
@@ -80,6 +86,7 @@ public class ProgramModeActivity extends AppCompatActivity {
                 setTitle(R.string.mem_graph);
                 Intent memIntent = new Intent(this, MemoryGraphParent.class);
                 memIntent.putExtra(LOG_FILE_KEY, bundle.getString(LOG_FILE_KEY));
+                memIntent.putExtra(FROM_DATA_LOGGER, DATA_LOGGER_MODE);
                 startActivity(memIntent);
                 finish();
                 break;
@@ -102,12 +109,16 @@ public class ProgramModeActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (mode == FOCUS_PROGRAM_MODE)
-            startActivity(new Intent(this, FocusParentActivity.class));
-        else if (mode == RELAX_PROGRAM_MODE)
-            startActivity(new Intent(this, RelaxParentActivity.class));
-        else
-            startActivity(new Intent(this, NeuroLab.class));
-        finish();
+        if (!DATA_LOGGER_MODE) {
+            if (mode == FOCUS_PROGRAM_MODE)
+                startActivity(new Intent(this, FocusParentActivity.class));
+            else if (mode == RELAX_PROGRAM_MODE)
+                startActivity(new Intent(this, RelaxParentActivity.class));
+            else
+                startActivity(new Intent(this, NeuroLab.class));
+            finish();
+        } else {
+            startActivity(new Intent(this, DataLoggerActivity.class));
+        }
     }
 }
