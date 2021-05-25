@@ -47,7 +47,7 @@ ext {
     espressoVersion = '3.0.2'
 
     // External Libraries
-    gsonLibraryVersion = '2.8.5'
+    gsonLibraryVersion = '2.8.7'
     aboutPageLibraryVersion = '1.2.5'
     jsynLibraryVersion = '16.8.0a'
     javaOscLibraryVersion = '0.3'
