@@ -320,35 +320,18 @@ public  int themetype=0;
             intent.putExtra("layout", false);
             startActivity(intent);
         } else if (id == R.id.theme_change) {
-            //int nightModeFlags =
-                    /*getApplicationContext().getResources().getConfiguration().uiMode &
-                            Configuration.UI_MODE_NIGHT_MASK;
-            switch (nightModeFlags) {
-                case Configuration.UI_MODE_NIGHT_YES:
-                   setTheme(R.style.AppTheme_Dark);
-                    break;
-
-                case Configuration.UI_MODE_NIGHT_NO:
-                   setTheme(R.style.AppTheme_Dark);
-                    break;
-
-                case Configuration.UI_MODE_NIGHT_UNDEFINED:
-                    setTheme(R.style.AppTheme_Dark);
-                    break;*/
-
+            if(themetype==0) {
+                AppCompatDelegate.setDefaultNightMode(
+                        AppCompatDelegate.MODE_NIGHT_YES);
+                themetype=1;
             }
+            else{
+                AppCompatDelegate.setDefaultNightMode(
+                        AppCompatDelegate.MODE_NIGHT_NO);
+                themetype=0;
+            }
+        }
 
-        //}
-        if(themetype==0) {
-            AppCompatDelegate.setDefaultNightMode(
-                    AppCompatDelegate.MODE_NIGHT_YES);
-            themetype=1;
-        }
-        else{
-            AppCompatDelegate.setDefaultNightMode(
-                    AppCompatDelegate.MODE_NIGHT_NO);
-            themetype=0;
-        }
         return super.onOptionsItemSelected(item);
     }
 
