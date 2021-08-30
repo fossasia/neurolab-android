@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/theme_change"
+        android:icon="@drawable/ic_baseline_brightness_2_24"
+        android:orderInCategory="100"
+        android:title=""
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/device_icon"
         android:icon="@drawable/ic_disconnected"
         android:orderInCategory="100"

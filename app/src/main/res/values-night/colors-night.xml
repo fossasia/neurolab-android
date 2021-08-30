@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#7367ee</color>
+    <color name="colorPrimaryDark">#6c60a9</color>
+    <color name="colorAccent">#26a69a</color>
+    <color name="colorControlHighlight">#191818</color>
+    <color name="launcher_btn_txt_clr">#0E0E0E</color>
+    <color name="color_view_background">#dad</color>
+    <color name="color_white_background">#121111</color>
+    <color name="home_activity_background">#F2F2F2</color>
+    <color name="on_boarding_activity_indicator_on">#FFFFFF</color>
+    <color name="on_boarding_activity_indicator_off">#FFFFFF</color>
+    <color name="on_boarding_activity_bg_color">#ffffff</color>
+    <color name="seperator_color">#FFFFFF</color>
+    <color name="yantra_one_color">#FFF852</color>
+    <color name="yantra_two_color">#6DFBFB</color>
+    <color name="divider_color">#E0E0E0</color>
+    <color name="calm_green">#76FF03</color>
+    <color name="focus_screen_bg">#FFFCFC</color>
+    <color name="side_nav_start_color">#6c60a9</color>
+    <color name="side_nav_end_color">#7367ee</color>
+    <color name="white_trans">#99FFFFFF</color>
+    <color name="memory_graph_background">#673AB7</color>
+    <color name="ic_launcher_background">#FFFFFF</color>
+</resources>

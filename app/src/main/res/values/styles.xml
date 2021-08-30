@@ -1,15 +1,17 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorControlHighlight">@color/colorControlHighlight</item>
+        <item name="colorControlHighlight">@color/focus_screen_bg</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
         <item name="android:fontFamily">@font/montserrat</item>
     </style>
+
+
 
     <style name="EditTextPrefTheme" parent="@style/PreferenceFixTheme.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>

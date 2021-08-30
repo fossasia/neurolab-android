@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/layout_margin_medium"
         android:text="@string/relax_program_info"
-        android:textColor="@android:color/black" />
+        />
 
     <TextView
         android:layout_width="match_parent"
@@ -48,7 +48,7 @@
         android:textSize="@dimen/text_size_larger"
         android:textStyle="bold" />
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/layout_margin_medium"
@@ -80,7 +80,7 @@
                 android:layout_weight="1"
                 android:text="@string/relax_illusion_one_info" />
 
-            <android.support.design.widget.FloatingActionButton
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/play_relax_illusion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -93,6 +93,6 @@
                 app:pressedTranslationZ="@dimen/view_width_or_height" />
 
         </LinearLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
