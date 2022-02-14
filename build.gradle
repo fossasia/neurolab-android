@@ -50,7 +50,7 @@ ext {
     gsonLibraryVersion = '2.8.7'
     aboutPageLibraryVersion = '1.2.5'
     jsynLibraryVersion = '16.8.0a'
-    javaOscLibraryVersion = '0.3'
+    javaOscLibraryVersion = '0.8'
     jsscLibraryVersion = '2.8.0'
     jtransformsLibraryVersion = '2.4.0'
     joglLibraryVersion = '2.3.2'
