@@ -65,10 +65,10 @@ public class ShareDataActivity extends AppCompatActivity {
         File appDir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator +
                 CSV_DIRECTORY);
         File[] files = appDir.listFiles();
-        fileList = new String[files.length];
-        newFileName = new String[files.length];
 
         if (appDir.listFiles() != null && files.length > 0) {
+            fileList = new String[files.length];
+            newFileName = new String[files.length];
             int j = 0;
             for (int i = 0; i < files.length; i++) {
                 fileList[j] = files[i].getAbsolutePath();
@@ -79,18 +79,20 @@ public class ShareDataActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.share_screen_toast, Toast.LENGTH_SHORT).show();
         }
 
-        if (appDir.listFiles().length == 0) {
+        if (appDir.listFiles() == null) {
             numberOfFiles.setVisibility(View.VISIBLE);
             numberOfFiles.setText(R.string.no_datasets_message);
             shareButton.setVisibility(View.INVISIBLE);
         }
 
-        final List<String> file_list = new ArrayList<String>(Arrays.asList(newFileName));
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
-                (this, android.R.layout.simple_list_item_multiple_choice, file_list);
-        fileListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        fileListView.setItemsCanFocus(false);
-        fileListView.setAdapter(arrayAdapter);
+        if (newFileName != null) {
+            final List<String> file_list = new ArrayList<String>(Arrays.asList(newFileName));
+            final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
+                    (this, android.R.layout.simple_list_item_multiple_choice, file_list);
+            fileListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+            fileListView.setItemsCanFocus(false);
+            fileListView.setAdapter(arrayAdapter);
+        }
 
         fileListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
         @Override
