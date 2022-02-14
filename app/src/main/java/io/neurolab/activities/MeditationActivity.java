@@ -3,7 +3,7 @@ package io.neurolab.activities;
 import android.annotation.TargetApi;
 import android.os.Bundle;
 import android.support.v4.media.session.PlaybackStateCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;

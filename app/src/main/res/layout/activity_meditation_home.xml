@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/happy_card"
                 android:layout_width="@dimen/spacing_none"
                 android:layout_height="@dimen/bin_image_margin_top"
@@ -81,9 +81,9 @@
                     </LinearLayout>
 
                 </RelativeLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/depression_card"
                 android:layout_width="@dimen/spacing_none"
                 android:layout_height="@dimen/bin_image_margin_top"
@@ -134,7 +134,7 @@
 
                 </RelativeLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
 
         <LinearLayout
@@ -142,7 +142,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/sleep_card"
                 android:layout_width="@dimen/spacing_none"
                 android:layout_height="@dimen/bin_image_margin_top"
@@ -194,9 +194,9 @@
 
                 </RelativeLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/travel_card"
                 android:layout_width="@dimen/spacing_none"
                 android:layout_height="@dimen/bin_image_margin_top"
@@ -247,7 +247,7 @@
 
                 </RelativeLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
 
         <LinearLayout
@@ -255,7 +255,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/sh_break_card"
                 android:layout_width="@dimen/spacing_none"
                 android:layout_height="@dimen/layout_margin_huge"
@@ -307,9 +307,9 @@
                     </LinearLayout>
 
                 </RelativeLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/lg_break_card"
                 android:layout_width="@dimen/spacing_none"
                 android:layout_height="@dimen/layout_margin_huge"
@@ -361,7 +361,7 @@
 
                 </RelativeLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
 
     </LinearLayout>

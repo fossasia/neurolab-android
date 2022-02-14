@@ -14,10 +14,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.app.AlertDialog;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -27,6 +27,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
@@ -52,7 +54,7 @@ import io.neurolab.utilities.PermissionUtils;
 import static android.app.Activity.RESULT_OK;
 import static io.neurolab.utilities.FilePathUtil.LOG_FILE_KEY;
 
-public class FocusVisualFragment extends android.support.v4.app.Fragment {
+public class FocusVisualFragment extends Fragment {
 
     private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT = 1;
     private boolean permission = false;

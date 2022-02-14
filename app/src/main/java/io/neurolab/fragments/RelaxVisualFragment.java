@@ -2,15 +2,17 @@ package io.neurolab.fragments;
 
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+
 import io.neurolab.R;
 import io.neurolab.tools.Animations;
 
-public class RelaxVisualFragment extends android.support.v4.app.Fragment {
+public class RelaxVisualFragment extends Fragment {
 
     public static final String RELAX_PROGRAM_FLAG = "Relax";
 

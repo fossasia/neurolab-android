@@ -7,7 +7,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/home_activity_background"
         android:orientation="vertical"
         android:paddingTop="@dimen/padding_extra_larger"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
