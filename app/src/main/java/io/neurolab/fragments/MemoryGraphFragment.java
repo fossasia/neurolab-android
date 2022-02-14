@@ -58,7 +58,8 @@ import static android.app.Activity.RESULT_OK;
 import static io.neurolab.utilities.FilePathUtil.LOG_FILE_KEY;
 
 public class MemoryGraphFragment extends Fragment implements OnChartValueSelectedListener {
-
+    private boolean checkForStoppedGraph=false;
+    private int countForFirstExecution=0;
     private LineChart memGraph;
     private View view;
     private Thread thread;
@@ -365,13 +366,16 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
     private void toggleMenuItem(Menu menu, boolean isPlaying) {
         MenuItem play = menu.findItem(R.id.play_graph);
         MenuItem stop = menu.findItem(R.id.stop_data);
-
+        boolean updatedIsPlaying;
+        if(checkForStoppedGraph && countForFirstExecution==1)
+            updatedIsPlaying=false;
+        else updatedIsPlaying=isPlaying;
         if (getArguments().getString(LOG_FILE_KEY) == null) {
             play.setVisible(false);
             stop.setVisible(false);
         } else {
-            play.setVisible(!isPlaying);
-            stop.setVisible(isPlaying);
+            play.setVisible(!updatedIsPlaying);
+            stop.setVisible(updatedIsPlaying);
         }
     }
 
@@ -442,10 +446,14 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
 
         } else if (id == R.id.stop_data) {
             parsedData = null;
+            checkForStoppedGraph=true;
+            countForFirstExecution=1;
             Toast.makeText(getContext(), "Stopped", Toast.LENGTH_SHORT).show();
             isPlaying = true;
             toggleMenuItem(globalMenu, !isPlaying);
         } else if (id == R.id.play_graph && (parsedData == null && StatisticsFragment.parsedData != null)) {
+            checkForStoppedGraph=false;
+            countForFirstExecution=0;
             parsedData = StatisticsFragment.parsedData;
             plotGraph();
             toggleMenuItem(globalMenu, isPlaying);
@@ -540,6 +548,10 @@ public class MemoryGraphFragment extends Fragment implements OnChartValueSelecte
             StatisticsFragment.parsedData = parsedData = strings;
             progressDialog.dismiss();
             plotGraph();
+            if(checkForStoppedGraph){
+                parsedData=null;
+                toggleMenuItem(globalMenu,false);
+            }
         }
     }
 }
