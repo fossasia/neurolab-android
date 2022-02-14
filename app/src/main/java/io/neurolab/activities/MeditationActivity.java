@@ -22,6 +22,8 @@ public final class MeditationActivity extends AppCompatActivity {
 
     public static final String TAG = MeditationActivity.class.getCanonicalName();   // TAG for debugging purposes.
     public static int MEDIA_RES_ID;
+    private static String KEY_PLAYER = "PlayerAdapter_Key";
+    private static String KEY_DURATIONVIEW = "DurationView_Key";
 
     // Necessary view references.
     private SeekBar seekbarAudio;
@@ -31,6 +33,7 @@ public final class MeditationActivity extends AppCompatActivity {
 
     // the interface reference which would be used to control the media session from this UI client.
     private PlayerAdapter playerAdapter;
+    private MediaPlayerHolder mediaPlayerHolder;
 
     private boolean isUserSeeking = false;
 
@@ -42,24 +45,46 @@ public final class MeditationActivity extends AppCompatActivity {
 
         MEDIA_RES_ID = getIntent().getIntExtra(MEDITATION_DIR_KEY, R.raw.soften_and_relax);
 
-        grabNecessaryReferencesAndSetListeners();
+        if (savedInstanceState == null) {
+            grabNecessaryReferencesAndSetListeners();
 
-        setTrackName(MEDIA_RES_ID);
+            setTrackName(MEDIA_RES_ID);
 
-        initializePlaybackController();
+            initializePlaybackController();
+
+            playerAdapter.loadMedia(MEDIA_RES_ID);
+        }
+        else {
+            grabNecessaryReferencesAndSetListeners();
+
+            setTrackName(MEDIA_RES_ID);
+
+            durationView.setText(savedInstanceState.getCharSequence(KEY_DURATIONVIEW));
+
+            mediaPlayerHolder = (MediaPlayerHolder)savedInstanceState.getSerializable(KEY_PLAYER);
+            mediaPlayerHolder.setPlaybackInfoListener(new PlaybackListener());
+            mediaPlayerHolder.initializeProgressCallback();
+
+            playerAdapter = mediaPlayerHolder;
+        }
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(KEY_PLAYER, mediaPlayerHolder);
+        outState.putCharSequence(KEY_DURATIONVIEW,durationView.getText());
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        playerAdapter.loadMedia(MEDIA_RES_ID);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
         // not releasing the media player resources during auto-rotation. I believe it won't make it logical for the user to listen to the audio again from the start if he rotates his phone.
-        if (isChangingConfigurations() && playerAdapter.isPlaying()) {
+        if (isChangingConfigurations()) {
             Log.d(TAG, "onStop: don't release MediaPlayer as screen is rotating & playing");
         } else {
             playerAdapter.release();
@@ -130,7 +155,7 @@ public final class MeditationActivity extends AppCompatActivity {
     }
 
     private void initializePlaybackController() {
-        MediaPlayerHolder mediaPlayerHolder = new MediaPlayerHolder(this);
+        mediaPlayerHolder = new MediaPlayerHolder(this);
         Log.d(TAG, "Inside initializePlaybackController method: MediaPlayerHolder Created");
         mediaPlayerHolder.setPlaybackInfoListener(new PlaybackListener());
         playerAdapter = mediaPlayerHolder;
