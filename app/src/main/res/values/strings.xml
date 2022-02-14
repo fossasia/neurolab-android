@@ -20,6 +20,8 @@
     <string name="num_channels_pref_label">Number Channels</string>
     <string name="about_us">About Us</string>
     <string name="last_session_head">Last Sessions</string>
+    <string name="help">Help</string>
+    <string name="report_or_bug">Report Or Bug</string>
 
     <string name="settings">Settings</string>
     <string name="simulation">Simulation</string>

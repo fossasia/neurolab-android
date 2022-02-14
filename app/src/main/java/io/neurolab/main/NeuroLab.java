@@ -9,6 +9,7 @@ import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.usb.UsbManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
@@ -66,6 +67,10 @@ public class NeuroLab extends AppCompatActivity
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE
     };
+    //
+     String  url = "https://gitter.im/fossasia/neurolab?at=5dc84505fd6fe41fc05d87fa";
+     String  url1 = "https://github.com/fossasia/neurolab-android/issues/new?assignees=&labels=Bug&template=bug.md&title=";
+     //
     private static final int MY_REQUEST_CODE = 111;
     private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE_RESULT = 1;
     public static boolean developerMode = false;
@@ -364,7 +369,18 @@ public class NeuroLab extends AppCompatActivity
         } else if (id == R.id.nav_connect_device) {
             changeDeviceIcon();
             startActivity(new Intent(this, DeviceInstructionsActivity.class));
-        } else if (id == R.id.nav_settings) {
+        }
+        //
+        else if (id == R.id.item_help) {
+            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(i);
+        }
+        else if (id == R.id.report_or_bug) {
+            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url1));
+            startActivity(i);
+        }
+        //
+        else if (id == R.id.nav_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
         } else if (id == R.id.nav_about_us) {
             startActivity(new Intent(this, AboutUsActivity.class));

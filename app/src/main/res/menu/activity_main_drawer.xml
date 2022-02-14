@@ -43,7 +43,16 @@
                 android:id="@+id/nav_about_us"
                 android:icon="@drawable/ic_info"
                 android:title="@string/about_us" />
-
+            <item
+                android:id="@+id/report_or_bug"
+                android:checked="false"
+                android:icon="@drawable/ic_baseline_bug_report_24"
+                android:title="@string/report_or_bug"/>
+            <item
+                android:id="@+id/item_help"
+                android:checked="false"
+                android:icon="@drawable/ic_baseline_help_24"
+                android:title="@string/help"/>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
