@@ -99,7 +99,7 @@ This repository holds the Android app for the Neurolab Hardware. We are developi
   
 ## Goal
 
-Our brains communicate through neurotransmitters and their activity emits electricity. The neuroheadset measures that electricity on the skin of the forehead and the software processes the signal so that it can be translated into a visual or auditory representation. The data that can be collected can be analyzed to identify mental health, stress, relaxation and even diseases like Alzheimer. 
+Our brains communicate through neurotransmitters and their activity emits electricity. The neuroheadset measures that electricity on the skin of the forehead and the software processes the signal so that it can be translated into a visual or auditory representation. The data that can be collected can be analyzed to identify mental health, stress, relaxation and even diseases like Alzheimer's. 
 
 Current devices in the medical industry are usually not accessible by doctors due to their high pricing. They are also complicated to use. The idea of the device is to integrate it into a headband and focus on signals that can be obtained through the frontal lobe.
 
