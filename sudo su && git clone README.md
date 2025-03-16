@@ -1,4 +1,4 @@
-# Neurolab Android App
+sudo su && git clone # Neurolab Android App
 
 Repository of Android app for the Neurolab Open Hardware platform.
 
